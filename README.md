@@ -19,3 +19,5 @@ Ready to use as-is, Baselayer gives you all this and more:
 Believe it or not, all this is packed into a tiny CSS file, **14kb**.
 
 Baselayer uses some modern web technologies such as CSS Grid and CSS variables, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.
+
+Docs: [https://simonpadbury.github.io/baselayer/](https://simonpadbury.github.io/baselayer/)
