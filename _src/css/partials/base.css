@@ -1,0 +1,30 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--base);
+  font-size: var(--fsdefault);
+  line-height: var(--lh);
+  color: var(--ctext);
+  background-color: var(--body-bg-color);
+}
+
+/**
+ * Accessibility (see also form inputs and buttons)
+ */
+
+:focus-visible {
+  outline: 2px dotted black;
+  box-shadow: 0 0 0 2px white; /* for improved accessibility over dark backgrounds */
+}
+
+.visuallyhidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

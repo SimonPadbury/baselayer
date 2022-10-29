@@ -1,0 +1,67 @@
+/**
+ * CSS Reset -- based on
+ * https://piccalil.li/blog/a-modern-css-reset/ 
+ * https://www.joshwcomeau.com/css/custom-css-reset/
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 100%;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+/* }
+p, li, dd, td { */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+summary {
+  cursor: pointer;
+}
+/*
+Baselayer has no built-in CSS animations. If you add any,
+then you should help your users who for some reason may
+prefer gentler or no animations (e.g. people who have
+vestibular and seizure disorders).
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+*/

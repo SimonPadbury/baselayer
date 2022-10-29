@@ -1,0 +1,187 @@
+p,
+ol,
+ul,
+dl,
+pre,
+table,
+fieldset,
+figcaption,
+blockquote {
+  margin-block: var(--s2) 0;
+  line-height: var(--lh);
+}
+caption {
+  margin-block: var(--s1);
+}
+
+blockquote > p:first-child {
+  margin-top: 0;
+}
+
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-block: var(--s3) 0;
+  font-family: var(--hf);
+  font-weight: var(--hfw);
+  line-height: var(--lh);
+}
+
+h1, .h1 { 
+  font-family: var(--hf);
+  font-size: var(--h1);
+  font-weight: var(--hfw);
+  line-height: var(--lh);
+}
+h2, .h2 {
+  font-size: var(--h2);
+}
+h3, .h3 {
+  font-size: var(--h3);
+}
+h4, .h4 {
+  font-size: var(--h4);
+}
+h5, .h5 {
+  font-size: var(--h5);
+}
+h6, .h6 {
+  font-size: var(--h6);
+}
+
+a {
+  color: var(--clink);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: var(--dtlink);
+  text-underline-offset: var(--dolink);
+  cursor: pointer;
+}
+a:hover {
+  color: var(--hlink);
+}
+
+dt {
+  margin-top: var(--s2);
+}
+
+dd, li {
+  margin-block: calc(var(--s2) / 2);
+}
+
+li ol, li ul {
+  position: relative;
+  margin-top: -calc(var(--s2) / 2);
+}
+
+ol, ul, dd {
+  padding-left: 1.5em;
+}
+ol > li > ol {
+  list-style-type: lower-alpha;
+}
+ol > li > ol > li > ol {
+  list-style-type: lower-roman;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th,
+td {
+  border: var(--b1);
+  padding: var(--pcell);
+  vertical-align: top;
+  text-align: center;
+}
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+th, dt {
+  font-weight: bold;
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  border-top: var(--b1);
+  height: 0;
+  margin-block: 3rem;
+}
+
+blockquote {
+  padding-inline: var(--s3);
+}
+
+code, kbd, samp {
+  font-family: var(--mono);
+  font-size: var(--fsmono);
+}
+
+code {
+  display: inline-block;
+  padding-inline: .25em;
+  background-color: var(--bgcode);
+  color: black;
+}
+
+pre {
+  overflow-x: auto; /* To prevent <pre> from breaking grid layouts on small viewports */
+}
+pre code {
+  display: block;
+  padding: 1em;
+  background-color: var(--bgcode);
+  overflow-x: auto; /* so that the background color extends into the hidden overflow area */
+}
+
+sub, sup {
+  font-size: .85em;
+  line-height: 0;
+}
+
+.unlist { list-style-type: none; }
+nav a, .noline { text-decoration: none; }
+.nowrap { white-space: nowrap; }
+
+.big { font-size: 1.25em; }
+small, .small { font-size: .85em; }
+
+.bold, strong { font-weight: var(--bold); }
+.normal { font-weight: var(--normal); }
+.italic, em { font-style: italic; }
+
+.right { text-align: right; }
+.center { text-align: center; }
+.left { text-align: left; }
+
+.uppercase { text-transform: uppercase; }
+
+.longread { font-size: var(--fslongread); }
+
+.base { font-family: var(--base); }
+.prose { font-family: var(--prose); }
+
+/*
+Un-comment these if required
+*/
+/* .prose.normal,
+.prose {
+  font-family: var(--prose);
+  font-size: var(--fsprose);
+  font-weight: var(--fwprose);
+}
+.prose.bold, .prose .bold, .prose strong {
+  font-weight: var(--strprose);
+}
+.longread.prose,
+.longread .prose,
+.prose .longread {
+  font-size: var(--fslongread-prose);
+} */

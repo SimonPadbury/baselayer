@@ -1,0 +1,116 @@
+/*
+`.t*` = text color
+`.b*` = border color
+`.bg*` = background color
+`*100` through `*900` = lightness scale
+`.h:` = hover (mouseover) state
+*/
+
+.tgray, .h\:tgray:hover {
+  --ths: var(--hsgray);
+  color: hsl(var(--ths), var(--l500));
+}
+.bgray {
+  --bhs: var(--hsgray);
+  border-color: hsl(var(--bhs), var(--l500));
+}
+.bggray {
+  --bghs: var(--hsgray);
+  background: hsl(var(--bghs), var(--l500));
+}
+
+.tblue {
+  --ths: var(--hsblue);
+  color: hsl(var(--ths), var(--l500));
+}
+.bblue {
+  --bhs: var(--hsblue);
+  border-color: hsl(var(--bhs), var(--l500));
+}
+.bgblue {
+  --bghs: var(--hsblue);
+  background: hsl(var(--bghs), var(--l500));
+}
+
+.tgreen {
+  --ths: var(--hsgreen);
+  color: hsl(var(--ths), var(--l500));
+}
+.bgreen {
+  --bhs: var(--hsgreen);
+  border-color: hsl(var(--bhs), var(--l500));
+}
+.bggreen {
+  --bghs: var(--hsgreen);
+  background: hsl(var(--bghs), var(--l500));
+}
+
+.tamber {
+  --ths: var(--hsamber);
+  color: hsl(var(--ths), var(--l500));
+}
+.bamber {
+  --bhs: var(--hsamber);
+  border-color: hsl(var(--bhs), var(--l500));
+}
+.bgamber {
+  --bghs: var(--hsamber);
+  background: hsl(var(--bghs), var(--l500));
+}
+
+.tred {
+  --ths: var(--hsred);
+  color: hsl(var(--ths), var(--l500));
+}
+.bred {
+  --bhs: var(--hsred);
+  border-color: hsl(var(--bhs), var(--l500));
+}
+.bgred {
+  --bghs: var(--hsred);
+  background: hsl(var(--bghs), var(--l500));
+}
+
+/* Lightness scales */
+
+.t100, .h\:t100:hover { color: hsl(var(--ths), var(--l100)); }
+.t200, .h\:t200:hover { color: hsl(var(--ths), var(--l200)); }
+.t300, .h\:t300:hover { color: hsl(var(--ths), var(--l300)); }
+.t400, .h\:t400:hover { color: hsl(var(--ths), var(--l400)); }
+.t500, .h\:t500:hover { color: hsl(var(--ths), var(--l500)); }
+.t600, .h\:t600:hover { color: hsl(var(--ths), var(--l600)); }
+.t700, .h\:t700:hover { color: hsl(var(--ths), var(--l700)); }
+.t800, .h\:t800:hover { color: hsl(var(--ths), var(--l800)); }
+.t900, .h\:t900:hover { color: hsl(var(--ths), var(--l900)); }
+
+.b100, .h\:b100:hover { border-color: hsl(var(--bhs), var(--l100)); }
+.b200, .h\:b200:hover { border-color: hsl(var(--bhs), var(--l200)); }
+.b300, .h\:b300:hover { border-color: hsl(var(--bhs), var(--l300)); }
+.b400, .h\:b400:hover { border-color: hsl(var(--bhs), var(--l400)); }
+.b500, .h\:b500:hover { border-color: hsl(var(--bhs), var(--l500)); }
+.b600, .h\:b600:hover { border-color: hsl(var(--bhs), var(--l600)); }
+.b700, .h\:b700:hover { border-color: hsl(var(--bhs), var(--l700)); }
+.b800, .h\:b800:hover { border-color: hsl(var(--bhs), var(--l800)); }
+.b900, .h\:b900:hover { border-color: hsl(var(--bhs), var(--l900)); }
+
+.bg100, .h\:bg100:hover { background: hsl(var(--bghs), var(--l100)); }
+.bg200, .h\:bg200:hover { background: hsl(var(--bghs), var(--l200)); }
+.bg300, .h\:bg300:hover { background: hsl(var(--bghs), var(--l300)); }
+.bg400, .h\:bg400:hover { background: hsl(var(--bghs), var(--l400)); }
+.bg500, .h\:bg500:hover { background: hsl(var(--bghs), var(--l500)); }
+.bg600, .h\:bg600:hover { background: hsl(var(--bghs), var(--l600)); }
+.bg700, .h\:bg700:hover { background: hsl(var(--bghs), var(--l700)); }
+.bg800, .h\:bg800:hover { background: hsl(var(--bghs), var(--l800)); }
+.bg900, .h\:bg900:hover { background: hsl(var(--bghs), var(--l900)); }
+
+/* Other */
+
+.twhite, .h\:twhite:hover { color: white; }
+.bwhite, .h\:bwhite:hover { border-color: white; }
+.bgwhite, .h\:bgwhite:hover { background: white; }
+
+.tblack, .h\:tblack:hover { color: black; }
+.bblack, .h\:bblack:hover { border-color: black; }
+.bgblack, .h\:bgblack:hover { background: black; }
+
+.bgtransparent, .h\:bgtransparent:hover { background: transparent; }

@@ -1,0 +1,62 @@
+<div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="{{ '/' | url }}" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">{{ metadata.title }}</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>

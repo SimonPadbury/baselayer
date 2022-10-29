@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Layout · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: /layout/ -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex">Flex</a><ul><li><a href="#flex-classes">Flex classes</a></li><li><a href="#flex-modifier-classes">Flex modifier classes</a></li><li><a href="#flex-item-class">Flex-item class</a></li></ul></li><li><a href="#grid">Grid</a><ul><li><a href="#grid-classes">Grid classes</a></li><li><a href="#grid-item-classes">Grid-item classes</a></li></ul></li><li><a href="#article-grid">Article Grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Layout</h1>
+          </header>
+      
+          <h2 id="blocks" tabindex="-1">Blocks</h2>
+<ul>
+<li><code>block</code> — make an inline element behave as a block element</li>
+<li><code>inline-block</code> — to enable block-like settings on an inline element (width, height, margins, paddings)</li>
+<li><code>flex</code> — <a href="#flex">see below</a></li>
+<li><code>grid</code> — <a href="#grid">see below</a></li>
+</ul>
+<h2 id="containers" tabindex="-1">Containers</h2>
+<p>The centered layout container <code>container</code> with is set as follows:</p>
+<pre><code>/* root-vars.css */
+
+:root {
+  --wlg: 1440px;
+  --container: min(94vw, var(--wlg));
+}
+
+/* layout.css */
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+</code></pre>
+<p>For narrower containers, use the max-width classes as modifiers: <code>container wmd</code> or <code>container wsm</code>.</p>
+<p>See also how to set up a content grid using <code>content</code> below.</p>
+<h2 id="dimensions" tabindex="-1">Dimensions</h2>
+<p>Constrained widths:</p>
+<ul>
+<li><code>wlg</code> — max-width 1440px, from <code>var(--wlg)</code></li>
+<li><code>wmd</code> — max-width 1080px, from <code>var(--wmd)</code></li>
+<li><code>wsm</code> — max-width 720px, from <code>var(--wsm)</code></li>
+<li><code>w50vw</code> — max-width 50vw</li>
+<li><code>w100vw</code> — max-width 100vw</li>
+</ul>
+<p>Heights:</p>
+<ul>
+<li><code>h100%</code> — height 100%, e.g. for making cards equal to the height of their wrapper</li>
+<li><code>h50vh</code> — min-height 50vh, e.g. for making split “full cover” panels</li>
+<li><code>h100vh</code> — min-height 100vh, e.g. for making “full cover” panels</li>
+</ul>
+<h2 id="positions" tabindex="-1">Positions</h2>
+<ul>
+<li><code>relative</code></li>
+<li><code>absolute</code></li>
+<li><code>sticky</code></li>
+<li><code>box</code> — stretches an inner element using <code>inset: 0</code> to cover the size of its wrapper (you must put a <code>relative</code> on the wrapper). Useful for setting up hero image with text overlay.</li>
+<li><code>top</code> — <code>top: 0</code></li>
+<li><code>right</code> — <code>right: 0</code> and <code>text-align: right</code></li>
+<li><code>bottom</code> — <code>bottom: 0</code></li>
+<li><code>left</code> — <code>left: 0</code> and <code>text-align: left</code></li>
+<li><code>z1</code> — <code>z-index: 1</code></li>
+<li><code>z2</code> — <code>z-index: 2</code></li>
+<li><code>z3</code> — <code>z-index: 3</code></li>
+</ul>
+<div class="relative mt2 b1 ratio16x9">
+  <div class="absolute top w100% center"><code>top</code></div>
+  <div class="absolute right h100% flex flexmiddle"><code>right</code></div>
+  <div class="absolute bottom w100% center"><code>bottom</code></div>
+  <div class="absolute left h100% flex flexmiddle"><code>left</code></div>
+</div>
+<pre><code>&lt;div class=&quot;relative mt2 b1 ratio16x9&quot;&gt;
+  &lt;div class=&quot;absolute top w100% center&quot;&gt;&lt;code&gt;top&lt;/code&gt;&lt;/div&gt;
+  &lt;div class=&quot;absolute right h100% flex flexmiddle&quot;&gt;&lt;code&gt;right&lt;/code&gt;&lt;/div&gt;
+  &lt;div class=&quot;absolute bottom w100% center&quot;&gt;&lt;code&gt;bottom&lt;/code&gt;&lt;/div&gt;
+  &lt;div class=&quot;absolute left h100% flex flexmiddle&quot;&gt;&lt;code&gt;left&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="flex" tabindex="-1">Flex</h2>
+<p>Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.</p>
+<h3 id="flex-classes" tabindex="-1">Flex classes</h3>
+<ul>
+<li><code>flex</code> — flexbox with wrapping at all viewport widths</li>
+<li><code>sm:flex</code> — flexbox with wrapping at 720px up</li>
+<li><code>md:flex</code> — flexbox with wrapping at 1080px up</li>
+</ul>
+<h3 id="flex-modifier-classes" tabindex="-1">Flex modifier classes</h3>
+<p>The classes below will not take effect below the <code>*:flex</code> breakpoints.</p>
+<ul>
+<li><code>gap</code> — same as for <code>grid</code> (see below), adding a horizontal and vetical gap of <code>var(--s2)</code></li>
+<li><code>flexwrap</code> — gives you <code>flex-wrap: wrap</code></li>
+<li><code>flexcolumn</code> — gives you <code>flex-direction: column</code></li>
+<li><code>flexcenter</code> — gives you  <code>justify-content: center</code></li>
+<li><code>flexmiddle</code> — gives you <code>align-items: center</code></li>
+<li><code>flexspace</code> — gives you <code>justify-content: space-between</code></li>
+</ul>
+<h3 id="flex-item-class" tabindex="-1">Flex-item class</h3>
+<ul>
+<li><code>grow</code> — gives you <code>flex-grow: 1</code></li>
+</ul>
+<h2 id="grid" tabindex="-1">Grid</h2>
+<p>Using <em>CSS Grid</em>.</p>
+<p>Baselayer grids are take effect at the <code>sm</code> or <code>md</code> breakpoint widths. The grids can be combined, for three layouts:</p>
+<ul>
+<li><em>There is no grid below</em> <code>sm</code> <em>for small phones</em></li>
+<li>large phones (landscape orientation), and tablets up (<code>sm</code> at 720px up)</li>
+<li>large “pro” tablets (landscape orientation) up (<code>md</code> at 1080px)</li>
+</ul>
+<h3 id="grid-classes" tabindex="-1">Grid classes</h3>
+<ul>
+<li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 720px up.</li>
+<li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1080px up.</li>
+<li><code>gap</code> — adds a horizontal and and vetical gap of <code>var(--s2)</code></li>
+<li><code>dense</code> — adds <code>grid-auto-flow: dense</code>, telling the browser to reorder and pack items as dense as possible filling empty cells.</li>
+</ul>
+<p>So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (<code>sm:</code>) and small laptops-up, etc. (<code>md:</code>). Note: there is no grid layout provided for phones (smaller than <code>sm:</code>).</p>
+<p>Simply using the grid wrapper classes above will enable you to set up galleries e.g. of images or cards, where you want grid items to span one grid cell each. Grid items will have equal width and height.</p>
+<h3 id="grid-item-classes" tabindex="-1">Grid-item classes</h3>
+<p>For positioning grid-items in columns and making them span more than one column.</p>
+<p>For <code>sm</code> — 720px up:</p>
+<ul>
+<li><code>sm:col1</code> / <code>sm:col2</code> / <code>sm:col3</code> / <code>sm:col4</code> — cell placement</li>
+<li><code>sm:cols1-2</code> / <code>sm:cols1-3</code> / <code>sm:cols1-4</code> — spanning from column 1</li>
+<li><code>sm:cols2-3</code> / <code>sm:cols2-4</code> — spanning from column 2</li>
+<li><code>sm:cols3-4</code> — spanning from column 3</li>
+</ul>
+<p>For <code>md</code> — 1080px up:</p>
+<ul>
+<li><code>md:col1</code> / <code>md:col2</code> / <code>md:col3</code> / <code>md:col4</code> — cell placement</li>
+<li><code>md:cols1-2</code> / <code>md:cols1-3</code> / <code>md:cols1-4</code> — spanning from column 1</li>
+<li><code>md:cols2-3</code> / <code>md:cols2-4</code> — spanning from column 2</li>
+<li><code>md:cols3-4</code> — spanning from column 3</li>
+</ul>
+<p>Examples:</p>
+<p><code>sm:grid4cols</code>:</p>
+<div class="mt2 sm:grid4cols">
+  <div class="p1 bgred twhite">Item 1</div>
+  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
+  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
+  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
+  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+</div>
+<pre><code>&lt;div class=&quot;mt2 sm:grid4cols&quot;&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div class=&quot;sm:cols1-2&quot;&gt;Item 2&lt;/div&gt;
+  &lt;div class=&quot;sm:cols2-4&quot;&gt;Item 3&lt;/div&gt;
+  &lt;div class=&quot;sm:col4&quot;&gt;Item 4&lt;/div&gt;
+  &lt;div class=&quot;sm:col3&quot;&gt;Item 5&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>If your layout leaves gaps but you want them filled by reordering the items, then add the <code>dense</code> class to the grid wrapper.</p>
+<p><code>sm:grid4cols dense</code> (same as above, plus <code>dense</code>):</p>
+<div class="mt2 sm:grid4cols dense">
+  <div class="p1 bgred twhite">Item 1</div>
+  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
+  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
+  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
+  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+</div>
+<h2 id="article-grid" tabindex="-1">Article Grid</h2>
+<p><code>article</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>var(--wsm)</code>.</p>
+<ul>
+<li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). This has been set to max-width <code>var(--wmd)</code> by subtracting <code>wsm</code> from <code>wmd</code> and halving the result, to set the width of columns 2 and 4.</li>
+<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). This has been calculated to max-width <code>var(--wmd)</code>.</li>
+<li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns.</li>
+</ul>
+<h3 id="popout-panels" tabindex="-1">Popout Panels</h3>
+<p>Example information panel using <code>popout</code>:</p>
+<div class="popout mt2 bt3 bblue b300 r2 p2 tblack bggray bg100">
+  &star; Information panel
+</div>
+<pre><code>&lt;div class=&quot;popout mt2 bt3 bblue b300 r2 p2 bggray bg100&quot;&gt;
+  &amp;star; Information panel
+&lt;/div&gt;
+</code></pre>
+<h3 id="expanded-panels" tabindex="-1">Expanded Panels</h3>
+<p>Example poster component using <code>expand</code>:</p>
+<div class="expand mt2">
+  <div class="ratio16x9 flex flexcenter flexmiddle relative bgblack">
+    <img class="absolute box cover opacity50%" src="https://picsum.photos/id/1015/700/700">
+    <div class="relative wsm ratio16x9 p3">
+      <p class="h1 twhite"><strong>A poster with a lot of example text that may or may not distort the aspect ratio (16&times;9) of this component.</strong></p>
+      <p class="h1 twhite"><strong>See what it does on a small viewport width.</strong></p>
+    </div>
+  </div>
+</div>
+<p>Image from <a href="https://picsum.photos/">Lorem Pixum</a>.</p>
+<pre><code>&lt;div class=&quot;expand mt2&quot;&gt;
+  &lt;div class=&quot;ratio16x9 flex flexcenter flexmiddle relative bgblack&quot;&gt;
+    &lt;img class=&quot;absolute box cover opacity50%&quot; src=&quot;https://picsum.photos/id/1015/700/700&quot;&gt;
+    &lt;div class=&quot;relative wsm ratio16x9 p3&quot;&gt;
+      &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;A poster with a lot of example text that may or may not distort the aspect ratio (16&amp;times;9) of this component.&lt;/strong&gt;&lt;/p&gt;
+      &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;See what it does on a small viewport width.&lt;/strong&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="full-bleed-panels" tabindex="-1">Full Bleed Panels</h3>
+<p>Example colored stripe using <code>fullbleed</code>:</p>
+<div class="fullbleed mt2 p2 bgred twhite">
+ <code>fullbleed</code> — expands to the full width of the <code>article</code> wrapper.
+</div>
+<pre><code>&lt;div class=&quot;fullbleed mt2 p2 bgred twhite&quot;&gt;
+ Full bleed panel content...
+&lt;/div&gt;
+</code></pre>
+<h2 id="aspect-ratios" tabindex="-1">Aspect ratios</h2>
+<p>Common aspect ratio constraints for images, video, and hero blocks.</p>
+<div class="mt2 sm:grid4cols gap">
+  <div>
+    <div class="ratio1x1 b1 p1"><code>ratio1x1</code></div>
+  </div>
+  <div>
+    <div class="ratio4x3 b1 p1"><code>ratio4x3</code></div>
+  </div>
+  <div>
+    <div class="ratio16x9 b1 p1"><code>ratio16x9</code></div>
+  </div>
+  <div>
+    <div class="ratio21x9 b1 p1"><code>ratio21x9</code></div>
+  </div>
+</div>
+<h2 id="overflows" tabindex="-1">Overflows</h2>
+<p>Using <code>auto</code> to add scrollling when the content of a block exceeds its constrained height or width.</p>
+<ul>
+<li><code>overflowx</code> — e.g. for wrapping tables with a lots of columns, that would break a template layout in small viewports</li>
+<li><code>overflowy</code> — e.g. for sidebar menus loaded with content</li>
+</ul>
+<h2 id="invisibility" tabindex="-1">Invisibility</h2>
+<p>There may be situation where you require some element(s) to be displayed on smaller or larger viewports, but hidden otherwise. Baselayer has:</p>
+<ul>
+<li><code>sm:hidden</code> — hides elements on viewports with width 720px and up</li>
+<li><code>sm:hiddenbelow</code> — hides elements on viewports with width below 720px</li>
+<li><code>md:hidden</code> — hides elements on viewports with width 1080px and up</li>
+<li><code>md:hiddenbelow</code> — hides elements on viewports with width below 1080px</li>
+</ul>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                <li>&larr; <a href="/typography"> Typography</a></li>
+                
+                
+                <li><a href="/decoration">Decoration</a> &rarr;</li>
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

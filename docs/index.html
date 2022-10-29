@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Baselayer · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: / -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#built-using-postcss">Built using PostCSS</a></li><li><a href="#modern-css-reset">Modern CSS Reset</a></li><li><a href="#basic-accessibility-features">Basic Accessibility Features</a><ul><li><a href="#focus-rings">Focus Rings</a></li><li><a href="#the-visually-hidden-class">The Visually-Hidden Class</a></li></ul></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Baselayer Is a Splendiferous Yet Miniscule CSS Library</h1>
+          </header>
+      
+          <h2 id="introduction" tabindex="-1">Introduction</h2>
+<p>Designed as a good place to start, Baselayer may be all you need — for small websites and blogs. Or you may use it as a <em>baselayer</em> to quick-start your mega project.</p>
+<p>Ready to use as-is, Baselayer gives you all this and more:</p>
+<ul>
+<li>A modern CSS reset</li>
+<li>Basic accessibility features</li>
+<li>Responsive typography</li>
+<li>Simple responsive layouts using positioning, dimensions, flexbox, and grid</li>
+<li>A lightweight system of utility classes for controlling spacing, borders, and colors</li>
+<li>Styled form elements and buttons</li>
+<li>Control of many of these things using CSS variables (custom properties)</li>
+</ul>
+<p>Believe it or not, all this is packed into a tiny CSS file, <strong>14kb</strong>.</p>
+<p>Baselayer uses some modern web technologies such as <a href="https://caniuse.com/?search=grid">CSS Grid</a> and <a href="https://caniuse.com/?search=variables">CSS variables</a>, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.</p>
+<h2 id="built-using-postcss" tabindex="-1">Built using PostCSS</h2>
+<p>Baselayer is built using <a href="https://postcss.org">PostCSS</a> and a few plugins. Preprocessors such as Sass are not required.</p>
+<p>The PostCSS plugins used by Baselayer are:</p>
+<ul>
+<li><a href="https://github.com/postcss/postcss-import">postcss-import</a> — so that Baselayer could be built from separate CSS files, linked together in an <code>index.css</code> using the <code>@import</code> rule, and then inlined</li>
+<li><a href="https://npm.devtool.tech/postcss-custom-media">postcss-custom-media</a> — to enable CSS variables to be used in media queries (used only in the <code>flex</code> and <code>grid</code> layout classes)</li>
+<li><a href="https://cssnano.co">cssnano</a> — to remove comments and minify the output <code>baselayer.css</code></li>
+</ul>
+<p><strong>Note:</strong> neither <a href="https://preset-env.cssdb.org">postcss-preset-env</a> nor <a href="https://github.com/postcss/autoprefixer">autoprefixer</a> have been used in Baselayer.</p>
+<h2 id="modern-css-reset" tabindex="-1">Modern CSS Reset</h2>
+<p>The Baselayer reset is a “best of both” combination of <a href="https://www.joshwcomeau.com/css/custom-css-reset/">Josh W Comeau’s custom CSS reset</a> and the <a href="https://piccalil.li/blog/a-modern-css-reset/">Andy Bell’s modern CSS reset (Picalilli)</a>.</p>
+<p>Then, Baselayer takes care of the basics by setting some minimalist, easy-to-read typography, and styles for buttons and forms.</p>
+<h2 id="basic-accessibility-features" tabindex="-1">Basic Accessibility Features</h2>
+<p>Baselayer has two basic accessibility features built-in.</p>
+<h3 id="focus-rings" tabindex="-1">Focus Rings</h3>
+<ul>
+<li>
+<p><strong>Form Focus Ring</strong></p>
+<p>For form inputs and buttons, there’s a 4px light blue ring (see <a href="/colors">colors</a>). Example:</p>
+  <form>
+    <fieldset>
+      <legend>Example e-newsletter subscribe</legend>
+      <input type="email" id="example-input-email" placeholder="Enter email">
+      <input type="submit" name="submit" value="Subscribe">
+    </fieldset>
+  </form>
+<p>The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.</p>
+</li>
+<li>
+<p><strong>Link Focus Ring</strong></p>
+<p>For links, collapsible <code>&lt;details&gt;</code>, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear <em>between</em> the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:</p>
+  <div class="mt2 b1 b600 sm:grid3cols">
+    <div class="p3 flex flexcolumn flexcenter flexmiddle">
+    <p><a href="/#">Link</a></p>
+    <p><button type="button">Button</button></p>
+    </div>
+    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
+    <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
+    <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
+    </div>
+    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
+    <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
+    <p><button type="button">Button</button></p>
+    </div>
+  </div>
+</li>
+</ul>
+<h3 id="the-visually-hidden-class" tabindex="-1">The Visually-Hidden Class</h3>
+<p>The <code>visuallyhidden</code> is used for “skip links”, such as the visually-hidden link above the top navigation bar on this website.</p>
+<pre><code>&lt;a 
+  href=&quot;#main-content&quot;
+  tabindex=&quot;1&quot;
+  class=&quot;inlineblock m1 visuallyhidden&quot;
+&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- Logo and menu go in here --&gt;
+
+&lt;main id=&quot;main-content&quot;&gt;
+  ...
+&lt;/main&gt;
+</code></pre>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                
+                <li><a href="/typography">Typography</a> &rarr;</li>
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

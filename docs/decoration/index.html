@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Decoration · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: /decoration/ -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#spacing-(margins-and-paddings)">Spacing (Margins and Paddings)</a><ul><li><a href="#spacing-extras">Spacing Extras</a></li></ul></li><li><a href="#borders">Borders</a><ul><li><a href="#border-extra">Border Extra</a></li></ul></li><li><a href="#rounded-corners">Rounded Corners</a></li><li><a href="#the-image-cover-class">The Image Cover Class</a></li><li><a href="#opacity">Opacity</a></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Decoration</h1>
+          </header>
+      
+          <h2 id="spacing-(margins-and-paddings)" tabindex="-1">Spacing (Margins and Paddings)</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">Box model</a> margin and padding spacing have both 4 levels based on 4 CSS variables. The smallest simply adds 0.5rem spacing, whereas levels 2-4 are responsive to viewport width using <code>clamp()</code> functions to ramp up to 150% their base size. These variables are set in the root-variables file.</p>
+<pre><code>:root {
+  --s1: .5rem;
+  --s2: clamp(1rem, 2.2222vw, 1.5rem);
+  --s3: clamp(2rem, 4.4444vw, 3rem);
+  --s4: clamp(3rem, 6.6667vw, 4.5rem);
+}
+</code></pre>
+<p>This makes the negative space (“whitespace”) for spacing levels 2-4 bigger for larger screens.</p>
+<p>Both margin and padding spacers are controlled on the 4 sides of blocks, as follows:</p>
+<ul>
+<li>All: <code>m1</code> through <code>m4</code> / <code>p4</code> through <code>p4</code></li>
+<li>Top: <code>mt1</code> through <code>mt4</code> / <code>pt4</code> through <code>pt4</code></li>
+<li>Right: <code>mr1</code> through <code>mr4</code> / <code>pr4</code> through <code>pr4</code></li>
+<li>Bottom: <code>mb1</code> through <code>mb4</code> / <code>pb4</code> through <code>pb4</code></li>
+<li>Left: <code>ml1</code> through <code>ml4</code> / <code>pl4</code> through <code>pl4</code></li>
+<li>Inline x-axis (right and left): <code>mx1</code> through <code>mx4</code> / <code>px4</code> through <code>px4</code></li>
+<li>Block y-axis (top and bottom): <code>my1</code> through <code>my4</code> / <code>py4</code> through <code>py4</code></li>
+</ul>
+<p>Spacing example with paddings:</p>
+<div class="mt2 b1 p4">p4</div>
+<div class="mt2 b1 p3">p3</div>
+<div class="mt2 b1 p2">p2</div>
+<div class="mt2 b1 p1">p1</div>
+<h3 id="spacing-extras" tabindex="-1">Spacing Extras</h3>
+<p>In addition, there are the following specials:</p>
+<ul>
+<li><code>pcell</code> — adds y-axis padding <code>var(--s1)</code> and x-axis padding <code>2 * var(--s1)</code>, for creating menu items. Same as the padding for table cells and buttons</li>
+<li><code>mxauto</code> — for x-axis margin auto-centering</li>
+<li><code>m0</code> and <code>p0</code> — for removing (resetting) all unwanted space</li>
+</ul>
+<p>These zero spacing utilities are declared before the spacers above in <code>decoration.css</code> so that you can use them to <em>reset</em> and then use spacers to set spacing the way you want it.</p>
+<p><em>What if you want to remove e.g. only the top margin of a heading (or other typographic block element)?</em> Use <code>m0</code> to remove all margins, then use any of the above additive margin classes to put back the ones you want to keep.</p>
+<h2 id="borders" tabindex="-1">Borders</h2>
+<p>Baselayer provides three thicknesses of border (plus a zero border override):</p>
+<div class="mt2 b1 p1">b1 (1px)</div>
+<div class="mt2 b2 p1">b2 (4px)</div>
+<div class="mt2 b3 p1">b3 (8px)</div>
+<p>Borders can be set as follows:</p>
+<ul>
+<li>All: <code>b*</code></li>
+<li>Top: <code>bt*</code></li>
+<li>Right: <code>br*</code></li>
+<li>Bottom: <code>bb*</code></li>
+<li>Left: <code>bl*</code></li>
+</ul>
+<h3 id="border-extra" tabindex="-1">Border Extra</h3>
+<ul>
+<li><code>b0</code> — for removing all borders</li>
+</ul>
+<p><code>b0</code> has been declared before the other border classes in in <code>decoration.css</code>, so that it can be used as a <em>reset</em> before you add whatever border you require.</p>
+<h2 id="rounded-corners" tabindex="-1">Rounded Corners</h2>
+<ul>
+<li><code>r1</code> — 0.25rem border radius</li>
+<li><code>r2</code> — 0.5rem border radius</li>
+<li><code>r3</code> — 1rem border radius</li>
+</ul>
+<div class="mt2 sm:grid3cols gap">
+  <div class="b1 r1 p1">r1</div>
+  <div class="b1 r2 p1">r2</div>
+  <div class="b1 r3 p1">r3</div>
+</div>
+<ul>
+<li><code>pill</code> — 99em border radius (more than sufficient to put x-axis semi-circular ends on even mid-sized blocks)</li>
+</ul>
+<div class="mt2 b1 pill p3">pill</div>
+<p>If <code>pill</code> is used on a square, then the result will be a circle.</p>
+<div class="mt2 b1 pill flex flexcenter flexmiddle center" style="width: 280px; height: 280px;">280px²<br>square pill</div>
+<h2 id="the-image-cover-class" tabindex="-1">The Image Cover Class</h2>
+<p>There’s the Baselayer <code>cover</code> class can be used to make an image expand or contract to fully cover a container block rectangle. It is designed for use on an <code>&lt;img src=&quot;&quot;&gt;</code> tag.</p>
+<pre><code>.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+</code></pre>
+<p>An example of <code>cover</code> being used can be seen in the <a href="/layout/#expanded-panels">expanded panel</a> example.</p>
+<h2 id="opacity" tabindex="-1">Opacity</h2>
+<p>Opacities (with hover states):</p>
+<ul>
+<li><code>opacity25%</code> / <code>h:opacity25%</code></li>
+<li><code>opacity50%</code> / <code>h:opacity50%</code></li>
+<li><code>opacity75%</code> / <code>h:opacity75%</code></li>
+<li><code>h:opacity100%</code></li>
+</ul>
+<p>The hover states are provided in case you want an image inside a link to change opacity on hover.</p>
+<p>If you use these on an image over a colored background, then you get a color-tinted image.</p>
+<p>If you have text over an image (e.g. in a hero component), then you can use opacity over a black (or dark color) background to make white text more readable — and <em>vise versa</em>.</p>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                <li>&larr; <a href="/layout"> Layout</a></li>
+                
+                
+                <li><a href="/colors">Colors</a> &rarr;</li>
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

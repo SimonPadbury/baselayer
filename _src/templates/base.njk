@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ title + ' · ' if title }}{{ metadata.title }}</title>
+
+  <link rel="stylesheet" href="{{ '/css/min/Baselayer.min.css' | url }}{{ '?v=' + metadata.version }}">
+
+  <script src="{{ '/js/switcher.js' | url }}"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="{% if bodyClass %}{{ bodyClass }}{% endif %}">
+
+  <!-- Current page: {{ page.url | url }} -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    {% include "includes/site-nav.njk" %}
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            {{ content | toc | safe }}
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">{{ mainHeading }}</h1>
+          </header>
+      
+          {{ content | safe }}
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                {% if prevPage %}
+                <li>&larr; <a href="{{ prevPage | url }}"> {{ prevLink if prevLink else "Previous page" }}</a></li>
+                {% endif %}
+                {% if nextPage %}
+                <li><a href="{{ nextPage | url }}">{{ nextLink if nextLink else "Next page" }}</a> &rarr;</li>
+                {% endif %}  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

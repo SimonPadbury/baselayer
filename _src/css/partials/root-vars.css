@@ -1,0 +1,142 @@
+/* Example: @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,wght@0,8..60,400;0,8..60,700;1,8..60,400;1,8..60,700&display=swap'); */
+
+:root {
+  /*
+  Google Fonts example
+  */
+  /* --base: 'Source Sans 3', sans-serif;
+  --prose: 'Source Serif 4', serif; */
+  
+  /*
+  Native
+  */
+  --base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --prose: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono: ui-monospace, Menlo, "Segoe UI Mono", Consolas, "Ubuntu Monospace", monospace;
+  
+  --fsdefault: 112.5%; /* 18px */
+  --fsmono: 100%; /* 16px */
+
+  --lh: clamp(calc(1em + .5rem), calc(1em + 1.1111vw), calc(1em + .75rem));
+
+  --normal: 400;
+  --bold: 700;
+
+  /*
+  Long-read based on https://clamp.font-size.app/, 
+  expanding from 720px to 1080px
+  */
+  --fslongread: clamp(1.125rem, 0.625rem + 1.1111vw, 1.375rem);
+
+  /*
+  Un-comment these if your chosen prose (serif) font requires a different  -- 
+  See also typography.css
+  */
+  /* --fsprose: 118.75%; /* example 19px */
+  /* --nprose: 300; /* example */
+  /* --strprose: 600; /* example */
+  /* --fslongread-prose: clamp(1.1875rem, 0.6625rem + 1.1667vw, 1.45rem); /* example if font size 19px */
+
+  /*
+  360px intervals.
+  If you change these, remember to also change 
+  the @custom-media (see below) 
+  */
+  --wsm: 720px; 
+  --wmd: 1080px;
+  --wlg: 1440px;
+  --container: min(94vw, var(--wlg));
+
+  /*
+  Article Grid
+  Based on:
+  - https://mastery.games/post/article-grid-layout/
+  - https://ryanmulligan.dev/blog/layout-breakouts/
+  */
+  --full: minmax(var(--s2), 1fr);
+  --content: min(var(--wsm), 100% - (var(--s2) * 2));
+  --pop: minmax(0, var(--s2));
+  --expand: minmax(0, calc(180px - var(--s2)));
+
+  /*
+  Spacing (margins and paddings)
+  s2 thru s3 are based on https://clamp.font-size.app/,
+  expanding each to 150% from 720px to 1080px
+  */
+  --s1: 0.5rem;
+  --s2: clamp(1rem, 2.2222vw, 1.5rem);
+  --s3: clamp(2rem, 4.4444vw, 3rem);
+  --s4: clamp(3rem, 6.6667vw, 4.5rem);
+
+  --sbtn: 2.75rem;
+  --pcell: var(--s1) calc(2 * var(--s1));
+
+  /* 
+  Tajor third typographic scale, calculated by https://type-scale.com
+  Set heading sizes using ems, so that all headings can be clamp() enlarged by wrapping with `.longread` 
+  */
+  --h1: 2.441em;
+  --h2: 1.953em;
+  --h3: 1.563em;
+  --h4: 1.25em;
+  --h5: 1em;
+  --h6: .8em;
+  --hf: inherit;
+  --hfw: var(--normal);
+
+  /*
+  Split HSL color base variables.
+  bg = background
+  t = text
+  l = lightness scale
+  */
+  --l900: 15%;
+  --l800: 25%;
+  --l700: 35%;
+  --l600: 45%;
+  --l500: 55%;
+  --l400: 65%;
+  --l300: 75%;
+  --l200: 85%;
+  --l100: 95%;
+
+  /*
+  Theme/UI colors
+  */
+
+  --hsgray:       0, 0%;       /* text, default buttons */
+  --hsblue:       220, 100%;   /* links, focus ring on inputs and buttons */
+  --hsgreen:      135, 40%;    /* success */
+  --hsamber:      45, 100%;    /* warning */
+  --hsred:        10, 50%;     /* danger */
+
+  --ctext: hsl(var(--hsgray), var(--l900));
+
+  --clink: hsl(var(--hsblue), var(--l500)); /* color */
+  --hlink: hsl(var(--hsblue), var(--l700)); /* hover color */
+  --dolink: .3rem; /* decoration offset */
+  --dtlink: 1px; /* decoration thickness */
+
+  --focus: 0 0 0 4px hsl(var(--hsblue), var(--l200));
+
+  --bbtn: var(--b1);
+  --pbtn: var(--pcell);
+  --cbtn: hsl(var(--hsgray), var(--l600)); /* color */
+  --hbtn: hsl(var(--hsgray), var(--l700)); /* hover color */
+  --btnfw: 400;
+
+  --bgcode: hsl(var(--hsblue), var(--l100));
+
+  --b1: 1px solid hsl(var(--hsgray), var(--l200));
+  --b2: 4px solid hsl(var(--hsgray), var(--l200));
+  --b3: 8px solid hsl(var(--hsgray), var(--l200));
+
+  --r1: .25em;
+  --r2: .5em;
+  --r3: 1em;
+}
+
+@custom-media --min-sm (min-width: 720px);
+@custom-media --max-sm (max-width: 719px);
+@custom-media --min-md (min-width: 1080px);
+@custom-media --max-md (max-width: 1079px);

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Typography · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: /typography/ -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Typography</h1>
+          </header>
+      
+          <h2 id="font-stacks" tabindex="-1">Font Stacks</h2>
+<p>Three native font stacks are set in the <code>root-vars.css</code> file.</p>
+<pre><code>:root {
+  --base: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
+  --prose: &quot;Iowan Old Style&quot;, &quot;Palatino Linotype&quot;, Palatino, Georgia, serif;
+  --mono: ui-monospace, Menlo, &quot;Segoe UI Mono&quot;, Consolas, &quot;Ubuntu Monospace&quot;, monospace;
+}
+</code></pre>
+<p>Everything here is an example, a place to start. <code>--base</code> and <code>--prose</code> don’t need to be both sans-serif and serif.</p>
+<h3 id="base%2Fprose-typeface-example-toggle" tabindex="-1">Base/Prose Typeface Example Toggle</h3>
+<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>var(--base)</code> and <code>var(--prose)</code> in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
+<p><button id="font-toggle"> typeface</button></p>
+<p>Font stack usage in Baselayer:</p>
+<ul>
+<li>The base font stack is set in the <code>&lt;body&gt;</code> tag (in <code>base.css</code>) and in the <code>.base</code> utility class.</li>
+<li>The prose is only available via the <code>.prose</code> utility class</li>
+<li>The monotype is available via the <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, and <code>&lt;samp&gt;</code> HTML tags, and in the <code>.mono</code> utility class.</li>
+</ul>
+<p>The base font size and line height (used throughout Baselayer, not only on default text) is set as variales in <code>root-variables.css</code>:</p>
+<pre><code>:root {
+  --fsbase: 18px;
+  --lineheight: clamp(calc(1em + .5rem), calc(1em + 1.1111vw), calc(1em + .75rem);
+}
+</code></pre>
+<p>The browser default font size is usually 16px, but the Baselayer <code>--fsbase</code> (default font size) is set slightly larger at 18px. This 18px is the value of <code>1rem</code> thorughout Baselayer.</p>
+<h3 id="line-heights" tabindex="-1">Line Heights</h3>
+<p>Line heights are controlled by a CSS <code>clamp</code> in the variable <code>--lh</code>. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the font-size. This expands to 1.75× the font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp <code>1em + 1.1111vw</code> makes the expansion (ramp) range from viewport widths 720px to 1080px — the same range as that between the <code>sm</code> to <code>md</code> default breakpoints). Thus, with the base font size of 18px, <code>--lh</code> starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.</p>
+<p>The line heights of all text in Baselayer are set by this responsive <code>--lh</code> variable — including headings. The <code>calc()</code> function makes the line heights “tighter” for the larger headings, as you would want them to be.</p>
+<h3 id="body-tag-styling" tabindex="-1">Body Tag Styling</h3>
+<p>These variables, along with a few more, are deployed in <code>base.css</code> on the <code>&lt;body&gt;</code> tag:</p>
+<pre><code>body {
+  font-family: var(--base);
+  font-size: var(--fsbase);
+  line-height: var(--lh);
+  color: var(--ctext);
+  background-color: var(--bgbody);
+}
+</code></pre>
+<p>(There are a few other <code>&lt;body&gt;</code> style rules set in <code>reset.css</code>.)</p>
+<h3 id="more-on-setting-font-stacks" tabindex="-1">More on Setting Font Stacks</h3>
+<p>In choosing your own font stacks, you may wish to choose two fonts that have similar x-height, so that you can set them using the same font size and line-height. Some other factors to compare are hights for lowercase ascenders and descenders, letter width, and stroke thickness.</p>
+<p>A good place to start is by pairing serif and sans-serif (or slab serif) fonts of the same typeface. There are several to choose from on <a href="https://fonts.google.com">Google Fonts</a>. Some examples:</p>
+<ul>
+<li>Alegreya and Alegreya Sans</li>
+<li>IBM Plex and IBM Plex Sans</li>
+<li>Inria Serif and Inria Sans</li>
+<li>Noto Serif and Noto Sans</li>
+<li>PT Serif and PT Sans</li>
+<li>Roboto and Roboto Slab</li>
+<li>Source Sans 3 and Source Serif 4</li>
+<li>Source Sans Pro and Source Serif Pro</li>
+</ul>
+<p>But you can also mix and match. In Baselayer, sizes and weights for the <code>base</code> and <code>prose</code> typefaces can optionally be set independently (you will need to do some un-commenting in two files: <code>root-variables.css</code> and <code>typography.css</code>) — but they will still share the same line height.</p>
+<p>So, for example:</p>
+<ul>
+<li>If your chosen <code>base</code> has an x-height much larger than your chosen <code>prose</code>, then you can set the prose font-size slightly larger, or the base slightly smaller.</li>
+<li>If your <code>base</code> has thicker strokes so that it “looks darker” then your <code>prose</code>, then you may set your <code>base</code> font-weight slightly lighter, to <code>300</code> (if this is available) while retaining your <code>prose</code> font-weight at the normal <code>400</code>.</li>
+</ul>
+<p>For inspiration:</p>
+<ul>
+<li><a href="https://fonts.google.com/knowledge/choosing_type/pairing_typefaces">Pairing Typefaces (Google Fonts article)</a></li>
+<li><a href="https://www.fontpairings.com">fontpairings.com</a></li>
+<li><a href="https://www.fontpair.co">fontpair.co</a></li>
+<li><a href="https://fontjoy.com">fontjoy.com</a></li>
+<li><a href="https://www.pairandcompare.net">Pair &amp; Compare</a></li>
+<li><a href="https://www.pagecloud.com/blog/best-google-fonts-pairings">Top 50 Google Font Pairings [Handpicked by Pro Designers] (Pagecloud)</a></li>
+</ul>
+<h2 id="typographic-block-elements" tabindex="-1">Typographic Block Elements</h2>
+<p>Built-in browser (user-agent) stylesheets generally have top and bottom margins set on paragraphs, headings, etc. while many popular CSS frameworks (e.g. Bootstrap) have the top margin set to zero.</p>
+<p>Baselayer, however, zeros the bottom margin of typographic block elements and sets the top margin as follows:</p>
+<ul>
+<li><code>p</code>, <code>table</code>, and most others: top margin <code>var(--s2)</code></li>
+<li>Headings <code>h2</code> to <code>h6</code> (both tags and matching utility classes): top margin <code>var(--s3)</code></li>
+<li>List items:  top margin <code>var(--s2) / 2</code></li>
+</ul>
+<p>See  <a href="/posts/2022/decoration/">decoration</a> for more information on these spacing vasiables.</p>
+<p>In some contexts (e.g. in card components) you may not want any built-in spacing for typographic block elements. You can remove margins by using the <code>m0</code> utility class. with <code>m0</code> added as a margin reset, you can start again adding margins that you may require (e.g. this works: <code>m0 mr1</code>).</p>
+<h3 id="more-on-headings" tabindex="-1">More on Headings</h3>
+<p>All headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>, and matching utility classes <code>h1</code> to <code>h6</code>, have their font sizes set in the root variables file. The typographic scale is 1.250 (major third), calculated using the <a href="https://type-scale.com">Type Scale</a> webapp.</p>
+<p>The headings font weight is set using <code>--hfw: var(--normal);</code> which has been set to <code>400</code>.</p>
+<pre><code>:root {
+  --h1: 2.441em;
+  --h2: 1.953em;
+  --h3: 1.563em;
+  --h4: 1.25em;
+  --h5: 1em;
+  --h6: .8em;
+  --hf: inherit;
+  --hfw: var(--normal);
+}
+</code></pre>
+<p>Headings also have their font-family set to <code>inherit</code> in <code>typography.css</code>. This has been done in the variable <code>var(--hf)</code> so that you can override that. Headings don’t need to have the same typeface as paragraphs.</p>
+<p>Example of heading sizes — using utility classes (so that they don’t show up in the table-of-contents generator), and with margins reduced so that you cam compare the sizes better):</p>
+<div class="h1 mt2">Heading h1</div>
+<div class="h2 mt1">Heading h2</div>
+<div class="h3 mt1">Heading h3</div>
+<div class="h4 mt1">Heading h4</div>
+<div class="h5 mt1">Heading h5</div>
+<div class="h6 mt1">Heading h6</div>
+<p>The line height of headings is controlled by <code>var(--line-height)</code> as per default typography (see <a href="#line-heights">line heights</a> above).</p>
+<h3 id="block-quotes" tabindex="-1">Block Quotes</h3>
+<p>Baselayer styles <code>&lt;blockquote&gt;</code> tags with some inline (x-axis) padding, to give the effect of indentation. This inline padding is set using the responsive spacing variable <code>var(--s3)</code> so that it becomes wider for wider viewports.</p>
+<p>Otherwise, blockquotes have the same as paragraph styling.</p>
+<blockquote>
+<p>Lorem ipsum dolor sit amet, adipiscing honestatis ius ut, nisl consulatu pro in. Imperdiet evertitur no usu, his te suavitate salutatus. Nullam ridens deterruisset an duo. Cum harum insolens ei, cum probo placerat praesent et.</p>
+</blockquote>
+<h2 id="the-link-tag" tabindex="-1">The Link Tag</h2>
+<p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or <code>long-read</code> text).</p>
+<p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/posts/2022/colors/">colors</a>). The hover state is a shade darker.</p>
+<h2 id="tables" tabindex="-1">Tables</h2>
+<p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code> tags directly. Cell borders are set by <code>var(--b1)</code> — that is 1px solid light gray. Paddings are set by <code>var(--pcell)</code>. The left column is left-aligned while all other columns are centered. The table headers <code>&lt;th&gt;</code> are bold.</p>
+<table>
+  <caption>This is a Table Caption</caption>
+  <thead>
+    <tr>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Table content 1.1</td>
+      <td>Table content 2.1</td>
+      <td>Table content 3.1</td>
+    </tr>
+    <tr>
+      <td>Table content 1.2</td>
+      <td>Table content 2.2</td>
+      <td>Table content 3.2</td>
+    </tr>
+    <tr>
+      <td>Table content 1.3</td>
+      <td>Table content 2.3</td>
+      <td>Table content 3.3</td>
+    </tr>
+    <tr>
+      <td>Table content 1.4</td>
+      <td>Table content 2.4</td>
+      <td>Table content 3.4</td>
+    </tr>
+  </tbody>
+</table>
+<pre><code>&lt;table&gt;
+  &lt;caption&gt;This is a Table Caption&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Table Header 1&lt;/th&gt;
+      &lt;th&gt;Table Header 2&lt;/th&gt;
+      &lt;th&gt;Table Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Table content 1.1&lt;/td&gt;
+      &lt;td&gt;Table content 2.1&lt;/td&gt;
+      &lt;td&gt;Table content 3.1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Table content 1.2&lt;/td&gt;
+      &lt;td&gt;Table content 2.2&lt;/td&gt;
+      &lt;td&gt;Table content 3.2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h3 id="wide-tables" tabindex="-1">Wide Tables</h3>
+<p>If you have a lot of content in your table, it will probably break your page layout on small viewports (e.g. phones). So, you can wrap your table in a DIV with the <code>overflow-x</code> class to make it horizontally scrollable.</p>
+<pre><code>&lt;div class=&quot;overflow-x&quot;&gt;
+  &lt;table&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="controlling-table-styling" tabindex="-1">Controlling Table Styling</h3>
+<p><em>What if this classless table styling is incompatible with something else in your design system?</em> You can go into Baselayer’s <code>typography.css</code>, find its table styling and prefix it all with a class of your choice. In an example of how to do that below, first, the HTML tag <code>table</code> style simply has a dot <code>.</code> prefix added. Then the class <code>.table</code> has been inserted before the Baselayer default table styling:</p>
+<pre><code>.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table th,
+.table td {
+  border: var(--b1);
+  padding: var(--pcell);
+  vertical-align: top;
+  text-align: center;
+}
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+}
+
+.table th {
+  font-weight: bold;
+}
+</code></pre>
+<h2 id="the-long-read-utility-class" tabindex="-1">The <em>Long Read</em> Utility Class</h2>
+<p>Intended for long-read essays, articles and blog posts, the <code>longread</code> utility class (to be used as a <em>wrapper</em> class) enlarges text (including headings) responsive to wider viewports (e.g. tablets, laptops, and up) using the following CSS clamp, which is set in <code>root-variables.css</code>:</p>
+<pre><code>:root {
+  --fslongread: clamp(1.125rem, 0.625rem + 1.1111vw, 1.375rem);
+}
+</code></pre>
+<p>The base font size is expanded to 137.5% over the middle range — from viewport widths 720px to 1080px (i.e. same as the <code>sm</code> to <code>md</code> default breakpoints). Starting from 1.125rem (18px), this expands the base sext size to 22px.</p>
+<h3 id="long-read-example-toggle" tabindex="-1"><em>Long Read</em> Example Toggle</h3>
+<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>var(--base)</code> and <code>var(--prose)</code> in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
+<p><button id="fs-toggle"> size</button></p>
+<h2 id="code-blocks" tabindex="-1">Code Blocks</h2>
+<p><code>&lt;code&gt;</code> tags have monospaced text over a blue background (set by <code>var(--bgcode)</code>) with a little padding to improve readability.</p>
+<p>If the <code>&lt;code&gt;</code> tag is wrapped in a <code>&lt;pre&gt;</code> tag, then it becomes a block level element with more padding, a max-width of 100%, and y-axis overflow scrolling.</p>
+<h2 id="other-typographic-utility-classes" tabindex="-1">Other Typographic Utility classes</h2>
+<p>Besides those already introduced, Baselayer also has utility classes for:</p>
+<ul>
+<li><code>big</code> — increase font size by 1.25em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading — instead, use it on a wrapper around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
+<li><code>small</code> (or use the <code>&lt;small&gt;</code> HTML tag) — decrease font-size to 0.85em.</li>
+<li><code>right</code>, <code>center</code>, and <code>left</code> — text alignment</li>
+<li><code>bold</code>, <code>normal</code> — font weights</li>
+<li><code>italic</code> — font style italic</li>
+<li><code>uppercase</code> — text transform to capitals</li>
+<li><code>noline</code> — use to remove the underscore from links where having it may be inappropriate (e.g. in menus)</li>
+<li><code>nowrap</code> — prevents text wrapping</li>
+<li><code>unlist</code> — sets <code>list-style-type: none</code> on <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, or <code>&lt;li&gt;</code>. You can use this when you want to use a list in a navigation menu. And you can combine it with <code>p0</code> to remove the list inset padding.</li>
+</ul>
+<p><strong>Note:</strong> links can also be styled as though they are buttons using the <code>btn</code> utility class. See <a href="/buttons">buttons</a>.</p>
+<pre><code>&lt;ul class=&quot;unlist p0&quot;&gt;
+  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                <li>&larr; <a href="/"> Introduction</a></li>
+                
+                
+                <li><a href="/layout">Layout</a> &rarr;</li>
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

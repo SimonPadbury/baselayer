@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Forms · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: /forms/ -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#textual-form-input-fields">Textual Form Input Fields</a></li><li><a href="#number-(picker)-input">Number (Picker) Input</a></li><li><a href="#date-and-time-inputs">Date and Time Inputs</a></li><li><a href="#color-picker">Color Picker</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#select-and-multi-select">Select and Multi-select</a></li><li><a href="#text-area-(multiline)">Text Area (Multiline)</a></li><li><a href="#radio-boxes-and-checkboxes">Radio Boxes and Checkboxes</a></li><li><a href="#fieldsets-and-legends">Fieldsets and Legends</a></li><li><a href="#form-buttons">Form Buttons</a></li><li><a href="#full-width-form-elements">Full-width Form Elements</a></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Forms</h1>
+          </header>
+      
+          <p>Baselayer form elements have simple border and focus styling.</p>
+<h2 id="textual-form-input-fields" tabindex="-1">Textual Form Input Fields</h2>
+<form action="">
+  <p>
+    <label for="example-input-email">Email address</label>
+    <input type="email" id="example-input-email" placeholder="Enter email">
+  </p>
+  <p>
+    <label for="example-input-password">Password</label>
+    <input type="password" id="example-input-password" placeholder="Password">
+  </p>
+  <p>
+    <label for="example-input-search">Search</label>
+    <input type="search" id="example-input-serach" placeholder="Search ...">
+  </p>
+  <p>
+    <label for="example-input-tel">Telephone number</label>
+    <input type="tel" id="example-input-tel" placeholder="Telephone number">
+  </p>
+  <p>
+    <label for="example-input-text">Text</label>
+    <input type="text" id="example-input-text" placeholder="Enter text">
+  </p>
+  <p>
+    <label for="example-input-url">Url</label>
+    <input type="url" id="example-input-url" placeholder="Enter a url">
+  </p>
+</form>
+<h2 id="number-(picker)-input" tabindex="-1">Number (Picker) Input</h2>
+<form action="">
+  <p>
+    <label for="example-input-password1">Number</label>
+    <input type="number" id="example-input-number" placeholder="Number">
+  </p>
+</form>
+<h2 id="date-and-time-inputs" tabindex="-1">Date and Time Inputs</h2>
+<form action="">
+  <p>
+    <label for="example-input-date">Date</label>
+    <input type="date" id="example-input-date" placeholder="Date">
+  </p>
+  <p>
+    <label for="example-input-date-time">Date / Time</label>
+    <input type="datetime" id="example-input-date-time" placeholder="Date / Time">
+  </p>
+  <p>
+    <label for="example-input-date-time-local">Date / Time local</label>
+    <input type="datetime-local" id="example-input-date-time-local" placeholder="date / time local">
+  </p>
+  <p>
+    <label for="example-input-month">Month</label>
+    <input type="month" id="example-input-month" placeholder="Month">
+  </p>
+  <p>
+    <label for="example-input-week">Week</label>
+    <input type="week" id="example-input-week" placeholder="Week">
+  </p>
+  <p>
+    <label for="example-input-time">Time</label>
+    <input type="time" id="example-input-time" placeholder="Time">
+  </p>
+</form>
+<h2 id="color-picker" tabindex="-1">Color Picker</h2>
+<form action="">
+  <p>
+    <label for="example-input-color">Color</label>
+    <input type="color" id="example-inupt-color" placeholder="#fff">
+  </p>
+</form>
+<h2 id="file-upload" tabindex="-1">File Upload</h2>
+<form action="">
+  <p>
+    <label for="example-input-file">File input</label>
+    <input type="file" id="example-input-file">
+  </p>
+</form>
+<h2 id="select-and-multi-select" tabindex="-1">Select and Multi-select</h2>
+<form action="">
+  <p>
+    <label for="example-select1">Example select</label>
+    <select id="example-select1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </p>
+  <p>
+    <label for="example-select2">Example multiple select</label>
+    <select multiple id="example-select2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </p>
+</form>
+<h2 id="text-area-(multiline)" tabindex="-1">Text Area (Multiline)</h2>
+<form action="" class="mt2">
+    <label for="example-textarea">Example textarea</label><br>
+    <textarea id="example-textarea" rows="3"></textarea>
+</form>
+<h2 id="radio-boxes-and-checkboxes" tabindex="-1">Radio Boxes and Checkboxes</h2>
+<form action="">
+  <p class="my2">Radio boxes:</p>
+  <input type="radio" id="example-radio-1" name="example-raio-1" value="banana">
+  <label for="example-radio-1">Banana</label><br>
+  <input type="radio" id="example-radio-2" name="example-radio-2" value="mango">
+  <label for="example-radio-2">Mango</label><br>
+  <input type="radio" id="example-radio-3" name="example-radio-3" value="coconut" disabled>
+  <label for="example-radio-3">Coconut (disabled)</label>
+  <p class="my2">Checkboxes:</p>
+  <input type="checkbox" id="example-check-1" name="example-check-1" value="strawberry">
+  <label for="example-check-1"> Strawberry</label><br>
+  <input type="checkbox" id="example-check-2" name="example-check-2" value="chocolatte">
+  <label for="example-check-2"> Chocolate</label><br>
+  <input type="checkbox" id="example-check-3" name="example-check-3" value="vanilla">
+  <label for="example-check-3"> Vanilla</label><br><br>
+  <input type="submit" value="Submit">
+</form>
+<h2 id="fieldsets-and-legends" tabindex="-1">Fieldsets and Legends</h2>
+<p>Groups of form elements can be wrapped in <code>&lt;fieldset&gt;</code> tags. Add a <code>&lt;legend&gt;</code> to provide a special title for the entire fieldset.</p>
+<form action="">
+  <fieldset>
+    <legend>Example e-newsletter subscribe</legend>
+    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input type="submit" name="submit" value="Subscribe">
+  </fieldset>
+</form>
+<pre><code>&lt;form action=&quot;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Example e-newsletter subscribe&lt;/legend&gt;
+    &lt;input type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<h2 id="form-buttons" tabindex="-1">Form Buttons</h2>
+<form action="">
+  <p>
+    <button type="button" name="button">Button</button>
+    <input type="button" name="input" value="Input Button">
+    <input type="submit" name="submit" value="Submit Button">
+    <input type="reset" name="reset" value="Reset Button">
+  </p>
+  <fieldset>
+    <legend>Example e-newsletter subscribe</legend>
+    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input type="submit" name="submit" value="Subscribe">
+  </fieldset>
+</form>
+<pre><code>&lt;form action=&quot;&quot;&gt;
+  &lt;p&gt;
+    &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+    &lt;input type=&quot;button&quot; name=&quot;input&quot; value=&quot;Input Button&quot;&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit Button&quot;&gt;
+    &lt;input type=&quot;reset&quot; name=&quot;reset&quot; value=&quot;Reset Button&quot;&gt;
+  &lt;/p&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Example e-newsletter subscribe&lt;/legend&gt;
+    &lt;input type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<p>See <a href="/buttons">buttons</a> for more information.</p>
+<h2 id="full-width-form-elements" tabindex="-1">Full-width Form Elements</h2>
+<p>All form elements are natively inline elements. If you require a form element to be full-width, you can add <code>class=&quot;w100%&quot;</code> or control it in a <a href="/layout/#flex">flex</a> or <a href="/layout/#grid">grid</a> wrapper.</p>
+<form action="">
+  <p>
+    <label for="example-input-text">Text</label>
+    <input class="w100%" type="text" id="example-input-text" placeholder="Enter some text here">
+  </p>
+  <p>
+    <button class="w100%" type="button" name="button">Button</button>
+  </p>
+</form>
+<pre><code>&lt;input class=&quot;w100%&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
+
+&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+<form class="mt2" action="">
+  <label for="example-input-text">Text</label>
+  <div class="sm:grid4cols gap">
+    <input class="sm:cols1-3" type="text" id="example-input-text" placeholder="Enter some text here">
+    <button type="button" name="button">Button</button>
+  </div>
+</form>
+<pre><code>&lt;form class=&quot;mt2&quot; action=&quot;&quot;&gt;
+  &lt;label for=&quot;example-input-text&quot;&gt;Text&lt;/label&gt;
+  &lt;div class=&quot;sm:grid4cols gap&quot;&gt;
+    &lt;input class=&quot;sm:cols1-3&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
+    &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                <li>&larr; <a href="/colors"> Colors</a></li>
+                
+                
+                <li><a href="/buttons">Buttons</a> &rarr;</li>
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>

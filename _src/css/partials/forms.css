@@ -1,0 +1,117 @@
+fieldset {
+  border: var(--b1);
+}
+input,
+textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+input,
+select,
+textarea {
+  position: relative;
+  outline: 0 none;
+  display: inline-flex;
+  align-items: center;
+  /* -webkit-appearance: none; */
+  border: var(--b1);
+  padding: var(--pcell);
+  font-family: var(--base);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  position: relative;
+  z-index: 1;
+  outline: 0;
+  box-shadow: var(--focus);
+}
+[placeholder] {
+  text-overflow: ellipsis;
+  opacity: 0.8;
+}
+
+input[type="file"],
+[multiple],
+textarea {
+  height: auto;
+}
+
+[type="color"] {
+  width: var(--sbtn);
+  height: var(--sbtn);
+  padding: .25em
+}
+[type="checkbox"],
+[type="radio"] {
+  min-height: unset;
+  width: .95rem;
+  height: .95rem;
+  margin: 0;
+  padding: unset;
+}
+
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  display: inline-block;
+  width: auto;
+}
+
+:disabled:hover {
+  cursor: not-allowed;
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+.btn {
+  position: relative;
+  -webkit-appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: var(--bbtn);
+  border-color: var(--cbtn);
+  padding: var(--pbtn);
+  font-family: var(--base);
+  font-weight: var(--btnfw);
+  text-decoration: none;
+  text-decoration: none;
+  white-space: nowrap;
+  color: white;
+  background: var(--cbtn);
+}
+button:hover,
+button:active,
+[type="button"]:hover,
+[type="button"]:active,
+[type="submit"]:hover,
+[type="submit"]:active,
+[type="reset"]:hover,
+[type="reset"]:active,
+.btn:hover,
+.btn:active {
+  border-color: var(--hbtn);
+  background: var(--hbtn);
+  color: white;
+  cursor: pointer;
+}
+button:focus,
+[type="button"]:focus,
+[type="submit"]:focus,
+[type="reset"]:focus {
+  z-index: 1;
+  outline: 0;
+  box-shadow: var(--focus);
+}
+/* The .btn class doesn't get the input focus ring. It will get the link focus ring insead when you do <a class="btn" href="">...</a>. */
+
+
+.btn-icon {
+  width: calc(var(--sbtn) + 2 * 1px);
+  height: calc(var(--sbtn) + 2 * 1px);
+  padding: 0;
+}

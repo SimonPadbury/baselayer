@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Buttons · Baselayer CSS</title>
+
+  <link rel="stylesheet" href="/css/min/Baselayer.min.css?v=1.0">
+
+  <script src="/js/switcher.js"></script>
+
+  <style>
+    .theme-dark #theme-toggle::before { content: 'Light '; }
+    .theme-light #theme-toggle::before { content: 'Dark '; }
+    .main-longread #fs-toggle::before { content: 'Normal font '; }
+    .main-normal #fs-toggle::before { content: 'Long read '; }
+    .main-prose #font-toggle::before { content: 'Base '; }
+    .main-base #font-toggle::before { content: 'Prose '; }
+
+    .main-longread .article { font-size: var(--fslongread); }
+    .main-prose .article { font-family: var(--prose); }
+
+    .theme-dark #main-content { 
+      color: hsl(var(--hsgray), var(--l100));
+      background: hsl(var(--hsgray), var(--l900));
+    }
+    .theme-dark #main-content a {
+      color: hsl(var(--hsblue), var(--l300));
+    }
+    .theme-dark #main-content a:hover {
+      color: hsl(var(--hsblue), var(--l400));
+    }
+    .theme-dark code {
+      color: white;
+      background: hsl(var(--hsblue), var(--l700));
+    }
+    .theme-dark hr, .theme-dark th, .theme-dark td {
+      border-color: hsl(var(--hsgray), var(--l600));
+    }
+  </style>
+</head>
+<body class="">
+
+  <!-- Current page: /buttons/ -->
+
+  <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
+
+  <div class="h100vh sm:flex">
+    <div id="site-nav" class="bggray bg800">
+  <div class="sticky top overflowy" style="max-height: 100vh;">
+    <div class="py2 flex flexcolumn center">
+      <a href="/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
+        <span class="p1 nowrap">Baselayer CSS</span>
+      </a>
+    </div>
+
+    <nav class="sm:hidden pcell twhite">
+      <details>
+        <summary class="bold">Documentation</summary>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/">Home</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/introduction">Introduction</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+        </div>
+        <div>
+          <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+        </div>
+      </details>
+    </nav>
+
+    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+      <a class="block my2 tgray t100 h:t200" href="/">Introduction</a>
+      <a class="block my2 tgray t100 h:t200" href="/typography">Typography</a>
+      <a class="block my2 tgray t100 h:t200" href="/layout">Layout</a>
+      <a class="block my2 tgray t100 h:t200" href="/decoration">Decoration</a>
+      <a class="block my2 tgray t100 h:t200" href="/colors">Colors</a>
+      <a class="block my2 tgray t100 h:t200" href="/forms">Forms</a>
+      <a class="block my2 tgray t100 h:t200" href="/buttons">Buttons</a>
+    </nav>
+
+    <div class="p2 sm:hidden-below" style="width: 200px;">
+      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+    </div>
+
+    <p class="mx2">
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">Dowload CSS</a>
+      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+    </p>
+
+  </div>
+</div>
+
+      <main id="main-content" class="item-grow flex">
+        <div id="toc" class="md:hiddenbelow" style="order: 2;">
+          <div class="sticky top p2" style="width: 320px;">
+            <p class="m0 pt4">Contents:</p>
+            <nav class="toc" >
+        <ul><li><a href="#button-types-and-link-%E2%80%9Cbuttons%E2%80%9D">Button Types and Link “Buttons”</a></li><li><a href="#full-width-buttons">Full-width buttons</a></li><li><a href="#adding-colors">Adding Colors</a></li><li><a href="#buttons-with-icons">Buttons with Icons</a></li><li><a href="#pill-buttons">Pill Buttons</a></li><li><a href="#stretch-buttons">Stretch Buttons</a></li></ul>
+      </nav>
+          </div>
+        </div>
+  
+        <div class="article">
+          <header class="my2 py4 big center">
+            <h1 class=bold">Buttons</h1>
+          </header>
+      
+          <h3 id="button-types-and-link-%E2%80%9Cbuttons%E2%80%9D" tabindex="-1">Button Types and Link “Buttons”</h3>
+<form>
+  <p>
+    <button type="button" name="button">Button</button>
+    <input type="button" name="input" value="Input Button">
+    <input type="submit" name="submit" value="Submit Button">
+    <input type="reset" name="reset" value="Reset Button">
+    <a class="btn" href="">Link “button”</a>
+  </p>
+</form>
+<pre><code>&lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+&lt;input type=&quot;button&quot; name=&quot;input&quot; value=&quot;Input Button&quot;&gt;
+
+&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit Button&quot;&gt;
+
+&lt;input type=&quot;reset&quot; name=&quot;reset&quot; value=&quot;Reset Button&quot;&gt;
+
+&lt;a class=&quot;btn&quot; href=&quot;&quot;&gt;Link “button”&lt;/a&gt;
+</code></pre>
+<p><strong>Note:</strong> The <code>btn</code> class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the <code>&lt;button&gt;</code> tag). But if the <code>btn</code> utility class is used on an <code>&lt;a href=&quot;&quot;&gt;</code> link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).</p>
+<h2 id="full-width-buttons" tabindex="-1">Full-width buttons</h2>
+<p>As with other <a href="/forms/#full-width-form-elements">full-width form elements</a>, if you require a button to be full-width, you can add <code>class=&quot;w100%&quot;</code> or control it in a <a href="/layout/#flex">flex</a> or <a href="/layout/#grid">grid</a> wrapper.</p>
+<p><button class="w100%" type="button" name="button">Button</button></p>
+<pre><code>&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+<p>Block button with a down-caret icon and spacing controlled by flexbox:</p>
+<button class="w100% mt2 flex flex-middle flex-space-between" type="button" name="button">
+  Button
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
+</button>
+<pre><code>&lt;button class=&quot;w100% flex flex-middle flex-space-between&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;
+  Button
+  &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 256 256&quot;&gt;&lt;rect width=&quot;256&quot; height=&quot;256&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;&lt;polyline points=&quot;208 96 128 176 48 96&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt;
+&lt;/button&gt;
+</code></pre>
+<p>Down-caret SVG icon from <a href="https://phosphoricons.com/">Phosphor Icons</a>, with color set by <code>currentColor</code>, and width and height 16px — same as font size (1rem).</p>
+<h2 id="adding-colors" tabindex="-1">Adding Colors</h2>
+<p>Border, background, or text color utilities can be used.</p>
+<form>
+  <p>
+    <label for="example-input-text">Text</label>
+    <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
+    <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
+  </p>
+</form>
+<pre><code>&lt;input class=&quot;b2 bred&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
+
+&lt;input class=&quot;b2 bgreen&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
+</code></pre>
+<p>When colorizing buttons, remember to set their hover state shades too.</p>
+<form>
+  <p>
+    <button type="button" name="button">Button</button>
+    <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
+    <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
+    <button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+  </p>
+</form>
+<pre><code>/* Default button */
+&lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+/* Blue button */
+&lt;button class=&quot;bblue b600 h:b700 bgblue bg600 h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+/* Amber button */
+&lt;button class=&quot;bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+/* Green outline (a.k.a. ghost) button*/
+&lt;button class=&quot;bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+<p><strong>Note:</strong> the <em>named</em> colors (including <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared <em>after</em> the coded colors — in <code>colors.css</code>. This is the reason why, in the green outline (ghost) button, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this property colorizes the hover shade.</p>
+<h2 id="buttons-with-icons" tabindex="-1">Buttons with Icons</h2>
+<form>
+  <p>
+    <button type="button" name="button">
+      Search&nbsp;
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
+    </button>
+  </p>
+</form>
+<p>Baselayer CSS buttons works well with SVG icons, e.g. <a href="https://phosphoricons.com/">Phosphor icons</a>. Set the width and height of the icon to be e.g. 16px, 20px, or 24px. Set the fill colors to be <code>currentColor</code> so that it can be controlled by the CSS.</p>
+<p>If you are combining text with an icon, you may sometimes need to add a non-breaking space <code>&amp;nbsp;</code> (or some inline padding on a <code>&lt;span&gt;</code>) within your button.</p>
+<p>If your icon is larger then the text height, you can add <code>flex flex-middle</code> to the button to control the vertical alignment.</p>
+<form>
+  <p class="flex flex-middle">
+    <button type="button" name="button" class="flex flex-middle">
+      Search&nbsp;
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
+    </button>
+  </p>
+</form>
+<pre><code>&lt;button type=&quot;button&quot; name=&quot;button&quot; class=&quot;flex flex-middle&quot;&gt;
+  Search&amp;nbsp;
+  &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 256 256&quot;&gt;&lt;rect width=&quot;256&quot; height=&quot;256&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;&lt;circle cx=&quot;116&quot; cy=&quot;116&quot; r=&quot;84&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/circle&gt;&lt;line x1=&quot;175.4&quot; y1=&quot;175.4&quot; x2=&quot;224&quot; y2=&quot;224&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/line&gt;&lt;/svg&gt;
+&lt;/button&gt;
+</code></pre>
+<p>For icon-only buttons, add <code>.btn-icon</code> and have only a single character or icon in the button.</p>
+<form>
+  <p class="flex flex-middle">
+    <button type="button" name="button">Button</button>&nbsp;
+    <button class="btn-icon" type="button" name="button">1</button>&nbsp;
+    <button class="btn-icon" type="button" name="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
+    </button>
+  </p>
+</form>
+<h2 id="pill-buttons" tabindex="-1">Pill Buttons</h2>
+<p>The <code>pill</code> class on a square icon button will make it circular.</p>
+<form>
+  <p class="flex flex-middle">
+    <button class="pill" type="button" name="button">Button</button>&nbsp;
+    <button class="btn-icon pill" type="button" name="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
+    </button>
+  </p>
+</form>
+<pre><code>&lt;button class=&quot;pill&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+&lt;button class=&quot;btn-icon pill&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;I&lt;/button&gt;
+</code></pre>
+<h2 id="stretch-buttons" tabindex="-1">Stretch Buttons</h2>
+<p>Increase the x-axis padding (using the responsive <code>px2</code> or <code>px3</code>) to make a button more impressive:</p>
+<form>
+  <p class="flex flex-middle">
+    <button type="button" name="button">Button</button>&nbsp;
+    <button class="px2" type="button" name="button">Button</button>&nbsp;
+    <button class="px3" type="button" name="button">Button</button>&nbsp;
+  </p>
+</form>
+<pre><code>&lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+&lt;button class=&quot;px2&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+&lt;button class=&quot;px3&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+
+      
+          <footer class="mb4">
+              <hr>
+              <ul class="unlist p0 flex flexwrap flexspace">
+                
+                <li>&larr; <a href="/forms"> Forms</a></li>
+                
+                  
+              </ul>
+          </footer>
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+</body>
+</html>
