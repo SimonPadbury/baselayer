@@ -50,6 +50,7 @@ module.exports = function(eleventyConfig) {
       includes: "templates",
       data: "data",
       output: "docs"
-    }
+    },
+    pathPrefix: "/baselayer/"
   };
 };
