@@ -4,7 +4,7 @@ v.1.0
 
 Baselayer is a splendiferous yet miniscule CSS library.
 
-Designed as a good place to start, Baselayer may be all you need — for small websites and blogs. Or you may use it as a baselayer to quick-start your mega project.
+Designed as a good place to start, Baselayer may be all you need — for small static websites and blogs. Or you may use it as a _baselayer_ to quick-start your mega project.
 
 Ready to use as-is, Baselayer gives you all this and more:
 
