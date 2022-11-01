@@ -53,7 +53,7 @@ Baselayer has two basic accessibility features built-in.
     For form inputs and buttons, there’s a 4px light blue ring (see [colors](/colors)). Example:
 
     <form>
-      <fieldset>
+      <fieldset class="flex">
         <legend>Example e-newsletter subscribe</legend>
         <input type="email" id="example-input-email" placeholder="Enter email">
         <input type="submit" name="submit" value="Subscribe">
