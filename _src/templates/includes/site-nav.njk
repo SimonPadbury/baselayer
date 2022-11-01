@@ -10,25 +10,13 @@
     <nav class="sm:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
-        <div>
+        <div class="pt2">
           <a class="block my2 tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/typography' | url }}">Typography</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/layout' | url }}">Layout</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/decoration' | url }}">Decoration</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/colors' | url }}">Colors</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/forms' | url }}">Forms</a>
-        </div>
-        <div>
           <a class="block my2 tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a>
         </div>
       </details>
@@ -50,10 +38,11 @@
       <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
     </div>
 
-    <p class="mx2">
+    <p class="m2">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
+    <p class="m2 italic tgray t400">Version {{ metadata.version }}</p>
   </div>
 </div>
