@@ -8,34 +8,34 @@ prevLink: "Colors"
 nextLink: "Buttons"
 ---
 
-Baselayer form elements have simple border and focus styling.
+Baselayer form elements have simple border and focus styling. Most singleline inputs and the multiline textarea have been made 100% width block elements, for easier layout control.
 
 ## Textual Form Input Fields
 
 <form action="">
   <p>
     <label for="example-input-email">Email address</label>
-    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input type="email" id="example-input-email" name="example" placeholder="Enter email">
   </p>
   <p>
     <label for="example-input-password">Password</label>
-    <input type="password" id="example-input-password" placeholder="Password">
+    <input type="password" id="example-input-password" name="example" placeholder="Password">
   </p>
   <p>
     <label for="example-input-search">Search</label>
-    <input type="search" id="example-input-serach" placeholder="Search ...">
+    <input type="search" id="example-input-serach" name="example" placeholder="Search ...">
   </p>
   <p>
     <label for="example-input-tel">Telephone number</label>
-    <input type="tel" id="example-input-tel" placeholder="Telephone number">
+    <input type="tel" id="example-input-tel" name="example" placeholder="Telephone number">
   </p>
   <p>
     <label for="example-input-text">Text</label>
-    <input type="text" id="example-input-text" placeholder="Enter text">
+    <input type="text" id="example-input-text" name="example" placeholder="Enter text">
   </p>
   <p>
     <label for="example-input-url">Url</label>
-    <input type="url" id="example-input-url" placeholder="Enter a url">
+    <input type="url" id="example-input-url" name="example" placeholder="Enter a url">
   </p>
 </form>
 
@@ -44,7 +44,7 @@ Baselayer form elements have simple border and focus styling.
 <form action="">
   <p>
     <label for="example-input-password1">Number</label>
-    <input type="number" id="example-input-number" placeholder="Number">
+    <input type="number" id="example-input-number" name="example">
   </p>
 </form>
 
@@ -53,27 +53,27 @@ Baselayer form elements have simple border and focus styling.
 <form action="">
   <p>
     <label for="example-input-date">Date</label>
-    <input type="date" id="example-input-date" placeholder="Date">
+    <input type="date" id="example-input-date" name="example">
   </p>
   <p>
     <label for="example-input-date-time">Date / Time</label>
-    <input type="datetime" id="example-input-date-time" placeholder="Date / Time">
+    <input type="datetime" id="example-input-date-time" name="example">
   </p>
   <p>
     <label for="example-input-date-time-local">Date / Time local</label>
-    <input type="datetime-local" id="example-input-date-time-local" placeholder="date / time local">
+    <input type="datetime-local" id="example-input-date-time-local" name="example">
   </p>
   <p>
     <label for="example-input-month">Month</label>
-    <input type="month" id="example-input-month" placeholder="Month">
+    <input type="month" id="example-input-month" name="example">
   </p>
   <p>
     <label for="example-input-week">Week</label>
-    <input type="week" id="example-input-week" placeholder="Week">
+    <input type="week" id="example-input-week" name="example">
   </p>
   <p>
     <label for="example-input-time">Time</label>
-    <input type="time" id="example-input-time" placeholder="Time">
+    <input type="time" id="example-input-time" name="example">
   </p>
 </form>
 
@@ -91,7 +91,7 @@ Baselayer form elements have simple border and focus styling.
 <form action="">
   <p>
     <label for="example-input-file">File input</label>
-    <input type="file" id="example-input-file">
+    <input type="file" id="example-input-file" accept="image/png, image/jpeg">
   </p>
 </form>
 
@@ -131,11 +131,11 @@ Baselayer form elements have simple border and focus styling.
 
 <form action="">
   <p class="my2">Radio boxes:</p>
-  <input type="radio" id="example-radio-1" name="example-raio-1" value="banana">
+  <input type="radio" id="example-radio-1" name="example-radio" value="banana">
   <label for="example-radio-1">Banana</label><br>
-  <input type="radio" id="example-radio-2" name="example-radio-2" value="mango">
+  <input type="radio" id="example-radio-2" name="example-radio" value="mango">
   <label for="example-radio-2">Mango</label><br>
-  <input type="radio" id="example-radio-3" name="example-radio-3" value="coconut" disabled>
+  <input type="radio" id="example-radio-3" name="example-radio" value="coconut" disabled>
   <label for="example-radio-3">Coconut (disabled)</label>
   <p class="my2">Checkboxes:</p>
   <input type="checkbox" id="example-check-1" name="example-check-1" value="strawberry">
@@ -153,16 +153,18 @@ Baselayer form elements have simple border and focus styling.
 Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to provide a special title for the entire fieldset.
 
 <form action="">
-  <fieldset>
+  <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
     <input type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>
 
+**Note:** since the `<legend>` incorporates with the wrapping border line, it will not be influenced by the flexbox rule.
+
 ```
 <form action="">
-  <fieldset>
+  <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
     <input type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
@@ -179,11 +181,6 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
     <input type="submit" name="submit" value="Submit Button">
     <input type="reset" name="reset" value="Reset Button">
   </p>
-  <fieldset>
-    <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
-    <input type="submit" name="submit" value="Subscribe">
-  </fieldset>
 </form>
 
 ```
@@ -194,11 +191,6 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
     <input type="submit" name="submit" value="Submit Button">
     <input type="reset" name="reset" value="Reset Button">
   </p>
-  <fieldset>
-    <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
-    <input type="submit" name="submit" value="Subscribe">
-  </fieldset>
 </form>
 ```
 

@@ -7,7 +7,7 @@
 
   <title>Forms · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.1">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -26,10 +26,10 @@
       color: hsl(var(--hsgray), var(--l100));
       background: hsl(var(--hsgray), var(--l900));
     }
-    .theme-dark #main-content a {
+    .theme-dark #main-content a:not(.btn) {
       color: hsl(var(--hsblue), var(--l300));
     }
-    .theme-dark #main-content a:hover {
+    .theme-dark #main-content a:not(.btn):hover {
       color: hsl(var(--hsblue), var(--l400));
     }
     .theme-dark code {
@@ -123,66 +123,66 @@
             <h1 class=bold">Forms</h1>
           </header>
       
-          <p>Baselayer form elements have simple border and focus styling.</p>
+          <p>Baselayer form elements have simple border and focus styling. Most singleline inputs and the multiline textarea have been made 100% width block elements, for easier layout control.</p>
 <h2 id="textual-form-input-fields" tabindex="-1">Textual Form Input Fields</h2>
 <form action="">
   <p>
     <label for="example-input-email">Email address</label>
-    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input type="email" id="example-input-email" name="example" placeholder="Enter email">
   </p>
   <p>
     <label for="example-input-password">Password</label>
-    <input type="password" id="example-input-password" placeholder="Password">
+    <input type="password" id="example-input-password" name="example" placeholder="Password">
   </p>
   <p>
     <label for="example-input-search">Search</label>
-    <input type="search" id="example-input-serach" placeholder="Search ...">
+    <input type="search" id="example-input-serach" name="example" placeholder="Search ...">
   </p>
   <p>
     <label for="example-input-tel">Telephone number</label>
-    <input type="tel" id="example-input-tel" placeholder="Telephone number">
+    <input type="tel" id="example-input-tel" name="example" placeholder="Telephone number">
   </p>
   <p>
     <label for="example-input-text">Text</label>
-    <input type="text" id="example-input-text" placeholder="Enter text">
+    <input type="text" id="example-input-text" name="example" placeholder="Enter text">
   </p>
   <p>
     <label for="example-input-url">Url</label>
-    <input type="url" id="example-input-url" placeholder="Enter a url">
+    <input type="url" id="example-input-url" name="example" placeholder="Enter a url">
   </p>
 </form>
 <h2 id="number-(picker)-input" tabindex="-1">Number (Picker) Input</h2>
 <form action="">
   <p>
     <label for="example-input-password1">Number</label>
-    <input type="number" id="example-input-number" placeholder="Number">
+    <input type="number" id="example-input-number" name="example">
   </p>
 </form>
 <h2 id="date-and-time-inputs" tabindex="-1">Date and Time Inputs</h2>
 <form action="">
   <p>
     <label for="example-input-date">Date</label>
-    <input type="date" id="example-input-date" placeholder="Date">
+    <input type="date" id="example-input-date" name="example">
   </p>
   <p>
     <label for="example-input-date-time">Date / Time</label>
-    <input type="datetime" id="example-input-date-time" placeholder="Date / Time">
+    <input type="datetime" id="example-input-date-time" name="example">
   </p>
   <p>
     <label for="example-input-date-time-local">Date / Time local</label>
-    <input type="datetime-local" id="example-input-date-time-local" placeholder="date / time local">
+    <input type="datetime-local" id="example-input-date-time-local" name="example">
   </p>
   <p>
     <label for="example-input-month">Month</label>
-    <input type="month" id="example-input-month" placeholder="Month">
+    <input type="month" id="example-input-month" name="example">
   </p>
   <p>
     <label for="example-input-week">Week</label>
-    <input type="week" id="example-input-week" placeholder="Week">
+    <input type="week" id="example-input-week" name="example">
   </p>
   <p>
     <label for="example-input-time">Time</label>
-    <input type="time" id="example-input-time" placeholder="Time">
+    <input type="time" id="example-input-time" name="example">
   </p>
 </form>
 <h2 id="color-picker" tabindex="-1">Color Picker</h2>
@@ -196,7 +196,7 @@
 <form action="">
   <p>
     <label for="example-input-file">File input</label>
-    <input type="file" id="example-input-file">
+    <input type="file" id="example-input-file" accept="image/png, image/jpeg">
   </p>
 </form>
 <h2 id="select-and-multi-select" tabindex="-1">Select and Multi-select</h2>
@@ -230,11 +230,11 @@
 <h2 id="radio-boxes-and-checkboxes" tabindex="-1">Radio Boxes and Checkboxes</h2>
 <form action="">
   <p class="my2">Radio boxes:</p>
-  <input type="radio" id="example-radio-1" name="example-raio-1" value="banana">
+  <input type="radio" id="example-radio-1" name="example-radio" value="banana">
   <label for="example-radio-1">Banana</label><br>
-  <input type="radio" id="example-radio-2" name="example-radio-2" value="mango">
+  <input type="radio" id="example-radio-2" name="example-radio" value="mango">
   <label for="example-radio-2">Mango</label><br>
-  <input type="radio" id="example-radio-3" name="example-radio-3" value="coconut" disabled>
+  <input type="radio" id="example-radio-3" name="example-radio" value="coconut" disabled>
   <label for="example-radio-3">Coconut (disabled)</label>
   <p class="my2">Checkboxes:</p>
   <input type="checkbox" id="example-check-1" name="example-check-1" value="strawberry">
@@ -248,14 +248,15 @@
 <h2 id="fieldsets-and-legends" tabindex="-1">Fieldsets and Legends</h2>
 <p>Groups of form elements can be wrapped in <code>&lt;fieldset&gt;</code> tags. Add a <code>&lt;legend&gt;</code> to provide a special title for the entire fieldset.</p>
 <form action="">
-  <fieldset>
+  <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
     <input type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>
+<p><strong>Note:</strong> since the <code>&lt;legend&gt;</code> incorporates with the wrapping border line, it will not be influenced by the flexbox rule.</p>
 <pre><code>&lt;form action=&quot;&quot;&gt;
-  &lt;fieldset&gt;
+  &lt;fieldset class=&quot;flex&quot;&gt;
     &lt;legend&gt;Example e-newsletter subscribe&lt;/legend&gt;
     &lt;input type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
     &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
@@ -270,11 +271,6 @@
     <input type="submit" name="submit" value="Submit Button">
     <input type="reset" name="reset" value="Reset Button">
   </p>
-  <fieldset>
-    <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
-    <input type="submit" name="submit" value="Subscribe">
-  </fieldset>
 </form>
 <pre><code>&lt;form action=&quot;&quot;&gt;
   &lt;p&gt;
@@ -283,11 +279,6 @@
     &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit Button&quot;&gt;
     &lt;input type=&quot;reset&quot; name=&quot;reset&quot; value=&quot;Reset Button&quot;&gt;
   &lt;/p&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;Example e-newsletter subscribe&lt;/legend&gt;
-    &lt;input type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
-    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
-  &lt;/fieldset&gt;
 &lt;/form&gt;
 </code></pre>
 <p>See <a href="/baselayer/buttons">buttons</a> for more information.</p>

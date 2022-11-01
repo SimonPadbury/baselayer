@@ -37,7 +37,7 @@ iframe {
   border: 0;
 }
 
-input, button, textarea, select {
+button, input, select, textarea {
   font: inherit;
 }
 

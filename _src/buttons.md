@@ -44,7 +44,7 @@ As with other [full-width form elements]({{ '/forms/#full-width-form-elements' |
 
 Block button with a down-caret icon and spacing controlled by flexbox:
 
-<button class="w100% mt2 flex flex-middle flex-space-between" type="button" name="button">
+<button class="w100% mt2 flex flexmiddle flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>

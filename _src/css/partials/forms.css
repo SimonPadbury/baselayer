@@ -1,23 +1,28 @@
 fieldset {
   border: var(--b1);
 }
+
 input,
 textarea {
   -webkit-user-select: auto;
   user-select: auto;
 }
+
 input,
-select,
 textarea {
-  position: relative;
   outline: 0 none;
-  display: inline-flex;
+  width: 100%;
+  min-height: calc(2 * .75rem + 20px);
+  display: flex;
   align-items: center;
-  /* -webkit-appearance: none; */
+  -webkit-appearance: none;
+  border-radius: unset;
   border: var(--b1);
   padding: var(--pcell);
   font-family: var(--base);
+  text-align: start;
 }
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -26,15 +31,9 @@ textarea:focus {
   outline: 0;
   box-shadow: var(--focus);
 }
+
 [placeholder] {
   text-overflow: ellipsis;
-  opacity: 0.8;
-}
-
-input[type="file"],
-[multiple],
-textarea {
-  height: auto;
 }
 
 [type="color"] {
@@ -42,13 +41,22 @@ textarea {
   height: var(--sbtn);
   padding: .25em
 }
+
 [type="checkbox"],
 [type="radio"] {
+  display: inline;
+  margin-right: 0.5rem;
+  -webkit-appearance: auto;
   min-height: unset;
-  width: .95rem;
-  height: .95rem;
-  margin: 0;
-  padding: unset;
+  width: unset;
+}
+
+input::file-selector-button {
+  -webkit-appearance: none;
+  border: 0;
+  font-size: 1em;
+  color: white;
+  background: var(--cbtn);
 }
 
 [type="button"],
@@ -84,6 +92,7 @@ button,
   color: white;
   background: var(--cbtn);
 }
+
 button:hover,
 button:active,
 [type="button"]:hover,
@@ -99,6 +108,7 @@ button:active,
   color: white;
   cursor: pointer;
 }
+
 button:focus,
 [type="button"]:focus,
 [type="submit"]:focus,
@@ -107,8 +117,8 @@ button:focus,
   outline: 0;
   box-shadow: var(--focus);
 }
-/* The .btn class doesn't get the input focus ring. It will get the link focus ring insead when you do <a class="btn" href="">...</a>. */
-
+/* The .btn class doesn't get this input focus ring. It will get the 
+link focus ring insead when you do <a class="btn" href="">...</a>. */
 
 .btn-icon {
   width: calc(var(--sbtn) + 2 * 1px);

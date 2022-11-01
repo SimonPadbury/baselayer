@@ -7,7 +7,7 @@
 
   <title>Buttons · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.1">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -26,10 +26,10 @@
       color: hsl(var(--hsgray), var(--l100));
       background: hsl(var(--hsgray), var(--l900));
     }
-    .theme-dark #main-content a {
+    .theme-dark #main-content a:not(.btn) {
       color: hsl(var(--hsblue), var(--l300));
     }
-    .theme-dark #main-content a:hover {
+    .theme-dark #main-content a:not(.btn):hover {
       color: hsl(var(--hsblue), var(--l400));
     }
     .theme-dark code {
@@ -150,7 +150,7 @@
 <pre><code>&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 </code></pre>
 <p>Block button with a down-caret icon and spacing controlled by flexbox:</p>
-<button class="w100% mt2 flex flex-middle flex-space-between" type="button" name="button">
+<button class="w100% mt2 flex flexmiddle flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>
