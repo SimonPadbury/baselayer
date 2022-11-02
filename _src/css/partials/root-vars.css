@@ -45,6 +45,7 @@
   --wsm: 720px; 
   --wmd: 1080px;
   --wlg: 1440px;
+
   --container: min(94vw, var(--wlg));
 
   /*
@@ -60,7 +61,7 @@
 
   /*
   Spacing (margins and paddings)
-  s2 thru s3 are based on https://clamp.font-size.app/,
+  s2 through s4 are based on https://clamp.font-size.app/,
   expanding each to 150% from 720px to 1080px
   */
   --s1: 0.5rem;
@@ -68,7 +69,7 @@
   --s3: clamp(2rem, 4.4444vw, 3rem);
   --s4: clamp(3rem, 6.6667vw, 4.5rem);
 
-  --sbtn: 2.75rem;
+  --sbtn: 48px;
   --pcell: var(--s1) calc(2 * var(--s1));
 
   /* 

@@ -29,7 +29,10 @@
 .overflowx { overflow-x: auto; }
 .overflowy { overflow-y: auto; }
 
-.block { display: block; }
+.block {
+  display: block; 
+  width: 100%; 
+}
 .inline-block { display: inline-block; }
 
 .flex { display: flex; }

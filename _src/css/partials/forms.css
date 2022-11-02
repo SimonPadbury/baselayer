@@ -121,7 +121,7 @@ button:focus,
 link focus ring insead when you do <a class="btn" href="">...</a>. */
 
 .btn-icon {
-  width: calc(var(--sbtn) + 2 * 1px);
-  height: calc(var(--sbtn) + 2 * 1px);
+  width: var(--sbtn);
+  height: var(--sbtn);
   padding: 0;
 }

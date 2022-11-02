@@ -7,7 +7,7 @@
 
   <title>Buttons · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.1">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.2">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -93,7 +93,7 @@
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400">Version 1.0.1</p>
+    <p class="m2 italic tgray t400">Version 1.0.2</p>
   </div>
 </div>
 
@@ -134,16 +134,17 @@
 </code></pre>
 <p><strong>Note:</strong> The <code>btn</code> class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the <code>&lt;button&gt;</code> tag). But if the <code>btn</code> utility class is used on an <code>&lt;a href=&quot;&quot;&gt;</code> link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).</p>
 <h2 id="full-width-buttons" tabindex="-1">Full-width buttons</h2>
-<p>As with other <a href="/baselayer/forms/#full-width-form-elements">full-width form elements</a>, if you require a button to be full-width, you can add <code>class=&quot;w100%&quot;</code> or control it in a <a href="/baselayer/layout/#flex">flex</a> or <a href="/baselayer/layout/#grid">grid</a> wrapper.</p>
-<p><button class="w100%" type="button" name="button">Button</button></p>
-<pre><code>&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+<p>As with other <a href="/baselayer/forms/#full-width-form-elements">full-width form elements</a>, if you require a button to be full-width, you can add <code>class=&quot;block&quot;</code> or <code>class=&quot;w100%&quot;</code> or control it in a <a href="/baselayer/layout/#flex">flex</a> or <a href="/baselayer/layout/#grid">grid</a> wrapper.</p>
+<p><button class="block" type="button" name="button">Button</button></p>
+<pre><code>&lt;button class=&quot;block&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 </code></pre>
-<p>Block button with a down-caret icon and spacing controlled by flexbox:</p>
-<button class="w100% mt2 flex flexmiddle flexspace" type="button" name="button">
+<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. Therefore, simply adding the <code>flexspace</code> class will also stretch the button <em>if you have more than one item</em> insise the button, such as the descriptive text plus an icon.</p>
+<p>For example, here’s a full-width button with a down-caret icon and spacing controlled by flexbox:</p>
+<button class="mt2 flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>
-<pre><code>&lt;button class=&quot;w100% flex flex-middle flex-space-between&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;
+<pre><code>&lt;button class=&quot;flexspace&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;
   Button
   &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 256 256&quot;&gt;&lt;rect width=&quot;256&quot; height=&quot;256&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;&lt;polyline points=&quot;208 96 128 176 48 96&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt;
 &lt;/button&gt;
@@ -151,12 +152,12 @@
 <p>Down-caret SVG icon from <a href="https://phosphoricons.com/">Phosphor Icons</a>, with color set by <code>currentColor</code>, and width and height 16px — same as font size (1rem).</p>
 <h2 id="adding-colors" tabindex="-1">Adding Colors</h2>
 <p>Border, background, or text color utilities can be used.</p>
-<form>
-  <p>
+<form class="mt2">
     <label for="example-input-text">Text</label>
-    <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
-    <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
-  </p>
+    <div class="flex gap">
+      <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
+      <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
+    </div>
 </form>
 <pre><code>&lt;input class=&quot;b2 bred&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
 
@@ -185,9 +186,10 @@
 </code></pre>
 <p><strong>Note:</strong> the <em>named</em> colors (including <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared <em>after</em> the coded colors — in <code>colors.css</code>. This is the reason why, in the green outline (ghost) button, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this property colorizes the hover shade.</p>
 <h2 id="buttons-with-icons" tabindex="-1">Buttons with Icons</h2>
+<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. So, all you need to do is add an ison and it will all line up.</p>
 <form>
   <p>
-    <button type="button" name="button">
+    <button type="button" name="button" class="inline-flex">
       Search&nbsp;
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
     </button>

@@ -34,23 +34,25 @@ prevLink: "Forms"
 
 ## Full-width buttons
 
-As with other [full-width form elements]({{ '/forms/#full-width-form-elements' | url }}), if you require a button to be full-width, you can add `class="w100%"` or control it in a [flex]({{ '/layout/#flex' | url }}) or [grid]({{ '/layout/#grid' | url }}) wrapper.
+As with other [full-width form elements]({{ '/forms/#full-width-form-elements' | url }}), if you require a button to be full-width, you can add `class="block"` or `class="w100%"` or control it in a [flex]({{ '/layout/#flex' | url }}) or [grid]({{ '/layout/#grid' | url }}) wrapper.
 
-<button class="w100%" type="button" name="button">Button</button>
+<button class="block" type="button" name="button">Button</button>
 
 ```
-<button class="w100%" type="button" name="button">Button</button>
+<button class="block" type="button" name="button">Button</button>
 ```
 
-Block button with a down-caret icon and spacing controlled by flexbox:
+In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. Therefore, simply adding the `flexspace` class will also stretch the button _if you have more than one item_ insise the button, such as the descriptive text plus an icon.
 
-<button class="w100% mt2 flex flexmiddle flexspace" type="button" name="button">
+For example, here’s a full-width button with a down-caret icon and spacing controlled by flexbox:
+
+<button class="mt2 flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>
 
 ```
-<button class="w100% flex flex-middle flex-space-between" type="button" name="button">
+<button class="flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>
@@ -62,12 +64,12 @@ Down-caret SVG icon from [Phosphor Icons](https://phosphoricons.com/), with colo
 
 Border, background, or text color utilities can be used.
 
-<form>
-  <p>
+<form class="mt2">
     <label for="example-input-text">Text</label>
-    <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
-    <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
-  </p>
+    <div class="flex gap">
+      <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
+      <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
+    </div>
 </form>
 
 ```
@@ -105,9 +107,11 @@ When colorizing buttons, remember to set their hover state shades too.
 
 ## Buttons with Icons
 
+In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, all you need to do is add an ison and it will all line up.
+
 <form>
   <p>
-    <button type="button" name="button">
+    <button type="button" name="button" class="inline-flex">
       Search&nbsp;
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
     </button>
