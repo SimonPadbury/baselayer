@@ -7,7 +7,7 @@
       </a>
     </div>
 
-    <nav class="sm:hidden pcell twhite">
+    <nav class="pb2 sm:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -19,6 +19,15 @@
           <a class="block my2 tgray t100 h:t200" href="{{ '/forms' | url }}">Forms</a>
           <a class="block my2 tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a>
         </div>
+
+        <hr class="my3">
+
+        <p>
+          <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
+          <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
+        </p>
+    
+        <p class="italic tgray t400">Version {{ metadata.version }}</p>
       </details>
     </nav>
 
@@ -32,17 +41,17 @@
       <a class="block my2 tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hidden-below" style="width: 200px;">
+    <div class="p2 sm:hiddenbelow" style="width: 200px;">
       <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
       <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
     </div>
 
-    <p class="m2">
+    <p class="m2 sm:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400">Version {{ metadata.version }}</p>
+    <p class="m2 italic tgray t400 sm:hiddenbelow">Version {{ metadata.version }}</p>
   </div>
 </div>
