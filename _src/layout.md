@@ -60,7 +60,7 @@ Heights:
 * `relative`
 * `absolute`
 * `sticky`
-* `box` — stretches an inner element using `inset: 0` to cover the size of its wrapper (you must put a `relative` on the wrapper). Useful for setting up hero image with text overlay.
+* `box` — stretches an inner element using `inset: 0` to cover the size of its wrapper (you must put a use it with `absolute`, and put `relative` on the wrapper). Useful for setting up a hero image with text overlay.
 * `top` — `top: 0`
 * `right` — `right: 0` and `text-align: right`
 * `bottom` — `bottom: 0`
@@ -69,11 +69,14 @@ Heights:
 * `z2` — `z-index: 2`
 * `z3` — `z-index: 3`
 
+Example: 
+
 <div class="relative mt2 b1 ratio16x9">
   <div class="absolute top w100% center"><code>top</code></div>
   <div class="absolute right h100% flex flexmiddle"><code>right</code></div>
   <div class="absolute bottom w100% center"><code>bottom</code></div>
   <div class="absolute left h100% flex flexmiddle"><code>left</code></div>
+  <div class="absolute box flex flexcenter flexmiddle center"><code>centered<br>and middled</code></div>
 </div>
 
 ```
@@ -82,6 +85,7 @@ Heights:
   <div class="absolute right h100% flex flexmiddle"><code>right</code></div>
   <div class="absolute bottom w100% center"><code>bottom</code></div>
   <div class="absolute left h100% flex flexmiddle"><code>left</code></div>
+  <div class="absolute box flex flexcenter flexmiddle center"><code>centered<br>and middled</code></div>
 </div>
 ```
 
