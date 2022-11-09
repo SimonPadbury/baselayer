@@ -4,6 +4,11 @@ v.1.0.3
 
 Baselayer is a splendiferous yet miniscule CSS library.
 
+
+```
+git clone https://github.com/SimonPadbury/baselayer.git
+```
+
 Designed as a good place to start, Baselayer may be all you need — for small static websites and blogs. Or you may use it as a _baselayer_ to quick-start your mega project.
 
 Ready to use as-is, Baselayer gives you all this and more:
