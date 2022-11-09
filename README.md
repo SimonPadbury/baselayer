@@ -4,7 +4,6 @@ v.1.0.3
 
 Baselayer is a splendiferous yet miniscule CSS library.
 
-
 ```
 git clone https://github.com/SimonPadbury/baselayer.git
 ```
