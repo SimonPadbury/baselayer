@@ -99,15 +99,14 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 * `sm:flex` — flexbox with wrapping at 720px up
 * `md:flex` — flexbox with wrapping at 1080px up
 
+**Note:** The following classes below will not take effect below the `*:flex` breakpoints.
+
 ### Flex modifier classes 
 
-The classes below will not take effect below the `*:flex` breakpoints.
-
 * `gap` — same as for `grid` (see below), adding a horizontal and vetical gap of `var(--s2)`
-* `flexwrap` — gives you `flex-wrap: wrap`
+* X-axis: `flexstart` / `flexcenter` / `flexend`
+* Y-axis: `flextop` / `flexmiddle` / `flexbottom`
 * `flexcolumn` — gives you `flex-direction: column`
-* `flexcenter` — gives you  `justify-content: center`
-* `flexmiddle` — gives you `align-items: center`
 * `flexspace` — gives you `justify-content: space-between`
 
 ### Flex-item class
