@@ -67,13 +67,8 @@ dt {
   margin-top: var(--s2);
 }
 
-dd, li {
-  margin-block: calc(var(--s2) / 2);
-}
-
-li ol, li ul {
-  position: relative;
-  margin-top: -calc(var(--s2) / 2);
+dd, li + li, li ol, li ul {
+  margin-top: calc(var(--s2) / 2);
 }
 
 ol, ul, dd {
