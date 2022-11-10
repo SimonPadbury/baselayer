@@ -186,13 +186,15 @@ If your layout leaves gaps but you want them filled by reordering the items, the
   <div class="sm:col3 p1 bgamber tblack">Item 5</div>
 </div>
 
-## Article Grid
+## Content Grid
 
-`article` uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max `var(--wsm)`.
+`contentgrid` uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max `var(--wsm)`.
 
-* Use the `popout` utility class to make an element span the middle 3 columns (3 to 5). This has been set to max-width `var(--wmd)` by subtracting `wsm` from `wmd` and halving the result, to set the width of columns 2 and 4.
-* Use the `expand` utility class to make an element span the middle 5 columns (2 to 6). This has been calculated to max-width `var(--wmd)`.
+* Use the `popout` utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width `var(--s2)`.
+* Use the `expand` utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width `var(--wmd)`.
 * Use the `fullbleed` utility class to make an element span all 7 columns.
+
+**Note:** Columns 1 and 7 have a minimum width of `var(--s2)`. Therefore both `popout`, `expand` and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the `contentgrid` wrapper. Therefore, on smaller viewports `popout` and `expand` will adopt the same width as the middle content column.
 
 ### Popout Panels
 
@@ -216,7 +218,7 @@ Example poster component using `expand`:
   <div class="ratio16x9 flex flexcenter flexmiddle relative bgblack">
     <img class="absolute box cover opacity50%" src="https://picsum.photos/id/1015/700/700">
     <div class="relative wsm ratio16x9 p3">
-      <p class="h1 twhite"><strong>A poster with a lot of example text that may or may not distort the aspect ratio (16&times;9) of this component.</strong></p>
+      <p class="h1 m0 twhite"><strong>This is a lot of example text that may or may not distort the aspect ratio (16&times;9) of this poster/hero component.</strong></p>
       <p class="h1 twhite"><strong>See what it does on a small viewport width.</strong></p>
     </div>
   </div>
@@ -229,7 +231,7 @@ Image from [Lorem Pixum](https://picsum.photos/).
   <div class="ratio16x9 flex flexcenter flexmiddle relative bgblack">
     <img class="absolute box cover opacity50%" src="https://picsum.photos/id/1015/700/700">
     <div class="relative wsm ratio16x9 p3">
-      <p class="h1 twhite"><strong>A poster with a lot of example text that may or may not distort the aspect ratio (16&times;9) of this component.</strong></p>
+      <p class="h1 m0 twhite"><strong>This is with a lot of example text that may or may not distort the aspect ratio (16&times;9) of this poster/hero component.</strong></p>
       <p class="h1 twhite"><strong>See what it does on a small viewport width.</strong></p>
     </div>
   </div>
@@ -237,6 +239,8 @@ Image from [Lorem Pixum](https://picsum.photos/).
 ```
 
 ### Full Bleed Panels
+
+If your layout has no sidebars, side spacing (margin or padding) or other object that constrains the width of your `contentgrid` column, then `fullbleed` will expand to the full width of the viewport.
 
 Example colored stripe using `fullbleed`:
 

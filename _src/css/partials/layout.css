@@ -115,9 +115,9 @@
 .dense { grid-auto-flow: dense; }
 
 /*
-Article grid
+Content grid
 */
-.article {
+.contentgrid {
   display: grid;
   grid-template-columns:
     var(--full)
@@ -128,12 +128,12 @@ Article grid
     var(--expand)
     var(--full);
 }
-.article > * { grid-column: 4; }
+.contentgrid > * { grid-column: 4; }
 .popout { grid-column: 3 / span 3; }
 .expand { grid-column: 2 / span 5; }
 .fullbleed { grid-column: 1 / span 7; }
 
-.article > hr + * {  margin-top: 0; }
+.contentgrid > hr + * {  margin-top: 0; }
 
 .ratio1x1 { aspect-ratio: 1 / 1; }
 .ratio4x3 { aspect-ratio: 4 / 3; }

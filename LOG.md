@@ -3,6 +3,10 @@
 
 [Updating: numbers in README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 10 Nov 2022 -- .1.0.4
+
+* Renamed `.article` (the content grid class) as `.contentgrid`
+
 ## 9 Nov 2022 -- v.1.0.3
 
 * Improvements to list item spacing.

@@ -7,7 +7,7 @@
 
   <title>Layout · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.3">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.4">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -75,7 +75,7 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.3</p>
+        <p class="italic tgray t400">Version 1.0.4</p>
       </details>
     </nav>
 
@@ -100,7 +100,7 @@
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.3</p>
+    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.4</p>
   </div>
 </div>
 
@@ -109,12 +109,12 @@
           <div class="sticky top p2" style="width: 320px;">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex">Flex</a><ul><li><a href="#flex-classes">Flex classes</a></li><li><a href="#flex-modifier-classes">Flex modifier classes</a></li><li><a href="#flex-item-class">Flex-item class</a></li></ul></li><li><a href="#grid">Grid</a><ul><li><a href="#grid-classes">Grid classes</a></li><li><a href="#grid-item-classes">Grid-item classes</a></li></ul></li><li><a href="#article-grid">Article Grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
+        <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex">Flex</a><ul><li><a href="#flex-classes">Flex classes</a></li><li><a href="#flex-modifier-classes">Flex modifier classes</a></li><li><a href="#flex-item-class">Flex-item class</a></li></ul></li><li><a href="#grid">Grid</a><ul><li><a href="#grid-classes">Grid classes</a></li><li><a href="#grid-item-classes">Grid-item classes</a></li></ul></li><li><a href="#content-grid">Content Grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
       </nav>
           </div>
         </div>
   
-        <div class="article">
+        <div class="contentgrid">
           <header class="my2 py4 big center">
             <h1 class=bold">Layout</h1>
           </header>
@@ -269,13 +269,14 @@
   <div class="sm:col4 p1 bggreen twhite">Item 4</div>
   <div class="sm:col3 p1 bgamber tblack">Item 5</div>
 </div>
-<h2 id="article-grid" tabindex="-1">Article Grid</h2>
-<p><code>article</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>var(--wsm)</code>.</p>
+<h2 id="content-grid" tabindex="-1">Content Grid</h2>
+<p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>var(--wsm)</code>.</p>
 <ul>
-<li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). This has been set to max-width <code>var(--wmd)</code> by subtracting <code>wsm</code> from <code>wmd</code> and halving the result, to set the width of columns 2 and 4.</li>
-<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). This has been calculated to max-width <code>var(--wmd)</code>.</li>
+<li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width <code>var(--s2)</code>.</li>
+<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>.</li>
 <li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns.</li>
 </ul>
+<p><strong>Note:</strong> Columns 1 and 7 have a minimum width of <code>var(--s2)</code>. Therefore both <code>popout</code>, <code>expand</code> and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the <code>contentgrid</code> wrapper. Therefore, on smaller viewports <code>popout</code> and <code>expand</code> will adopt the same width as the middle content column.</p>
 <h3 id="popout-panels" tabindex="-1">Popout Panels</h3>
 <p>Example information panel using <code>popout</code>:</p>
 <div class="popout mt2 bt3 bblue b300 r2 p2 tblack bggray bg100">
@@ -291,7 +292,7 @@
   <div class="ratio16x9 flex flexcenter flexmiddle relative bgblack">
     <img class="absolute box cover opacity50%" src="https://picsum.photos/id/1015/700/700">
     <div class="relative wsm ratio16x9 p3">
-      <p class="h1 twhite"><strong>A poster with a lot of example text that may or may not distort the aspect ratio (16&times;9) of this component.</strong></p>
+      <p class="h1 m0 twhite"><strong>This is a lot of example text that may or may not distort the aspect ratio (16&times;9) of this poster/hero component.</strong></p>
       <p class="h1 twhite"><strong>See what it does on a small viewport width.</strong></p>
     </div>
   </div>
@@ -301,13 +302,14 @@
   &lt;div class=&quot;ratio16x9 flex flexcenter flexmiddle relative bgblack&quot;&gt;
     &lt;img class=&quot;absolute box cover opacity50%&quot; src=&quot;https://picsum.photos/id/1015/700/700&quot;&gt;
     &lt;div class=&quot;relative wsm ratio16x9 p3&quot;&gt;
-      &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;A poster with a lot of example text that may or may not distort the aspect ratio (16&amp;times;9) of this component.&lt;/strong&gt;&lt;/p&gt;
+      &lt;p class=&quot;h1 m0 twhite&quot;&gt;&lt;strong&gt;This is with a lot of example text that may or may not distort the aspect ratio (16&amp;times;9) of this poster/hero component.&lt;/strong&gt;&lt;/p&gt;
       &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;See what it does on a small viewport width.&lt;/strong&gt;&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <h3 id="full-bleed-panels" tabindex="-1">Full Bleed Panels</h3>
+<p>If your layout has no sidebars, side spacing (margin or padding) or other object that constrains the width of your <code>contentgrid</code> column, then <code>fullbleed</code> will expand to the full width of the viewport.</p>
 <p>Example colored stripe using <code>fullbleed</code>:</p>
 <div class="fullbleed mt2 p2 bgred twhite">
  <code>fullbleed</code> — expands to the full width of the <code>article</code> wrapper.
