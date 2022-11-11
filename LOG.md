@@ -3,11 +3,12 @@
 
 [Updating: numbers in indec.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
-## 10 Nov 2022 -- v.1.0.5
+## 11 Nov 2022 -- v.1.0.5
 
 * Removed `--btnfw` (button font weight variable).
 * Removed `b0` (border removal/reset).
 * improvements to forms.
+* Added `hmax100vh`.
 
 ## 10 Nov 2022 -- v.1.0.4
 

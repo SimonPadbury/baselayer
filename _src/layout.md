@@ -54,6 +54,7 @@ Heights:
 * `h100%` — height 100%, e.g. for making cards equal to the height of their wrapper
 * `h50vh` — min-height 50vh, e.g. for making split “full cover” panels
 * `h100vh` — min-height 100vh, e.g. for making “full cover” panels
+* `hmax100vh` — min-height 100vh, e.g. for tall sidebars (used with `overflowy`)
 
 ## Positions
 
