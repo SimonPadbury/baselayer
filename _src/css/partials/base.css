@@ -9,9 +9,9 @@ body {
   background-color: var(--body-bg-color);
 }
 
-/**
- * Accessibility (see also form inputs and buttons)
- */
+/*
+Accessibility (see also form inputs and buttons)
+*/
 
 :focus-visible {
   outline: 2px dotted black;

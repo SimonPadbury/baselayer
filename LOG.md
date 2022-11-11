@@ -6,6 +6,8 @@
 ## 10 Nov 2022 -- v.1.0.5
 
 * Removed `--btnfw` (button font weight variable).
+* Removed `b0` (border removal/reset).
+* improvements to forms.
 
 ## 10 Nov 2022 -- v.1.0.4
 

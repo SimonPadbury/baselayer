@@ -25,11 +25,11 @@ This makes the negative space (“whitespace”) for spacing levels 2-4 bigger f
 
 Both margin and padding spacers are controlled on the 4 sides of blocks, as follows:
 
-* All: `m1` through `m4` / `p4` through `p4`
-* Top: `mt1` through `mt4` / `pt4` through `pt4`
-* Right: `mr1` through `mr4` / `pr4` through `pr4`
-* Bottom: `mb1` through `mb4` / `pb4` through `pb4`
-* Left: `ml1` through `ml4` / `pl4` through `pl4`
+* All: `m1` through `m4` / `p1` through `p4`
+* Top: `mt1` through `mt4` / `pt1` through `pt4`
+* Right: `mr1` through `mr4` / `pr1` through `pr4`
+* Bottom: `mb1` through `mb4` / `pb1` through `pb4`
+* Left: `ml1` through `ml4` / `pl1` through `pl4`
 * Inline x-axis (right and left): `mx1` through `mx4` / `px4` through `px4`
 * Block y-axis (top and bottom): `my1` through `my4` / `py4` through `py4`
 
@@ -72,12 +72,6 @@ Borders can be set as follows:
 * Right: `br*`
 * Bottom: `bb*`
 * Left: `bl*`
-
-### Border Extra
-
-* `b0` — for removing all borders
-
-`b0` has been declared before the other border classes in in `decoration.css`, so that it can be used as a _reset_ before you add whatever border you require.
 
 ## Rounded Corners
 

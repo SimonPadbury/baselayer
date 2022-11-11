@@ -74,7 +74,6 @@
 .py3 { padding-block: var(--s3); }
 .py4 { padding-block: var(--s4); }
 
-.b0 { border: 0; }
 .b1 { border: var(--b1); }
 .b2 { border: var(--b2); }
 .b3 { border: var(--b3); }

@@ -13,6 +13,7 @@
 .h100\% { height: 100%; }
 .h50vh { min-height: 50vh; }
 .h100vh { min-height: 100vh; }
+.hmax100vh { max-height: 100vh; }
 
 .relative { position: relative; }
 .absolute { position: absolute; }
