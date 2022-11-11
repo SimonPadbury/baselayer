@@ -124,7 +124,6 @@
   --pbtn: var(--pcell);
   --cbtn: hsl(var(--hsgray), var(--l600)); /* color */
   --hbtn: hsl(var(--hsgray), var(--l700)); /* hover color */
-  --btnfw: 400;
 
   --bgcode: hsl(var(--hsblue), var(--l100));
 

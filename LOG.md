@@ -1,11 +1,15 @@
 
 # Baselayer CSS Log
 
-[Updating: numbers in README.md, data/metadata.json, package.json, and package-lock.json (twice).]
+[Updating: numbers in indec.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
-## 10 Nov 2022 -- .1.0.4
+## 10 Nov 2022 -- v.1.0.5
 
-* Renamed `.article` (the content grid class) as `.contentgrid`
+* Removed `--btnfw` (button font weight variable).
+
+## 10 Nov 2022 -- v.1.0.4
+
+* Renamed `.article` (the content grid class) as `.contentgrid`.
 
 ## 9 Nov 2022 -- v.1.0.3
 
