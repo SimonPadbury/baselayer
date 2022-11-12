@@ -71,14 +71,16 @@
       
           <footer class="mb4">
               <hr>
-              <ul class="unlist p0 flex flexwrap flexspace">
-                {% if prevPage %}
-                <li>&larr; <a href="{{ prevPage | url }}"> {{ prevLink if prevLink else "Previous page" }}</a></li>
-                {% endif %}
-                {% if nextPage %}
-                <li><a href="{{ nextPage | url }}">{{ nextLink if nextLink else "Next page" }}</a> &rarr;</li>
-                {% endif %}  
-              </ul>
+              <nav>
+                <ul class="unlist p0 sm:grid2cols">
+                  {% if prevPage %}
+                  <li class="my1">&larr; <a href="{{ prevPage | url }}"> {{ prevLink if prevLink else "Previous page" }}</a></li>
+                  {% endif %}
+                  {% if nextPage %}
+                  <li class="sm:col2 my1 right"><a href="{{ nextPage | url }}">{{ nextLink if nextLink else "Next page" }}</a> &rarr;</li>
+                  {% endif %}  
+                </ul>
+              </nav>
           </footer>
         </div>
       </main>

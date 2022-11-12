@@ -119,6 +119,7 @@ blockquote {
 code, kbd, samp {
   font-family: var(--mono);
   font-size: var(--fsmono);
+  line-height: 1.45;
 }
 
 code {
