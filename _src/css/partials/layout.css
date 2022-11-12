@@ -31,8 +31,8 @@
 .overflowy { overflow-y: auto; }
 
 .block { display: block; }
-.inline-block { display: inline-block; }
-.inline-flex { display: inline-flex; }
+.inlineblock { display: inline-block; }
+.inlineflex { display: inline-flex; }
 .flex { display: flex; }
 .flexwrap { flex-wrap: wrap; }
 .flexcolumn { flex-direction: column; }
