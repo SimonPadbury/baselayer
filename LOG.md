@@ -7,7 +7,8 @@
 
 * Removed `--btnfw` (button font weight variable).
 * Removed `b0` (border removal/reset).
-* Improvements to forms and buttons.
+* Improvements to tables: removing cell borders; adding border-bottom to thead and tr.
+* Improvements to forms and buttons: removing button borders; and styling selects.
 * Added `hmax100vh`.
 
 ## 10 Nov 2022 -- v.1.0.4
