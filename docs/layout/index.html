@@ -19,9 +19,13 @@
     .main-prose #font-toggle::before { content: 'Base '; }
     .main-base #font-toggle::before { content: 'Prose '; }
 
-    .main-longread .article { font-size: var(--fslongread); }
-    .main-prose .article { font-family: var(--prose); }
+    .main-longread .contentgrid { font-size: var(--fslongread); }
+    .main-prose .contentgrid { font-family: var(--prose); }
 
+    .main-longread .btn-icon {
+      width: calc(var(--sbtn) + 2px);
+      height: calc(var(--sbtn) + 2px);
+    }
     .theme-dark #main-content { 
       color: hsl(var(--hsgray), var(--l100));
       background: hsl(var(--hsgray), var(--l900));
@@ -90,9 +94,9 @@
     </nav>
 
     <div class="p2 sm:hiddenbelow" style="width: 200px;">
-      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
     </div>
 
     <p class="m2 sm:hiddenbelow">

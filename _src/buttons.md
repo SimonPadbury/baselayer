@@ -62,7 +62,7 @@ Down-caret SVG icon from [Phosphor Icons](https://phosphoricons.com/), with colo
 
 ## Adding Colors
 
-Border, background, or text color utilities can be used.
+Border, background, and text color utilities can be used.
 
 <form class="mt2">
     <label for="example-input-text">Text</label>
@@ -85,7 +85,7 @@ When colorizing buttons, remember to set their hover state shades too.
     <button type="button" name="button">Button</button>
     <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
     <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
-    <button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+    <a class="btn b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" href="#/">Link “button”</a>
   </p>
 </form>
 
@@ -99,8 +99,8 @@ When colorizing buttons, remember to set their hover state shades too.
 /* Amber button */
 <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
 
-/* Green outline (a.k.a. ghost) button*/
-<button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+/* Green outline (a.k.a. ghost) link “button” */
+<a class="b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" href="#/">Link “button”</a>
 ```
 
 **Note:** the _named_ colors (including `transparent`) take precedence over HSL coded colors in Baselayer because they are declared _after_ the coded colors — in `colors.css`. This is the reason why, in the green outline (ghost) button, it can have both `bgtransparent` and `bggreen` classes but the transparent wins out. Whereas the hover state shade `h:bg700` _overrides_ the `bgtransparent` on hover, and that’s when the `var(--green-hs)` in the `bggreen` class is applied — this property colorizes the hover shade.

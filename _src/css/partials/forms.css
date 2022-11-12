@@ -76,8 +76,7 @@ button,
   justify-content: center;
   align-items: center;
   margin: 0;
-  border: var(--bbtn);
-  border-color: var(--cbtn);
+  border: 0;
   padding: var(--pbtn);
   font-family: var(--base);
   text-decoration: none;
@@ -96,7 +95,6 @@ button:active,
 [type="reset"]:active,
 .btn:hover,
 .btn:active {
-  border-color: var(--hbtn);
   background: var(--hbtn);
   color: white;
   cursor: pointer;
@@ -117,4 +115,8 @@ link focus ring insead when you do <a class="btn" href="">...</a>. */
   width: var(--sbtn);
   height: var(--sbtn);
   padding: 0;
+}
+.longread .btn-icon {
+  width: calc(var(--sbtn) + 2px);
+  height: calc(var(--sbtn) + 2px);
 }

@@ -19,9 +19,13 @@
     .main-prose #font-toggle::before { content: 'Base '; }
     .main-base #font-toggle::before { content: 'Prose '; }
 
-    .main-longread .article { font-size: var(--fslongread); }
-    .main-prose .article { font-family: var(--prose); }
+    .main-longread .contentgrid { font-size: var(--fslongread); }
+    .main-prose .contentgrid { font-family: var(--prose); }
 
+    .main-longread .btn-icon {
+      width: calc(var(--sbtn) + 2px);
+      height: calc(var(--sbtn) + 2px);
+    }
     .theme-dark #main-content { 
       color: hsl(var(--hsgray), var(--l100));
       background: hsl(var(--hsgray), var(--l900));
@@ -90,9 +94,9 @@
     </nav>
 
     <div class="p2 sm:hiddenbelow" style="width: 200px;">
-      <button id="font-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
     </div>
 
     <p class="m2 sm:hiddenbelow">
@@ -158,7 +162,7 @@
 </code></pre>
 <p>Down-caret SVG icon from <a href="https://phosphoricons.com/">Phosphor Icons</a>, with color set by <code>currentColor</code>, and width and height 16px — same as font size (1rem).</p>
 <h2 id="adding-colors" tabindex="-1">Adding Colors</h2>
-<p>Border, background, or text color utilities can be used.</p>
+<p>Border, background, and text color utilities can be used.</p>
 <form class="mt2">
     <label for="example-input-text">Text</label>
     <div class="flex gap">
@@ -176,7 +180,7 @@
     <button type="button" name="button">Button</button>
     <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
     <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
-    <button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+    <a class="btn b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" href="#/">Link “button”</a>
   </p>
 </form>
 <pre><code>/* Default button */
@@ -188,8 +192,8 @@
 /* Amber button */
 &lt;button class=&quot;bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 
-/* Green outline (a.k.a. ghost) button*/
-&lt;button class=&quot;bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+/* Green outline (a.k.a. ghost) link “button” */
+&lt;a class=&quot;b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700&quot; href=&quot;#/&quot;&gt;Link “button”&lt;/a&gt;
 </code></pre>
 <p><strong>Note:</strong> the <em>named</em> colors (including <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared <em>after</em> the coded colors — in <code>colors.css</code>. This is the reason why, in the green outline (ghost) button, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this property colorizes the hover shade.</p>
 <h2 id="buttons-with-icons" tabindex="-1">Buttons with Icons</h2>

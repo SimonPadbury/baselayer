@@ -88,7 +88,6 @@ table {
 }
 th,
 td {
-  border: var(--b1);
   padding: var(--pcell);
   vertical-align: top;
   text-align: center;
@@ -96,6 +95,9 @@ td {
 th:first-child,
 td:first-child {
   text-align: left;
+}
+thead, tr {
+  border-bottom: var(--b1);
 }
 
 th, dt {

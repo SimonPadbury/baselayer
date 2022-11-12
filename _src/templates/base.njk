@@ -19,9 +19,13 @@
     .main-prose #font-toggle::before { content: 'Base '; }
     .main-base #font-toggle::before { content: 'Prose '; }
 
-    .main-longread .article { font-size: var(--fslongread); }
-    .main-prose .article { font-family: var(--prose); }
+    .main-longread .contentgrid { font-size: var(--fslongread); }
+    .main-prose .contentgrid { font-family: var(--prose); }
 
+    .main-longread .btn-icon {
+      width: calc(var(--sbtn) + 2px);
+      height: calc(var(--sbtn) + 2px);
+    }
     .theme-dark #main-content { 
       color: hsl(var(--hsgray), var(--l100));
       background: hsl(var(--hsgray), var(--l900));
