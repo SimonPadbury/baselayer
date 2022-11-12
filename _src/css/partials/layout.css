@@ -30,12 +30,9 @@
 .overflowx { overflow-x: auto; }
 .overflowy { overflow-y: auto; }
 
-.block {
-  display: block; 
-  width: 100%; 
-}
+.block { display: block; }
 .inline-block { display: inline-block; }
-
+.inline-flex { display: inline-flex; }
 .flex { display: flex; }
 .flexwrap { flex-wrap: wrap; }
 .flexcolumn { flex-direction: column; }

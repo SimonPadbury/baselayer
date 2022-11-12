@@ -8,7 +8,7 @@ prevLink: "Colors"
 nextLink: "Buttons"
 ---
 
-Baselayer form elements have simple border and focus styling. Most singleline inputs and the multiline textarea have been made 100% width block elements, for easier layout control.
+Baselayer form elements have simple border and focus styling. Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.
 
 ## Textual Form Input Fields
 
@@ -43,8 +43,8 @@ Baselayer form elements have simple border and focus styling. Most singleline in
 
 <form action="">
   <p>
-    <label for="example-input-password1">Number</label>
-    <input type="number" id="example-input-number" name="example">
+    <label for="example-input-number">Number</label>
+    <input type="number" id="quantity" name="example" min="0" inputmode="numeric" pattern="\d*">
   </p>
 </form>
 
@@ -56,20 +56,12 @@ Baselayer form elements have simple border and focus styling. Most singleline in
     <input type="date" id="example-input-date" name="example">
   </p>
   <p>
-    <label for="example-input-date-time">Date / Time</label>
-    <input type="datetime" id="example-input-date-time" name="example">
-  </p>
-  <p>
     <label for="example-input-date-time-local">Date / Time local</label>
     <input type="datetime-local" id="example-input-date-time-local" name="example">
   </p>
   <p>
     <label for="example-input-month">Month</label>
     <input type="month" id="example-input-month" name="example">
-  </p>
-  <p>
-    <label for="example-input-week">Week</label>
-    <input type="week" id="example-input-week" name="example">
   </p>
   <p>
     <label for="example-input-time">Time</label>
@@ -195,41 +187,3 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
 ```
 
 See [buttons]({{ '/buttons' | url }}) for more information.
-
-## Full-width Form Elements
-
-All form elements are natively inline elements. If you require a form element to be full-width, you can add `class="w100%"` or control it in a [flex]({{ '/layout/#flex' | url }}) or [grid]({{ '/layout/#grid' | url }}) wrapper.
-
-<form action="">
-  <p>
-    <label for="example-input-text">Text</label>
-    <input class="w100%" type="text" id="example-input-text" placeholder="Enter some text here">
-  </p>
-  <p>
-    <button class="w100%" type="button" name="button">Button</button>
-  </p>
-</form>
-
-```
-<input class="w100%" type="text" id="example-input-text" placeholder="Enter some text here">
-
-<button class="w100%" type="button" name="button">Button</button>
-```
-
-<form class="mt2" action="">
-  <label for="example-input-text">Text</label>
-  <div class="sm:grid4cols gap">
-    <input class="sm:cols1-3" type="text" id="example-input-text" placeholder="Enter some text here">
-    <button type="button" name="button">Button</button>
-  </div>
-</form>
-
-```
-<form class="mt2" action="">
-  <label for="example-input-text">Text</label>
-  <div class="sm:grid4cols gap">
-    <input class="sm:cols1-3" type="text" id="example-input-text" placeholder="Enter some text here">
-    <button type="button" name="button">Button</button>
-  </div>
-</form>
-```

@@ -7,10 +7,9 @@ textarea,
 select {
   outline: 0 none;
   width: 100%;
-  min-height: calc(2 * .75rem + 20px);
   display: flex;
   align-items: center;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   border-radius: unset;
   border: var(--b1);
   padding: var(--pcell);
@@ -18,7 +17,7 @@ select {
   text-align: start;
 }
 
-select {
+select, [type="number"] {
   width: auto;
 }
 
@@ -37,17 +36,14 @@ textarea:focus {
   padding: .25em
 }
 
-[type="checkbox"],
-[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline;
-  margin-right: 0.5rem;
-  -webkit-appearance: auto;
-  min-height: 1em;
   width: 1.1em;
+  height: 1em;
 }
 
 input::file-selector-button {
-  -webkit-appearance: none;
   border: 0;
   font-size: 1em;
   color: white;

@@ -145,11 +145,13 @@
 </code></pre>
 <p><strong>Note:</strong> The <code>btn</code> class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the <code>&lt;button&gt;</code> tag). But if the <code>btn</code> utility class is used on an <code>&lt;a href=&quot;&quot;&gt;</code> link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).</p>
 <h2 id="full-width-buttons" tabindex="-1">Full-width buttons</h2>
-<p>As with other <a href="/baselayer/forms/#full-width-form-elements">full-width form elements</a>, if you require a button to be full-width, you can add <code>class=&quot;block&quot;</code> or <code>class=&quot;w100%&quot;</code> or control it in a <a href="/baselayer/layout/#flex">flex</a> or <a href="/baselayer/layout/#grid">grid</a> wrapper.</p>
-<p><button class="block" type="button" name="button">Button</button></p>
-<pre><code>&lt;button class=&quot;block&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. So, if you want a button to stretch full-width, you can add <code>class=&quot;w100%&quot;</code> or you can override the inline-flex by adding <code>class=&quot;flex&quot;</code> (do not add <code>class=&quot;block&quot;</code> becaue that will override the flexbox).</p>
+<p><button class="w100%" type="button" name="button">Button</button></p>
+<pre><code>&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;
+  Button
+&lt;/button&gt;
 </code></pre>
-<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. Therefore, simply adding the <code>flexspace</code> class will also stretch the button <em>if you have more than one item</em> insise the button, such as the descriptive text plus an icon.</p>
+<p>Also, adding the <code>flexspace</code> class to the button will also stretch the button <em>if you have more than one item</em> insise the button, such as the descriptive text plus an icon.</p>
 <p>For example, here’s a full-width button with a down-caret icon and spacing controlled by flexbox:</p>
 <button class="mt2 flexspace" type="button" name="button">
   Button
@@ -161,6 +163,7 @@
 &lt;/button&gt;
 </code></pre>
 <p>Down-caret SVG icon from <a href="https://phosphoricons.com/">Phosphor Icons</a>, with color set by <code>currentColor</code>, and width and height 16px — same as font size (1rem).</p>
+<p>Another way to control the width of a button is <em>from outside of it</em> — by wrapping the button in a <code>grid</code> so that the button is a grid item.</p>
 <h2 id="adding-colors" tabindex="-1">Adding Colors</h2>
 <p>Border, background, and text color utilities can be used.</p>
 <form class="mt2">

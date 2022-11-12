@@ -34,15 +34,17 @@ prevLink: "Forms"
 
 ## Full-width buttons
 
-As with other [full-width form elements]({{ '/forms/#full-width-form-elements' | url }}), if you require a button to be full-width, you can add `class="block"` or `class="w100%"` or control it in a [flex]({{ '/layout/#flex' | url }}) or [grid]({{ '/layout/#grid' | url }}) wrapper.
+In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, if you want a button to stretch full-width, you can add `class="w100%"` or you can override the inline-flex by adding `class="flex"` (do not add `class="block"` becaue that will override the flexbox).
 
-<button class="block" type="button" name="button">Button</button>
+<button class="w100%" type="button" name="button">Button</button>
 
 ```
-<button class="block" type="button" name="button">Button</button>
+<button class="w100%" type="button" name="button">
+  Button
+</button>
 ```
 
-In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. Therefore, simply adding the `flexspace` class will also stretch the button _if you have more than one item_ insise the button, such as the descriptive text plus an icon.
+Also, adding the `flexspace` class to the button will also stretch the button _if you have more than one item_ insise the button, such as the descriptive text plus an icon.
 
 For example, here’s a full-width button with a down-caret icon and spacing controlled by flexbox:
 
@@ -59,6 +61,8 @@ For example, here’s a full-width button with a down-caret icon and spacing con
 ```
 
 Down-caret SVG icon from [Phosphor Icons](https://phosphoricons.com/), with color set by `currentColor`, and width and height 16px — same as font size (1rem).
+
+Another way to control the width of a button is _from outside of it_ — by wrapping the button in a `grid` so that the button is a grid item.
 
 ## Adding Colors
 

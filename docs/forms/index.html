@@ -113,7 +113,7 @@
           <div class="sticky top p2" style="width: 320px;">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#textual-form-input-fields">Textual Form Input Fields</a></li><li><a href="#number-(picker)-input">Number (Picker) Input</a></li><li><a href="#date-and-time-inputs">Date and Time Inputs</a></li><li><a href="#color-picker">Color Picker</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#select-and-multi-select">Select and Multi-select</a></li><li><a href="#text-area-(multiline)">Text Area (Multiline)</a></li><li><a href="#radio-boxes-and-checkboxes">Radio Boxes and Checkboxes</a></li><li><a href="#fieldsets-and-legends">Fieldsets and Legends</a></li><li><a href="#form-buttons">Form Buttons</a></li><li><a href="#full-width-form-elements">Full-width Form Elements</a></li></ul>
+        <ul><li><a href="#textual-form-input-fields">Textual Form Input Fields</a></li><li><a href="#number-(picker)-input">Number (Picker) Input</a></li><li><a href="#date-and-time-inputs">Date and Time Inputs</a></li><li><a href="#color-picker">Color Picker</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#select-and-multi-select">Select and Multi-select</a></li><li><a href="#text-area-(multiline)">Text Area (Multiline)</a></li><li><a href="#radio-boxes-and-checkboxes">Radio Boxes and Checkboxes</a></li><li><a href="#fieldsets-and-legends">Fieldsets and Legends</a></li><li><a href="#form-buttons">Form Buttons</a></li></ul>
       </nav>
           </div>
         </div>
@@ -123,7 +123,7 @@
             <h1 class=bold">Forms</h1>
           </header>
       
-          <p>Baselayer form elements have simple border and focus styling. Most singleline inputs and the multiline textarea have been made 100% width block elements, for easier layout control.</p>
+          <p>Baselayer form elements have simple border and focus styling. Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.</p>
 <h2 id="textual-form-input-fields" tabindex="-1">Textual Form Input Fields</h2>
 <form action="">
   <p>
@@ -154,8 +154,8 @@
 <h2 id="number-(picker)-input" tabindex="-1">Number (Picker) Input</h2>
 <form action="">
   <p>
-    <label for="example-input-password1">Number</label>
-    <input type="number" id="example-input-number" name="example">
+    <label for="example-input-number">Number</label>
+    <input type="number" id="quantity" name="example" min="0" inputmode="numeric" pattern="\d*">
   </p>
 </form>
 <h2 id="date-and-time-inputs" tabindex="-1">Date and Time Inputs</h2>
@@ -165,20 +165,12 @@
     <input type="date" id="example-input-date" name="example">
   </p>
   <p>
-    <label for="example-input-date-time">Date / Time</label>
-    <input type="datetime" id="example-input-date-time" name="example">
-  </p>
-  <p>
     <label for="example-input-date-time-local">Date / Time local</label>
     <input type="datetime-local" id="example-input-date-time-local" name="example">
   </p>
   <p>
     <label for="example-input-month">Month</label>
     <input type="month" id="example-input-month" name="example">
-  </p>
-  <p>
-    <label for="example-input-week">Week</label>
-    <input type="week" id="example-input-week" name="example">
   </p>
   <p>
     <label for="example-input-time">Time</label>
@@ -282,36 +274,6 @@
 &lt;/form&gt;
 </code></pre>
 <p>See <a href="/baselayer/buttons">buttons</a> for more information.</p>
-<h2 id="full-width-form-elements" tabindex="-1">Full-width Form Elements</h2>
-<p>All form elements are natively inline elements. If you require a form element to be full-width, you can add <code>class=&quot;w100%&quot;</code> or control it in a <a href="/baselayer/layout/#flex">flex</a> or <a href="/baselayer/layout/#grid">grid</a> wrapper.</p>
-<form action="">
-  <p>
-    <label for="example-input-text">Text</label>
-    <input class="w100%" type="text" id="example-input-text" placeholder="Enter some text here">
-  </p>
-  <p>
-    <button class="w100%" type="button" name="button">Button</button>
-  </p>
-</form>
-<pre><code>&lt;input class=&quot;w100%&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
-
-&lt;button class=&quot;w100%&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
-</code></pre>
-<form class="mt2" action="">
-  <label for="example-input-text">Text</label>
-  <div class="sm:grid4cols gap">
-    <input class="sm:cols1-3" type="text" id="example-input-text" placeholder="Enter some text here">
-    <button type="button" name="button">Button</button>
-  </div>
-</form>
-<pre><code>&lt;form class=&quot;mt2&quot; action=&quot;&quot;&gt;
-  &lt;label for=&quot;example-input-text&quot;&gt;Text&lt;/label&gt;
-  &lt;div class=&quot;sm:grid4cols gap&quot;&gt;
-    &lt;input class=&quot;sm:cols1-3&quot; type=&quot;text&quot; id=&quot;example-input-text&quot; placeholder=&quot;Enter some text here&quot;&gt;
-    &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
 
       
           <footer class="mb4">
