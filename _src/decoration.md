@@ -73,6 +73,10 @@ Borders can be set as follows:
 * Bottom: `bb*`
 * Left: `bl*`
 
+### Border Extra
+
+* `b0` — for removing (resetting) all borders
+
 ## Rounded Corners
 
 * `r1` — 0.25rem border radius

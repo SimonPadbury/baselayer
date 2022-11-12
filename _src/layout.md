@@ -96,9 +96,10 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 
 ### Flex classes
 
-* `flex` — flexbox with wrapping at all viewport widths
-* `sm:flex` — flexbox with wrapping at 720px up
-* `md:flex` — flexbox with wrapping at 1080px up
+* `inlineflex` — inline flexbox with wrapping at all viewport widths
+* `flex` — block flexbox with wrapping at all viewport widths
+* `sm:flex` — block flexbox with wrapping at 720px up
+* `md:flex` — block flexbox with wrapping at 1080px up
 
 **Note:** The following classes below will not take effect below the `*:flex` breakpoints.
 
