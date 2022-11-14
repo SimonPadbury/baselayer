@@ -10,63 +10,63 @@
   --ths: var(--hsgray);
   color: hsl(var(--ths), var(--l500));
 }
-.bgray {
+.bgray, .h\:bgray:hover {
   --bhs: var(--hsgray);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bggray {
+.bggray, .h\:bggray:hover {
   --bghs: var(--hsgray);
   background: hsl(var(--bghs), var(--l500));
 }
 
-.tblue {
+.tblue, .h\:tblue:hover {
   --ths: var(--hsblue);
   color: hsl(var(--ths), var(--l500));
 }
-.bblue {
+.bblue, .h\:bblue:hover {
   --bhs: var(--hsblue);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bgblue {
+.bgblue, .h\:bgblue:hover {
   --bghs: var(--hsblue);
   background: hsl(var(--bghs), var(--l500));
 }
 
-.tgreen {
+.tgreen, .h\:tgreen:hover {
   --ths: var(--hsgreen);
   color: hsl(var(--ths), var(--l500));
 }
-.bgreen {
+.bgreen, .h\:bgreen:hover {
   --bhs: var(--hsgreen);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bggreen {
+.bggreen, .h\:bggreen:hover {
   --bghs: var(--hsgreen);
   background: hsl(var(--bghs), var(--l500));
 }
 
-.tamber {
+.tamber, .h\:tamber:hover {
   --ths: var(--hsamber);
   color: hsl(var(--ths), var(--l500));
 }
-.bamber {
+.bamber, .h\:bamber:hover {
   --bhs: var(--hsamber);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bgamber {
+.bgamber, .h\:bgamber:hover {
   --bghs: var(--hsamber);
   background: hsl(var(--bghs), var(--l500));
 }
 
-.tred {
+.tred, .h\:tred:hover {
   --ths: var(--hsred);
   color: hsl(var(--ths), var(--l500));
 }
-.bred {
+.bred, .h\:bred:hover {
   --bhs: var(--hsred);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bgred {
+.bgred, .h\:bgred:hover {
   --bghs: var(--hsred);
   background: hsl(var(--bghs), var(--l500));
 }

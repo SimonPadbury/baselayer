@@ -5,7 +5,8 @@
 
 ## 14 Nov 2022 -- v.1.0.5
 
-* Improvements to tables: removing cell borders; adding border-bottom to thead and tr.
+* Added hover states of _colors_, so hover can change a color (not only change a shade).
+* Improvements to tables: removing cell borders; adding border-bottom to `thead` and `tr`.
 * Further improvements to forms and buttons.
 * Added `hmax100vh`.
 * Added `inlineflex`.

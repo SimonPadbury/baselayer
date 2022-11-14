@@ -135,9 +135,9 @@
 <p>The <code>hsl()</code> colors with variables can be adjusted in the root-variables file to correspond to the common user interface (UI) colors (see below), if that’s what you need.</p>
 <p>Color utility classes are prefixed acording to where the color will be applied:</p>
 <ul>
-<li><code>b*</code> — border color</li>
-<li><code>t*</code> — text color</li>
-<li><code>bg*</code> — background color</li>
+<li><code>b*</code> — border color / <code>h:b*</code> — border color hover</li>
+<li><code>t*</code> — text color / <code>h:t*</code> — text color hover</li>
+<li><code>bg*</code> — background color / <code>h:bg*</code> — background color hover</li>
 </ul>
 <p>I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc., so that you can <em>also</em> make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.</p>
 <p>Examples:</p>
@@ -319,15 +319,15 @@
 }
 </code></pre>
 <p>Then, in the <code>colors.css</code> you can create the set of utility classes for text color, border color, and background color (with hover states).</p>
-<pre><code>.tpurple {
-  --ths: var(--purple-hs);
-  color: hsl(var(--ths), var(--l500));
-}
-.bpurple {
+<pre><code>.bpurple, .h\:bpurple:hover {
   --bhs: var(--purple-hs);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bgpurple {
+.tpurple, .h\:tpurple:hover {
+  --ths: var(--purple-hs);
+  color: hsl(var(--ths), var(--l500));
+}
+.bgpurple, .h\:bgpurple:hover {
   --bghs: var(--purple-hs);
   background: hsl(var(--bghs), var(--l500));
 }

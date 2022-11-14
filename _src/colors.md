@@ -26,9 +26,9 @@ The `hsl()` colors with variables can be adjusted in the root-variables file to 
 
 Color utility classes are prefixed acording to where the color will be applied:
 
-* `b*` — border color
-* `t*` — text color
-* `bg*` — background color
+* `b*` — border color / `h:b*` — border color hover
+* `t*` — text color / `h:t*` — text color hover
+* `bg*` — background color / `h:bg*` — background color hover
 
 I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc., so that you can _also_ make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.
 
@@ -224,15 +224,15 @@ To add more colors the “Baselayer way”, you would need to convert them to `h
 Then, in the `colors.css` you can create the set of utility classes for text color, border color, and background color (with hover states).
 
 ```
-.tpurple {
-  --ths: var(--purple-hs);
-  color: hsl(var(--ths), var(--l500));
-}
-.bpurple {
+.bpurple, .h\:bpurple:hover {
   --bhs: var(--purple-hs);
   border-color: hsl(var(--bhs), var(--l500));
 }
-.bgpurple {
+.tpurple, .h\:tpurple:hover {
+  --ths: var(--purple-hs);
+  color: hsl(var(--ths), var(--l500));
+}
+.bgpurple, .h\:bgpurple:hover {
   --bghs: var(--purple-hs);
   background: hsl(var(--bghs), var(--l500));
 }
