@@ -11,10 +11,11 @@ select {
   align-items: center;
   /* -webkit-appearance: none; */
   border-radius: unset;
-  border: var(--b1);
+  border: 0;
   padding: var(--pcell);
   font-family: var(--base);
   text-align: start;
+  background-color: var(--cinput);
 }
 
 select, [type="number"] {
@@ -31,15 +32,16 @@ textarea:focus {
 }
 
 [type="color"] {
-  width: var(--sbtn);
-  height: var(--sbtn);
+  width: var(--si);
+  height: var(--si);
   padding: .25em
 }
 
 input[type="checkbox"],
 input[type="radio"] {
+  position: relative;
   display: inline;
-  width: 1.1em;
+  width: 1.3em;
   height: 1em;
 }
 
@@ -73,7 +75,7 @@ button,
   align-items: center;
   margin: 0;
   border: 0;
-  padding: var(--pbtn);
+  padding: var(--pcell);
   font-family: var(--base);
   text-decoration: none;
   white-space: nowrap;
@@ -108,11 +110,11 @@ button:focus,
 link focus ring insead when you do <a class="btn" href="">...</a>. */
 
 .icon {
-  width: var(--sbtn);
-  height: var(--sbtn);
+  width: var(--si);
+  height: var(--si);
   padding: 0;
 }
 .longread .icon {
-  width: calc(var(--sbtn) + 2px);
-  height: calc(var(--sbtn) + 2px);
+  width: calc(var(--si) + 2px);
+  height: calc(var(--si) + 2px);
 }

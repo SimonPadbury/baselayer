@@ -5,9 +5,8 @@
 
 ## 11 Nov 2022 -- v.1.0.5
 
-* Removed `--btnfw` (button font weight variable).
 * Improvements to tables: removing cell borders; adding border-bottom to thead and tr.
-* Further improvements to forms and buttons for iOS.
+* Further improvements to forms and buttons.
 * Added `hmax100vh`.
 * Added `inlineflex`
 

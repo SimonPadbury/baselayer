@@ -8,7 +8,7 @@ prevLink: "Colors"
 nextLink: "Buttons"
 ---
 
-Baselayer form elements have simple border and focus styling. Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.
+Baselayer form elements have simple background and focus styling (no default border). Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.
 
 ## Textual Form Input Fields
 

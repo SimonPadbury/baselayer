@@ -6,6 +6,8 @@ prevPage: "/forms"
 prevLink: "Forms"
 ---
 
+Baselayer form elements have simple background, hover/active and focus styling (no default border). 
+
 ### Button Types and Link “Buttons”
 
 <form>
