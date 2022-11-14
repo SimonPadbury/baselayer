@@ -91,6 +91,7 @@ button,
   /* white-space: nowrap; */
   color: white;
   background: var(--cbtn);
+  transition: all 0.15s ease;
 }
 
 button:hover,

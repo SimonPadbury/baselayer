@@ -58,6 +58,7 @@ a {
   text-decoration-thickness: var(--dtlink);
   text-underline-offset: var(--dolink);
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 a:hover {
   color: var(--hlink);
