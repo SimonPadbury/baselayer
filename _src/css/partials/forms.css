@@ -38,6 +38,10 @@ textarea:focus {
   box-shadow: var(--focus);
 }
 
+select:not([multiple]) {
+  height: var(--si);
+}
+
 [type="color"] {
   width: var(--si);
   height: var(--si);
