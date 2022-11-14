@@ -294,8 +294,11 @@ Besides those already introduced, Baselayer also has utility classes for:
 * `italic` — font style italic
 * `uppercase` — text transform to capitals
 * `noline` — use to remove the underscore from links where having it may be inappropriate (e.g. in menus)
+* `h:line` – make underscore appear on hover (pair as `noline h:line` on a link)
+  * Example `noline h:line`: <a class="noline h:line" href="http://example.com">example</a>
 * `nowrap` — prevents text wrapping
 * `unlist` — sets `list-style-type: none` on `<ol>`, `<ul>`, or `<li>`. You can use this when you want to use a list in a navigation menu. And you can combine it with `p0` to remove the list inset padding.
+
 
 **Note:** links can also be styled as though they are buttons using the `btn` utility class. See [buttons](/buttons).
 
