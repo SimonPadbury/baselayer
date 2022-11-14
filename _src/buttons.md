@@ -8,7 +8,7 @@ prevLink: "Forms"
 
 Baselayer form elements have simple background, hover/active and focus styling (no default border). 
 
-**Note:** Button text doesn’t get enlarged by the `longread` utility class.
+**Note:** Button text has a set size — it doesn’t get enlarged by the `longread` utility class. This also means that other font-size styles don’t work on buttons. But if you want to enlarge a button (or link `btn`) for any reason, you can use a CSS transform to increate its scale — e.g. `transform: scale(1.25)`
 
 ### Button Types and Link “Buttons”
 
