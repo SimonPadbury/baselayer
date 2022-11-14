@@ -3,12 +3,12 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
-## 11 Nov 2022 -- v.1.0.5
+## 14 Nov 2022 -- v.1.0.5
 
 * Improvements to tables: removing cell borders; adding border-bottom to thead and tr.
 * Further improvements to forms and buttons.
 * Added `hmax100vh`.
-* Added `inlineflex`
+* Added `inlineflex`.
 
 ## 10 Nov 2022 -- v.1.0.4
 

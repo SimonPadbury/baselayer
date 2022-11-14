@@ -94,9 +94,9 @@
     </nav>
 
     <div class="p2 sm:hiddenbelow" style="width: 200px;">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack">&nbsp;mode</button>
+      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
+      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
     <p class="m2 sm:hiddenbelow">
@@ -124,6 +124,7 @@
           </header>
       
           <p>Baselayer form elements have simple background, hover/active and focus styling (no default border).</p>
+<p><strong>Note:</strong> Button text doesn’t get enlarged by the <code>longread</code> utility class.</p>
 <h3 id="button-types-and-link-%E2%80%9Cbuttons%E2%80%9D" tabindex="-1">Button Types and Link “Buttons”</h3>
 <form>
   <p>
@@ -226,7 +227,7 @@
   &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 256 256&quot;&gt;&lt;rect width=&quot;256&quot; height=&quot;256&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;&lt;circle cx=&quot;116&quot; cy=&quot;116&quot; r=&quot;84&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/circle&gt;&lt;line x1=&quot;175.4&quot; y1=&quot;175.4&quot; x2=&quot;224&quot; y2=&quot;224&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;24&quot;&gt;&lt;/line&gt;&lt;/svg&gt;
 &lt;/button&gt;
 </code></pre>
-<p>For icon-only buttons, add <code>.icon</code> and have only a single character or icon in the button.</p>
+<p>For icon-only buttons, add <code>icon</code> and have only a single character or icon in the button.</p>
 <form>
   <p class="flex flex-middle">
     <button type="button" name="button">Button</button>&nbsp;

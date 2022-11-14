@@ -10,6 +10,8 @@ nextLink: "Buttons"
 
 Baselayer form elements have simple background and focus styling (no default border). Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.
 
+**Note:** Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the `longread` utility class.
+
 ## Textual Form Input Fields
 
 <form action="">

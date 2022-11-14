@@ -146,6 +146,7 @@ sub, sup {
 
 .unlist { list-style-type: none; }
 nav a, .noline { text-decoration: none; }
+.h\:line:hover { text-decoration: underline ;}
 .nowrap { white-space: nowrap; }
 
 .big { font-size: 1.25em; }

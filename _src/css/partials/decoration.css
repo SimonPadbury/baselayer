@@ -105,7 +105,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  overflow: hidden;
 }
 
 .opacity25\%, .h\:opacity25\%\:hover { opacity: 0.25; }

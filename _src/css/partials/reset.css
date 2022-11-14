@@ -40,10 +40,6 @@ iframe {
   border: 0;
 }
 
-button, input, select, textarea {
-  font: inherit;
-}
-
 summary {
   cursor: pointer;
 }

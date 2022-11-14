@@ -29,7 +29,7 @@
   --fslongread: clamp(1.125rem, 0.625rem + 1.1111vw, 1.375rem);
 
   /*
-  Un-comment these if your chosen prose (serif) font requires a different  -- 
+  Un-comment these if your chosen prose (serif) font requires different styles -- 
   See also typography.css
   */
   /* --fsprose: 118.75%; /* example 19px */

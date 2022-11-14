@@ -2,18 +2,25 @@ fieldset {
   border: var(--b1);
 }
 
+fieldset, label {
+  font-size: 1rem;
+  font-family: var(--base);
+  line-height: 1.5rem;
+}
+
 input,
 textarea,
 select {
   outline: 0 none;
   width: 100%;
-  display: flex;
-  align-items: center;
+  min-height: var(--si);
   /* -webkit-appearance: none; */
   border-radius: unset;
   border: 0;
   padding: var(--pcell);
+  font-size: 1rem;
   font-family: var(--base);
+  line-height: 1.5rem;
   text-align: start;
   background-color: var(--cinput);
 }
@@ -39,13 +46,14 @@ textarea:focus {
 
 input[type="checkbox"],
 input[type="radio"] {
-  position: relative;
   display: inline;
   width: 1.3em;
   height: 1em;
+  min-height: unset;
 }
 
 input::file-selector-button {
+  margin-top: .25rem;
   border: 0;
   font-size: 1em;
   color: white;
@@ -70,15 +78,17 @@ button,
 .btn {
   position: relative;
   -webkit-appearance: none;
+  height: var(--si);
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   border: 0;
   padding: var(--pcell);
+  font-size: 1rem;
   font-family: var(--base);
   text-decoration: none;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   color: white;
   background: var(--cbtn);
 }
@@ -113,8 +123,5 @@ link focus ring insead when you do <a class="btn" href="">...</a>. */
   width: var(--si);
   height: var(--si);
   padding: 0;
-}
-.longread .icon {
-  width: calc(var(--si) + 2px);
-  height: calc(var(--si) + 2px);
+  line-height: inherit;
 }

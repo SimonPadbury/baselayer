@@ -8,6 +8,8 @@ prevLink: "Forms"
 
 Baselayer form elements have simple background, hover/active and focus styling (no default border). 
 
+**Note:** Button text doesn’t get enlarged by the `longread` utility class.
+
 ### Button Types and Link “Buttons”
 
 <form>
@@ -146,7 +148,7 @@ If your icon is larger then the text height, you can add `flex flex-middle` to t
 </button>
 ```
 
-For icon-only buttons, add `.icon` and have only a single character or icon in the button.
+For icon-only buttons, add `icon` and have only a single character or icon in the button.
 
 <form>
   <p class="flex flex-middle">
