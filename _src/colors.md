@@ -120,12 +120,6 @@ The shades `100` thorugh `900` are a grayscale by default. But if you use them t
 
 Demo of color shades using background colors:
 
-<style>
-  th, td {
-    border: 0;
-  }
-</style>
-
 <div class="overflow-x">
 <table style="table-layout: fixed;">
 <thead>
@@ -148,7 +142,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg100"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg200</code></td>
 <td class="py3 bggray bg200"></td>
 <td class="py3 bgblue bg200"></td>
 <td class="py3 bggreen bg200"></td>
@@ -156,7 +150,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg200"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg300</code></td>
 <td class="py3 bggray bg300"></td>
 <td class="py3 bgblue bg300"></td>
 <td class="py3 bggreen bg300"></td>
@@ -164,7 +158,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg300"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg400</code></td>
 <td class="py3 bggray bg400"></td>
 <td class="py3 bgblue bg400"></td>
 <td class="py3 bggreen bg400"></td>
@@ -172,7 +166,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg400"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg500</code></td>
 <td class="py3 bggray bg500"></td>
 <td class="py3 bgblue bg500"></td>
 <td class="py3 bggreen bg500"></td>
@@ -180,7 +174,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg500"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg600</code></td>
 <td class="py3 bggray bg600"></td>
 <td class="py3 bgblue bg600"></td>
 <td class="py3 bggreen bg600"></td>
@@ -188,7 +182,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg600"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg700</code></td>
 <td class="py3 bggray bg700"></td>
 <td class="py3 bgblue bg700"></td>
 <td class="py3 bggreen bg700"></td>
@@ -196,7 +190,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg700"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg800</code></td>
 <td class="py3 bggray bg800"></td>
 <td class="py3 bgblue bg800"></td>
 <td class="py3 bggreen bg800"></td>
@@ -204,7 +198,7 @@ Demo of color shades using background colors:
 <td class="py3 bgred bg800"></td>
 </tr>
 <tr>
-<td><code>bg100</code></td>
+<td><code>bg900</code></td>
 <td class="py3 bggray bg900"></td>
 <td class="py3 bgblue bg900"></td>
 <td class="py3 bggreen bg900"></td>
@@ -270,7 +264,7 @@ Any color near yellow, such as Baselayer amber, as well as orange and yellow-gre
     <button type="button" name="button">Button</button>
     <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
     <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
-    <button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+    <button class="b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
   </p>
 </form>
 

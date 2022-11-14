@@ -107,12 +107,12 @@ button:focus,
 /* The .btn class doesn’t get this input focus ring. It will get the 
 link focus ring insead when you do <a class="btn" href="">...</a>. */
 
-.btn-icon {
+.icon {
   width: var(--sbtn);
   height: var(--sbtn);
   padding: 0;
 }
-.longread .btn-icon {
+.longread .icon {
   width: calc(var(--sbtn) + 2px);
   height: calc(var(--sbtn) + 2px);
 }

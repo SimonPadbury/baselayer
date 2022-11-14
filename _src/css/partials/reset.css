@@ -4,19 +4,22 @@
  * https://www.joshwcomeau.com/css/custom-css-reset/
  */
 
-*, *::before, *::after {
+
+html {
+  font-size: 100%;
   box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 * {
   margin: 0;
-}
-
-html {
-  font-size: 100%;
-}
-html:focus-within {
-  scroll-behavior: smooth;
 }
 
 body {

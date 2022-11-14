@@ -144,13 +144,13 @@ If your icon is larger then the text height, you can add `flex flex-middle` to t
 </button>
 ```
 
-For icon-only buttons, add `.btn-icon` and have only a single character or icon in the button.
+For icon-only buttons, add `.icon` and have only a single character or icon in the button.
 
 <form>
   <p class="flex flex-middle">
     <button type="button" name="button">Button</button>&nbsp;
-    <button class="btn-icon" type="button" name="button">1</button>&nbsp;
-    <button class="btn-icon" type="button" name="button">
+    <button class="icon" type="button" name="button">1</button>&nbsp;
+    <button class="icon" type="button" name="button">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
     </button>
   </p>
@@ -163,7 +163,7 @@ The `pill` class on a square icon button will make it circular.
 <form>
   <p class="flex flex-middle">
     <button class="pill" type="button" name="button">Button</button>&nbsp;
-    <button class="btn-icon pill" type="button" name="button">
+    <button class="icon pill" type="button" name="button">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
     </button>
   </p>
@@ -172,7 +172,7 @@ The `pill` class on a square icon button will make it circular.
 ```
 <button class="pill" type="button" name="button">Button</button>
 
-<button class="btn-icon pill" type="button" name="button">I</button>
+<button class="icon pill" type="button" name="button">I</button>
 ```
 
 ## Stretch Buttons
