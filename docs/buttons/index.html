@@ -202,7 +202,7 @@
 </code></pre>
 <p><strong>Note:</strong> the <em>named</em> colors (including <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared <em>after</em> the coded colors — in <code>colors.css</code>. This is the reason why, in the green outline (ghost) button, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this property colorizes the hover shade.</p>
 <h2 id="buttons-with-icons" tabindex="-1">Buttons with Icons</h2>
-<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. So, all you need to do is add an ison and it will all line up.</p>
+<p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. So, all you need to do is add an icon and it will all line up.</p>
 <form>
   <p>
     <button type="button" name="button" class="inline-flex">

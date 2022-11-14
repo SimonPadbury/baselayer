@@ -115,7 +115,7 @@ When colorizing buttons, remember to set their hover state shades too.
 
 ## Buttons with Icons
 
-In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, all you need to do is add an ison and it will all line up.
+In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, all you need to do is add an icon and it will all line up.
 
 <form>
   <p>
