@@ -8,6 +8,11 @@ fieldset, label {
   line-height: 1.5rem;
 }
 
+::placeholder {
+  color: var(--ctext);
+  opacity: 1;
+}
+
 input,
 textarea,
 select {
