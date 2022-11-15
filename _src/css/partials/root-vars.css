@@ -68,8 +68,7 @@
   --s2: clamp(1rem, 2.2222vw, 1.5rem);
   --s3: clamp(2rem, 4.4444vw, 3rem);
   --s4: clamp(3rem, 6.6667vw, 4.5rem);
-  --si: 48px; /* inputs and buttons */
-
+  
   --pcell: var(--s1) calc(2 * var(--s1));
 
   /* 
@@ -120,8 +119,11 @@
 
   --focus: 0 0 0 4px hsl(var(--hsblue), var(--l200));
 
-  --cinput: hsl(var(--hsgray), var(--l100)); /* color */
-  --cbtn: hsl(var(--hsgray), var(--l600)); /* color */
+  --si: 48px; /* inputs and buttons */
+  --lhi: 1.5rem;
+  --ci: hsl(var(--hsgray), var(--l100));
+
+  --cbtn: hsl(var(--hsgray), var(--l600)); /* base color */
   --hbtn: hsl(var(--hsgray), var(--l700)); /* hover color */
 
   --bgcode: hsl(var(--hsblue), var(--l100));

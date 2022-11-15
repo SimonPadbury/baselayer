@@ -25,9 +25,9 @@ select {
   padding: var(--pcell);
   font-size: 1rem;
   font-family: var(--base);
-  line-height: 1.5rem;
+  line-height: var(--lhi);
   text-align: start;
-  background-color: var(--cinput);
+  background-color: var(--ci);
 }
 
 select, [type="number"] {
@@ -62,7 +62,6 @@ input[type="radio"] {
 }
 
 input::file-selector-button {
-  margin-top: .25rem;
   border: 0;
   font-size: 1em;
   color: white;
