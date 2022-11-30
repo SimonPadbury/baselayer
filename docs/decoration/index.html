@@ -7,7 +7,7 @@
 
   <title>Decoration · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.5">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -79,7 +79,7 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.5</p>
+        <p class="italic tgray t400">Version 1.0.6</p>
       </details>
     </nav>
 
@@ -104,7 +104,7 @@
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.5</p>
+    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
   </div>
 </div>
 
@@ -176,15 +176,48 @@
 </ul>
 <h2 id="rounded-corners" tabindex="-1">Rounded Corners</h2>
 <ul>
-<li><code>r1</code> — 0.25rem border radius</li>
-<li><code>r2</code> — 0.5rem border radius</li>
-<li><code>r3</code> — 1rem border radius</li>
+<li><code>r2</code> — 4px border radius</li>
+<li><code>r3</code> — 8px border radius</li>
+<li><code>r4</code> — 16px border radius</li>
 </ul>
 <div class="mt2 sm:grid3cols gap">
-  <div class="b1 r1 p1">r1</div>
   <div class="b1 r2 p1">r2</div>
   <div class="b1 r3 p1">r3</div>
+  <div class="b1 r4 p1">r4</div>
 </div>
+<p>Since Baselayer v.1.0.6, border and border-radius variables pair as follows:</p>
+<table class="tcenter">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th class="tcenter">Border variable</th>
+      <th>Border-radius variable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--b1</code></td>
+      <td>n/a</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>--b2</code></td>
+      <td><code>--r2</code></td>
+      <td><code>4px</code></td>
+    </tr>
+    <tr>
+      <td><code>--b3</code></td>
+      <td><code>--r3</code></td>
+      <td><code>8px</code></td>
+    </tr>
+    <tr>
+      <td>n/a</td>
+      <td><code>--r4</code></td>
+      <td><code>16px</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>*<strong>Note:</strong> You will probably never need <code>--r1</code> (a border radius of 1px) or <code>--r4</code> (border radius of 16px) so these are not available in Baselayer.</p>
 <ul>
 <li><code>pill</code> — 99em border radius (more than sufficient to put x-axis semi-circular ends on even mid-sized blocks)</li>
 </ul>

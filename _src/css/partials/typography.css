@@ -93,14 +93,9 @@ td {
   vertical-align: top;
   text-align: center;
 }
-th:first-child,
-td:first-child {
-  text-align: left;
-}
-thead, tr {
+thead, tr:not(:last-of-type) {
   border-bottom: var(--b1);
 }
-
 th, dt {
   font-weight: bold;
 }

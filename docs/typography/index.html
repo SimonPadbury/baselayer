@@ -7,7 +7,7 @@
 
   <title>Typography · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.5">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -79,7 +79,7 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.5</p>
+        <p class="italic tgray t400">Version 1.0.6</p>
       </details>
     </nav>
 
@@ -104,7 +104,7 @@
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.5</p>
+    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
   </div>
 </div>
 
@@ -233,7 +233,13 @@
 <p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or <code>long-read</code> text).</p>
 <p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/posts/2022/colors/">colors</a>). The hover state is a shade darker.</p>
 <h2 id="tables" tabindex="-1">Tables</h2>
-<p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code> tags directly. Cell borders are set by <code>var(--b1)</code> — that is 1px solid light gray. Paddings are set by <code>var(--pcell)</code>. The left column is left-aligned while all other columns are centered. The table headers <code>&lt;th&gt;</code> are bold.</p>
+<p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags directly.</p>
+<ul>
+<li>Paddings are set by <code>var(--pcell)</code>.</li>
+<li>Table headers <code>&lt;th&gt;</code> are bold.</li>
+<li>Rows are divided by a horizontal line (bottom border) on <code>&lt;thead&gt;</code> and <code>&lt;tr&gt;</code> (except for the last row, that has no bottom border). This line is set by <code>var(--b1)</code> — i.e. 1px solid light gray.</li>
+</ul>
+<p>Since Baselayer v.1.0.6, all cell content is center-aligned. You can change that on a per-cell basis using the <code>right</code> or <code>left</code> text alignment classes.</p>
 <table>
   <caption>This is a Table Caption</caption>
   <thead>
@@ -298,7 +304,7 @@
 &lt;/div&gt;
 </code></pre>
 <h3 id="controlling-table-styling" tabindex="-1">Controlling Table Styling</h3>
-<p><em>What if this classless table styling is incompatible with something else in your design system?</em> You can go into Baselayer’s <code>typography.css</code>, find its table styling and prefix it all with a class of your choice. In an example of how to do that below, first, the HTML tag <code>table</code> style simply has a dot <code>.</code> prefix added. Then the class <code>.table</code> has been inserted before the Baselayer default table styling:</p>
+<p><em>What if this classless table styling is incompatible with something else in your design system?</em> You can go into Baselayer’s <code>typography.css</code>, find its table styling and <em>prefix</em> it all with a class of your choice. In an example of how to do that below, first, the HTML tag <code>table</code> style simply has a dot <code>.</code> prefix added. Then the class <code>.table</code> has been inserted before the Baselayer default table styling:</p>
 <pre><code>.table {
   width: 100%;
   border-collapse: collapse;
@@ -311,11 +317,9 @@
   vertical-align: top;
   text-align: center;
 }
-.table th:first-child,
-.table td:first-child {
-  text-align: left;
+thead, tr:not(:last-of-type) {
+  border-bottom: var(--b1);
 }
-
 .table th {
   font-weight: bold;
 }

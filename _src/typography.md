@@ -160,7 +160,13 @@ Link color is set by `var(--link-color)`, which is the Baselayer theme middle bl
 
 ## Tables
 
-Baselayer tables simply style `<table>`, `<th>`, and `<td>` tags directly. Cell borders are set by `var(--b1)` — that is 1px solid light gray. Paddings are set by `var(--pcell)`. The left column is left-aligned while all other columns are centered. The table headers `<th>` are bold.
+Baselayer tables simply style `<table>`, `<th>`, `<tr>` and `<td>` tags directly. 
+
+* Paddings are set by `var(--pcell)`. 
+* Table headers `<th>` are bold. 
+* Rows are divided by a horizontal line (bottom border) on `<thead>` and `<tr>` (except for the last row, that has no bottom border). This line is set by `var(--b1)` — i.e. 1px solid light gray.
+
+Since Baselayer v.1.0.6, all cell content is center-aligned. You can change that on a per-cell basis using the `right` or `left` text alignment classes.
 
 <table>
   <caption>This is a Table Caption</caption>
@@ -234,7 +240,7 @@ If you have a lot of content in your table, it will probably break your page lay
 
 ### Controlling Table Styling
 
-_What if this classless table styling is incompatible with something else in your design system?_ You can go into Baselayer’s `typography.css`, find its table styling and prefix it all with a class of your choice. In an example of how to do that below, first, the HTML tag `table` style simply has a dot `.` prefix added. Then the class `.table` has been inserted before the Baselayer default table styling:
+_What if this classless table styling is incompatible with something else in your design system?_ You can go into Baselayer’s `typography.css`, find its table styling and _prefix_ it all with a class of your choice. In an example of how to do that below, first, the HTML tag `table` style simply has a dot `.` prefix added. Then the class `.table` has been inserted before the Baselayer default table styling:
 
 ```
 .table {
@@ -249,11 +255,9 @@ _What if this classless table styling is incompatible with something else in you
   vertical-align: top;
   text-align: center;
 }
-.table th:first-child,
-.table td:first-child {
-  text-align: left;
+thead, tr:not(:last-of-type) {
+  border-bottom: var(--b1);
 }
-
 .table th {
   font-weight: bold;
 }

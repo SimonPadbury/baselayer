@@ -79,15 +79,51 @@ Borders can be set as follows:
 
 ## Rounded Corners
 
-* `r1` — 0.25rem border radius
-* `r2` — 0.5rem border radius
-* `r3` — 1rem border radius
+* `r2` — 4px border radius
+* `r3` — 8px border radius
+* `r4` — 16px border radius
 
 <div class="mt2 sm:grid3cols gap">
-  <div class="b1 r1 p1">r1</div>
   <div class="b1 r2 p1">r2</div>
   <div class="b1 r3 p1">r3</div>
+  <div class="b1 r4 p1">r4</div>
 </div>
+
+Since Baselayer v.1.0.6, border and border-radius variables pair as follows:
+
+<table class="tcenter">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th class="tcenter">Border variable</th>
+      <th>Border-radius variable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--b1</code></td>
+      <td>n/a</td>
+      <td><code>1px</code></td>
+    </tr>
+    <tr>
+      <td><code>--b2</code></td>
+      <td><code>--r2</code></td>
+      <td><code>4px</code></td>
+    </tr>
+    <tr>
+      <td><code>--b3</code></td>
+      <td><code>--r3</code></td>
+      <td><code>8px</code></td>
+    </tr>
+    <tr>
+      <td>n/a</td>
+      <td><code>--r4</code></td>
+      <td><code>16px</code></td>
+    </tr>
+  </tbody>
+</table>
+
+***Note:** You will probably never need `--r1` (a border radius of 1px) or `--r4` (border radius of 16px) so these are not available in Baselayer.
 
 * `pill` — 99em border radius (more than sufficient to put x-axis semi-circular ends on even mid-sized blocks)
 

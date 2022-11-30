@@ -1,6 +1,6 @@
 # Baselayer
 
-v.1.0.5
+v.1.0.6
 
 Baselayer is a splendiferous yet miniscule CSS library.
 
@@ -20,7 +20,7 @@ Ready to use as-is, Baselayer gives you all this and more:
 * Styled form elements and buttons
 * Control of many of these things using CSS variables (custom properties)
 
-Believe it or not, all this is packed into a tiny CSS file, **14kb**.
+Believe it or not, all this is packed into a tiny CSS file, **15kb**.
 
 Baselayer uses some modern web technologies such as CSS Grid and CSS variables, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.
 

@@ -132,9 +132,9 @@
   --b2: 4px solid hsl(var(--hsgray), var(--l200));
   --b3: 8px solid hsl(var(--hsgray), var(--l200));
 
-  --r1: .25em;
-  --r2: .5em;
-  --r3: 1em;
+  --r2: 4px;
+  --r3: 8px;
+  --r4: 16px;
 }
 
 @custom-media --min-sm (min-width: 720px);

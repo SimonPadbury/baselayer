@@ -3,6 +3,12 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 30 Nov 2022 -- v.1.0.6
+
+* Added `--b4` tier for borders
+* Refactored border radius to `--r2` through `--r4` to pair with borders `--b2` through `--b4`. And now both are set in pixels. (There is no `--r1` because no need for a 1px border radius.)
+* Removed the forced left-alignment of the first column of cells in `<table>`.
+
 ## 14 Nov 2022 -- v.1.0.5
 
 * Added hover states of _colors_, so hover can change a color (not only change a shade).

@@ -95,9 +95,9 @@
 .bl2 { border-left: var(--b2); }
 .bl3 { border-left: var(--b3); }
 
-.r1 { border-radius: var(--r1); }
 .r2 { border-radius: var(--r2); }
 .r3 { border-radius: var(--r3); }
+.r4 { border-radius: var(--r4); }
 .pill { border-radius: 99em; }
 
 .cover {
