@@ -203,7 +203,9 @@ Here’s that example again, but with a gap: `sm:grid4cols dense gap`
 `contentgrid` uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max `var(--wsm)`.
 
 * Use the `popout` utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width `var(--s2)`.
-* Use the `expand` utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width `var(--wmd)`.
+* Use the `expand` utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width `var(--wmd)`. There are also:
+  * `expand-right` expands only to the right (columns 4 to 6)
+  * `expand-left` expands only to the left (columns 2 to 4)
 * Use the `fullbleed` utility class to make an element span all 7 columns.
 
 **Note:** Columns 1 and 7 have a minimum width of `var(--s2)`. Therefore both `popout`, `expand` and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the `contentgrid` wrapper. Therefore, on smaller viewports `popout` and `expand` will adopt the same width as the middle content column.
@@ -249,6 +251,20 @@ Image from [Lorem Pixum](https://picsum.photos/).
   </div>
 </div>
 ```
+
+Asymmetrical expand examples:
+
+`expand-right`:
+
+<div class="expand-right">
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+</div>
+
+`expand-left`:
+
+<div class="expand-left">
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+</div>
 
 ### Full Bleed Panels
 

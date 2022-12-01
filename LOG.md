@@ -6,6 +6,7 @@
 ## 1 Dec 2022 -- v.1.0.7
 
 * Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
+* Added `expand-right` and `expand-left`.
 
 ## 30 Nov 2022 -- v.1.0.6
 

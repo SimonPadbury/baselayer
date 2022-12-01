@@ -287,7 +287,12 @@
 <p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>var(--wsm)</code>.</p>
 <ul>
 <li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width <code>var(--s2)</code>.</li>
-<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>.</li>
+<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>. There are also:
+<ul>
+<li><code>expand-right</code> expands only to the right (columns 4 to 6)</li>
+<li><code>expand-left</code> expands only to the left (columns 2 to 4)</li>
+</ul>
+</li>
 <li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns.</li>
 </ul>
 <p><strong>Note:</strong> Columns 1 and 7 have a minimum width of <code>var(--s2)</code>. Therefore both <code>popout</code>, <code>expand</code> and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the <code>contentgrid</code> wrapper. Therefore, on smaller viewports <code>popout</code> and <code>expand</code> will adopt the same width as the middle content column.</p>
@@ -322,6 +327,15 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
+<p>Asymmetrical expand examples:</p>
+<p><code>expand-right</code>:</p>
+<div class="expand-right">
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+</div>
+<p><code>expand-left</code>:</p>
+<div class="expand-left">
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+</div>
 <h3 id="full-bleed-panels" tabindex="-1">Full Bleed Panels</h3>
 <p>If your layout has no sidebars, side spacing (margin or padding) or other object that constrains the width of your <code>contentgrid</code> column, then <code>fullbleed</code> will expand to the full width of the viewport.</p>
 <p>Example colored stripe using <code>fullbleed</code>:</p>

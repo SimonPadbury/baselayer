@@ -131,6 +131,8 @@ Content grid
 .contentgrid > * { grid-column: 4; }
 .popout { grid-column: 3 / span 3; }
 .expand { grid-column: 2 / span 5; }
+.expand-right { grid-column: 4 / span 3; }
+.expand-left { grid-column: 2 / span 3; }
 .fullbleed { grid-column: 1 / span 7; }
 
 .contentgrid > hr + * {  margin-top: 0; }
