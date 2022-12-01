@@ -121,9 +121,9 @@ Using _CSS Grid_.
 
 Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids can be combined, for three layouts:
 
-* _There is no grid below_ `sm` _for small phones_
+* _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still heppening. This ensures that the grid `gap` works at all viewpoer widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
 * large phones (landscape orientation), and tablets up (`sm` at 720px up)
-* large “pro” tablets (landscape orientation) up (`md` at 1080px)
+* large “pro” tablets (landscape orientation), laptops, and up (`md` at 1080px up)
 
 ### Grid classes
 
@@ -181,6 +181,16 @@ If your layout leaves gaps but you want them filled by reordering the items, the
 `sm:grid4cols dense` (same as above, plus `dense`):
 
 <div class="mt2 sm:grid4cols dense">
+  <div class="p1 bgred twhite">Item 1</div>
+  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
+  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
+  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
+  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+</div>
+
+Here’s that example again, but with a gap: `sm:grid4cols dense gap`
+
+<div class="mt2 sm:grid4cols dense gap">
   <div class="p1 bgred twhite">Item 1</div>
   <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
   <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>

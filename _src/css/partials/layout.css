@@ -45,6 +45,8 @@
 .flexspace { justify-content: space-between; }
 .grow { flex-grow: 1; }
 
+[class*=grid]{ display:grid } /* so that `grid gap` works at all viewport widths */
+
 @media (--min-sm) {
   .sm\:flex {
     display: flex;

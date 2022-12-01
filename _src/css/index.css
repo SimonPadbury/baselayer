@@ -1,7 +1,8 @@
 /*!
-Baselayer CSS v.1.0.6
+Baselayer CSS v.1.0.7
 https://github.com/SimonPadbury/baselayer
 */
+
 @import "/partials/root-vars.css";
 @import "/partials/reset.css";
 @import "/partials/base.css";

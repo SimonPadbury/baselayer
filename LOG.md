@@ -3,6 +3,10 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 1 Dec 2022 -- v.1.0.7
+
+* Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
+
 ## 30 Nov 2022 -- v.1.0.6
 
 * Added `--b4` tier for borders
