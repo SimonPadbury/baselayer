@@ -1,5 +1,5 @@
 <div id="site-nav" class="bggray bg800">
-  <div class="sticky top overflowy" style="max-height: 100vh;">
+  <div class="sticky top hmax100% overflowy">
     <div class="py2 flex flexcolumn center">
       <a href="{{ '/' | url }}" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
@@ -50,6 +50,9 @@
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 md:hiddenbelow">Version {{ metadata.version }}</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">
+      Version {{ metadata.version }}<br/>
+      Filesize {{ metadata.filesize }}
+    </p>
   </div>
 </div>

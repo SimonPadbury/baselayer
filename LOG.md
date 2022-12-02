@@ -3,13 +3,14 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
-## 1 Dec 2022 -- v.1.0.7
+## 1 Dec 2022 -- v.1.1.0
 
 * Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
-* Added `expand-right` and `expand-left`.
+* Added `expand-right` and `expand-left` to the content grid.
+* Width variables now in 7 × 256px increments, `xxs` -- `xxl` (256, 512, 768, 1024, 1280, 1440, 1600) px.
+* Another tier of invisibility classes: `lg`.
 * Improved form elements.
 * Improved typography.
-* Width variables now in 256px increments, xxs -- xxl (256, 512, 768, 1024, 1280, 1440, 1600) px.
 
 ## 30 Nov 2022 -- v.1.0.6
 
