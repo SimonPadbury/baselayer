@@ -113,7 +113,7 @@
           <div class="sticky top p2" style="width: 320px;">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li></ul>
+        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
       </nav>
           </div>
         </div>
@@ -231,7 +231,7 @@
 </blockquote>
 <h2 id="the-link-tag" tabindex="-1">The Link Tag</h2>
 <p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or <code>long-read</code> text).</p>
-<p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/posts/2022/colors/">colors</a>). The hover state is a shade darker.</p>
+<p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/baselayer/colors/">colors</a>). The hover state is a shade darker.</p>
 <h2 id="tables" tabindex="-1">Tables</h2>
 <p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags directly.</p>
 <ul>
@@ -355,13 +355,22 @@ thead, tr:not(:last-of-type) {
 <li><code>nowrap</code> — prevents text wrapping</li>
 <li><code>unlist</code> — sets <code>list-style-type: none</code> on <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, or <code>&lt;li&gt;</code>. You can use this when you want to use a list in a navigation menu. And you can combine it with <code>p0</code> to remove the list inset padding.</li>
 </ul>
-<p><strong>Note:</strong> links can also be styled as though they are buttons using the <code>btn</code> utility class. See <a href="/buttons">buttons</a>.</p>
-<pre><code>&lt;ul class=&quot;unlist p0&quot;&gt;
-  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a class=&quot;noline&quot; href=&quot;&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Note:</strong> links can also be styled as though they are buttons using the <code>btn</code> utility class. See <a href="/baselayer/buttons">buttons</a>.</p>
+<h2 id="simple-menus" tabindex="-1">Simple Menus</h2>
+<p>If you wrap links in a <code>&lt;nav&gt;</code> tag, as you should do when creating a menu, then the links have their underscores removed. (There is no need to use <code>noline</code> inside a <code>&lt;nav&gt;</code> tag.)</p>
+<p>Simple can created in this way, whether or not you involve an <code>&lt;ul&gt;</code> unordered list. Example:</p>
+<nav class="mt3 mb2">
+  <a class="pcell bggray bg100 h:bg200" href="#/">Home</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">About</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">Contact</a>
+</nav>
+<pre><code>&lt;nav&gt;
+  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;Home&lt;/a&gt;
+  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;About&lt;/a&gt;
+  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
 </code></pre>
+<p>For more information on <code>pcell</code> see decoration <a href="/baselayer/decoration/#spacing-extras">spacing extras</a>. And for how Baselayer colors work, see <a href="/baselayer/colors">colors</a>.</p>
 
       
           <footer class="mb4">

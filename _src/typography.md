@@ -156,7 +156,7 @@ Otherwise, blockquotes have the same as paragraph styling.
 
 The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or `long-read` text).
 
-Link color is set by `var(--link-color)`, which is the Baselayer theme middle blue (see [colors](/posts/2022/colors/)). The hover state is a shade darker.
+Link color is set by `var(--link-color)`, which is the Baselayer theme middle blue (see [colors](/baselayer/colors/)). The hover state is a shade darker.
 
 ## Tables
 
@@ -303,13 +303,26 @@ Besides those already introduced, Baselayer also has utility classes for:
 * `nowrap` — prevents text wrapping
 * `unlist` — sets `list-style-type: none` on `<ol>`, `<ul>`, or `<li>`. You can use this when you want to use a list in a navigation menu. And you can combine it with `p0` to remove the list inset padding.
 
+**Note:** links can also be styled as though they are buttons using the `btn` utility class. See [buttons](/baselayer/buttons).
 
-**Note:** links can also be styled as though they are buttons using the `btn` utility class. See [buttons](/buttons).
+## Simple Menus
+
+If you wrap links in a `<nav>` tag, as you should do when creating a menu, then the links have their underscores removed. (There is no need to use `noline` inside a `<nav>` tag.)
+
+Simple can created in this way, whether or not you involve an `<ul>` unordered list. Example:
+
+<nav class="mt3 mb2">
+  <a class="pcell bggray bg100 h:bg200" href="#/">Home</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">About</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">Contact</a>
+</nav>
 
 ```
-<ul class="unlist p0">
-  <li><a class="noline" href="">Home</a></li>
-  <li><a class="noline" href="">About</a></li>
-  <li><a class="noline" href="">Contact</a></li>
-</ul>
+<nav>
+  <a class="pcell bggray bg100 h:bg200" href="#/">Home</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">About</a>
+  <a class="pcell bggray bg100 h:bg200" href="#/">Contact</a>
+</nav>
 ```
+
+For more information on `pcell` see decoration [spacing extras](/baselayer/decoration/#spacing-extras). And for how Baselayer colors work, see [colors](/baselayer/colors).
