@@ -8,9 +8,12 @@ prevLink: "Colors"
 nextLink: "Buttons"
 ---
 
-Baselayer form elements have simple background and focus styling (no default border). Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.
+Baselayer form elements have simple background and focus styling (no default border).
 
-**Note:** Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the `longread` utility class.
+**Notes:**
+
+1. \[Since v.1.0.7] Widths have not been set on form elements. You can control widths them either as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or by the `w100%` utility class.
+2. Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the `longread` utility class.
 
 ## Textual Form Input Fields
 
@@ -149,7 +152,7 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
 <form action="">
   <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input class="w100%" type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>
@@ -160,7 +163,7 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
 <form action="">
   <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input class="w100%" type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>

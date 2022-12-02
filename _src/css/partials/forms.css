@@ -2,10 +2,10 @@ fieldset {
   border: var(--b1);
 }
 
-fieldset, label {
+label, legend {
   font-size: 1rem;
   font-family: var(--base);
-  line-height: 1.5rem;
+  line-height: var(--lhi);
 }
 
 ::placeholder {
@@ -17,11 +17,11 @@ input,
 textarea,
 select {
   outline: 0 none;
-  width: 100%;
+  /* width: 100%; */
   min-height: var(--si);
   /* -webkit-appearance: none; */
-  border-radius: unset;
   border: 0;
+  border-radius: unset;
   padding: var(--pcell);
   font-size: 1rem;
   font-family: var(--base);
@@ -64,15 +64,9 @@ input[type="radio"] {
 input::file-selector-button {
   border: 0;
   font-size: 1em;
+  line-height: var(--lhi);
   color: white;
   background: var(--cbtn);
-}
-
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  display: inline-block;
-  width: auto;
 }
 
 :disabled:hover {
@@ -125,8 +119,8 @@ button:focus,
   outline: 0;
   box-shadow: var(--focus);
 }
-/* The .btn class doesn’t get this input focus ring. It will get the 
-link focus ring insead when you do <a class="btn" href="">...</a>. */
+/* Note: The .btn class doesn’t get this input focus ring. As normal, it will 
+get the link focus ring insead when you do <a class="btn" href="">...</a>. */
 
 .icon {
   width: var(--si);

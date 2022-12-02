@@ -7,7 +7,7 @@
 
   <title>Typography · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.7">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -51,7 +51,7 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh sm:flex">
+  <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top overflowy" style="max-height: 100vh;">
     <div class="py2 flex flexcolumn center">
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 sm:hidden pcell twhite">
+    <nav class="pb2 md:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,11 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.6</p>
+        <p class="italic tgray t400">Version 1.0.7</p>
       </details>
     </nav>
 
-    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+    <nav class="md:hiddenbelow wxxs px2"">
       <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
@@ -93,24 +93,24 @@
       <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hiddenbelow" style="width: 200px;">
+    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
       <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
-    <p class="m2 sm:hiddenbelow">
+    <p class="m2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">Version 1.0.7</p>
   </div>
 </div>
 
-      <main id="main-content" class="flex">
-        <div id="toc" class="md:hiddenbelow" style="order: 2;">
-          <div class="sticky top p2" style="width: 320px;">
+      <main id="main-content" class="grow flex">
+        <div id="toc" class="lg:hiddenbelow" style="order: 2;">
+          <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
         <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
@@ -144,12 +144,12 @@
 <p>The base font size and line height (used throughout Baselayer, not only on default text) is set as variales in <code>root-variables.css</code>:</p>
 <pre><code>:root {
   --fsbase: 18px;
-  --lineheight: clamp(calc(1em + .5rem), calc(1em + 1.1111vw), calc(1em + .75rem);
+  --lh: clamp(1em + .5rem, .75rem + 1.5625vw, 1em + 1rem);
 }
 </code></pre>
 <p>The browser default font size is usually 16px, but the Baselayer <code>--fsbase</code> (default font size) is set slightly larger at 18px. This 18px is the value of <code>1rem</code> thorughout Baselayer.</p>
 <h3 id="line-heights" tabindex="-1">Line Heights</h3>
-<p>Line heights are controlled by a CSS <code>clamp</code> in the variable <code>--lh</code>. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the font-size. This expands to 1.75× the font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp <code>1em + 1.1111vw</code> makes the expansion (ramp) range from viewport widths 720px to 1080px — the same range as that between the <code>sm</code> to <code>md</code> default breakpoints). Thus, with the base font size of 18px, <code>--lh</code> starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.</p>
+<p>Line heights are controlled by a CSS <code>clamp</code> in the variable <code>--lh</code>. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the base font-size. This expands to 1.75× the base font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp <code>.75rem + 1.5625vw</code> makes the expansion (ramp) range from viewport widths 768px to 1020px — the same range as that between the <code>sm</code> to <code>lg</code> default breakpoints). Thus, with the base font size of 18px, <code>--lh</code> starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.</p>
 <p>The line heights of all text in Baselayer are set by this responsive <code>--lh</code> variable — including headings. The <code>calc()</code> function makes the line heights “tighter” for the larger headings, as you would want them to be.</p>
 <h3 id="body-tag-styling" tabindex="-1">Body Tag Styling</h3>
 <p>These variables, along with a few more, are deployed in <code>base.css</code> on the <code>&lt;body&gt;</code> tag:</p>

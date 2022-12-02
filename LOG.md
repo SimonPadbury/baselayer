@@ -7,6 +7,9 @@
 
 * Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
 * Added `expand-right` and `expand-left`.
+* Improved form elements.
+* Improved typography.
+* Width variables now in 256px increments, xxs -- xxl (256, 512, 768, 1024, 1280, 1440, 1600) px.
 
 ## 30 Nov 2022 -- v.1.0.6
 

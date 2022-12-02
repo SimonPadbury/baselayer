@@ -51,12 +51,12 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh sm:flex">
+  <div class="h100vh md:flex">
     {% include "includes/site-nav.njk" %}
 
-      <main id="main-content" class="flex">
-        <div id="toc" class="md:hiddenbelow" style="order: 2;">
-          <div class="sticky top p2" style="width: 320px;">
+      <main id="main-content" class="grow flex">
+        <div id="toc" class="lg:hiddenbelow" style="order: 2;">
+          <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             {{ content | toc | safe }}
           </div>

@@ -7,7 +7,7 @@
 
   <title>Layout · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.7">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -51,7 +51,7 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh sm:flex">
+  <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top overflowy" style="max-height: 100vh;">
     <div class="py2 flex flexcolumn center">
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 sm:hidden pcell twhite">
+    <nav class="pb2 md:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,11 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.6</p>
+        <p class="italic tgray t400">Version 1.0.7</p>
       </details>
     </nav>
 
-    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+    <nav class="md:hiddenbelow wxxs px2"">
       <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
@@ -93,24 +93,24 @@
       <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hiddenbelow" style="width: 200px;">
+    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
       <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
-    <p class="m2 sm:hiddenbelow">
+    <p class="m2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">Version 1.0.7</p>
   </div>
 </div>
 
-      <main id="main-content" class="flex">
-        <div id="toc" class="md:hiddenbelow" style="order: 2;">
-          <div class="sticky top p2" style="width: 320px;">
+      <main id="main-content" class="grow flex">
+        <div id="toc" class="lg:hiddenbelow" style="order: 2;">
+          <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
         <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex">Flex</a><ul><li><a href="#flex-classes">Flex classes</a></li><li><a href="#flex-modifier-classes">Flex modifier classes</a></li><li><a href="#flex-item-class">Flex-item class</a></li></ul></li><li><a href="#grid">Grid</a><ul><li><a href="#grid-classes">Grid classes</a></li><li><a href="#grid-item-classes">Grid-item classes</a></li></ul></li><li><a href="#content-grid">Content Grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
@@ -127,8 +127,8 @@
 <ul>
 <li><code>block</code> — make an inline element behave as a block element</li>
 <li><code>inline-block</code> — to enable block-like settings on an inline element (width, height, margins, paddings)</li>
-<li><code>flex</code> — <a href="#flex">see below</a></li>
-<li><code>grid</code> — <a href="#grid">see below</a></li>
+<li><code>inlineflex</code>, <code>flex</code> — <a href="#flex">see flex below</a></li>
+<li><code>grid</code> — <a href="#grid">see grid below</a></li>
 </ul>
 <h2 id="containers" tabindex="-1">Containers</h2>
 <p>The centered layout container <code>container</code> with is set as follows:</p>
@@ -149,11 +149,19 @@
 <p>For narrower containers, use the max-width classes as modifiers: <code>container wmd</code> or <code>container wsm</code>.</p>
 <p>See also how to set up a content grid using <code>content</code> below.</p>
 <h2 id="dimensions" tabindex="-1">Dimensions</h2>
-<p>Constrained widths:</p>
+<p>Width:</p>
 <ul>
-<li><code>wlg</code> — max-width 1440px, from <code>var(--wlg)</code></li>
-<li><code>wmd</code> — max-width 1080px, from <code>var(--wmd)</code></li>
-<li><code>wsm</code> — max-width 720px, from <code>var(--wsm)</code></li>
+<li><code>w100%</code> — width: 100%</li>
+</ul>
+<p>Constrained widths (256 increments, 7 variants, since Baselayer v1.0.7):</p>
+<ul>
+<li><code>wxxl</code> — max-width 1600px, from <code>var(--wxxl)</code></li>
+<li><code>wxl</code> — max-width 1440px, from <code>var(--wxl)</code></li>
+<li><code>wlg</code> — max-width 1280px, from <code>var(--wlg)</code></li>
+<li><code>wmd</code> — max-width 1024px, from <code>var(--wmd)</code></li>
+<li><code>wsm</code> — max-width 768px, from <code>var(--wsm)</code></li>
+<li><code>wxs</code> — max-width 512px, from <code>var(--wxs)</code></li>
+<li><code>wxxs</code> — max-width 256px, from <code>var(--wxxs)</code></li>
 <li><code>w50vw</code> — max-width 50vw</li>
 <li><code>w100vw</code> — max-width 100vw</li>
 </ul>
@@ -329,12 +337,12 @@
 </code></pre>
 <p>Asymmetrical expand examples:</p>
 <p><code>expand-right</code>:</p>
-<div class="expand-right">
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+<div class="mt2 pcell expand-right tblack bggray bg200">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
 </div>
 <p><code>expand-left</code>:</p>
-<div class="expand-left">
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+<div class="mt2 pcell expand-left tblack bggray bg200">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
 </div>
 <h3 id="full-bleed-panels" tabindex="-1">Full Bleed Panels</h3>
 <p>If your layout has no sidebars, side spacing (margin or padding) or other object that constrains the width of your <code>contentgrid</code> column, then <code>fullbleed</code> will expand to the full width of the viewport.</p>

@@ -7,7 +7,7 @@
 
   <title>Baselayer · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.7">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -51,7 +51,7 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh sm:flex">
+  <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top overflowy" style="max-height: 100vh;">
     <div class="py2 flex flexcolumn center">
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 sm:hidden pcell twhite">
+    <nav class="pb2 md:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,11 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.6</p>
+        <p class="italic tgray t400">Version 1.0.7</p>
       </details>
     </nav>
 
-    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+    <nav class="md:hiddenbelow wxxs px2"">
       <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
@@ -93,27 +93,27 @@
       <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hiddenbelow" style="width: 200px;">
+    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
       <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
-    <p class="m2 sm:hiddenbelow">
+    <p class="m2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">Version 1.0.7</p>
   </div>
 </div>
 
-      <main id="main-content" class="flex">
-        <div id="toc" class="md:hiddenbelow" style="order: 2;">
-          <div class="sticky top p2" style="width: 320px;">
+      <main id="main-content" class="grow flex">
+        <div id="toc" class="lg:hiddenbelow" style="order: 2;">
+          <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#built-using-postcss">Built using PostCSS</a></li><li><a href="#modern-css-reset">Modern CSS Reset</a></li><li><a href="#basic-accessibility-features">Basic Accessibility Features</a><ul><li><a href="#focus-rings">Focus Rings</a></li><li><a href="#the-visually-hidden-class">The Visually-Hidden Class</a></li></ul></li></ul>
+        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#built-using-postcss">Built using PostCSS</a></li><li><a href="#modern-css-reset">Modern CSS Reset</a></li><li><a href="#basic-accessibility-features">Basic Accessibility Features</a><ul><li><a href="#(1.)-focus-rings">(1.) Focus Rings</a></li><li><a href="#(2.)-the-visually-hidden-class">(2.) The Visually-Hidden Class</a></li></ul></li></ul>
       </nav>
           </div>
         </div>
@@ -151,40 +151,34 @@
 <p>Then, Baselayer takes care of the basics by setting some minimalist, easy-to-read typography, and styles for buttons and forms.</p>
 <h2 id="basic-accessibility-features" tabindex="-1">Basic Accessibility Features</h2>
 <p>Baselayer has two basic accessibility features built-in.</p>
-<h3 id="focus-rings" tabindex="-1">Focus Rings</h3>
-<ul>
-<li>
-<p><strong>Form Focus Ring</strong></p>
+<h3 id="(1.)-focus-rings" tabindex="-1">(1.) Focus Rings</h3>
+<p><strong>(a.) Form focus ring:</strong></p>
 <p>For form inputs and buttons, there’s a 4px light blue ring (see <a href="/colors">colors</a>). Example:</p>
-  <form>
-    <fieldset class="flex">
-      <legend>Example e-newsletter subscribe</legend>
-      <input type="email" id="example-input-email" placeholder="Enter email">
-      <input type="submit" name="submit" value="Subscribe">
-    </fieldset>
-  </form>
+<form>
+  <fieldset class="flex">
+    <legend>Example e-newsletter subscribe</legend>
+    <input class="w100%" type="email" id="example-input-email" placeholder="Enter email">
+    <input type="submit" name="submit" value="Subscribe">
+  </fieldset>
+</form>
 <p>The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.</p>
-</li>
-<li>
-<p><strong>Link Focus Ring</strong></p>
+<p><strong>(b.) Link focus ring:</strong></p>
 <p>For links, collapsible <code>&lt;details&gt;</code>, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear <em>between</em> the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:</p>
-  <div class="mt2 b1 b600 sm:grid3cols">
-    <div class="p3 flex flexcolumn flexcenter flexmiddle">
-    <p><a href="/#">Link</a></p>
-    <p><button type="button">Button</button></p>
-    </div>
-    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
-    <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
-    <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
-    </div>
-    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
-    <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
-    <p><button type="button">Button</button></p>
-    </div>
+<div class="mt2 b1 b600 sm:grid3cols">
+  <div class="p3 flex flexcolumn flexcenter flexmiddle">
+  <p><a href="/#">Link</a></p>
+  <p><button type="button">Button</button></p>
   </div>
-</li>
-</ul>
-<h3 id="the-visually-hidden-class" tabindex="-1">The Visually-Hidden Class</h3>
+  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
+  <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
+  <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
+  </div>
+  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
+  <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
+  <p><button type="button">Button</button></p>
+  </div>
+</div>
+<h3 id="(2.)-the-visually-hidden-class" tabindex="-1">(2.) The Visually-Hidden Class</h3>
 <p>The <code>visuallyhidden</code> is used for “skip links”, such as the visually-hidden link above the top navigation bar on this website.</p>
 <pre><code>&lt;a 
   href=&quot;#main-content&quot;

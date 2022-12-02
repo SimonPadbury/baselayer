@@ -17,16 +17,15 @@
   --fsdefault: 112.5%; /* 18px */
   --fsmono: 100%; /* 16px */
 
-  --lh: clamp(calc(1em + .5rem), calc(1em + 1.1111vw), calc(1em + .75rem));
-
+  --lh: clamp(1em + .5rem, .75rem + 1.5625vw, 1em + 1rem);
   --normal: 400;
   --bold: 700;
 
   /*
   Long-read based on https://clamp.font-size.app/, 
-  expanding from 720px to 1080px
+  expanding from 768px to 1280px
   */
-  --fslongread: clamp(1.125rem, 0.625rem + 1.1111vw, 1.375rem);
+  --fslongread: clamp(1.125rem, .7875rem + .7031vw, 1.35rem);
 
   /*
   Un-comment these if your chosen prose (serif) font requires different styles -- 
@@ -35,18 +34,22 @@
   /* --fsprose: 118.75%; /* example 19px */
   /* --nprose: 300; /* example */
   /* --strprose: 600; /* example */
-  /* --fslongread-prose: clamp(1.1875rem, 0.6625rem + 1.1667vw, 1.45rem); /* example if font size 19px */
+  /* --fslongread-prose: clamp(1.1875rem, 0.7938rem + 0.8203vw, 1.45rem); /* e.g. if prose font size 19px */
 
   /*
-  360px intervals.
+  256px intervals.
   If you change these, remember to also change 
   the @custom-media (see below) 
   */
-  --wsm: 720px; 
-  --wmd: 1080px;
-  --wlg: 1440px;
+  --wxxs: 256px;
+  --wxs: 512px;
+  --wsm: 768px; 
+  --wmd: 1024px;
+  --wlg: 1280px;
+  --wxl: 1440px;
+  --wxxl: 1600px;
 
-  --container: min(94vw, var(--wlg));
+  --container: min(94vw, var(--wxxl));
 
   /*
   Content Grid
@@ -137,7 +140,9 @@
   --r4: 16px;
 }
 
-@custom-media --min-sm (min-width: 720px);
-@custom-media --max-sm (max-width: 719px);
-@custom-media --min-md (min-width: 1080px);
-@custom-media --max-md (max-width: 1079px);
+@custom-media --min-sm (min-width: 767px);
+@custom-media --max-sm (max-width: 768px);
+@custom-media --min-md (min-width: 1023px);
+@custom-media --max-md (max-width: 1024px);
+@custom-media --min-lg (min-width: 1279px);
+@custom-media --max-lg (max-width: 1280px);

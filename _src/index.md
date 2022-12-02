@@ -46,42 +46,42 @@ Then, Baselayer takes care of the basics by setting some minimalist, easy-to-rea
 
 Baselayer has two basic accessibility features built-in.
 
-### Focus Rings
+### (1.) Focus Rings
 
-* **Form Focus Ring**
+**(a.) Form focus ring:**
 
-    For form inputs and buttons, there’s a 4px light blue ring (see [colors](/colors)). Example:
+For form inputs and buttons, there’s a 4px light blue ring (see [colors](/colors)). Example:
 
-    <form>
-      <fieldset class="flex">
-        <legend>Example e-newsletter subscribe</legend>
-        <input type="email" id="example-input-email" placeholder="Enter email">
-        <input type="submit" name="submit" value="Subscribe">
-      </fieldset>
-    </form>
+<form>
+  <fieldset class="flex">
+    <legend>Example e-newsletter subscribe</legend>
+    <input class="w100%" type="email" id="example-input-email" placeholder="Enter email">
+    <input type="submit" name="submit" value="Subscribe">
+  </fieldset>
+</form>
 
-    The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.
+The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.
 
-* **Link Focus Ring**
+**(b.) Link focus ring:**
 
-    For links, collapsible `<details>`, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear _between_ the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:
+For links, collapsible `<details>`, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear _between_ the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:
 
-    <div class="mt2 b1 b600 sm:grid3cols">
-      <div class="p3 flex flexcolumn flexcenter flexmiddle">
-      <p><a href="/#">Link</a></p>
-      <p><button type="button">Button</button></p>
-      </div>
-      <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
-      <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
-      <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
-      </div>
-      <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
-      <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
-      <p><button type="button">Button</button></p>
-      </div>
-    </div>
+<div class="mt2 b1 b600 sm:grid3cols">
+  <div class="p3 flex flexcolumn flexcenter flexmiddle">
+  <p><a href="/#">Link</a></p>
+  <p><button type="button">Button</button></p>
+  </div>
+  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
+  <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
+  <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
+  </div>
+  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
+  <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
+  <p><button type="button">Button</button></p>
+  </div>
+</div>
 
-### The Visually-Hidden Class
+### (2.) The Visually-Hidden Class
 
 The `visuallyhidden` is used for “skip links”, such as the visually-hidden link above the top navigation bar on this website.
 

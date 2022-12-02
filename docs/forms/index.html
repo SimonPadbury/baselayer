@@ -7,7 +7,7 @@
 
   <title>Forms · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.6">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.0.7">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -51,7 +51,7 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh sm:flex">
+  <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top overflowy" style="max-height: 100vh;">
     <div class="py2 flex flexcolumn center">
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 sm:hidden pcell twhite">
+    <nav class="pb2 md:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,11 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.0.6</p>
+        <p class="italic tgray t400">Version 1.0.7</p>
       </details>
     </nav>
 
-    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+    <nav class="md:hiddenbelow wxxs px2"">
       <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
@@ -93,24 +93,24 @@
       <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hiddenbelow" style="width: 200px;">
+    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
       <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
-    <p class="m2 sm:hiddenbelow">
+    <p class="m2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version 1.0.6</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">Version 1.0.7</p>
   </div>
 </div>
 
-      <main id="main-content" class="flex">
-        <div id="toc" class="md:hiddenbelow" style="order: 2;">
-          <div class="sticky top p2" style="width: 320px;">
+      <main id="main-content" class="grow flex">
+        <div id="toc" class="lg:hiddenbelow" style="order: 2;">
+          <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
         <ul><li><a href="#textual-form-input-fields">Textual Form Input Fields</a></li><li><a href="#number-(picker)-input">Number (Picker) Input</a></li><li><a href="#date-and-time-inputs">Date and Time Inputs</a></li><li><a href="#color-picker">Color Picker</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#select-and-multi-select">Select and Multi-select</a></li><li><a href="#text-area-(multiline)">Text Area (Multiline)</a></li><li><a href="#radio-boxes-and-checkboxes">Radio Boxes and Checkboxes</a></li><li><a href="#fieldsets-and-legends">Fieldsets and Legends</a></li><li><a href="#form-buttons">Form Buttons</a></li></ul>
@@ -123,8 +123,12 @@
             <h1 class=bold">Forms</h1>
           </header>
       
-          <p>Baselayer form elements have simple background and focus styling (no default border). Most single-line inputs and the multi-line textarea have been made 100% width block elements, for easier layout control.</p>
-<p><strong>Note:</strong> Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the <code>longread</code> utility class.</p>
+          <p>Baselayer form elements have simple background and focus styling (no default border).</p>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>[Since v.1.0.7] Widths have not been set on form elements. You can control widths them either as immediate children of <a href="/baselayer/layout/#flex">flexbox</a> or <a href="/baselayer/layout/#grid">grid</a> layout wrappers, or by the <code>w100%</code> utility class.</li>
+<li>Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the <code>longread</code> utility class.</li>
+</ol>
 <h2 id="textual-form-input-fields" tabindex="-1">Textual Form Input Fields</h2>
 <form action="">
   <p>
@@ -243,7 +247,7 @@
 <form action="">
   <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
-    <input type="email" id="example-input-email" placeholder="Enter email">
+    <input class="w100%" type="email" id="example-input-email" placeholder="Enter email">
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>
@@ -251,7 +255,7 @@
 <pre><code>&lt;form action=&quot;&quot;&gt;
   &lt;fieldset class=&quot;flex&quot;&gt;
     &lt;legend&gt;Example e-newsletter subscribe&lt;/legend&gt;
-    &lt;input type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
+    &lt;input class=&quot;w100%&quot; type=&quot;email&quot; id=&quot;example-input-email&quot; placeholder=&quot;Enter email&quot;&gt;
     &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Subscribe&quot;&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;

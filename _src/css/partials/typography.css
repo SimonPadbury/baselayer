@@ -158,7 +158,10 @@ small, .small { font-size: .85em; }
 
 .uppercase { text-transform: uppercase; }
 
-.longread { font-size: var(--fslongread); }
+.longread { 
+  font-size: var(--fslongread);
+  /* line-height: var(--lhlongread);  */
+}
 
 .base { font-family: var(--base); }
 .prose { font-family: var(--prose); }

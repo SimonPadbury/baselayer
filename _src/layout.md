@@ -12,8 +12,8 @@ nextLink: "Decoration"
 
 * `block` — make an inline element behave as a block element
 * `inline-block` — to enable block-like settings on an inline element (width, height, margins, paddings)
-* `flex` — [see below](#flex)
-* `grid` — [see below](#grid)
+* `inlineflex`, `flex` — [see flex below](#flex)
+* `grid` — [see grid below](#grid)
 
 ## Containers
 
@@ -41,11 +41,19 @@ See also how to set up a content grid using `content` below.
 
 ## Dimensions
 
-Constrained widths:
+Width:
 
-* `wlg` — max-width 1440px, from `var(--wlg)`
-* `wmd` — max-width 1080px, from `var(--wmd)`
-* `wsm` — max-width 720px, from `var(--wsm)`
+* `w100%` — width: 100%
+
+Constrained widths (256 increments, 7 variants, since Baselayer v1.0.7):
+
+* `wxxl` — max-width 1600px, from `var(--wxxl)`
+* `wxl` — max-width 1440px, from `var(--wxl)`
+* `wlg` — max-width 1280px, from `var(--wlg)`
+* `wmd` — max-width 1024px, from `var(--wmd)`
+* `wsm` — max-width 768px, from `var(--wsm)`
+* `wxs` — max-width 512px, from `var(--wxs)`
+* `wxxs` — max-width 256px, from `var(--wxxs)`
 * `w50vw` — max-width 50vw
 * `w100vw` — max-width 100vw
 
@@ -256,14 +264,14 @@ Asymmetrical expand examples:
 
 `expand-right`:
 
-<div class="expand-right">
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+<div class="mt2 pcell expand-right tblack bggray bg200">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
 </div>
 
 `expand-left`:
 
-<div class="expand-left">
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!</p>
+<div class="mt2 pcell expand-left tblack bggray bg200">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
 </div>
 
 ### Full Bleed Panels

@@ -7,7 +7,7 @@
       </a>
     </div>
 
-    <nav class="pb2 sm:hidden pcell twhite">
+    <nav class="pb2 md:hidden pcell twhite">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -29,7 +29,7 @@
       </details>
     </nav>
 
-    <nav class="sm:hiddenbelow px2" style="width: 200px;">
+    <nav class="md:hiddenbelow wxxs px2"">
       <a class="block my2 tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="{{ '/typography' | url }}">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="{{ '/layout' | url }}">Layout</a>
@@ -39,17 +39,17 @@
       <a class="block my2 tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a>
     </nav>
 
-    <div class="p2 sm:hiddenbelow" style="width: 200px;">
+    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
       <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
     </div>
 
-    <p class="m2 sm:hiddenbelow">
+    <p class="m2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
       <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
     </p>
 
-    <p class="m2 italic tgray t400 sm:hiddenbelow">Version {{ metadata.version }}</p>
+    <p class="m2 italic tgray t400 md:hiddenbelow">Version {{ metadata.version }}</p>
   </div>
 </div>

@@ -39,7 +39,7 @@ The base font size and line height (used throughout Baselayer, not only on defau
 ```
 :root {
   --fsbase: 18px;
-  --lineheight: clamp(calc(1em + .5rem), calc(1em + 1.1111vw), calc(1em + .75rem);
+  --lh: clamp(1em + .5rem, .75rem + 1.5625vw, 1em + 1rem);
 }
 ```
 
@@ -47,7 +47,7 @@ The browser default font size is usually 16px, but the Baselayer `--fsbase` (def
 
 ### Line Heights
 
-Line heights are controlled by a CSS `clamp` in the variable `--lh`. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the font-size. This expands to 1.75× the font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp `1em + 1.1111vw` makes the expansion (ramp) range from viewport widths 720px to 1080px — the same range as that between the `sm` to `md` default breakpoints). Thus, with the base font size of 18px, `--lh` starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.
+Line heights are controlled by a CSS `clamp` in the variable `--lh`. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the base font-size. This expands to 1.75× the base font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp `.75rem + 1.5625vw` makes the expansion (ramp) range from viewport widths 768px to 1020px — the same range as that between the `sm` to `lg` default breakpoints). Thus, with the base font size of 18px, `--lh` starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.
 
 The line heights of all text in Baselayer are set by this responsive `--lh` variable — including headings. The `calc()` function makes the line heights “tighter” for the larger headings, as you would want them to be.
 
