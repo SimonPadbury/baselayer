@@ -3,7 +3,7 @@
     <div class="py2 flex flexcolumn center">
       <a href="{{ '/' | url }}" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">{{ metadata.title }}</span>
+        <span class="p1 nowrap">{{ metadata.title }} </span>
       </a>
     </div>
 
@@ -25,11 +25,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version {{ metadata.version }}</p>
+        <p class="italic tgray t400">Version {{ metadata.version }} • Filesize {{ metadata.filesize }}</p>
       </details>
     </nav>
 
-    <nav class="md:hiddenbelow wxxs px2"">
+    <nav class="wxxs px2 md:hiddenbelow">
       <a class="block my2 tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a>
       <a class="block my2 tgray t100 h:t200" href="{{ '/typography' | url }}">Typography</a>
       <a class="block my2 tgray t100 h:t200" href="{{ '/layout' | url }}">Layout</a>

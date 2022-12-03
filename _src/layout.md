@@ -320,7 +320,9 @@ Using `auto` to add scrollling when the content of a block exceeds its constrain
 
 There may be situation where you require some element(s) to be displayed on smaller or larger viewports, but hidden otherwise. Baselayer has:
 
-* `sm:hidden` — hides elements on viewports with width 720px and up
-* `sm:hiddenbelow` — hides elements on viewports with width below 720px
-* `md:hidden` — hides elements on viewports with width 1080px and up
-* `md:hiddenbelow` — hides elements on viewports with width below 1080px
+* `sm:hidden` — hides elements on viewports with width 768px and up
+* `sm:hiddenbelow` — hides elements on viewports with width below 768px
+* `md:hidden` — hides elements on viewports with width 1024px and up
+* `md:hiddenbelow` — hides elements on viewports with width below 1024px
+* `lg:hidden` — hides elements on viewports with width 1280px and up
+* `lg:hiddenbelow` — hides elements on viewports with width below 1280px
