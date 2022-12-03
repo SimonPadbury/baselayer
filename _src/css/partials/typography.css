@@ -91,10 +91,8 @@ th,
 td {
   padding: var(--pcell);
   vertical-align: top;
-  text-align: center;
-}
-thead, tr:not(:last-of-type) {
-  border-bottom: var(--b1);
+  text-align: left;
+  border: var(--b1);
 }
 th, dt {
   font-weight: bold;
@@ -152,15 +150,15 @@ small, .small { font-size: .85em; }
 .normal { font-weight: var(--normal); }
 .italic, em { font-style: italic; }
 
-.right { text-align: right; }
-.center { text-align: center; }
-.left { text-align: left; }
+/* can also be used on <table> because of the `*` selectors */
+.right, .right * { text-align: right; }
+.center, .center * { text-align: center; }
+.left, .left * { text-align: left; }
 
 .uppercase { text-transform: uppercase; }
 
 .longread { 
   font-size: var(--fslongread);
-  /* line-height: var(--lhlongread);  */
 }
 
 .base { font-family: var(--base); }

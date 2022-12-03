@@ -53,7 +53,7 @@
 
   <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100% overflowy">
+  <div class="sticky top hmax100vh overflowy">
     <div class="py2 flex flexcolumn center">
       <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 md:hidden pcell twhite">
+    <nav class="pb2 pcell center twhite md:hidden">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,7 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.1.0 • Filesize 14.7 kb</p>
+        <p class="italic tgray t400">
+          Version: 1.1.0<br/>
+          Filesize: 14.6 kb<br/>
+          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
+        </p>
       </details>
     </nav>
 
@@ -105,8 +109,9 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version 1.1.0<br/>
-      Filesize 14.7 kb
+      Version: 1.1.0<br/>
+      Filesize: 14.6 kb<br/>
+      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
   </div>
 </div>
@@ -116,7 +121,7 @@
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
+        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#line-heights">Line Heights</a></li><li><a href="#body-tag-styling">Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#text-alignment">Text Alignment</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
       </nav>
           </div>
         </div>
@@ -235,14 +240,22 @@
 <h2 id="the-link-tag" tabindex="-1">The Link Tag</h2>
 <p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or <code>long-read</code> text).</p>
 <p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/baselayer/colors/">colors</a>). The hover state is a shade darker.</p>
+<h2 id="text-alignment" tabindex="-1">Text Alignment</h2>
+<ul>
+<li><code>left</code></li>
+<li><code>center</code></li>
+<li><code>right</code></li>
+</ul>
+<p>These simple alignment classes handle text alignment and <em>nested</em> text alignment, because they include a <code>*</code> descendent selector. This means that they can be used to align the cells of a whole table, if required.</p>
+<p>The same class-names <code>left</code> and <code>right</code> are also used in <a href="/baselayer/layout/#positions">layout positions</a>. (However, while the text-alignment <code>center</code> can also be used in layouts, it is better to use <a href="/baselayer/layout/#flex">flexbox</a> centering and middling: <code>flexcenter</code> and <code>flexmiddle</code>).</p>
 <h2 id="tables" tabindex="-1">Tables</h2>
 <p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags directly.</p>
 <ul>
 <li>Paddings are set by <code>var(--pcell)</code>.</li>
 <li>Table headers <code>&lt;th&gt;</code> are bold.</li>
-<li>Rows are divided by a horizontal line (bottom border) on <code>&lt;thead&gt;</code> and <code>&lt;tr&gt;</code> (except for the last row, that has no bottom border). This line is set by <code>var(--b1)</code> — i.e. 1px solid light gray.</li>
+<li>Since v.1.1.0, table cells <code>th</code> and <code>td</code> have a border set by var(--b1) – the same detail as <code>&lt;hr&gt;</code> and <a href="/baselayer/decoration/#borders">border</a> utility classes.</li>
+<li>Since v.1.1.0, all cell content is left-aligned. You can change that on the whole <code>&lt;table&gt;</code> or on a per-cell basis using the text alignment classes.</li>
 </ul>
-<p>Since Baselayer v.1.0.6, all cell content is center-aligned. You can change that on a per-cell basis using the <code>right</code> or <code>left</code> text alignment classes.</p>
 <table>
   <caption>This is a Table Caption</caption>
   <thead>

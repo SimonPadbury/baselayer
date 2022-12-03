@@ -6,8 +6,15 @@
 ## 1 Dec 2022 -- v.1.1.0
 
 * Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
-* Added `expand-right` and `expand-left` to the content grid.
-* Width variables now in 7 × 256px increments, `xxs` -- `xxl` (256, 512, 768, 1024, 1280, 1440, 1600) px.
+* Added `expand-right` and `expand-left` to the content grid for e.g. asymmetrical blockquotes.
+* Improveddimensions, including width variables now in 7 × 256px increments, 
+    * `xxs` 256px
+    * `xs` 512px
+    * `sm` 768px
+    * `md` 1024px
+    * `lg` 1280px
+    * `xl` 1440px
+    * `xxl` 1600 px (same as max-width of `container`)
 * Another tier of invisibility classes: `lg`.
 * Improved form elements.
 * Improved typography.

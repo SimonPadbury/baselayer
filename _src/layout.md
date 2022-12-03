@@ -41,12 +41,9 @@ See also how to set up a content grid using `content` below.
 
 ## Dimensions
 
-Width:
+Widths:
 
 * `w100%` — width: 100%
-
-Constrained widths (256 increments, 7 variants, since Baselayer v1.0.7):
-
 * `wxxl` — max-width 1600px, from `var(--wxxl)`
 * `wxl` — max-width 1440px, from `var(--wxl)`
 * `wlg` — max-width 1280px, from `var(--wlg)`
@@ -54,15 +51,13 @@ Constrained widths (256 increments, 7 variants, since Baselayer v1.0.7):
 * `wsm` — max-width 768px, from `var(--wsm)`
 * `wxs` — max-width 512px, from `var(--wxs)`
 * `wxxs` — max-width 256px, from `var(--wxxs)`
-* `w50vw` — max-width 50vw
-* `w100vw` — max-width 100vw
+* `wmax100vw` — max-width 100vw
 
 Heights:
 
 * `h100%` — height 100%, e.g. for making cards equal to the height of their wrapper
-* `h50vh` — min-height 50vh, e.g. for making split “full cover” panels
 * `h100vh` — min-height 100vh, e.g. for making “full cover” panels
-* `hmax100vh` — min-height 100vh, e.g. for tall sidebars (used with `overflowy`)
+* `hmax100vh` — max-height 100vh, e.g. for tall sidebars (used with `overflowy`)
 
 ## Positions
 
@@ -71,12 +66,14 @@ Heights:
 * `sticky`
 * `box` — stretches an inner element using `inset: 0` to cover the size of its wrapper (you must put a use it with `absolute`, and put `relative` on the wrapper). Useful for setting up a hero image with text overlay.
 * `top` — `top: 0`
-* `right` — `right: 0` and `text-align: right`
+* `right` — `right: 0` (also text-align right)
 * `bottom` — `bottom: 0`
-* `left` — `left: 0` and `text-align: left`
+* `left` — `left: 0` (also text-align left)
 * `z1` — `z-index: 1`
 * `z2` — `z-index: 2`
 * `z3` — `z-index: 3`
+
+For centering and middling, use [flexbox](#flex).
 
 Example: 
 

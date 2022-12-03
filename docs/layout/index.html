@@ -53,7 +53,7 @@
 
   <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100% overflowy">
+  <div class="sticky top hmax100vh overflowy">
     <div class="py2 flex flexcolumn center">
       <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
@@ -61,7 +61,7 @@
       </a>
     </div>
 
-    <nav class="pb2 md:hidden pcell twhite">
+    <nav class="pb2 pcell center twhite md:hidden">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -79,7 +79,11 @@
           <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
         </p>
     
-        <p class="italic tgray t400">Version 1.1.0 • Filesize 14.7 kb</p>
+        <p class="italic tgray t400">
+          Version: 1.1.0<br/>
+          Filesize: 14.6 kb<br/>
+          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
+        </p>
       </details>
     </nav>
 
@@ -105,8 +109,9 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version 1.1.0<br/>
-      Filesize 14.7 kb
+      Version: 1.1.0<br/>
+      Filesize: 14.6 kb<br/>
+      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
   </div>
 </div>
@@ -152,12 +157,9 @@
 <p>For narrower containers, use the max-width classes as modifiers: <code>container wmd</code> or <code>container wsm</code>.</p>
 <p>See also how to set up a content grid using <code>content</code> below.</p>
 <h2 id="dimensions" tabindex="-1">Dimensions</h2>
-<p>Width:</p>
+<p>Widths:</p>
 <ul>
 <li><code>w100%</code> — width: 100%</li>
-</ul>
-<p>Constrained widths (256 increments, 7 variants, since Baselayer v1.0.7):</p>
-<ul>
 <li><code>wxxl</code> — max-width 1600px, from <code>var(--wxxl)</code></li>
 <li><code>wxl</code> — max-width 1440px, from <code>var(--wxl)</code></li>
 <li><code>wlg</code> — max-width 1280px, from <code>var(--wlg)</code></li>
@@ -165,15 +167,13 @@
 <li><code>wsm</code> — max-width 768px, from <code>var(--wsm)</code></li>
 <li><code>wxs</code> — max-width 512px, from <code>var(--wxs)</code></li>
 <li><code>wxxs</code> — max-width 256px, from <code>var(--wxxs)</code></li>
-<li><code>w50vw</code> — max-width 50vw</li>
-<li><code>w100vw</code> — max-width 100vw</li>
+<li><code>wmax100vw</code> — max-width 100vw</li>
 </ul>
 <p>Heights:</p>
 <ul>
 <li><code>h100%</code> — height 100%, e.g. for making cards equal to the height of their wrapper</li>
-<li><code>h50vh</code> — min-height 50vh, e.g. for making split “full cover” panels</li>
 <li><code>h100vh</code> — min-height 100vh, e.g. for making “full cover” panels</li>
-<li><code>hmax100vh</code> — min-height 100vh, e.g. for tall sidebars (used with <code>overflowy</code>)</li>
+<li><code>hmax100vh</code> — max-height 100vh, e.g. for tall sidebars (used with <code>overflowy</code>)</li>
 </ul>
 <h2 id="positions" tabindex="-1">Positions</h2>
 <ul>
@@ -182,13 +182,14 @@
 <li><code>sticky</code></li>
 <li><code>box</code> — stretches an inner element using <code>inset: 0</code> to cover the size of its wrapper (you must put a use it with <code>absolute</code>, and put <code>relative</code> on the wrapper). Useful for setting up a hero image with text overlay.</li>
 <li><code>top</code> — <code>top: 0</code></li>
-<li><code>right</code> — <code>right: 0</code> and <code>text-align: right</code></li>
+<li><code>right</code> — <code>right: 0</code> (also text-align right)</li>
 <li><code>bottom</code> — <code>bottom: 0</code></li>
-<li><code>left</code> — <code>left: 0</code> and <code>text-align: left</code></li>
+<li><code>left</code> — <code>left: 0</code> (also text-align left)</li>
 <li><code>z1</code> — <code>z-index: 1</code></li>
 <li><code>z2</code> — <code>z-index: 2</code></li>
 <li><code>z3</code> — <code>z-index: 3</code></li>
 </ul>
+<p>For centering and middling, use <a href="#flex">flexbox</a>.</p>
 <p>Example:</p>
 <div class="relative mt2 b1 ratio16x9">
   <div class="absolute top w100% center"><code>top</code></div>

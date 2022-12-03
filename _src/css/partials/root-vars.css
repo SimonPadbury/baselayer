@@ -140,9 +140,9 @@
   --r4: 16px;
 }
 
-@custom-media --min-sm (min-width: 768px);
 @custom-media --max-sm (max-width: 767px);
-@custom-media --min-md (min-width: 1024px);
+@custom-media --min-sm (min-width: 768px);
 @custom-media --max-md (max-width: 1023px);
-@custom-media --min-lg (min-width: 1280px);
+@custom-media --min-md (min-width: 1024px);
 @custom-media --max-lg (max-width: 1279px);
+@custom-media --min-lg (min-width: 1280px);

@@ -11,11 +11,9 @@
 .wlg { max-width: var(--wlg); }
 .wxl { max-width: var(--wxl); }
 .wxxl { max-width: var(--wxxl); }
-.w50vw { max-width: 50vh; }
-.w100vw { max-width: 100vh; }
+.wmax100vw { max-width: 100vh; }
 
 .h100\% { height: 100%; }
-.h50vh { min-height: 50vh; }
 .h100vh { min-height: 100vh; }
 .hmax100vh { max-height: 100vh; }
 

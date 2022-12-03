@@ -91,12 +91,12 @@ Borders can be set as follows:
 
 Since Baselayer v.1.0.6, border and border-radius variables pair as follows:
 
-<table class="tcenter">
+<table class="center">
   <thead>
     <tr>
-      <th>Value</th>
-      <th class="tcenter">Border variable</th>
+      <th>Border variable</th>
       <th>Border-radius variable</th>
+      <th>Value</th>
     </tr>
   </thead>
   <tbody>

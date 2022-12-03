@@ -158,15 +158,24 @@ The default underline for links has been moved downwards slightly to improve leg
 
 Link color is set by `var(--link-color)`, which is the Baselayer theme middle blue (see [colors](/baselayer/colors/)). The hover state is a shade darker.
 
+## Text Alignment
+
+* `left`
+* `center`
+* `right`
+
+These simple alignment classes handle text alignment and _nested_ text alignment, because they include a `*` descendent selector. This means that they can be used to align the cells of a whole table, if required.
+
+The same class-names `left` and `right` are also used in [layout positions](/baselayer/layout/#positions). (However, while the text-alignment `center` can also be used in layouts, it is better to use [flexbox](/baselayer/layout/#flex) centering and middling: `flexcenter` and `flexmiddle`).
+
 ## Tables
 
 Baselayer tables simply style `<table>`, `<th>`, `<tr>` and `<td>` tags directly. 
 
 * Paddings are set by `var(--pcell)`. 
 * Table headers `<th>` are bold. 
-* Rows are divided by a horizontal line (bottom border) on `<thead>` and `<tr>` (except for the last row, that has no bottom border). This line is set by `var(--b1)` — i.e. 1px solid light gray.
-
-Since Baselayer v.1.0.6, all cell content is center-aligned. You can change that on a per-cell basis using the `right` or `left` text alignment classes.
+* Since v.1.1.0, table cells `th` and `td` have a border set by var(--b1) – the same detail as `<hr>` and [border](/baselayer/decoration/#borders) utility classes.
+* Since v.1.1.0, all cell content is left-aligned. You can change that on the whole `<table>` or on a per-cell basis using the text alignment classes.
 
 <table>
   <caption>This is a Table Caption</caption>
