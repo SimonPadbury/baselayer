@@ -23,7 +23,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-block: var(--s3) 0;
+  margin-top: var(--s3);
   font-family: var(--hf);
   font-weight: var(--hfw);
   line-height: var(--lh);
@@ -31,24 +31,29 @@ h6, .h6 {
 
 h1, .h1 { 
   font-family: var(--hf);
-  font-size: var(--h1);
   font-weight: var(--hfw);
-  line-height: var(--lh);
+  font-size: var(--h1);
+  line-height: var(--h1lh);
 }
 h2, .h2 {
   font-size: var(--h2);
+  line-height: var(--h2lh);
 }
 h3, .h3 {
   font-size: var(--h3);
+  line-height: var(--h3lh);
 }
 h4, .h4 {
   font-size: var(--h4);
+  line-height: var(--h4lh);
 }
 h5, .h5 {
   font-size: var(--h5);
+  line-height: var(--h5lh);
 }
 h6, .h6 {
   font-size: var(--h6);
+  line-height: var(--h6lh);
 }
 
 a {
@@ -112,8 +117,6 @@ blockquote {
 
 code, kbd, samp {
   font-family: var(--mono);
-  font-size: var(--fsmono);
-  line-height: 1.5;
 }
 
 code {
@@ -146,8 +149,6 @@ nav a, .noline { text-decoration: none; }
 .big { font-size: 1.25em; }
 small, .small { font-size: .85em; }
 
-.bold, strong { font-weight: var(--bold); }
-.normal { font-weight: var(--normal); }
 .italic, em { font-style: italic; }
 
 /* can also be used on <table> because of the `*` selectors */

@@ -3,11 +3,18 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 5 Dec 2022 -- v.1.1.1
+
+* `font-size: 100%` set on the `<html>` tag, not the `<body>` tag (defaulting as 16px).
+* Base line heights simply set at 1.5 (not increasing by a built-in clamp).
+* Line heights of headings no longer controlled by `calc(1em + 0.5rem)` byt by a manual calculation: `{font-size} * (1 + (1/{font-size} * 10))` (rounded). Therefore line heighs will scale with the headings if they are wrapped in the `longread` utility.
+* Improved font elements and buttongs: now font-size scalable.
+
 ## 1 Dec 2022 -- v.1.1.0
 
 * Added `[class*=grid] { display:grid }` to ensure that `grid gap` works at all viewport widths.
 * Added `expand-right` and `expand-left` to the content grid for e.g. asymmetrical blockquotes.
-* Improveddimensions, including width variables now in 7 × 256px increments, 
+* Improved dimensions, including width variables now in 7 × 256px increments, 
     * `xxs` 256px
     * `xs` 512px
     * `sm` 768px
@@ -18,6 +25,7 @@
 * Another tier of invisibility classes: `lg`.
 * Improved form elements.
 * Improved typography.
+* Improved tables: now borderlines around all cells, not simple hotizontal lines between table rows. Cell text left-aligned.
 
 ## 30 Nov 2022 -- v.1.0.6
 

@@ -7,7 +7,7 @@
 
   <title>Buttons · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.0">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.1">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -80,7 +80,7 @@
         </p>
     
         <p class="italic tgray t400">
-          Version: 1.1.0<br/>
+          Version: 1.1.1<br/>
           Filesize: 14.6 kb<br/>
           Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
         </p>
@@ -109,7 +109,7 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.0<br/>
+      Version: 1.1.1<br/>
       Filesize: 14.6 kb<br/>
       Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
@@ -127,12 +127,11 @@
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 big center">
+          <header class="my2 py4 longread center">
             <h1 class=bold">Buttons</h1>
           </header>
       
           <p>Baselayer form elements have simple background, hover/active and focus styling (no default border).</p>
-<p><strong>Note:</strong> Button text has a set size — it doesn’t get enlarged by the <code>longread</code> utility class. This also means that other font-size styles don’t work on buttons. But if you want to enlarge a button (or link <code>btn</code>) for any reason, you can use a CSS transform to increate its scale — e.g. <code>transform: scale(1.25)</code></p>
 <h3 id="button-types-and-link-%E2%80%9Cbuttons%E2%80%9D" tabindex="-1">Button Types and Link “Buttons”</h3>
 <form>
   <p>
@@ -153,7 +152,12 @@
 
 &lt;a class=&quot;btn&quot; href=&quot;&quot;&gt;Link “button”&lt;/a&gt;
 </code></pre>
-<p><strong>Note:</strong> The <code>btn</code> class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the <code>&lt;button&gt;</code> tag). But if the <code>btn</code> utility class is used on an <code>&lt;a href=&quot;&quot;&gt;</code> link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).</p>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>Since v.1.1.1, form inputs, textareas and buttons (including the <code>btn</code> class) have <code>font-size: inherit</code>. This means their font sizes can be modified by any font-size class in Baselayer.</li>
+<li>The font-family of form elements, buttons, <code>btn</code> is controlled by <code>var(--base)</code> (default is sans-serif).</li>
+<li>The <code>btn</code> class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the <code>&lt;button&gt;</code> tag). But if the <code>btn</code> utility class is used on an <code>&lt;a href=&quot;&quot;&gt;</code> link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).</li>
+</ol>
 <h2 id="full-width-buttons" tabindex="-1">Full-width buttons</h2>
 <p>In Baselayer, buttons are pre-styled with <code>display: inline-flex</code> and centering and middling flexbox alignment. So, if you want a button to stretch full-width, you can add <code>class=&quot;w100%&quot;</code> or you can override the inline-flex by adding <code>class=&quot;flex&quot;</code> (do not add <code>class=&quot;block&quot;</code> becaue that will override the flexbox).</p>
 <p><button class="w100%" type="button" name="button">Button</button></p>

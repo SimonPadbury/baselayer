@@ -14,27 +14,23 @@
   --prose: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --mono: ui-monospace, Menlo, "Segoe UI Mono", Consolas, "Ubuntu Monospace", monospace;
   
-  --fsdefault: 112.5%; /* 18px */
-  --fsmono: 100%; /* 16px */
-
-  --lh: clamp(1em + .5rem, .75rem + 1.5625vw, 1em + 1rem);
-  --normal: 400;
-  --bold: 700;
+  --fshtml: 100%; /* sets 1 rem = 16px */
+  --lh: 1.5;
 
   /*
   Long-read based on https://clamp.font-size.app/, 
-  expanding from 768px to 1280px
+  expanding from 16px @ 768px to 22px @ 1280px
   */
-  --fslongread: clamp(1.125rem, .7875rem + .7031vw, 1.35rem);
-
+  --fslongread: clamp(1rem, 0.4375rem + 1.1719vw, 1.375rem);
+  
   /*
   Un-comment these if your chosen prose (serif) font requires different styles -- 
   See also typography.css
   */
-  /* --fsprose: 118.75%; /* example 19px */
+  /* --fsprose: 112.5%; /* example 18px */
   /* --nprose: 300; /* example */
   /* --strprose: 600; /* example */
-  /* --fslongread-prose: clamp(1.1875rem, 0.7938rem + 0.8203vw, 1.45rem); /* e.g. if prose font size 19px */
+  /* --fslongread-prose: clamp(1.125rem, 0.5625rem + 1.1719vw, 1.5rem); /* example 18px ramping to 24px */
 
   /*
   256px intervals.
@@ -87,6 +83,14 @@
   --hf: inherit;
   --hfw: var(--normal);
 
+  /* Heading ine heights*/
+  --h1lh: 1.2;
+  --h2lh: 1.25;
+  --h3lh: 1.3;
+  --h4lh: 1.4;
+  --h5lh: 1.5;
+  --h6lh: 1.625;
+
   /*
   Split HSL color base variables.
   bg = background
@@ -122,12 +126,12 @@
 
   --focus: 0 0 0 4px hsl(var(--hsblue), var(--l200));
 
-  --si: 48px; /* inputs and buttons */
-  --lhi: 1.5rem;
+  --si: 2.5em; /* inputs and buttons */
   --ci: hsl(var(--hsgray), var(--l100));
 
   --cbtn: hsl(var(--hsgray), var(--l600)); /* base color */
   --hbtn: hsl(var(--hsgray), var(--l700)); /* hover color */
+  --fwbtn: normal;
 
   --bgcode: hsl(var(--hsblue), var(--l100));
 

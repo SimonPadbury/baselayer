@@ -8,8 +8,6 @@ prevLink: "Forms"
 
 Baselayer form elements have simple background, hover/active and focus styling (no default border). 
 
-**Note:** Button text has a set size — it doesn’t get enlarged by the `longread` utility class. This also means that other font-size styles don’t work on buttons. But if you want to enlarge a button (or link `btn`) for any reason, you can use a CSS transform to increate its scale — e.g. `transform: scale(1.25)`
-
 ### Button Types and Link “Buttons”
 
 <form>
@@ -34,7 +32,11 @@ Baselayer form elements have simple background, hover/active and focus styling (
 <a class="btn" href="">Link “button”</a>
 ```
 
-**Note:** The `btn` class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the `<button>` tag). But if the `btn` utility class is used on an `<a href="">` link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).
+**Notes:**
+
+1. Since v.1.1.1, form inputs, textareas and buttons (including the `btn` class) have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
+2. The font-family of form elements, buttons, `btn` is controlled by `var(--base)` (default is sans-serif).
+3. The `btn` class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the `<button>` tag). But if the `btn` utility class is used on an `<a href="">` link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).
 
 ## Full-width buttons
 

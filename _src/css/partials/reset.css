@@ -6,7 +6,9 @@
 
 
 html {
-  font-size: 100%;
+  scroll-behavior: smooth;
+  font-size: var(--fshtml);
+  line-height: var(--lh);
   box-sizing: border-box;
 }
 

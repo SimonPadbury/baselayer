@@ -1,10 +1,5 @@
-html {
-  scroll-behavior: smooth;
-}
 body {
   font-family: var(--base);
-  font-size: var(--fsdefault);
-  line-height: var(--lh);
   color: var(--ctext);
   background-color: var(--body-bg-color);
 }

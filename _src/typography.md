@@ -34,38 +34,36 @@ Font stack usage in Baselayer:
 * The prose is only available via the `.prose` utility class
 * The monotype is available via the `<code>`, `<kbd>`, and `<samp>` HTML tags, and in the `.mono` utility class.
 
-The base font size and line height (used throughout Baselayer, not only on default text) is set as variales in `root-variables.css`:
+### HTML and Body Tag Styling
+
+The base font size and line height (used throughout Baselayer, not only on default text) is set as variales in `root-vars.css`:
 
 ```
+/* root-vars.css */
 :root {
-  --fsbase: 18px;
-  --lh: clamp(1em + .5rem, .75rem + 1.5625vw, 1em + 1rem);
+  --fshtml: 100%; /* sets 1 rem = 16px */
+  --lh: 1.5;
 }
 ```
 
-The browser default font size is usually 16px, but the Baselayer `--fsbase` (default font size) is set slightly larger at 18px. This 18px is the value of `1rem` thorughout Baselayer.
-
-### Line Heights
-
-Line heights are controlled by a CSS `clamp` in the variable `--lh`. For default text e.g. paragraphs on small viewports (phones and tablets in portrait orientation), the line height is a 1.5× the base font-size. This expands to 1.75× the base font-size for larger viewports — for more comfortable reading on larger screens. The middle part of the clamp `.75rem + 1.5625vw` makes the expansion (ramp) range from viewport widths 768px to 1020px — the same range as that between the `sm` to `lg` default breakpoints). Thus, with the base font size of 18px, `--lh` starts at 26px for phones and ramps up to 30px for large “pro” tablets (landscape orientation), laptops, and larger screens.
-
-The line heights of all text in Baselayer are set by this responsive `--lh` variable — including headings. The `calc()` function makes the line heights “tighter” for the larger headings, as you would want them to be.
-
-### Body Tag Styling
-
-These variables, along with a few more, are deployed in `base.css` on the `<body>` tag:
+These variables, along with a few more, are deployed on the `<html>` and `<body>` tags:
 
 ```
+/* reset.css */
+html {
+  font-size: var(--fshtml);
+  line-height: var(--lh);
+}
+```
+
+```
+/* base.css */
 body {
   font-family: var(--base);
-  font-size: var(--fsbase);
-  line-height: var(--lh);
   color: var(--ctext);
-  background-color: var(--bgbody);
+  background-color: var(--body-bg-color);
 }
 ```
-
-(There are a few other `<body>` style rules set in `reset.css`.)
 
 ### More on Setting Font Stacks
 
@@ -120,6 +118,7 @@ The headings font weight is set using `--hfw: var(--normal);` which has been set
 
 ```
 :root {
+  /* Heading font sizes */
   --h1: 2.441em;
   --h2: 1.953em;
   --h3: 1.563em;
@@ -128,12 +127,22 @@ The headings font weight is set using `--hfw: var(--normal);` which has been set
   --h6: .8em;
   --hf: inherit;
   --hfw: var(--normal);
+
+  /* Heading line heights*/
+  --h1lh: 1.2;
+  --h2lh: 1.25;
+  --h3lh: 1.3;
+  --h4lh: 1.4;
+  --h5lh: 1.5;
+  --h6lh: 1.625;
 }
 ```
 
+Line heights are calcaulated manually as follows: `{font-size} * (1 + (1/{font-size} * 10))` (rounded).
+
 Headings also have their font-family set to `inherit` in `typography.css`. This has been done in the variable `var(--hf)` so that you can override that. Headings don’t need to have the same typeface as paragraphs.
 
-Example of heading sizes — using utility classes (so that they don’t show up in the table-of-contents generator), and with margins reduced so that you cam compare the sizes better):
+Example of heading sizes — using utility classes (so that they don’t show up in the table-of-contents generator), and with margins reduced so that you can compare the sizes better):
 
 <div class="h1 mt2">Heading h1</div>
 <div class="h2 mt1">Heading h2</div>
@@ -278,11 +287,11 @@ Intended for long-read essays, articles and blog posts, the `longread` utility c
 
 ```
 :root {
-  --fslongread: clamp(1.125rem, 0.625rem + 1.1111vw, 1.375rem);
+  --fslongread: clamp(1rem, 0.4375rem + 1.1719vw, 1.375rem);
 }
 ```
 
-The base font size is expanded to 137.5% over the middle range — from viewport widths 720px to 1080px (i.e. same as the `sm` to `md` default breakpoints). Starting from 1.125rem (18px), this expands the base sext size to 22px.
+The base font size is expanded to 137.5% over the middle range — from viewport widths 768px to 1280px (i.e. same as the `sm` to `lg` default breakpoints). Starting from 1rem (16px), this expands the base sext size to 22px.
 
 ### _Long Read_ Example Toggle
 

@@ -7,7 +7,7 @@
 
   <title>Forms · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.0">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.1">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -80,7 +80,7 @@
         </p>
     
         <p class="italic tgray t400">
-          Version: 1.1.0<br/>
+          Version: 1.1.1<br/>
           Filesize: 14.6 kb<br/>
           Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
         </p>
@@ -109,7 +109,7 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.0<br/>
+      Version: 1.1.1<br/>
       Filesize: 14.6 kb<br/>
       Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
@@ -127,15 +127,16 @@
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 big center">
+          <header class="my2 py4 longread center">
             <h1 class=bold">Forms</h1>
           </header>
       
           <p>Baselayer form elements have simple background and focus styling (no default border).</p>
 <p><strong>Notes:</strong></p>
 <ol>
-<li>[Since v.1.0.7] Widths have not been set on form elements. You can control widths them either as immediate children of <a href="/baselayer/layout/#flex">flexbox</a> or <a href="/baselayer/layout/#grid">grid</a> layout wrappers, or by the <code>w100%</code> utility class.</li>
-<li>Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the <code>longread</code> utility class.</li>
+<li>Since v.1.0.7, widths have not been set on form elements. You can control widths them either as immediate children of <a href="/baselayer/layout/#flex">flexbox</a> or <a href="/baselayer/layout/#grid">grid</a> layout wrappers, or by the <code>w100%</code> utility class.</li>
+<li>Since v.1.1.1, form inputs, textareas and buttons (including the <code>btn</code> class) have <code>font-size: inherit</code>. This means their font sizes can be modified by any font-size class in Baselayer.</li>
+<li>The font-family of form elements, buttons, <code>btn</code> is controlled by <code>var(--base)</code> (default is sans-serif).</li>
 </ol>
 <h2 id="textual-form-input-fields" tabindex="-1">Textual Form Input Fields</h2>
 <form action="">
@@ -201,9 +202,10 @@
 <form action="">
   <p>
     <label for="example-input-file">File input</label>
-    <input type="file" id="example-input-file" accept="image/png, image/jpeg">
+    <input class="w100%" type="file" id="example-input-file" accept="image/png, image/jpeg">
   </p>
 </form>
+<p><strong>Note:</strong> File upload inputs <code>&lt;input type=&quot;file&quot;&gt;</code> can break your page layout on phones in portrait orientation. But of you add <code>class=&quot;w100%&quot;</code> that problem goes away.</p>
 <h2 id="select-and-multi-select" tabindex="-1">Select and Multi-select</h2>
 <form action="">
   <p>

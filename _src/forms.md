@@ -12,8 +12,9 @@ Baselayer form elements have simple background and focus styling (no default bor
 
 **Notes:**
 
-1. \[Since v.1.0.7] Widths have not been set on form elements. You can control widths them either as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or by the `w100%` utility class.
-2. Form text (including labels and fieldser wrapper text) doesn’t get enlarged by the `longread` utility class.
+1. Since v.1.0.7, widths have not been set on form elements. You can control widths them either as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or by the `w100%` utility class.
+2. Since v.1.1.1, form inputs, textareas and buttons (including the `btn` class) have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
+3. The font-family of form elements, buttons, `btn` is controlled by `var(--base)` (default is sans-serif).
 
 ## Textual Form Input Fields
 
@@ -88,9 +89,11 @@ Baselayer form elements have simple background and focus styling (no default bor
 <form action="">
   <p>
     <label for="example-input-file">File input</label>
-    <input type="file" id="example-input-file" accept="image/png, image/jpeg">
+    <input class="w100%" type="file" id="example-input-file" accept="image/png, image/jpeg">
   </p>
 </form>
+
+**Note:** File upload inputs `<input type="file">` can break your page layout on phones in portrait orientation. But of you add `class="w100%"` that problem goes away.
 
 ## Select and Multi-select
 

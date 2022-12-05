@@ -3,9 +3,7 @@ fieldset {
 }
 
 label, legend {
-  font-size: 1rem;
   font-family: var(--base);
-  line-height: var(--lhi);
 }
 
 ::placeholder {
@@ -17,21 +15,15 @@ input,
 textarea,
 select {
   outline: 0 none;
-  /* width: 100%; */
   min-height: var(--si);
   /* -webkit-appearance: none; */
   border: 0;
   border-radius: unset;
   padding: var(--pcell);
-  font-size: 1rem;
   font-family: var(--base);
-  line-height: var(--lhi);
+  font-size: inherit;
   text-align: start;
   background-color: var(--ci);
-}
-
-select, [type="number"] {
-  width: auto;
 }
 
 input:focus,
@@ -50,7 +42,7 @@ select:not([multiple]) {
 [type="color"] {
   width: var(--si);
   height: var(--si);
-  padding: .25em
+  padding: .25em;
 }
 
 input[type="checkbox"],
@@ -64,7 +56,6 @@ input[type="radio"] {
 input::file-selector-button {
   border: 0;
   font-size: 1em;
-  line-height: var(--lhi);
   color: white;
   background: var(--cbtn);
 }
@@ -87,8 +78,9 @@ button,
   margin: 0;
   border: 0;
   padding: var(--pcell);
-  font-size: 1rem;
   font-family: var(--base);
+  font-size: inherit;
+  font-weight: var(--fwbtn);
   text-decoration: none;
   /* white-space: nowrap; */
   color: white;

@@ -11,7 +11,7 @@ nextLink: "Decoration"
 ## Blocks
 
 * `block` — make an inline element behave as a block element
-* `inline-block` — to enable block-like settings on an inline element (width, height, margins, paddings)
+* `inlineblock` — to enable block-like settings on an inline element (width, height, margins, paddings)
 * `inlineflex`, `flex` — [see flex below](#flex)
 * `grid` — [see grid below](#grid)
 
