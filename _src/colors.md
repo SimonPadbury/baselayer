@@ -255,9 +255,9 @@ Then, in the `colors.css` you can create the set of utility classes for text col
 
 In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at **WCAG level AA** for accessibility compliance.
 
-For WCAG level AA compliance, usually user interface colors need to be _darker than the middle shade_ (i.e. use `*600` up) if the text color is white, or _lighter than the middle shade_ (i.e. use `*400` down) if the text color is black.
+For WCAG level AA compliance, most user interface colors need to be _darker than the middle shade_ (i.e. use `*600` up) if the text color is white, or _lighter than the middle shade_ (i.e. use `*400` down) if the text color is black.
 
-Any color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.
+However, for color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.
 
 <form>
   <p>
@@ -293,13 +293,13 @@ Background reading on HSL color and accessibility:
 * [https://contrast-ratio.com](https://contrast-ratio.com) has an HSLA contrast checker (HSL plus opacity)
 * [Web Accessibility: Understanding Colors and Luminance (Mozilla Developer Network Docs)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance)
 
-### Light/Dark Theme Example Toggle
+## Creating a Dark Theme
 
-_There is no built-in dark theme in Baselayer._ But it is easy to set up by using the color CSS variables.
+**There is no built-in dark theme in Baselayer.** But it is easy to set up by using the color CSS variables.
 
 At minimum, you will need to make dark versions of the colors for background, text, and line details (for tables, horizontal rules, etc.)
 
 The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between (default) light mode and (example) dark mode in this main content area. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:
 
-<button id="theme-toggle">&nbsp;mode</button>
+<button id="theme-toggle" class="bgblue bg600 h:bg700">&nbsp;theme</button>
 

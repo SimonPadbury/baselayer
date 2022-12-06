@@ -26,7 +26,7 @@ Everything here is an example, a place to start. `--base` and `--prose` don’t 
 
 The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between `var(--base)` and `var(--prose)` in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:
 
-<button id="font-toggle">&nbsp;typeface</button>
+<button id="font-toggle" class="bgblue bg600 h:bg700">&nbsp;typeface</button>
 
 Font stack usage in Baselayer:
 
@@ -110,7 +110,7 @@ See  [decoration](/posts/2022/decoration/) for more information on these spacing
 
 In some contexts (e.g. in card components) you may not want any built-in spacing for typographic block elements. You can remove margins by using the `m0` utility class. with `m0` added as a margin reset, you can start again adding margins that you may require (e.g. this works: `m0 mr1`).
 
-### More on Headings
+### Headings
 
 All headings `<h1>` to `<h6>`, and matching utility classes `h1` to `h6`, have their font sizes set in the root variables file. The typographic scale is 1.250 (major third), calculated using the [Type Scale](https://type-scale.com) webapp.
 
@@ -151,8 +151,6 @@ Example of heading sizes — using utility classes (so that they don’t show up
 <div class="h5 mt1">Heading h5</div>
 <div class="h6 mt1">Heading h6</div>
 
-The line height of headings is controlled by `var(--line-height)` as per default typography (see [line heights](#line-heights) above).
-
 ### Block Quotes
 
 Baselayer styles `<blockquote>` tags with some inline (x-axis) padding, to give the effect of indentation. This inline padding is set using the responsive spacing variable `var(--s3)` so that it becomes wider for wider viewports.
@@ -160,6 +158,65 @@ Baselayer styles `<blockquote>` tags with some inline (x-axis) padding, to give 
 Otherwise, blockquotes have the same as paragraph styling.
 
 > Lorem ipsum dolor sit amet, adipiscing honestatis ius ut, nisl consulatu pro in. Imperdiet evertitur no usu, his te suavitate salutatus. Nullam ridens deterruisset an duo. Cum harum insolens ei, cum probo placerat praesent et.
+
+### Lists
+
+In Baselayer ordered `<ol>` and unordered `<ul>` have a little left padding, and a smaller top margin _between_ list items than is between paragraphs
+
+1. Ordered item one
+2. Ordered item two
+    1. Ordered item two child one
+    2. Ordered item two child two
+3. Ordered item three
+
+```
+<ol>
+  <li>Ordered item one</li>
+  <li>Ordered item two
+    <ol>
+      <li>Ordered item two child one</li>
+      <li>Ordered item two child two</li>
+    </ol>
+  </li>
+  <li>Ordered item three</li>
+</ol>
+```
+
+* Unordered item
+* Unordered item
+    * Unordered item child
+    * Unordered item child
+* Unordered item
+
+```
+<ul>
+  <li>Unordered item</li>
+  <li>Unordered item
+    <ul>
+      <li>Unordered item child</li>
+      <li>Unordered item child</li>
+    </ul>
+  </li>
+  <li>Unordered item</li>
+</ul>
+```
+For definition lists, the title is bold and the data-item is indented (with the same left padding as for the  lists above). And the top margin between the title and its respective data is reduced the same way as between list items above.
+
+<dl>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+</dl>
+
+```
+<dl>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+</dl>
+```
 
 ## The Link Tag
 
@@ -173,7 +230,7 @@ Link color is set by `var(--link-color)`, which is the Baselayer theme middle bl
 * `center`
 * `right`
 
-These simple alignment classes handle text alignment and _nested_ text alignment, because they include a `*` descendent selector. This means that they can be used to align the cells of a whole table, if required.
+These simple alignment classes handle text alignment and _nested_ text alignment, because they include a `*` descendent selector that does the same alignment on any elements inside. This means that they can be used to align the cells of a whole table, if required.
 
 The same class-names `left` and `right` are also used in [layout positions](/baselayer/layout/#positions). (However, while the text-alignment `center` can also be used in layouts, it is better to use [flexbox](/baselayer/layout/#flex) centering and middling: `flexcenter` and `flexmiddle`).
 
@@ -297,7 +354,7 @@ The base font size is expanded to 137.5% over the middle range — from viewport
 
 The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between `var(--base)` and `var(--prose)` in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:
 
-<button id="fs-toggle">&nbsp;size</button>
+<button id="fs-toggle" class="bgblue bg600 h:bg700">&nbsp;size</button>
 
 ## Code Blocks
 
@@ -309,8 +366,8 @@ If the `<code>` tag is wrapped in a `<pre>` tag, then it becomes a block level e
 
 Besides those already introduced, Baselayer also has utility classes for:
 
-* `big` — increase font size by 1.25em. Use it directly on a `<p>` to enlarge the font (e.g. for a lead paragraph). But don’t use `big`  directly on a heading — instead, use it on a wrapper around a heading that you wish to enlarge (e.g. for a title or hero component).
-* `small` (or use the `<small>` HTML tag) — decrease font-size to 0.85em.  
+* `big` — increase font size by 1.5em. Use it directly on a `<p>` to enlarge the font (e.g. for a lead paragraph). But don’t use `big`  directly on a heading — instead, use it on a _wrapper_ around a heading that you wish to enlarge (e.g. for a title or hero component).
+* `small` (or use the `<small>` HTML tag) — decrease font-size to 0.75em.  
 * `right`, `center`, and `left` — text alignment
 * `bold`, `normal` — font weights
 * `italic` — font style italic

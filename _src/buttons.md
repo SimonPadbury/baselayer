@@ -200,3 +200,42 @@ Increase the x-axis padding (using the responsive `px2` or `px3`) to make a butt
 
 <button class="px3" type="button" name="button">Button</button>
 ```
+
+## Button Sizes
+
+In Baselayer there are no button _modifier_ or utility classes for controlling button text size directly. But any 
+
+<form class="flex flexcolumn">
+  <p>Wrapped by <code>small</code> (0.75em):</p>
+  <div class="small mt1">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>Default button size:</p>
+  <div class="mt1">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>wrapped by <code>big</code> (1.5em):</p>
+  <div class="mt1 big">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>Wrapped by <code>h3</code> and with <code>px3</code> on the button itself to give it more x-axis padding:</p>
+  <div class="h3 mt1">
+    <button class="px3" type="button" name="button">Button</button>
+  </div>
+</form>
+
+```
+<form class="flex flexcolumn">
+  <div class="small">
+    <button type="button" name="button">Button</button>
+  </div>
+  <div class="big">
+    <button type="button" name="button">Button</button>
+  </div>
+  <div class="h3 m0">
+    <button class="px3" type="button" name="button">Button</button>
+  </div>
+</form>
+```
+
+The same technique can be done on other form elements, e.g. to make large forms on landing pages, or small forms to fit inside table cells.

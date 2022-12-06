@@ -100,7 +100,7 @@
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
     </div>
 
     <p class="m2 md:hiddenbelow">
@@ -121,14 +121,14 @@
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#html-and-body-tag-styling">HTML and Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#more-on-headings">More on Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#text-alignment">Text Alignment</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
+        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#html-and-body-tag-styling">HTML and Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#headings">Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li><li><a href="#lists">Lists</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#text-alignment">Text Alignment</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 longread center">
-            <h1 class=bold">Typography</h1>
+          <header class="my2 py4 center">
+            <h1 class="bold">Typography</h1>
           </header>
       
           <h2 id="font-stacks" tabindex="-1">Font Stacks</h2>
@@ -142,7 +142,7 @@
 <p>Everything here is an example, a place to start. <code>--base</code> and <code>--prose</code> don’t need to be both sans-serif and serif.</p>
 <h3 id="base%2Fprose-typeface-example-toggle" tabindex="-1">Base/Prose Typeface Example Toggle</h3>
 <p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>var(--base)</code> and <code>var(--prose)</code> in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
-<p><button id="font-toggle"> typeface</button></p>
+<p><button id="font-toggle" class="bgblue bg600 h:bg700"> typeface</button></p>
 <p>Font stack usage in Baselayer:</p>
 <ul>
 <li>The base font stack is set in the <code>&lt;body&gt;</code> tag (in <code>base.css</code>) and in the <code>.base</code> utility class.</li>
@@ -209,7 +209,7 @@ body {
 </ul>
 <p>See  <a href="/posts/2022/decoration/">decoration</a> for more information on these spacing vasiables.</p>
 <p>In some contexts (e.g. in card components) you may not want any built-in spacing for typographic block elements. You can remove margins by using the <code>m0</code> utility class. with <code>m0</code> added as a margin reset, you can start again adding margins that you may require (e.g. this works: <code>m0 mr1</code>).</p>
-<h3 id="more-on-headings" tabindex="-1">More on Headings</h3>
+<h3 id="headings" tabindex="-1">Headings</h3>
 <p>All headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>, and matching utility classes <code>h1</code> to <code>h6</code>, have their font sizes set in the root variables file. The typographic scale is 1.250 (major third), calculated using the <a href="https://type-scale.com">Type Scale</a> webapp.</p>
 <p>The headings font weight is set using <code>--hfw: var(--normal);</code> which has been set to <code>400</code>.</p>
 <pre><code>:root {
@@ -241,13 +241,70 @@ body {
 <div class="h4 mt1">Heading h4</div>
 <div class="h5 mt1">Heading h5</div>
 <div class="h6 mt1">Heading h6</div>
-<p>The line height of headings is controlled by <code>var(--line-height)</code> as per default typography (see <a href="#line-heights">line heights</a> above).</p>
 <h3 id="block-quotes" tabindex="-1">Block Quotes</h3>
 <p>Baselayer styles <code>&lt;blockquote&gt;</code> tags with some inline (x-axis) padding, to give the effect of indentation. This inline padding is set using the responsive spacing variable <code>var(--s3)</code> so that it becomes wider for wider viewports.</p>
 <p>Otherwise, blockquotes have the same as paragraph styling.</p>
 <blockquote>
 <p>Lorem ipsum dolor sit amet, adipiscing honestatis ius ut, nisl consulatu pro in. Imperdiet evertitur no usu, his te suavitate salutatus. Nullam ridens deterruisset an duo. Cum harum insolens ei, cum probo placerat praesent et.</p>
 </blockquote>
+<h3 id="lists" tabindex="-1">Lists</h3>
+<p>In Baselayer ordered <code>&lt;ol&gt;</code> and unordered <code>&lt;ul&gt;</code> have a little left padding, and a smaller top margin <em>between</em> list items than is between paragraphs</p>
+<ol>
+<li>Ordered item one</li>
+<li>Ordered item two
+<ol>
+<li>Ordered item two child one</li>
+<li>Ordered item two child two</li>
+</ol>
+</li>
+<li>Ordered item three</li>
+</ol>
+<pre><code>&lt;ol&gt;
+  &lt;li&gt;Ordered item one&lt;/li&gt;
+  &lt;li&gt;Ordered item two
+    &lt;ol&gt;
+      &lt;li&gt;Ordered item two child one&lt;/li&gt;
+      &lt;li&gt;Ordered item two child two&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ordered item three&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<ul>
+<li>Unordered item</li>
+<li>Unordered item
+<ul>
+<li>Unordered item child</li>
+<li>Unordered item child</li>
+</ul>
+</li>
+<li>Unordered item</li>
+</ul>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+  &lt;li&gt;Unordered item
+    &lt;ul&gt;
+      &lt;li&gt;Unordered item child&lt;/li&gt;
+      &lt;li&gt;Unordered item child&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>For definition lists, the title is bold and the data-item is indented (with the same left padding as for the  lists above). And the top margin between the title and its respective data is reduced the same way as between list items above.</p>
+<dl>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+  <dt>Definition list title</dt>
+  <dd>Definition list data</dd>
+</dl>
+<pre><code>&lt;dl&gt;
+  &lt;dt&gt;Definition list title&lt;/dt&gt;
+  &lt;dd&gt;Definition list data&lt;/dd&gt;
+  &lt;dt&gt;Definition list title&lt;/dt&gt;
+  &lt;dd&gt;Definition list data&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
 <h2 id="the-link-tag" tabindex="-1">The Link Tag</h2>
 <p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings, or <code>long-read</code> text).</p>
 <p>Link color is set by <code>var(--link-color)</code>, which is the Baselayer theme middle blue (see <a href="/baselayer/colors/">colors</a>). The hover state is a shade darker.</p>
@@ -257,7 +314,7 @@ body {
 <li><code>center</code></li>
 <li><code>right</code></li>
 </ul>
-<p>These simple alignment classes handle text alignment and <em>nested</em> text alignment, because they include a <code>*</code> descendent selector. This means that they can be used to align the cells of a whole table, if required.</p>
+<p>These simple alignment classes handle text alignment and <em>nested</em> text alignment, because they include a <code>*</code> descendent selector that does the same alignment on any elements inside. This means that they can be used to align the cells of a whole table, if required.</p>
 <p>The same class-names <code>left</code> and <code>right</code> are also used in <a href="/baselayer/layout/#positions">layout positions</a>. (However, while the text-alignment <code>center</code> can also be used in layouts, it is better to use <a href="/baselayer/layout/#flex">flexbox</a> centering and middling: <code>flexcenter</code> and <code>flexmiddle</code>).</p>
 <h2 id="tables" tabindex="-1">Tables</h2>
 <p>Baselayer tables simply style <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags directly.</p>
@@ -360,15 +417,15 @@ thead, tr:not(:last-of-type) {
 <p>The base font size is expanded to 137.5% over the middle range — from viewport widths 768px to 1280px (i.e. same as the <code>sm</code> to <code>lg</code> default breakpoints). Starting from 1rem (16px), this expands the base sext size to 22px.</p>
 <h3 id="long-read-example-toggle" tabindex="-1"><em>Long Read</em> Example Toggle</h3>
 <p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>var(--base)</code> and <code>var(--prose)</code> in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
-<p><button id="fs-toggle"> size</button></p>
+<p><button id="fs-toggle" class="bgblue bg600 h:bg700"> size</button></p>
 <h2 id="code-blocks" tabindex="-1">Code Blocks</h2>
 <p><code>&lt;code&gt;</code> tags have monospaced text over a blue background (set by <code>var(--bgcode)</code>) with a little padding to improve readability.</p>
 <p>If the <code>&lt;code&gt;</code> tag is wrapped in a <code>&lt;pre&gt;</code> tag, then it becomes a block level element with more padding, a max-width of 100%, and y-axis overflow scrolling.</p>
 <h2 id="other-typographic-utility-classes" tabindex="-1">Other Typographic Utility classes</h2>
 <p>Besides those already introduced, Baselayer also has utility classes for:</p>
 <ul>
-<li><code>big</code> — increase font size by 1.25em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading — instead, use it on a wrapper around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
-<li><code>small</code> (or use the <code>&lt;small&gt;</code> HTML tag) — decrease font-size to 0.85em.</li>
+<li><code>big</code> — increase font size by 1.5em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading — instead, use it on a <em>wrapper</em> around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
+<li><code>small</code> (or use the <code>&lt;small&gt;</code> HTML tag) — decrease font-size to 0.75em.</li>
 <li><code>right</code>, <code>center</code>, and <code>left</code> — text alignment</li>
 <li><code>bold</code>, <code>normal</code> — font weights</li>
 <li><code>italic</code> — font style italic</li>

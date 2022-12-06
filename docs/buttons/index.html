@@ -100,7 +100,7 @@
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
     </div>
 
     <p class="m2 md:hiddenbelow">
@@ -121,14 +121,14 @@
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#button-types-and-link-%E2%80%9Cbuttons%E2%80%9D">Button Types and Link “Buttons”</a></li><li><a href="#full-width-buttons">Full-width buttons</a></li><li><a href="#adding-colors">Adding Colors</a></li><li><a href="#buttons-with-icons">Buttons with Icons</a></li><li><a href="#pill-buttons">Pill Buttons</a></li><li><a href="#stretch-buttons">Stretch Buttons</a></li></ul>
+        <ul><li><a href="#button-types-and-link-%E2%80%9Cbuttons%E2%80%9D">Button Types and Link “Buttons”</a></li><li><a href="#full-width-buttons">Full-width buttons</a></li><li><a href="#adding-colors">Adding Colors</a></li><li><a href="#buttons-with-icons">Buttons with Icons</a></li><li><a href="#pill-buttons">Pill Buttons</a></li><li><a href="#stretch-buttons">Stretch Buttons</a></li><li><a href="#button-sizes">Button Sizes</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 longread center">
-            <h1 class=bold">Buttons</h1>
+          <header class="my2 py4 center">
+            <h1 class="bold">Buttons</h1>
           </header>
       
           <p>Baselayer form elements have simple background, hover/active and focus styling (no default border).</p>
@@ -278,6 +278,39 @@
 
 &lt;button class=&quot;px3&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 </code></pre>
+<h2 id="button-sizes" tabindex="-1">Button Sizes</h2>
+<p>In Baselayer there are no button <em>modifier</em> or utility classes for controlling button text size directly. But any</p>
+<form class="flex flexcolumn">
+  <p>Wrapped by <code>small</code> (0.75em):</p>
+  <div class="small mt1">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>Default button size:</p>
+  <div class="mt1">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>wrapped by <code>big</code> (1.5em):</p>
+  <div class="mt1 big">
+    <button type="button" name="button">Button</button>
+  </div>
+  <p>Wrapped by <code>h3</code> and with <code>px3</code> on the button itself to give it more x-axis padding:</p>
+  <div class="h3 mt1">
+    <button class="px3" type="button" name="button">Button</button>
+  </div>
+</form>
+<pre><code>&lt;form class=&quot;flex flexcolumn&quot;&gt;
+  &lt;div class=&quot;small&quot;&gt;
+    &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;big&quot;&gt;
+    &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;h3 m0&quot;&gt;
+    &lt;button class=&quot;px3&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<p>The same technique can be done on other form elements, e.g. to make large forms on landing pages, or small forms to fit inside table cells.</p>
 
       
           <footer class="mb4">

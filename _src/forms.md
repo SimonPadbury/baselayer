@@ -12,42 +12,48 @@ Baselayer form elements have simple background and focus styling (no default bor
 
 **Notes:**
 
-1. Since v.1.0.7, widths have not been set on form elements. You can control widths them either as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or by the `w100%` utility class.
+1. Since v.1.0.7, widths have not been set on form elements. You can control widths them by one of two ways:
+    * By involving the form elements as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or 
+    * By adding the `w100%` utility class to the form element itself.
 2. Since v.1.1.1, form inputs, textareas and buttons (including the `btn` class) have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
-3. The font-family of form elements, buttons, `btn` is controlled by `var(--base)` (default is sans-serif).
+3. The font-family of form elements, buttons, and `btn` is controlled by `var(--base)` (default is sans-serif).
 
 ## Textual Form Input Fields
 
 <form action="">
   <p>
-    <label for="example-input-email">Email address</label>
-    <input type="email" id="example-input-email" name="example" placeholder="Enter email">
-  </p>
-  <p>
-    <label for="example-input-password">Password</label>
-    <input type="password" id="example-input-password" name="example" placeholder="Password">
+    <label for="example-input-text">Text</label>
+    <input type="text" id="example-input-text" name="example" placeholder="Enter text">
   </p>
   <p>
     <label for="example-input-search">Search</label>
     <input type="search" id="example-input-serach" name="example" placeholder="Search ...">
   </p>
   <p>
-    <label for="example-input-tel">Telephone number</label>
-    <input type="tel" id="example-input-tel" name="example" placeholder="Telephone number">
+    <label for="example-input-email">Email address</label>
+    <input type="email" id="example-input-email" name="example" placeholder="Enter email">
+    <br/>Expects an email address — on touch screens, this will invoke a keypad for entering emails.
   </p>
   <p>
-    <label for="example-input-text">Text</label>
-    <input type="text" id="example-input-text" name="example" placeholder="Enter text">
+    <label for="example-input-password">Password</label>
+    <input type="password" id="example-input-password" name="example" placeholder="Password">
   </p>
   <p>
     <label for="example-input-url">Url</label>
     <input type="url" id="example-input-url" name="example" placeholder="Enter a url">
+    <br/>Expects a web address — on touch screens, this will invoke a keypad for entering URLs.
   </p>
 </form>
 
-## Number (Picker) Input
+## Number Inputs
+
+On touch screens, these inputs invoke the numeric keyboard instead of the text keyboard.
 
 <form action="">
+  <p>
+    <label for="example-input-tel">Telephone number</label>
+    <input type="tel" id="example-input-tel" name="example" placeholder="Telephone number">
+  </p>
   <p>
     <label for="example-input-number">Number</label>
     <input type="number" id="quantity" name="example" min="0" inputmode="numeric" pattern="\d*">
@@ -55,6 +61,8 @@ Baselayer form elements have simple background and focus styling (no default bor
 </form>
 
 ## Date and Time Inputs
+
+On some devices (e.g. iOS Safari), these inputs get modified by date pickers, etc. The shape of the input fields gets changed.
 
 <form action="">
   <p>
@@ -66,16 +74,14 @@ Baselayer form elements have simple background and focus styling (no default bor
     <input type="datetime-local" id="example-input-date-time-local" name="example">
   </p>
   <p>
-    <label for="example-input-month">Month</label>
-    <input type="month" id="example-input-month" name="example">
-  </p>
-  <p>
     <label for="example-input-time">Time</label>
     <input type="time" id="example-input-time" name="example">
   </p>
 </form>
 
 ## Color Picker
+
+Invokes the device’s color picker.
 
 <form action="">
   <p>
@@ -93,9 +99,11 @@ Baselayer form elements have simple background and focus styling (no default bor
   </p>
 </form>
 
-**Note:** File upload inputs `<input type="file">` can break your page layout on phones in portrait orientation. But of you add `class="w100%"` that problem goes away.
+**Note:** File upload inputs `<input type="file">` can break your page layout on the smallest phones in portrait orientation. But if you add `class="w100%"` that problem goes away.
 
 ## Select and Multi-select
+
+On some devices (e.g. iOS Safari), these inputs get modified by number pickers (dropdowns).
 
 <form action="">
   <p>
@@ -160,8 +168,6 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
   </fieldset>
 </form>
 
-**Note:** since the `<legend>` incorporates with the wrapping border line, it will not be influenced by the flexbox rule.
-
 ```
 <form action="">
   <fieldset class="flex">
@@ -171,6 +177,8 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
   </fieldset>
 </form>
 ```
+
+**Note:** In the example above (demo and code), the Baselayer `flex` has been used to align these form elements side-by-side, and `grow` has been used to expand the email input field. A `<legend>` is also included — but since its text incorporates with a wrapping border line, it will not be controlled by the flexbox rule.
 
 ## Form Buttons
 

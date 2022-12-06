@@ -100,7 +100,7 @@
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
       <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
       <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;mode</button>
+      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
     </div>
 
     <p class="m2 md:hiddenbelow">
@@ -121,14 +121,14 @@
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#color-shades">Color Shades</a></li><li><a href="#adding-more-colors">Adding More Colors</a></li><li><a href="#other-color-utilities-included">Other Color Utilities Included</a></li><li><a href="#colors-and-accessibility">Colors and Accessibility</a><ul><li><a href="#light%2Fdark-theme-example-toggle">Light/Dark Theme Example Toggle</a></li></ul></li></ul>
+        <ul><li><a href="#color-shades">Color Shades</a></li><li><a href="#adding-more-colors">Adding More Colors</a></li><li><a href="#other-color-utilities-included">Other Color Utilities Included</a></li><li><a href="#colors-and-accessibility">Colors and Accessibility</a></li><li><a href="#creating-a-dark-theme">Creating a Dark Theme</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 longread center">
-            <h1 class=bold">Colors</h1>
+          <header class="my2 py4 center">
+            <h1 class="bold">Colors</h1>
           </header>
       
           <p>Baselayer currently uses <code>hsl()</code> for setting colors (except for named colors <code>black</code> and <code>white</code>). <code>hsl()</code> (from the CSS3 Color Module) can do all that <code>#</code> (hex) and <code>rgb()</code> (CSS2) can do, but with two advantages: <code>hsl()</code> is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables <code>--l100</code> through <code>--900</code>.</p>
@@ -364,8 +364,8 @@
 </ul>
 <h2 id="colors-and-accessibility" tabindex="-1">Colors and Accessibility</h2>
 <p>In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at <strong>WCAG level AA</strong> for accessibility compliance.</p>
-<p>For WCAG level AA compliance, usually user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
-<p>Any color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.</p>
+<p>For WCAG level AA compliance, most user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
+<p>However, for color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.</p>
 <form>
   <p>
     <button type="button" name="button">Button</button>
@@ -396,11 +396,11 @@
 <li><a href="https://contrast-ratio.com">https://contrast-ratio.com</a> has an HSLA contrast checker (HSL plus opacity)</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance">Web Accessibility: Understanding Colors and Luminance (Mozilla Developer Network Docs)</a></li>
 </ul>
-<h3 id="light%2Fdark-theme-example-toggle" tabindex="-1">Light/Dark Theme Example Toggle</h3>
-<p><em>There is no built-in dark theme in Baselayer.</em> But it is easy to set up by using the color CSS variables.</p>
+<h2 id="creating-a-dark-theme" tabindex="-1">Creating a Dark Theme</h2>
+<p><strong>There is no built-in dark theme in Baselayer.</strong> But it is easy to set up by using the color CSS variables.</p>
 <p>At minimum, you will need to make dark versions of the colors for background, text, and line details (for tables, horizontal rules, etc.)</p>
 <p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between (default) light mode and (example) dark mode in this main content area. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
-<p><button id="theme-toggle"> mode</button></p>
+<p><button id="theme-toggle" class="bgblue bg600 h:bg700"> theme</button></p>
 
       
           <footer class="mb4">
