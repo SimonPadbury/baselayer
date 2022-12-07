@@ -54,14 +54,14 @@
   <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top hmax100vh overflowy">
-    <div class="py2 flex flexcolumn center">
+    <div class="pt3 flex flexcolumn center">
       <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
         <span class="p1 nowrap">Baselayer CSS </span>
       </a>
     </div>
 
-    <nav class="pb2 pcell center twhite md:hidden">
+    <nav class="pb pcell center twhite md:hidden">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -87,14 +87,16 @@
       </details>
     </nav>
 
-    <nav class="wxxs px2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
+      <ul class="unlist m0 p0">
+        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
+      </ul>
     </nav>
 
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
@@ -159,7 +161,7 @@
 <h3 id="spacing-extras" tabindex="-1">Spacing Extras</h3>
 <p>In addition, there are the following specials:</p>
 <ul>
-<li><code>pcell</code> — adds y-axis padding <code>var(--s1)</code> and x-axis padding <code>2 * var(--s1)</code>, for creating menu items. Same as the padding for table cells and buttons</li>
+<li><code>pcell</code> — adds y-axis padding <code>--s1</code> and x-axis padding of double <code>--s1</code> for creating menu items. Same as the padding for table cells and buttons</li>
 <li><code>mxauto</code> — for x-axis margin auto-centering</li>
 <li><code>m0</code> and <code>p0</code> — for removing (resetting) all unwanted space</li>
 </ul>

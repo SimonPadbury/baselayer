@@ -80,8 +80,9 @@
   --h4: 1.25em;
   --h5: 1em;
   --h6: .8em;
+
   --hf: inherit;
-  --hfw: var(--normal);
+  --hfw: normal;
 
   /* Heading ine heights*/
   --h1lh: 1.2;
@@ -119,8 +120,8 @@
 
   --ctext: hsl(var(--hsgray), var(--l900));
 
-  --clink: hsl(var(--hsblue), var(--l500)); /* color */
-  --hlink: hsl(var(--hsblue), var(--l700)); /* hover color */
+  --clink: hsl(var(--hsblue), var(--l500)); /* link color */
+  --hlink: hsl(var(--hsblue), var(--l700)); /* link hover color */
   --dolink: .3rem; /* decoration offset */
   --dtlink: 1px; /* decoration thickness */
 

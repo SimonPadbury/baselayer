@@ -54,14 +54,14 @@
   <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top hmax100vh overflowy">
-    <div class="py2 flex flexcolumn center">
+    <div class="pt3 flex flexcolumn center">
       <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
         <span class="p1 nowrap">Baselayer CSS </span>
       </a>
     </div>
 
-    <nav class="pb2 pcell center twhite md:hidden">
+    <nav class="pb pcell center twhite md:hidden">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -87,14 +87,16 @@
       </details>
     </nav>
 
-    <nav class="wxxs px2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
+      <ul class="unlist m0 p0">
+        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
+      </ul>
     </nav>
 
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
@@ -155,18 +157,18 @@
 }
 </code></pre>
 <p>For narrower containers, use the max-width classes as modifiers: <code>container wmd</code> or <code>container wsm</code>.</p>
-<p>See also how to set up a content grid using <code>content</code> below.</p>
+<p>See also how to set up a <a href="#content-grid">content grid</a> using <code>content</code> below.</p>
 <h2 id="dimensions" tabindex="-1">Dimensions</h2>
 <p>Widths:</p>
 <ul>
 <li><code>w100%</code> — width: 100%</li>
-<li><code>wxxl</code> — max-width 1600px, from <code>var(--wxxl)</code></li>
-<li><code>wxl</code> — max-width 1440px, from <code>var(--wxl)</code></li>
-<li><code>wlg</code> — max-width 1280px, from <code>var(--wlg)</code></li>
-<li><code>wmd</code> — max-width 1024px, from <code>var(--wmd)</code></li>
-<li><code>wsm</code> — max-width 768px, from <code>var(--wsm)</code></li>
-<li><code>wxs</code> — max-width 512px, from <code>var(--wxs)</code></li>
-<li><code>wxxs</code> — max-width 256px, from <code>var(--wxxs)</code></li>
+<li><code>wxxl</code> — max-width 1600px, from <code>--wxxl</code></li>
+<li><code>wxl</code> — max-width 1440px, from <code>--wxl</code></li>
+<li><code>wlg</code> — max-width 1280px, from <code>--wlg</code></li>
+<li><code>wmd</code> — max-width 1024px, from <code>--wmd</code></li>
+<li><code>wsm</code> — max-width 768px, from <code>--wsm</code></li>
+<li><code>wxs</code> — max-width 512px, from <code>--wxs</code></li>
+<li><code>wxxs</code> — max-width 256px, from <code>--wxxs</code></li>
 <li><code>wmax100vw</code> — max-width 100vw</li>
 </ul>
 <p>Heights:</p>
@@ -212,13 +214,13 @@
 <ul>
 <li><code>inlineflex</code> — inline flexbox with wrapping at all viewport widths</li>
 <li><code>flex</code> — block flexbox with wrapping at all viewport widths</li>
-<li><code>sm:flex</code> — block flexbox with wrapping at 720px up</li>
-<li><code>md:flex</code> — block flexbox with wrapping at 1080px up</li>
+<li><code>sm:flex</code> — block flexbox with wrapping at 768px up</li>
+<li><code>md:flex</code> — block flexbox with wrapping at 1024px up</li>
 </ul>
 <p><strong>Note:</strong> The following classes below will not take effect below the <code>*:flex</code> breakpoints.</p>
 <h3 id="flex-modifier-classes" tabindex="-1">Flex modifier classes</h3>
 <ul>
-<li><code>gap</code> — same as for <code>grid</code> (see below), adding a horizontal and vetical gap of <code>var(--s2)</code></li>
+<li><code>gap</code> — same as for <code>grid</code> (see below), adding a horizontal and vetical gap of <code>--s2</code></li>
 <li>X-axis: <code>flexstart</code> / <code>flexcenter</code> / <code>flexend</code></li>
 <li>Y-axis: <code>flextop</code> / <code>flexmiddle</code> / <code>flexbottom</code></li>
 <li><code>flexcolumn</code> — gives you <code>flex-direction: column</code></li>
@@ -233,28 +235,28 @@
 <p>Baselayer grids are take effect at the <code>sm</code> or <code>md</code> breakpoint widths. The grids can be combined, for three layouts:</p>
 <ul>
 <li><em>There is no columnar grid below</em> <code>sm</code> <em>for small phones</em> — however if you are using any one of the grid wrapper classes below, then <code>display:grid</code> is still heppening. This ensures that the grid <code>gap</code> works at all viewpoer widths. So, there will always be a grid gap between <em>rows</em> even if the viewport width is too narrow to have any columns.</li>
-<li>large phones (landscape orientation), and tablets up (<code>sm</code> at 720px up)</li>
-<li>large “pro” tablets (landscape orientation), laptops, and up (<code>md</code> at 1080px up)</li>
+<li>large phones (landscape orientation), and tablets up (<code>sm</code> at 768px up)</li>
+<li>large “pro” tablets (landscape orientation), laptops, and up (<code>md</code> at 1024px up)</li>
 </ul>
 <h3 id="grid-classes" tabindex="-1">Grid classes</h3>
 <ul>
-<li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 720px up.</li>
-<li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1080px up.</li>
-<li><code>gap</code> — adds a horizontal and and vetical gap of <code>var(--s2)</code></li>
+<li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.</li>
+<li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.</li>
+<li><code>gap</code> — adds a horizontal and and vetical gap of <code>--s2</code></li>
 <li><code>dense</code> — adds <code>grid-auto-flow: dense</code>, telling the browser to reorder and pack items as dense as possible filling empty cells.</li>
 </ul>
 <p>So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (<code>sm:</code>) and small laptops-up, etc. (<code>md:</code>). Note: there is no grid layout provided for phones (smaller than <code>sm:</code>).</p>
 <p>Simply using the grid wrapper classes above will enable you to set up galleries e.g. of images or cards, where you want grid items to span one grid cell each. Grid items will have equal width and height.</p>
 <h3 id="grid-item-classes" tabindex="-1">Grid-item classes</h3>
 <p>For positioning grid-items in columns and making them span more than one column.</p>
-<p>For <code>sm</code> — 720px up:</p>
+<p>For <code>sm</code> — 768px up:</p>
 <ul>
 <li><code>sm:col1</code> / <code>sm:col2</code> / <code>sm:col3</code> / <code>sm:col4</code> — cell placement</li>
 <li><code>sm:cols1-2</code> / <code>sm:cols1-3</code> / <code>sm:cols1-4</code> — spanning from column 1</li>
 <li><code>sm:cols2-3</code> / <code>sm:cols2-4</code> — spanning from column 2</li>
 <li><code>sm:cols3-4</code> — spanning from column 3</li>
 </ul>
-<p>For <code>md</code> — 1080px up:</p>
+<p>For <code>md</code> — 1024px up:</p>
 <ul>
 <li><code>md:col1</code> / <code>md:col2</code> / <code>md:col3</code> / <code>md:col4</code> — cell placement</li>
 <li><code>md:cols1-2</code> / <code>md:cols1-3</code> / <code>md:cols1-4</code> — spanning from column 1</li>
@@ -296,18 +298,18 @@
   <div class="sm:col3 p1 bgamber tblack">Item 5</div>
 </div>
 <h2 id="content-grid" tabindex="-1">Content Grid</h2>
-<p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>var(--wsm)</code>.</p>
+<p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>--wsm</code></p>
 <ul>
-<li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width <code>var(--s2)</code>.</li>
+<li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width <code>--s2</code></li>
 <li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>. There are also:
 <ul>
 <li><code>expand-right</code> expands only to the right (columns 4 to 6)</li>
 <li><code>expand-left</code> expands only to the left (columns 2 to 4)</li>
 </ul>
 </li>
-<li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns.</li>
+<li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns</li>
 </ul>
-<p><strong>Note:</strong> Columns 1 and 7 have a minimum width of <code>var(--s2)</code>. Therefore both <code>popout</code>, <code>expand</code> and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the <code>contentgrid</code> wrapper. Therefore, on smaller viewports <code>popout</code> and <code>expand</code> will adopt the same width as the middle content column.</p>
+<p><strong>Note:</strong> Columns 1 and 7 have a minimum width of <code>--s2</code> Therefore both <code>popout</code>, <code>expand</code> and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the <code>contentgrid</code> wrapper. Therefore, on smaller viewports <code>popout</code> and <code>expand</code> will adopt the same width as the middle content column.</p>
 <h3 id="popout-panels" tabindex="-1">Popout Panels</h3>
 <p>Example information panel using <code>popout</code>:</p>
 <div class="popout mt2 bt3 bblue b300 r2 p2 tblack bggray bg100">

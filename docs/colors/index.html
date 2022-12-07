@@ -54,14 +54,14 @@
   <div class="h100vh md:flex">
     <div id="site-nav" class="bggray bg800">
   <div class="sticky top hmax100vh overflowy">
-    <div class="py2 flex flexcolumn center">
+    <div class="pt3 flex flexcolumn center">
       <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
         <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
         <span class="p1 nowrap">Baselayer CSS </span>
       </a>
     </div>
 
-    <nav class="pb2 pcell center twhite md:hidden">
+    <nav class="pb pcell center twhite md:hidden">
       <details>
         <summary class="bold">Documentation</summary>
         <div class="pt2">
@@ -87,14 +87,16 @@
       </details>
     </nav>
 
-    <nav class="wxxs px2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-      <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
+      <ul class="unlist m0 p0">
+        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
+        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
+      </ul>
     </nav>
 
     <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
@@ -121,7 +123,7 @@
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
             <p class="m0 pt4">Contents:</p>
             <nav class="toc" >
-        <ul><li><a href="#color-shades">Color Shades</a></li><li><a href="#adding-more-colors">Adding More Colors</a></li><li><a href="#other-color-utilities-included">Other Color Utilities Included</a></li><li><a href="#colors-and-accessibility">Colors and Accessibility</a></li><li><a href="#creating-a-dark-theme">Creating a Dark Theme</a></li></ul>
+        <ul><li><a href="#color-shades">Color Shades</a></li><li><a href="#adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D">Adding More Colors the “Baselayer Way”</a></li><li><a href="#other-color-utilities-included">Other Color Utilities Included</a></li><li><a href="#colors-and-accessibility">Colors and Accessibility</a></li><li><a href="#creating-a-dark-theme">Creating a Dark Theme</a></li></ul>
       </nav>
           </div>
         </div>
@@ -132,14 +134,15 @@
           </header>
       
           <p>Baselayer currently uses <code>hsl()</code> for setting colors (except for named colors <code>black</code> and <code>white</code>). <code>hsl()</code> (from the CSS3 Color Module) can do all that <code>#</code> (hex) and <code>rgb()</code> (CSS2) can do, but with two advantages: <code>hsl()</code> is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables <code>--l100</code> through <code>--900</code>.</p>
-<p>In the <a href="https://www.w3.org/TR/css-color-4/">CSS4 Color Module</a> (this recommendation was released in July 2022), there are some more color declarations systems, such as <code>lab()</code>, <code>oklab()</code>, <code>lch()</code> and <code>oklch()</code>. At time of writing (October 2022) however, Only the Safari browser has partially implemented these (it is not yet possible in Safari to use CSS variables within these color declarations). In future I hope to swap out the Baselayer <code>hsl()</code> system for one of the CSS4 systems.</p>
+<p>In the <a href="https://www.w3.org/TR/css-color-4/">CSS4 Color Module</a> (this recommendation was released in July 2022), there are some more color declarations systems, such as <code>lab()</code>, <code>oklab()</code>, <code>lch()</code> and <code>oklch()</code>. At time of writing (October 2022) however, only the Safari browser has partially implemented these (it is not yet possible in Safari to use CSS variables within these color declarations). In future I hope to swap out the Baselayer <code>hsl()</code> system for one of the CSS4 systems.</p>
 <p>More on LCH and OKLCH:</p>
 <ul>
 <li><a href="https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/">LCH colors in CSS: what, why, and how?</a> by Lea Verou</li>
 <li><a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl">OKLCH in CSS: why we moved from RGB and HSL</a> by Andrey Sitnik and Travis Turner (<em>Evil Martians</em>)</li>
 </ul>
-<p>Baselayer v.1.0 has several utility classes for setting the <code>hsl()</code> color of border, text, and background of HTML elements. <code>hsl()</code> swatches are <code>gray</code>, <code>blue</code>, <code>green</code>, <code>amber</code>, and <code>red</code>. These are used to control a set of utility classes for controlling text color, background color, and border color.</p>
-<p>Also present are <code>black</code> and <code>white</code>, but these are set as <em>named</em> colors. There’s also <code>bgtransparent</code> — for setting a transparent background e.g. for outline buttons.)</p>
+<p><em>Evil Martians</em> (currently) use a color polyfill script, so that they can code in OKLCH in 2022 but it ands up as RGB (so all browsers can understand he color). Baselayer can’t use that script, since it splits the HSL into two variables (one for hue-saturation, the othr for lightness) in geneating its color shades <code>*100</code> to <code>*900</code>.</p>
+<p>Baselayer v.1.0 has several utility classes for setting the <code>hsl()</code> color of border, text, and background of HTML elements. <code>hsl()</code> swatches are <code>gray</code> <code>blue</code> <code>green</code> <code>amber</code> and <code>red</code> These are used to control a set of utility classes for controlling text color, background color, and border color.</p>
+<p>Also present are <code>black</code> and <code>white</code> but these are set as <em>named</em> colors. There’s also <code>bgtransparent</code> — for setting a transparent background e.g. for outline buttons.)</p>
 <p>The <code>hsl()</code> colors with variables can be adjusted in the root-variables file to correspond to the common user interface (UI) colors (see below), if that’s what you need.</p>
 <p>Color utility classes are prefixed acording to where the color will be applied:</p>
 <ul>
@@ -147,7 +150,7 @@
 <li><code>t*</code> — text color / <code>h:t*</code> — text color hover</li>
 <li><code>bg*</code> — background color / <code>h:bg*</code> — background color hover</li>
 </ul>
-<p>I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc., so that you can <em>also</em> make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.</p>
+<p>I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc. so that you can <em>also</em> make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.</p>
 <p>Examples:</p>
 <div class="mt2 sm:grid3cols gap">
   <div class="b3 bgreen p2">bgreen</div>
@@ -228,7 +231,7 @@
   &amp;#9888; Alert panel.
 &lt;/div&gt;
 </code></pre>
-<p>The shades <code>100</code> thorugh <code>900</code> are a grayscale by default. But if you use them to supplement one of the other colors above, then their <code>-hs</code> variables will override the gray, thereby enabling you to get shades of those colors.</p>
+<p>The shades <code>100</code> thorugh <code>900</code> if used alone, <em>do not provide color</em>. But if you use them to supplement one of the other colors above, then their <code>-hs</code> will provide the color, and the shase will shade that color.</p>
 <p>Demo of color shades using background colors:</p>
 <div class="overflow-x">
 <table style="table-layout: fixed;">
@@ -318,8 +321,8 @@
 </tbody>
 </table>
 </div>
-<h2 id="adding-more-colors" tabindex="-1">Adding More Colors</h2>
-<p>To add more colors the “Baselayer way”, you would need to convert them to <code>hsl()</code> format and declate the hue(s) and saturation(s) in <code>root-vars.css</code>.</p>
+<h2 id="adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D" tabindex="-1">Adding More Colors the “Baselayer Way”</h2>
+<p>To add more colors the, you would need to convert them to <code>hsl()</code> format and declate the hue(s) and saturation(s) in <code>root-vars.css</code>.</p>
 <pre><code>:root {
                   /* hue and saturation */
   --purple-hs:    280, 100%;
@@ -362,10 +365,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="colors-and-accessibility" tabindex="-1">Colors and Accessibility</h2>
-<p>In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at <strong>WCAG level AA</strong> for accessibility compliance.</p>
-<p>For WCAG level AA compliance, most user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
-<p>However, for color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.</p>
+<p>However, any colors near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for <a href="#colors-and-accessibility">accessibility</a>. You will do better going for a lighter background amber with black text.</p>
 <form>
   <p>
     <button type="button" name="button">Button</button>
@@ -386,9 +386,20 @@
 /* Green outline (a.k.a. ghost) button*/
 &lt;button class=&quot;bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 </code></pre>
-<p><strong>Note:</strong> the <em>named</em> colors (<code>black</code>, <code>white</code>, and <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared after the coded colors in <code>colors.css</code>. This is the reason why, in the example green outline (ghost) button above, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this is the property that colorizes the hover shade.</p>
+<p><strong>Note:</strong> the <em>named</em> colors (<code>black</code>, <code>white</code>, and <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared subsequent to the coded colors in <code>colors.css</code>. This is the reason why, in the example green outline (ghost) button above, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this is the property that colorizes the hover shade.</p>
+<h2 id="colors-and-accessibility" tabindex="-1">Colors and Accessibility</h2>
+<p><em>All color systems, if color combinations are chosen with care, can be used sufficient contrast between text and background colors for purposes of assessibility.</em></p>
+<p>In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at <strong>WCAG level AA</strong> for accessibility compliance.</p>
+<p>For WCAG level AA compliance, most user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
 <p>Background reading on HSL color and accessibility:</p>
 <ul>
+<li>Useful blog posts from <a href="https://www.a11yproject.com">The Accessibility (A11Y) Project</a>:
+<ul>
+<li><a href="https://www.a11yproject.com/posts/understanding-visual-impairment/">A primer to visual impairment</a></li>
+<li><a href="https://www.a11yproject.com/posts/understanding-colourblindness/">Understanding color blindness</a></li>
+<li><a href="https://www.a11yproject.com/posts/how-i-deal-with-colorblindness-as-a-digital-product-designer/">How I deal with colorblindness as a digital product designer</a></li>
+</ul>
+</li>
 <li><a href="https://www.smashingmagazine.com/2021/07/hsl-colors-css/">Using HSL Colors In CSS (Smashing Magazine)</a></li>
 <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG) 2</a></li>
 <li><a href="https://webaim.org/articles/contrast/">Contrast and Color Accessibility (WEB AIM)</a></li>

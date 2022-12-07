@@ -47,7 +47,7 @@ Spacing example with paddings:
 
 In addition, there are the following specials:
 
-* `pcell` — adds y-axis padding `var(--s1)` and x-axis padding `2 * var(--s1)`, for creating menu items. Same as the padding for table cells and buttons
+* `pcell` — adds y-axis padding `--s1` and x-axis padding of double `--s1` for creating menu items. Same as the padding for table cells and buttons
 * `mxauto` — for x-axis margin auto-centering
 * `m0` and `p0` — for removing (resetting) all unwanted space
 

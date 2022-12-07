@@ -37,20 +37,20 @@ The centered layout container `container` with is set as follows:
 
 For narrower containers, use the max-width classes as modifiers: `container wmd` or `container wsm`.
 
-See also how to set up a content grid using `content` below.
+See also how to set up a [content grid](#content-grid) using `content` below.
 
 ## Dimensions
 
 Widths:
 
 * `w100%` — width: 100%
-* `wxxl` — max-width 1600px, from `var(--wxxl)`
-* `wxl` — max-width 1440px, from `var(--wxl)`
-* `wlg` — max-width 1280px, from `var(--wlg)`
-* `wmd` — max-width 1024px, from `var(--wmd)`
-* `wsm` — max-width 768px, from `var(--wsm)`
-* `wxs` — max-width 512px, from `var(--wxs)`
-* `wxxs` — max-width 256px, from `var(--wxxs)`
+* `wxxl` — max-width 1600px, from `--wxxl`
+* `wxl` — max-width 1440px, from `--wxl`
+* `wlg` — max-width 1280px, from `--wlg`
+* `wmd` — max-width 1024px, from `--wmd`
+* `wsm` — max-width 768px, from `--wsm`
+* `wxs` — max-width 512px, from `--wxs`
+* `wxxs` — max-width 256px, from `--wxxs`
 * `wmax100vw` — max-width 100vw
 
 Heights:
@@ -103,14 +103,14 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 
 * `inlineflex` — inline flexbox with wrapping at all viewport widths
 * `flex` — block flexbox with wrapping at all viewport widths
-* `sm:flex` — block flexbox with wrapping at 720px up
-* `md:flex` — block flexbox with wrapping at 1080px up
+* `sm:flex` — block flexbox with wrapping at 768px up
+* `md:flex` — block flexbox with wrapping at 1024px up
 
 **Note:** The following classes below will not take effect below the `*:flex` breakpoints.
 
 ### Flex modifier classes 
 
-* `gap` — same as for `grid` (see below), adding a horizontal and vetical gap of `var(--s2)`
+* `gap` — same as for `grid` (see below), adding a horizontal and vetical gap of `--s2`
 * X-axis: `flexstart` / `flexcenter` / `flexend`
 * Y-axis: `flextop` / `flexmiddle` / `flexbottom`
 * `flexcolumn` — gives you `flex-direction: column`
@@ -127,14 +127,14 @@ Using _CSS Grid_.
 Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids can be combined, for three layouts:
 
 * _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still heppening. This ensures that the grid `gap` works at all viewpoer widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
-* large phones (landscape orientation), and tablets up (`sm` at 720px up)
-* large “pro” tablets (landscape orientation), laptops, and up (`md` at 1080px up)
+* large phones (landscape orientation), and tablets up (`sm` at 768px up)
+* large “pro” tablets (landscape orientation), laptops, and up (`md` at 1024px up)
 
 ### Grid classes
 
-* `sm:grid2cols`, `sm:grid3cols`, or `sm:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 720px up.
-* `md:grid2cols`, `md:grid3cols`, or `md:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 1080px up.
-* `gap` — adds a horizontal and and vetical gap of `var(--s2)`
+* `sm:grid2cols`, `sm:grid3cols`, or `sm:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.
+* `md:grid2cols`, `md:grid3cols`, or `md:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.
+* `gap` — adds a horizontal and and vetical gap of `--s2`
 * `dense` — adds `grid-auto-flow: dense`, telling the browser to reorder and pack items as dense as possible filling empty cells.
 
 So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (`sm:`) and small laptops-up, etc. (`md:`). Note: there is no grid layout provided for phones (smaller than `sm:`).
@@ -145,14 +145,14 @@ Simply using the grid wrapper classes above will enable you to set up galleries 
 
 For positioning grid-items in columns and making them span more than one column.
 
-For `sm` — 720px up:
+For `sm` — 768px up:
 
 * `sm:col1` / `sm:col2` / `sm:col3` / `sm:col4` — cell placement
 * `sm:cols1-2` / `sm:cols1-3` / `sm:cols1-4` — spanning from column 1
 * `sm:cols2-3` / `sm:cols2-4` — spanning from column 2
 * `sm:cols3-4` — spanning from column 3
 
-For `md` — 1080px up:
+For `md` — 1024px up:
 
 * `md:col1` / `md:col2` / `md:col3` / `md:col4` — cell placement
 * `md:cols1-2` / `md:cols1-3` / `md:cols1-4` — spanning from column 1
@@ -205,15 +205,15 @@ Here’s that example again, but with a gap: `sm:grid4cols dense gap`
 
 ## Content Grid
 
-`contentgrid` uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max `var(--wsm)`.
+`contentgrid` uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max `--wsm`
 
-* Use the `popout` utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width `var(--s2)`.
+* Use the `popout` utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width `--s2`
 * Use the `expand` utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width `var(--wmd)`. There are also:
   * `expand-right` expands only to the right (columns 4 to 6)
   * `expand-left` expands only to the left (columns 2 to 4)
-* Use the `fullbleed` utility class to make an element span all 7 columns.
+* Use the `fullbleed` utility class to make an element span all 7 columns
 
-**Note:** Columns 1 and 7 have a minimum width of `var(--s2)`. Therefore both `popout`, `expand` and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the `contentgrid` wrapper. Therefore, on smaller viewports `popout` and `expand` will adopt the same width as the middle content column.
+**Note:** Columns 1 and 7 have a minimum width of `--s2` Therefore both `popout`, `expand` and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the `contentgrid` wrapper. Therefore, on smaller viewports `popout` and `expand` will adopt the same width as the middle content column.
 
 ### Popout Panels
 

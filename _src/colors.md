@@ -11,16 +11,18 @@ nextLink: "Forms"
 
 Baselayer currently uses `hsl()` for setting colors (except for named colors `black` and `white`). `hsl()` (from the CSS3 Color Module) can do all that `#` (hex) and `rgb()` (CSS2) can do, but with two advantages: `hsl()` is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables `--l100` through `--900`.
 
-In the [CSS4 Color Module](https://www.w3.org/TR/css-color-4/) (this recommendation was released in July 2022), there are some more color declarations systems, such as `lab()`, `oklab()`, `lch()` and `oklch()`. At time of writing (October 2022) however, Only the Safari browser has partially implemented these (it is not yet possible in Safari to use CSS variables within these color declarations). In future I hope to swap out the Baselayer `hsl()` system for one of the CSS4 systems.
+In the [CSS4 Color Module](https://www.w3.org/TR/css-color-4/) (this recommendation was released in July 2022), there are some more color declarations systems, such as `lab()`, `oklab()`, `lch()` and `oklch()`. At time of writing (October 2022) however, only the Safari browser has partially implemented these (it is not yet possible in Safari to use CSS variables within these color declarations). In future I hope to swap out the Baselayer `hsl()` system for one of the CSS4 systems.
 
 More on LCH and OKLCH:
 
 * [LCH colors in CSS: what, why, and how?](https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/) by Lea Verou
 * [OKLCH in CSS: why we moved from RGB and HSL](https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl) by Andrey Sitnik and Travis Turner (_Evil Martians_)
 
-Baselayer v.1.0 has several utility classes for setting the `hsl()` color of border, text, and background of HTML elements. `hsl()` swatches are `gray`, `blue`, `green`, `amber`, and `red`. These are used to control a set of utility classes for controlling text color, background color, and border color.
+_Evil Martians_ (currently) use a color polyfill script, so that they can code in OKLCH in 2022 but it ands up as RGB (so all browsers can understand he color). Baselayer can’t use that script, since it splits the HSL into two variables (one for hue-saturation, the othr for lightness) in geneating its color shades `*100` to `*900`.
 
-Also present are `black` and `white`, but these are set as _named_ colors. There’s also `bgtransparent` — for setting a transparent background e.g. for outline buttons.)
+Baselayer v.1.0 has several utility classes for setting the `hsl()` color of border, text, and background of HTML elements. `hsl()` swatches are `gray` `blue` `green` `amber` and `red` These are used to control a set of utility classes for controlling text color, background color, and border color.
+
+Also present are `black` and `white` but these are set as _named_ colors. There’s also `bgtransparent` — for setting a transparent background e.g. for outline buttons.)
 
 The `hsl()` colors with variables can be adjusted in the root-variables file to correspond to the common user interface (UI) colors (see below), if that’s what you need.
 
@@ -30,7 +32,7 @@ Color utility classes are prefixed acording to where the color will be applied:
 * `t*` — text color / `h:t*` — text color hover
 * `bg*` — background color / `h:bg*` — background color hover
 
-I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc., so that you can _also_ make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.
+I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc. so that you can _also_ make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.
 
 Examples:
 
@@ -116,7 +118,7 @@ Example usage:
 </div>
 ```
 
-The shades `100` thorugh `900` are a grayscale by default. But if you use them to supplement one of the other colors above, then their `-hs` variables will override the gray, thereby enabling you to get shades of those colors.
+The shades `100` thorugh `900` if used alone, _do not provide color_. But if you use them to supplement one of the other colors above, then their `-hs` will provide the color, and the shase will shade that color.
 
 Demo of color shades using background colors:
 
@@ -209,9 +211,9 @@ Demo of color shades using background colors:
 </table>
 </div>
 
-## Adding More Colors
+## Adding More Colors the “Baselayer Way”
 
-To add more colors the “Baselayer way”, you would need to convert them to `hsl()` format and declate the hue(s) and saturation(s) in `root-vars.css`. 
+To add more colors the, you would need to convert them to `hsl()` format and declate the hue(s) and saturation(s) in `root-vars.css`. 
 
 ```
 :root {
@@ -251,13 +253,7 @@ Then, in the `colors.css` you can create the set of utility classes for text col
 * Transparent:
     * `bgtransparent`
 
-## Colors and Accessibility
-
-In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at **WCAG level AA** for accessibility compliance.
-
-For WCAG level AA compliance, most user interface colors need to be _darker than the middle shade_ (i.e. use `*600` up) if the text color is white, or _lighter than the middle shade_ (i.e. use `*400` down) if the text color is black.
-
-However, for color near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You will do better going for a lighter background amber with black text.
+However, any colors near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for [accessibility](#colors-and-accessibility). You will do better going for a lighter background amber with black text.
 
 <form>
   <p>
@@ -282,10 +278,22 @@ However, for color near yellow, such as Baselayer amber, as well as orange and y
 <button class="bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
 ```
 
-**Note:** the _named_ colors (`black`, `white`, and `transparent`) take precedence over HSL coded colors in Baselayer because they are declared after the coded colors in `colors.css`. This is the reason why, in the example green outline (ghost) button above, it can have both `bgtransparent` and `bggreen` classes but the transparent wins out. Whereas the hover state shade `h:bg700` _overrides_ the `bgtransparent` on hover, and that’s when the `var(--green-hs)` in the `bggreen` class is applied — this is the property that colorizes the hover shade.
+**Note:** the _named_ colors (`black`, `white`, and `transparent`) take precedence over HSL coded colors in Baselayer because they are declared subsequent to the coded colors in `colors.css`. This is the reason why, in the example green outline (ghost) button above, it can have both `bgtransparent` and `bggreen` classes but the transparent wins out. Whereas the hover state shade `h:bg700` _overrides_ the `bgtransparent` on hover, and that’s when the `var(--green-hs)` in the `bggreen` class is applied — this is the property that colorizes the hover shade.
+
+## Colors and Accessibility
+
+_All color systems, if color combinations are chosen with care, can be used sufficient contrast between text and background colors for purposes of assessibility._
+
+In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at **WCAG level AA** for accessibility compliance.
+
+For WCAG level AA compliance, most user interface colors need to be _darker than the middle shade_ (i.e. use `*600` up) if the text color is white, or _lighter than the middle shade_ (i.e. use `*400` down) if the text color is black.
 
 Background reading on HSL color and accessibility:
 
+* Useful blog posts from [The Accessibility (A11Y) Project](https://www.a11yproject.com):
+    * [A primer to visual impairment](https://www.a11yproject.com/posts/understanding-visual-impairment/)
+    * [Understanding color blindness](https://www.a11yproject.com/posts/understanding-colourblindness/)
+    * [How I deal with colorblindness as a digital product designer](https://www.a11yproject.com/posts/how-i-deal-with-colorblindness-as-a-digital-product-designer/)
 * [Using HSL Colors In CSS (Smashing Magazine)](https://www.smashingmagazine.com/2021/07/hsl-colors-css/)
 * [Web Content Accessibility Guidelines (WCAG) 2](https://www.w3.org/WAI/standards-guidelines/wcag/)
 * [Contrast and Color Accessibility (WEB AIM)](https://webaim.org/articles/contrast/)
