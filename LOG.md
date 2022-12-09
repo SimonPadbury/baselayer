@@ -3,12 +3,16 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 9 Dec 2022 -- v1.1.2
+
+* Font weight utilities `lighter`, `normal`, `semibold`, `bold`, `heavy` -- all controlled by CSS variables. 
+
 ## 5 Dec 2022 -- v.1.1.1
 
 * `font-size: 100%` set on the `<html>` tag, not the `<body>` tag (defaulting as 16px).
 * Base line heights simply set at 1.5 (not increasing by a built-in clamp).
 * Line heights of headings no longer controlled by `calc(1em + 0.5rem)` byt by a manual calculation: `{font-size} * (1 + (1/{font-size} * 10))` (rounded). Therefore line heighs will scale with the headings if they are wrapped in the `longread` utility.
-* Improved font elements and buttongs: now font-size scalable.
+* Improved font elements and buttons: now font-size scalable.
 
 ## 1 Dec 2022 -- v.1.1.0
 

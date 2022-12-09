@@ -100,7 +100,7 @@ td {
   border: var(--b1);
 }
 th, dt {
-  font-weight: bold;
+  font-weight: var(--bold);
 }
 
 hr {
@@ -149,7 +149,11 @@ nav a, .noline { text-decoration: none; }
 .big { font-size: 1.5em; }
 small, .small { font-size: .75em; }
 
-.bold, .strong { font-weight: bold; }
+.lighter { font-weight: var(--lighter); }
+.normal { font-weight: var(--normal); }
+.semibold { font-weight: var(--semibold); }
+.bold { font-weight: var(--bold); }
+.heavy { font-weight: var(--heavy); }
 .italic { font-style: italic; }
 
 /* can also be used on <table> because of the `*` selectors */

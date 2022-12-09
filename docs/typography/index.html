@@ -7,7 +7,7 @@
 
   <title>Typography · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.1">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.2">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -80,8 +80,8 @@
         </p>
     
         <p class="italic tgray t400">
-          Version: 1.1.1<br/>
-          Filesize: 14.6 kb<br/>
+          Version: 1.1.2<br/>
+          Filesize: 14.8 kb<br/>
           Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
         </p>
       </details>
@@ -111,8 +111,8 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.1<br/>
-      Filesize: 14.6 kb<br/>
+      Version: 1.1.2<br/>
+      Filesize: 14.8 kb<br/>
       Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
   </div>
@@ -220,7 +220,7 @@ body {
 <div class="h4 mt1">Heading h4</div>
 <div class="h5 mt1">Heading h5</div>
 <div class="h6 mt1">Heading h6</div>
-<p>The headings font weight is set using <code>--hfw: normal</code> — which you can override.</p>
+<p>The headings font weight is set using <code>--hfw: var(--normal)</code> — which you can override.</p>
 <pre><code>:root {
   /* Heading font sizes */
   --h1: 2.441em;
@@ -231,7 +231,7 @@ body {
   --h6: .8em;
 
   --hf: inherit;
-  --hfw: normal;
+  --hfw: var(--normal);
 
   /* Heading line heights*/
   --h1lh: 1.2;
@@ -431,7 +431,7 @@ thead, tr:not(:last-of-type) {
 <li><code>big</code> — increase font size by 1.5em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading — instead, use it on a <em>wrapper</em> around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
 <li><code>small</code> (or use the <code>&lt;small&gt;</code> HTML tag) — decrease font-size to 0.75em.</li>
 <li><code>right</code>, <code>center</code>, and <code>left</code> — text alignment</li>
-<li><code>bold</code>, <code>normal</code> — font weights</li>
+<li><code>lighter</code>, <code>normal</code>, <code>semibold</code>, <code>bold</code>, <code>heavy</code> — font weights</li>
 <li><code>italic</code> — font style italic</li>
 <li><code>uppercase</code> — text transform to capitals</li>
 <li><code>noline</code> — use to remove the underscore from links where having it may be inappropriate (e.g. in menus)</li>

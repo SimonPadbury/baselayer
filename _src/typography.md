@@ -123,7 +123,7 @@ Example of heading sizes — using utility classes (so that they don’t show up
 <div class="h5 mt1">Heading h5</div>
 <div class="h6 mt1">Heading h6</div>
 
-The headings font weight is set using `--hfw: normal` — which you can override.
+The headings font weight is set using `--hfw: var(--normal)` — which you can override.
 
 ```
 :root {
@@ -136,7 +136,7 @@ The headings font weight is set using `--hfw: normal` — which you can override
   --h6: .8em;
 
   --hf: inherit;
-  --hfw: normal;
+  --hfw: var(--normal);
 
   /* Heading line heights*/
   --h1lh: 1.2;
@@ -373,7 +373,7 @@ Besides those already introduced, Baselayer also has utility classes for:
 * `big` — increase font size by 1.5em. Use it directly on a `<p>` to enlarge the font (e.g. for a lead paragraph). But don’t use `big`  directly on a heading — instead, use it on a _wrapper_ around a heading that you wish to enlarge (e.g. for a title or hero component).
 * `small` (or use the `<small>` HTML tag) — decrease font-size to 0.75em.  
 * `right`, `center`, and `left` — text alignment
-* `bold`, `normal` — font weights
+* `lighter`, `normal`, `semibold`, `bold`, `heavy` — font weights
 * `italic` — font style italic
 * `uppercase` — text transform to capitals
 * `noline` — use to remove the underscore from links where having it may be inappropriate (e.g. in menus)

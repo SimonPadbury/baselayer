@@ -17,6 +17,12 @@
   --fshtml: 100%; /* sets 1 rem = 16px */
   --lh: 1.5;
 
+  --lighter: 200;
+  --lighter: 300;
+  --semibold: 600;
+  --bold: 700;
+  --heavy: 900;
+
   /*
   Long-read based on https://clamp.font-size.app/, 
   expanding from 16px @ 768px to 22px @ 1280px
@@ -82,7 +88,7 @@
   --h6: .8em;
 
   --hf: inherit;
-  --hfw: normal;
+  --hfw: var(--normal);
 
   /* Heading ine heights*/
   --h1lh: 1.2;
