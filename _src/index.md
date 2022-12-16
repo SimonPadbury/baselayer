@@ -50,7 +50,7 @@ Baselayer has two basic accessibility features built-in.
 
 **(a.) Form focus ring:**
 
-For form inputs and buttons, there’s a 4px light blue ring (see [colors](/colors)). Example:
+For form inputs and buttons on `:focus`, there’s a 4px light blue ring (see [colors](/colors)). Example:
 
 <form>
   <fieldset class="flex">
@@ -62,9 +62,13 @@ For form inputs and buttons, there’s a 4px light blue ring (see [colors](/colo
 
 The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.
 
-**(b.) Link focus ring:**
+**(b.) Button focus ring:**
 
-For links, collapsible `<details>`, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear _between_ the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:
+Buttons (`<button>`, `<input type="button">`, etc.) get the same focus ring as for other form inputs, but only for `:focus-visible`.
+
+**(c.) Link focus ring:**
+
+For links, collapsible `<details>`, pseudo-buttons (i.e. links styled with the `btn` class), and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear _between_ the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:
 
 <div class="mt2 b1 b600 sm:grid3cols">
   <div class="p3 flex flexcolumn flexcenter flexmiddle">

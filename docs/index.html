@@ -7,7 +7,7 @@
 
   <title>Baselayer · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.2">
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.3">
 
   <script src="/baselayer/js/switcher.js"></script>
 
@@ -80,8 +80,8 @@
         </p>
     
         <p class="italic tgray t400">
-          Version: 1.1.2<br/>
-          Filesize: 14.8 kb<br/>
+          Version: 1.1.3<br/>
+          Filesize: 15 kb<br/>
           Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
         </p>
       </details>
@@ -111,8 +111,8 @@
     </p>
 
     <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.2<br/>
-      Filesize: 14.8 kb<br/>
+      Version: 1.1.3<br/>
+      Filesize: 15 kb<br/>
       Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
     </p>
   </div>
@@ -145,7 +145,7 @@
 <li>Styled form elements and buttons</li>
 <li>Control of many of these things using CSS variables (custom properties)</li>
 </ul>
-<p>Believe it or not, all this is packed into a tiny CSS file, <strong>14.8 kb</strong>.</p>
+<p>Believe it or not, all this is packed into a tiny CSS file, <strong>15 kb</strong>.</p>
 <p>Baselayer uses some modern web technologies such as <a href="https://caniuse.com/?search=grid">CSS Grid</a> and <a href="https://caniuse.com/?search=variables">CSS variables</a>, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.</p>
 <h2 id="built-using-postcss" tabindex="-1">Built using PostCSS</h2>
 <p>Baselayer is built using <a href="https://postcss.org">PostCSS</a> and a few plugins. Preprocessors such as Sass are not required.</p>
@@ -163,7 +163,7 @@
 <p>Baselayer has two basic accessibility features built-in.</p>
 <h3 id="(1.)-focus-rings" tabindex="-1">(1.) Focus Rings</h3>
 <p><strong>(a.) Form focus ring:</strong></p>
-<p>For form inputs and buttons, there’s a 4px light blue ring (see <a href="/colors">colors</a>). Example:</p>
+<p>For form inputs and buttons on <code>:focus</code>, there’s a 4px light blue ring (see <a href="/colors">colors</a>). Example:</p>
 <form>
   <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
@@ -172,8 +172,10 @@
   </fieldset>
 </form>
 <p>The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.</p>
-<p><strong>(b.) Link focus ring:</strong></p>
-<p>For links, collapsible <code>&lt;details&gt;</code>, and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear <em>between</em> the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:</p>
+<p><strong>(b.) Button focus ring:</strong></p>
+<p>Buttons (<code>&lt;button&gt;</code>, <code>&lt;input type=&quot;button&quot;&gt;</code>, etc.) get the same focus ring as for other form inputs, but only for <code>:focus-visible</code>.</p>
+<p><strong>(c.) Link focus ring:</strong></p>
+<p>For links, collapsible <code>&lt;details&gt;</code>, pseudo-buttons (i.e. links styled with the <code>btn</code> class), and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear <em>between</em> the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:</p>
 <div class="mt2 b1 b600 sm:grid3cols">
   <div class="p3 flex flexcolumn flexcenter flexmiddle">
   <p><a href="/#">Link</a></p>

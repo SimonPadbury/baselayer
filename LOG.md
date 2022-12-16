@@ -3,6 +3,10 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 16 Dec 2022 -- v1.1.3
+
+* Activating focus ring on buttons only for `:focus-visible`.
+
 ## 9 Dec 2022 -- v1.1.2
 
 * Font weight utilities `lighter`, `normal`, `semibold`, `bold`, `heavy` -- all controlled by CSS variables. 
