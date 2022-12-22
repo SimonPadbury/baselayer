@@ -1,6 +1,6 @@
 # Baselayer
 
-v.1.1.3
+v.1.1.4
 
 Baselayer is a splendiferous yet miniscule CSS library.
 

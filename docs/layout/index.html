@@ -220,7 +220,14 @@
 <p><strong>Note:</strong> The following classes below will not take effect below the <code>*:flex</code> breakpoints.</p>
 <h3 id="flex-modifier-classes" tabindex="-1">Flex modifier classes</h3>
 <ul>
-<li><code>gap</code> — same as for <code>grid</code> (see below), adding a horizontal and vetical gap of <code>--s2</code></li>
+<li><code>gap</code> — same as for <code>grid</code> (see below), adding a horizontal and vertical gap of <code>--s2</code>
+<ul>
+<li><code>gap1</code> — <code>--s1</code></li>
+<li><code>gap1</code> — <code>--s2</code> (also alias <code>gap</code>; see above)</li>
+<li><code>gap1</code> — <code>--s2</code></li>
+<li><code>gap1</code> — <code>--s4</code></li>
+</ul>
+</li>
 <li>X-axis: <code>flexstart</code> / <code>flexcenter</code> / <code>flexend</code></li>
 <li>Y-axis: <code>flextop</code> / <code>flexmiddle</code> / <code>flexbottom</code></li>
 <li><code>flexcolumn</code> — gives you <code>flex-direction: column</code></li>
@@ -242,7 +249,14 @@
 <ul>
 <li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.</li>
 <li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.</li>
-<li><code>gap</code> — adds a horizontal and and vetical gap of <code>--s2</code></li>
+<li><code>gap</code> — adds a horizontal and and vetical gap of <code>--s2</code> (same as for flexbox layouts; see above)
+<ul>
+<li><code>gap1</code> — <code>--s1</code></li>
+<li><code>gap1</code> — <code>--s2</code> (also alias <code>gap</code>; see above)</li>
+<li><code>gap1</code> — <code>--s2</code></li>
+<li><code>gap1</code> — <code>--s4</code></li>
+</ul>
+</li>
 <li><code>dense</code> — adds <code>grid-auto-flow: dense</code>, telling the browser to reorder and pack items as dense as possible filling empty cells.</li>
 </ul>
 <p>So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (<code>sm:</code>) and small laptops-up, etc. (<code>md:</code>). Note: there is no grid layout provided for phones (smaller than <code>sm:</code>).</p>

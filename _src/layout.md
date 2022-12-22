@@ -110,7 +110,11 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 
 ### Flex modifier classes 
 
-* `gap` — same as for `grid` (see below), adding a horizontal and vetical gap of `--s2`
+* `gap` — same as for `grid` (see below), adding a horizontal and vertical gap of `--s2`
+    * `gap1` — `--s1`
+    * `gap1` — `--s2` (also alias `gap`; see above)
+    * `gap1` — `--s2`
+    * `gap1` — `--s4`
 * X-axis: `flexstart` / `flexcenter` / `flexend`
 * Y-axis: `flextop` / `flexmiddle` / `flexbottom`
 * `flexcolumn` — gives you `flex-direction: column`
@@ -134,7 +138,11 @@ Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids
 
 * `sm:grid2cols`, `sm:grid3cols`, or `sm:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.
 * `md:grid2cols`, `md:grid3cols`, or `md:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.
-* `gap` — adds a horizontal and and vetical gap of `--s2`
+* `gap` — adds a horizontal and and vetical gap of `--s2` (same as for flexbox layouts; see above)
+    * `gap1` — `--s1`
+    * `gap1` — `--s2` (also alias `gap`; see above)
+    * `gap1` — `--s2`
+    * `gap1` — `--s4`
 * `dense` — adds `grid-auto-flow: dense`, telling the browser to reorder and pack items as dense as possible filling empty cells.
 
 So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (`sm:`) and small laptops-up, etc. (`md:`). Note: there is no grid layout provided for phones (smaller than `sm:`).
