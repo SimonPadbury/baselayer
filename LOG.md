@@ -3,13 +3,17 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
+## 24 Jan 2023 -- v.1.1.5
+
+* Removed smooth scrolling.
+
 ## 22 Dec 2022 -- v.1.1.4
 
-* Added `gap1` thru `gap4` for flexbox and grid layouts.
+* Added `gap1` through `gap4` for flexbox and grid layouts.
 
 ## 16 Dec 2022 -- v.1.1.3
 
-* Activating focus ring on buttons only for `:focus-visible`.
+* Activated focus ring on buttons only for `:focus-visible`.
 
 ## 9 Dec 2022 -- v.1.1.2
 
@@ -19,7 +23,7 @@
 
 * `font-size: 100%` set on the `<html>` tag, not the `<body>` tag (defaulting as 16px).
 * Base line heights simply set at 1.5 (not increasing by a built-in clamp).
-* Line heights of headings no longer controlled by `calc(1em + 0.5rem)` byt by a manual calculation: `{font-size} * (1 + (1/{font-size} * 10))` (rounded). Therefore line heighs will scale with the headings if they are wrapped in the `longread` utility.
+* Line heights of headings no longer controlled by `calc(1em + 0.5rem)` but by a _manual_ calculation: `{font-size} * (1 + (1/{font-size} * 10))` (rounded). Therefore line heights will properly scale with the headings if they are wrapped in the `longread` utility.
 * Improved font elements and buttons: now font-size scalable.
 
 ## 1 Dec 2022 -- v.1.1.0

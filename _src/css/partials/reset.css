@@ -6,14 +6,9 @@
 
 
 html {
-  scroll-behavior: smooth;
   font-size: var(--fshtml);
   line-height: var(--lh);
   box-sizing: border-box;
-}
-
-html:focus-within {
-  scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
