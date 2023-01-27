@@ -3,9 +3,10 @@
 
 [Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
 
-## 24 Jan 2023 -- v.1.1.5
+## 27 Jan 2023 -- v.1.1.5
 
 * Removed smooth scrolling.
+* Removed `gap` alias from `gap2`.
 
 ## 22 Dec 2022 -- v.1.1.4
 

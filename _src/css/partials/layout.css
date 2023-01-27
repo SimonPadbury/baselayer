@@ -121,7 +121,7 @@
 }
 
 .gap1 { gap: var(--s1); }
-.gap2, .gap { gap: var(--s2); }
+.gap2 { gap: var(--s2); }
 .gap3 { gap: var(--s3); }
 .gap4 { gap: var(--s4); }
 .dense { grid-auto-flow: dense; }
