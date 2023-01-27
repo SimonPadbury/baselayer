@@ -233,6 +233,7 @@
 <li><code>flexcolumn</code> — gives you <code>flex-direction: column</code></li>
 <li><code>flexspace</code> — gives you <code>justify-content: space-between</code></li>
 </ul>
+<p><strong>Note:</strong> the gaps have the same spacing CSS variables as <a href="/baselayer/decoration/#spacing-(margins-and-paddings)">margins and paddings</a></p>
 <h3 id="flex-item-class" tabindex="-1">Flex-item class</h3>
 <ul>
 <li><code>grow</code> — gives you <code>flex-grow: 1</code></li>
@@ -252,13 +253,14 @@
 <li><code>gap</code> — adds a horizontal and and vetical gap of <code>--s2</code> (same as for flexbox layouts; see above)
 <ul>
 <li><code>gap1</code> — <code>--s1</code></li>
-<li><code>gap1</code> — <code>--s2</code> (also alias <code>gap</code>; see above)</li>
-<li><code>gap1</code> — <code>--s2</code></li>
-<li><code>gap1</code> — <code>--s4</code></li>
+<li><code>gap2</code> — <code>--s2</code> (also alias <code>gap</code>; see above)</li>
+<li><code>gap3</code> — <code>--s3</code></li>
+<li><code>gap4</code> — <code>--s4</code></li>
 </ul>
 </li>
 <li><code>dense</code> — adds <code>grid-auto-flow: dense</code>, telling the browser to reorder and pack items as dense as possible filling empty cells.</li>
 </ul>
+<p><strong>Note:</strong> the gaps have the same spacing CSS variables as <a href="/baselayer/decoration/#spacing-(margins-and-paddings)">margins and paddings</a></p>
 <p>So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (<code>sm:</code>) and small laptops-up, etc. (<code>md:</code>). Note: there is no grid layout provided for phones (smaller than <code>sm:</code>).</p>
 <p>Simply using the grid wrapper classes above will enable you to set up galleries e.g. of images or cards, where you want grid items to span one grid cell each. Grid items will have equal width and height.</p>
 <h3 id="grid-item-classes" tabindex="-1">Grid-item classes</h3>

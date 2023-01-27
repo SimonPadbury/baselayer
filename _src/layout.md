@@ -120,6 +120,9 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 * `flexcolumn` — gives you `flex-direction: column`
 * `flexspace` — gives you `justify-content: space-between`
 
+**Note:** the gaps have the same spacing CSS variables as [margins and paddings](/baselayer/decoration/#spacing-(margins-and-paddings))
+
+
 ### Flex-item class
 
 * `grow` — gives you `flex-grow: 1`
@@ -140,10 +143,12 @@ Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids
 * `md:grid2cols`, `md:grid3cols`, or `md:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.
 * `gap` — adds a horizontal and and vetical gap of `--s2` (same as for flexbox layouts; see above)
     * `gap1` — `--s1`
-    * `gap1` — `--s2` (also alias `gap`; see above)
-    * `gap1` — `--s2`
-    * `gap1` — `--s4`
+    * `gap2` — `--s2` (also alias `gap`; see above)
+    * `gap3` — `--s3`
+    * `gap4` — `--s4`
 * `dense` — adds `grid-auto-flow: dense`, telling the browser to reorder and pack items as dense as possible filling empty cells.
+
+**Note:** the gaps have the same spacing CSS variables as [margins and paddings](/baselayer/decoration/#spacing-(margins-and-paddings))
 
 So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (`sm:`) and small laptops-up, etc. (`md:`). Note: there is no grid layout provided for phones (smaller than `sm:`).
 
