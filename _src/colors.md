@@ -9,20 +9,22 @@ nextLink: "Forms"
 
 ---
 
-Baselayer currently uses `hsl()` for setting colors (except for named colors `black` and `white`). `hsl()` (from the CSS3 Color Module) can do all that `#` (hex) and `rgb()` (CSS2) can do, but with two advantages: `hsl()` is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables `--l100` through `--900`.
+Baselayer currently uses `hsl()` for setting colors (except for named colors `black` and `white`). `hsl()` (from the CSS3 Color Module) can do all that `#` (hex) and `rgb()` (CSS2) can do, but with two advantages: `hsl()` is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables `--l100` through `--l900`.
 
-In the [CSS4 Color Module](https://www.w3.org/TR/css-color-4/) (this recommendation was released in July 2022), there are some more color declarations systems, such as `lab()`, `oklab()`, `lch()` and `oklch()`. At time of writing (October 2022) however, only the Safari browser has partially implemented these (it is not yet possible in Safari to use CSS variables within these color declarations). In future I hope to swap out the Baselayer `hsl()` system for one of the CSS4 systems.
+In the [CSS4 Color Module](https://www.w3.org/TR/css-color-4/) (a recommendation released by the W3C in July 2022), there are some more color declarations systems, such as `lab()`, `oklab()`, `lch()` and `oklch()`. However, at the time of creating Baselayer 1.x in October 2022, only the Safari browser has partially implemented these color systems (it is not yet possible in Safari (Oct 2022) to use CSS variables within these color declarations). In future I hope to swap out the Baselayer `hsl()` system for one of the CSS4 systems.
 
 More on LCH and OKLCH:
 
 * [LCH colors in CSS: what, why, and how?](https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/) by Lea Verou
 * [OKLCH in CSS: why we moved from RGB and HSL](https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl) by Andrey Sitnik and Travis Turner (_Evil Martians_)
 
-_Evil Martians_ (currently) use a color polyfill script, so that they can code in OKLCH in 2022 but it ands up as RGB (so all browsers can understand he color). Baselayer can’t use that script, since it splits the HSL into two variables (one for hue-saturation, the othr for lightness) in geneating its color shades `*100` to `*900`.
+_Evil Martians_ (currently) use a color polyfill script, so that they can code in OKLCH in 2022 but it ands up as RGB (so all browsers can understand he color). Baselayer can’t use that script, since it splits the HSL into two variables (one for hue-saturation, the othr for lightness) in geneating its color shades `*l100` to `*l900`.
 
-Baselayer v.1.0 has several utility classes for setting the `hsl()` color of border, text, and background of HTML elements. `hsl()` swatches are `gray` `blue` `green` `amber` and `red` These are used to control a set of utility classes for controlling text color, background color, and border color.
+As of v.1.0 Baselayer has several utility classes for setting the `hsl()` color of border, text, and background of HTML elements. `hsl()` swatches are `gray` `blue` `green` `amber` and `red` These are used to control a set of utility classes for controlling text color, background color, and border color.
 
-Also present are `black` and `white` but these are set as _named_ colors. There’s also `bgtransparent` — for setting a transparent background e.g. for outline buttons.)
+These five colors have been carefully chosen so that in the Baselayer system, each of the the `*l100` variants are not too close to white and the `*l900` variants are not too close to black.
+
+Also present are `black` and `white` but these are set as _named_ colors. There’s also `bgtransparent` — for setting a transparent background e.g. for outline buttons.
 
 The `hsl()` colors with variables can be adjusted in the root-variables file to correspond to the common user interface (UI) colors (see below), if that’s what you need.
 
@@ -136,6 +138,10 @@ Demo of color shades using background colors:
 </thead>
 <tbody>
 <tr>
+<td><code>bgwhite</code></td>
+<td colspan="5" class="py3 bgwhite"></td>
+</tr>
+<tr>
 <td><code>bg100</code></td>
 <td class="py3 bggray bg100"></td>
 <td class="py3 bgblue bg100"></td>
@@ -207,9 +213,15 @@ Demo of color shades using background colors:
 <td class="py3 bgamber bg900"></td>
 <td class="py3 bgred bg900"></td>
 </tr>
+<tr>
+<td><code>bgblack</code></td>
+<td colspan="5" class="py3 bgblack"></td>
+</tr>
 </tbody>
 </table>
 </div>
+
+**Note:** of course, there are no shades of black and white — use `*gray` and shades for a grayscale.
 
 ## Adding More Colors the “Baselayer Way”
 
@@ -226,6 +238,12 @@ To add more colors the, you would need to convert them to `hsl()` format and dec
 Then, in the `colors.css` you can create the set of utility classes for text color, border color, and background color (with hover states).
 
 ```
+/*
+ * .b* is for border color
+ * .t* is for text color
+ * .bg* is for background color
+ */
+
 .bpurple, .h\:bpurple:hover {
   --bhs: var(--purple-hs);
   border-color: hsl(var(--bhs), var(--l500));
