@@ -220,7 +220,7 @@
 <p><strong>Note:</strong> The following classes below will not take effect below the <code>*:flex</code> breakpoints.</p>
 <h3 id="flex-modifier-classes" tabindex="-1">Flex modifier classes</h3>
 <ul>
-<li><code>gap</code> — adds a horizontal and and vetical gap (same as for grid layouts; see below):
+<li><code>gap*</code> — adds a horizontal and and vetical gap (same as for grid layouts; see below):
 <ul>
 <li><code>gap1</code> — <code>--s1</code></li>
 <li><code>gap2</code> — <code>--s2</code></li>
@@ -242,7 +242,7 @@
 <p>Using <em>CSS Grid</em>.</p>
 <p>Baselayer grids are take effect at the <code>sm</code> or <code>md</code> breakpoint widths. The grids can be combined, for three layouts:</p>
 <ul>
-<li><em>There is no columnar grid below</em> <code>sm</code> <em>for small phones</em> — however if you are using any one of the grid wrapper classes below, then <code>display:grid</code> is still heppening. This ensures that the grid <code>gap</code> works at all viewpoer widths. So, there will always be a grid gap between <em>rows</em> even if the viewport width is too narrow to have any columns.</li>
+<li><em>There is no columnar grid below</em> <code>sm</code> <em>for small phones</em> — however if you are using any one of the grid wrapper classes below, then <code>display:grid</code> is still happening. This ensures that the grid <code>gap</code> works at all viewpoer widths. So, there will always be a grid gap between <em>rows</em> even if the viewport width is too narrow to have any columns.</li>
 <li>large phones (landscape orientation), and tablets up (<code>sm</code> at 768px up)</li>
 <li>large “pro” tablets (landscape orientation), laptops, and up (<code>md</code> at 1024px up)</li>
 </ul>
@@ -250,7 +250,7 @@
 <ul>
 <li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.</li>
 <li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.</li>
-<li><code>gap</code> — adds a horizontal and and vetical gap (same as for flexbox layouts; see above):
+<li><code>gap*</code> — adds a horizontal and and vetical gap (same as for flexbox layouts; see above):
 <ul>
 <li><code>gap1</code> — <code>--s1</code></li>
 <li><code>gap2</code> — <code>--s2</code></li>
@@ -305,8 +305,8 @@
   <div class="sm:col4 p1 bggreen twhite">Item 4</div>
   <div class="sm:col3 p1 bgamber tblack">Item 5</div>
 </div>
-<p>Here’s that example again, but with a gap: <code>sm:grid4cols dense gap</code></p>
-<div class="mt2 sm:grid4cols dense gap">
+<p>Here’s that example again, but with a gap: <code>sm:grid4cols dense gap2</code></p>
+<div class="mt2 sm:grid4cols dense gap2">
   <div class="p1 bgred twhite">Item 1</div>
   <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
   <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
@@ -378,7 +378,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blandi
 </code></pre>
 <h2 id="aspect-ratios" tabindex="-1">Aspect ratios</h2>
 <p>Common aspect ratio constraints for images, video, and hero blocks.</p>
-<div class="mt2 sm:grid4cols gap">
+<div class="mt2 sm:grid4cols gap2">
   <div>
     <div class="ratio1x1 b1 p1"><code>ratio1x1</code></div>
   </div>

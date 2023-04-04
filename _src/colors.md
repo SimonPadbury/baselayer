@@ -38,7 +38,7 @@ I have named the colors according to their common names, instead of opting to na
 
 Examples:
 
-<div class="mt2 sm:grid3cols gap">
+<div class="mt2 sm:grid3cols gap2">
   <div class="b3 bgreen p2">bgreen</div>
   <div class="b3 p2 tgreen">tgreen</div>
   <div class="b3 p2 twhite bggreen">bggreen</div>

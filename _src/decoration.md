@@ -83,7 +83,7 @@ Borders can be set as follows:
 * `r3` — 8px border radius
 * `r4` — 16px border radius
 
-<div class="mt2 sm:grid3cols gap">
+<div class="mt2 sm:grid3cols gap2">
   <div class="b1 r2 p1">r2</div>
   <div class="b1 r3 p1">r3</div>
   <div class="b1 r4 p1">r4</div>
@@ -156,7 +156,7 @@ Opacities (with hover states):
 * `opacity25%` / `h:opacity25%`
 * `opacity50%` / `h:opacity50%`
 * `opacity75%` / `h:opacity75%`
-*  `h:opacity100%`
+*  `h:opacity100%` — a reset that removes opacity on hover
 
 The hover states are provided in case you want an image inside a link to change opacity on hover.
 

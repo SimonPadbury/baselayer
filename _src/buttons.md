@@ -76,7 +76,7 @@ Border, background, and text color utilities can be used.
 
 <form class="mt2">
     <label for="example-input-text">Text</label>
-    <div class="flex gap">
+    <div class="flex 2">
       <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
       <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
     </div>

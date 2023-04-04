@@ -110,7 +110,7 @@ Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.
 
 ### Flex modifier classes 
 
-* `gap` — adds a horizontal and and vetical gap (same as for grid layouts; see below):
+* `gap*` — adds a horizontal and and vetical gap (same as for grid layouts; see below):
     * `gap1` — `--s1`
     * `gap2` — `--s2`
     * `gap3` — `--s3`
@@ -133,7 +133,7 @@ Using _CSS Grid_.
 
 Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids can be combined, for three layouts:
 
-* _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still heppening. This ensures that the grid `gap` works at all viewpoer widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
+* _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still happening. This ensures that the grid `gap` works at all viewpoer widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
 * large phones (landscape orientation), and tablets up (`sm` at 768px up)
 * large “pro” tablets (landscape orientation), laptops, and up (`md` at 1024px up)
 
@@ -141,7 +141,7 @@ Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids
 
 * `sm:grid2cols`, `sm:grid3cols`, or `sm:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.
 * `md:grid2cols`, `md:grid3cols`, or `md:grid4cols` — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.
-* `gap` — adds a horizontal and and vetical gap (same as for flexbox layouts; see above):
+* `gap*` — adds a horizontal and and vetical gap (same as for flexbox layouts; see above):
     * `gap1` — `--s1`
     * `gap2` — `--s2`
     * `gap3` — `--s3`
@@ -206,9 +206,9 @@ If your layout leaves gaps but you want them filled by reordering the items, the
   <div class="sm:col3 p1 bgamber tblack">Item 5</div>
 </div>
 
-Here’s that example again, but with a gap: `sm:grid4cols dense gap`
+Here’s that example again, but with a gap: `sm:grid4cols dense gap2`
 
-<div class="mt2 sm:grid4cols dense gap">
+<div class="mt2 sm:grid4cols dense gap2">
   <div class="p1 bgred twhite">Item 1</div>
   <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
   <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
@@ -304,7 +304,7 @@ Example colored stripe using `fullbleed`:
 
 Common aspect ratio constraints for images, video, and hero blocks.
 
-<div class="mt2 sm:grid4cols gap">
+<div class="mt2 sm:grid4cols gap2">
   <div>
     <div class="ratio1x1 b1 p1"><code>ratio1x1</code></div>
   </div>
