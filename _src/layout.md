@@ -133,7 +133,7 @@ Using _CSS Grid_.
 
 Baselayer grids are take effect at the `sm` or `md` breakpoint widths. The grids can be combined, for three layouts:
 
-* _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still happening. This ensures that the grid `gap` works at all viewpoer widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
+* _There is no columnar grid below_ `sm` _for small phones_ — however if you are using any one of the grid wrapper classes below, then `display:grid` is still happening. This ensures that the grid `gap` works at all viewport widths. So, there will always be a grid gap between _rows_ even if the viewport width is too narrow to have any columns. 
 * large phones (landscape orientation), and tablets up (`sm` at 768px up)
 * large “pro” tablets (landscape orientation), laptops, and up (`md` at 1024px up)
 
