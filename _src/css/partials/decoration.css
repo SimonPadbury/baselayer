@@ -100,6 +100,10 @@
 .r4 { border-radius: var(--r4); }
 .pill { border-radius: 99em; }
 
+.r2, .r3, .r4, .pill {
+  overflow: hidden;
+}
+
 .cover {
   width: 100%;
   height: 100%;

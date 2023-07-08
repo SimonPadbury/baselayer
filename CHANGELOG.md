@@ -1,7 +1,20 @@
 
-# Baselayer CSS Log
+# Baselayer CSS Changelog
 
-[Updating: numbers in index.css, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
+[Updating: numbers in three CSS indexes, README.md, data/metadata.json, package.json, and package-lock.json (twice).]
+
+## 8 July 2023 -- v.2.0.0 -- MAJOR UPDATE WITH BREAKING CHANGES  
+
+* Refactored `<h1>` through `<h6>` line heights, spacing.
+* Removed `hyphens: auto; overflow-wrap: break-word` from the `<body>` tag.
+* Refactored `container` and max-width utilities `wxxs` through `wxl` to include their own `--vmax` variable. (So that their onboard `--vmax` works as a modifier for `container` and the new `grid`.)
+* Removed `expand-right` and `expand-left` from the content grid.
+* **BREAKING CHANGE:** removed Baselayer 1’s columnar grid system.
+* **NEW** improved grid system with media queries AND container queries for reverting to a single _flexbox column_ at smaller (viewport or container) widths.
+* HSL colors (from Baselayer 1) are now refactored and moved to their own partial file `colors-hsl.css`. This is done so that HSL colors can be not-included from `index.css` when you no longer need to support older browsers that do not have an interpreter for OKLCH colors.
+* **NEW** OKLCH color system in file `colors-oklch.css` using the same CSS classes and theme variable names, it is a drop-in replacement for the Baselayer 1’s HSL color system. HSL is still present as an option (not a fallback) for pre-OKLCH browsers in Baselayer 2.
+* **NEW** built-in dark themes for Baselayer core, OKLCH and HSL -- controllable by a JS toggle.
+* And a load of minor improvements.
 
 ## 27 Jan 2023 -- v.1.1.5
 

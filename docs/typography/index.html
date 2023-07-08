@@ -7,43 +7,221 @@
 
   <title>Typography · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.5">
-
-  <script src="/baselayer/js/switcher.js"></script>
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=2.0.0">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-oklch.css" id="colors-oklch">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-hsl.css" id="colors-hsl">
 
   <style>
-    .theme-dark #theme-toggle::before { content: 'Light '; }
-    .theme-light #theme-toggle::before { content: 'Dark '; }
-    .main-longread #fs-toggle::before { content: 'Normal font '; }
-    .main-normal #fs-toggle::before { content: 'Long read '; }
-    .main-prose #font-toggle::before { content: 'Base '; }
-    .main-base #font-toggle::before { content: 'Prose '; }
+    html {
+      scroll-behavior: smooth;
+    }
+    .check-box {
+      width: 1rem;
+      height: 1rem;
+    }
+    .font-base .label-base .check-box::before { content: '✓'; }
+    .font-prose .label-prose .check-box::before { content: '✓'; }
+    .font-normal .label-normal .check-box::before { content: '✓'; }
+    .font-longread .label-longread .check-box::before { content: '✓'; }
+    .colors-oklch .label-oklch .check-box::before { content: '✓'; }
+    .colors-hsl .label-hsl .check-box::before { content: '✓'; }
+    .theme-light .label-light .check-box::before { content: '✓'; }
+    .theme-dark .label-dark .check-box::before { content: '✓'; }
 
-    .main-longread .contentgrid { font-size: var(--fslongread); }
-    .main-prose .contentgrid { font-family: var(--prose); }
+    @media (min-width: 1024px) {
+      #site-title { 
+        max-width: 145px;
+        margin-inline: auto;
+        padding-top: var(--s2);
+        justify-content: center;
+      }
+    }
+    .font-longread .contentgrid { 
+      font-size: var(--fslongread);
+    }
 
-    .main-longread .btn-icon {
+    .font-prose #main-content>.contentgrid { font-family: var(--prose); }
+
+    .font-longread .btn-icon {
       width: calc(var(--si) + 2px);
       height: calc(var(--si) + 2px);
     }
-    .theme-dark #main-content { 
-      color: hsl(var(--hsgray), var(--l100));
-      background: hsl(var(--hsgray), var(--l900));
+    h2, h3, h4 {
+      scroll-margin-top: var(--s2);
     }
-    .theme-dark #main-content a:not(.btn) {
-      color: hsl(var(--hsblue), var(--l300));
+    .contentgrid header + h2 {
+      margin-top: 0;
     }
-    .theme-dark #main-content a:not(.btn):hover {
-      color: hsl(var(--hsblue), var(--l400));
+
+    pre code {
+      max-height: 80vh;
+      overflow-y: auto
     }
-    .theme-dark code {
-      color: white;
-      background: hsl(var(--hsblue), var(--l700));
-    }
-    .theme-dark hr, .theme-dark th, .theme-dark td {
-      border-color: hsl(var(--hsgray), var(--l600));
+
+    .resize-x {
+      margin-inline: -5px;
+      padding: 5px;
+      resize: horizontal;
+      overflow-x: auto;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='silver' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   </style>
+
+  <script>
+  const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+const htmlClassList = document.querySelector('html').classList;
+
+function fontProse() {
+  sessionStorage.setItem('baselayerFont', 'prose');
+  htmlClassList.remove('font-base');
+  htmlClassList.add('font-prose');
+}
+
+function fontBase() {
+  sessionStorage.setItem('baselayerFont', 'base');
+  htmlClassList.remove('font-prose');
+  htmlClassList.add('font-base');
+}
+
+function fsLongRead() {
+  sessionStorage.setItem('baselayerFS', 'longread');
+  htmlClassList.remove('font-normal');
+  htmlClassList.add('font-longread');
+}
+
+function fsNormal() {
+  sessionStorage.setItem('baselayerFS', 'normal');
+  htmlClassList.remove('font-longread');
+  htmlClassList.add('font-normal');
+}
+
+function colorsOKLCH() {
+  sessionStorage.setItem('baselayerColors', 'oklch');
+  htmlClassList.remove('colors-hsl');
+  htmlClassList.add('colors-oklch');
+}
+
+function colorsHSL() {
+  sessionStorage.setItem('baselayerColors', 'hsl');
+  htmlClassList.remove('colors-oklch');
+  htmlClassList.add('colors-hsl');
+}
+
+function themeDark() {
+  sessionStorage.setItem("baselayerTheme", "dark");
+  htmlClassList.remove('theme-light');
+  htmlClassList.add('theme-dark');
+}
+
+function themeLight() {
+  sessionStorage.setItem("baselayerTheme", "light");
+  htmlClassList.remove('theme-dark');
+  htmlClassList.add('theme-light');
+}
+
+// Toggles
+
+function toggleFont() {
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontBase();
+  } else {
+    fontProse();
+  }
+};
+
+function toggleFS() {
+  if ( sessionStorage.baselayerFS === 'normal' ) {
+    fsLongRead();
+  } else {
+    fsNormal();
+  }
+};
+
+function toggleColors() {
+  if ( sessionStorage.baselayerColors === 'oklch' ) {
+    colorsHSL();
+    document.getElementById('colors-hsl').disabled = false;
+    document.getElementById('colors-oklch').disabled = true;
+  
+  } else {
+    colorsOKLCH();
+    document.getElementById('colors-hsl').disabled = true;
+    document.getElementById('colors-oklch').disabled = false;
+  }
+};
+
+function toggleTheme() {
+  if ( sessionStorage.baselayerTheme === 'dark' ) {
+    themeLight();
+  } else {
+    themeDark();
+  }
+};
+
+// init
+
+function baselayerInit() {
+  if (sessionStorage.baselayerTheme === 'dark' || (!('baselayerTheme' in sessionStorage) && matchMediaDark.matches)) {
+    themeDark();
+  } else {
+    // default
+    themeLight();
+  }
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontProse();
+  } else {
+    // default
+    fontBase();
+  }
+  if ( sessionStorage.baselayerFS === 'longread' ) {
+    fsLongRead();
+  } else {
+    // default
+    fsNormal();
+  }
+  if ( sessionStorage.baselayerColors === 'hsl' ) {
+    document.getElementById('colors-oklch').disabled = true;
+    colorsHSL();
+  } else {
+    // default
+    document.getElementById('colors-hsl').disabled = true;
+    colorsOKLCH();
+  }
+};
+
+baselayerInit();
+    /**
+  * Site Navigation Toggle (Phones)
+  */
+
+window.addEventListener("DOMContentLoaded", () => {
+  let navButton = document.querySelector('#site-nav-toggle');
+  let menu = document.querySelector('#site-nav-menu');
+  let windowTest = function() {
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      navButton.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+    } else {
+      navButton.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+    }
+  }
+
+  windowTest();
+
+  window.addEventListener('resize', function () {
+    windowTest();
+  });
+
+  navButton.addEventListener('click', function() {
+    let expanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !expanded);
+    menu.hidden = !menu.hidden;
+  });
+});
+
+  </script>
+
 </head>
 <body class="">
 
@@ -51,89 +229,109 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh md:flex">
+  <div class="h100dvh flex md:drop">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100vh overflowy">
-    <div class="pt3 flex flexcolumn center">
-      <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
-        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">Baselayer CSS </span>
+  <div class="sticky top hmax100dvh overflowy">
+    <div class="pcell center">
+      <a id="site-title" href="/baselayer/" class="h3 m0 py1 normal flex flexcenter flexmiddle flexwrap gap1 tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+          <g transform="translate(-294.592 -94.592)">
+            <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+            <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+            <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+            <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            </g>
+            </svg>
+        <span class="nowrap">Baselayer CSS</span>
       </a>
+      <span class="tgray t400 md:hiddenbelow">Version: 2.0.0</span>
     </div>
 
-    <nav class="pb pcell center twhite md:hidden">
-      <details>
-        <summary class="bold">Documentation</summary>
-        <div class="pt2">
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav id="site-nav" role="menu">
+      <button type="button" id="site-nav-toggle" aria-expanded="false" aria-label="Menu" aria-controls="site-nav-menu" class="absolute top right m2 md:hidden">
+        Menu
+      </button>
+
+      <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
+        <div class="my2 pcell flex flexcolumn gap2">
+          <a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/typography/">Typography</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/layout/">Layout</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/decoration/">Decoration</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/colors/">Colors</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/forms/">Forms</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/buttons/">Buttons</a>
         </div>
 
-        <p class="pcell bggray bg900">
-          <a class="block tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-          <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-        </p>
-    
-        <p class="italic tgray t400">
-          Version: 1.1.5<br/>
-          Filesize: 15 kb<br/>
-          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-        </p>
-      </details>
+        <div class="mb2 pcell">
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFont()">
+            <div class="label-base w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Base font</div>
+            </div>
+            <div class="label-prose w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Prose font</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFS()">
+            <div class="label-normal w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Normal font-size</div>
+            </div>
+            <div class="label-longread w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Long read font-size</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleColors()">
+            <div class="label-oklch w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">OKLCH colors</div>
+            </div>
+            <div class="label-hsl w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">HSL colors</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleTheme()">
+            <div class="label-light w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Light theme</div>
+            </div>
+            <div class="label-dark w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Dark theme</div>
+            </div>
+          </button>
+        </div>
+
+      </div>
     </nav>
-
-    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
-      <ul class="unlist m0 p0">
-        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
-      </ul>
-    </nav>
-
-    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
-    </div>
-
-    <p class="m2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-    </p>
-
-    <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.5<br/>
-      Filesize: 15 kb<br/>
-      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-    </p>
   </div>
 </div>
 
       <main id="main-content" class="grow flex">
+
         <div id="toc" class="lg:hiddenbelow" style="order: 2;">
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
-            <p class="m0 pt4">Contents:</p>
+            <p class="h4 pt4 semibold">Contents</p>
             <nav class="toc" >
-        <ul><li><a href="#font-stacks">Font Stacks</a><ul><li><a href="#base%2Fprose-typeface-example-toggle">Base/Prose Typeface Example Toggle</a></li><li><a href="#html-and-body-tag-styling">HTML and Body Tag Styling</a></li><li><a href="#more-on-setting-font-stacks">More on Setting Font Stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic Block Elements</a><ul><li><a href="#headings">Headings</a></li><li><a href="#block-quotes">Block Quotes</a></li><li><a href="#lists">Lists</a></li></ul></li><li><a href="#the-link-tag">The Link Tag</a></li><li><a href="#text-alignment">Text Alignment</a></li><li><a href="#tables">Tables</a><ul><li><a href="#wide-tables">Wide Tables</a></li><li><a href="#controlling-table-styling">Controlling Table Styling</a></li></ul></li><li><a href="#the-long-read-utility-class">The Long Read Utility Class</a><ul><li><a href="#long-read-example-toggle">Long Read Example Toggle</a></li></ul></li><li><a href="#code-blocks">Code Blocks</a></li><li><a href="#other-typographic-utility-classes">Other Typographic Utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
+        <ul><li><a href="#font-stacks">Font stacks</a><ul><li><a href="#setting-font-stacks">Setting font stacks</a></li></ul></li><li><a href="#typographic-block-elements">Typographic block elements</a><ul><li><a href="#headings">Headings</a></li><li><a href="#block-quotes">Block quotes</a></li><li><a href="#lists">Lists</a></li></ul></li><li><a href="#the-link-tag">The link tag</a></li><li><a href="#text-alignment">Text alignment</a></li><li><a href="#tables">Tables</a><ul><li><a href="#making-wide-tables-responsive">Making wide tables responsive</a></li><li><a href="#controlling-table-styling">Controlling table styling</a></li></ul></li><li><a href="#the-longlead-utility-class">The longlead utility class</a></li><li><a href="#code-blocks">Code blocks</a></li><li><a href="#other-typographic-utility-classes">Other typographic utility classes</a></li><li><a href="#simple-menus">Simple Menus</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 center">
-            <h1 class="bold">Typography</h1>
+          <header class="my2 py4 big center">
+            <h1 class="m0 lighter">Typography</h1>
           </header>
       
-          <h2 id="font-stacks" tabindex="-1">Font Stacks</h2>
+          <h2 id="font-stacks" tabindex="-1">Font stacks</h2>
 <p>Three native font stacks are set in the <code>root-vars.css</code> file.</p>
 <pre><code>:root {
   --base: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
@@ -141,39 +339,27 @@
   --mono: ui-monospace, Menlo, &quot;Segoe UI Mono&quot;, Consolas, &quot;Ubuntu Monospace&quot;, monospace;
 }
 </code></pre>
-<p>Everything here is an example, a place to start. <code>--base</code> and <code>--prose</code> don’t need to be both sans-serif and serif.</p>
-<h3 id="base%2Fprose-typeface-example-toggle" tabindex="-1">Base/Prose Typeface Example Toggle</h3>
-<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>--base</code> and <code>--prose</code> in this main content column. If you are not looking at these docs on a phone or narrow window, then you’ve probably noticed it already in the left sidebar. But here’s another button that does the same:</p>
-<p><button id="font-toggle" class="bgblue bg600 h:bg700"> typeface</button></p>
+<p>Everything here is an example, a place to start. Your own <code>--base</code> and <code>--prose</code> don’t need to be both sans-serif and serif.</p>
+<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>--base</code> and <code>--prose</code> in this main content column.</p>
+<p class="flex flexcenter">
+  <button class="pcell flex flexcolumn gap1 bgblue bg600 h:bg700" onclick="toggleFont()">
+    <div class="label-base w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Base font</div>
+    </div>
+    <div class="label-prose w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Prose font</div>
+    </div>
+  </button>
+</p>
 <p>Font stack usage in Baselayer:</p>
 <ul>
-<li>The base font stack is set in the <code>&lt;body&gt;</code> tag (in <code>base.css</code>) and in the <code>.base</code> utility class.</li>
-<li>The prose is only available via the <code>.prose</code> utility class</li>
-<li>The monotype is available via the <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, and <code>&lt;samp&gt;</code> HTML tags, and in the <code>.mono</code> utility class.</li>
+<li>The base font stack is set in the <code>&lt;body&gt;</code> tag (in <code>base.css</code>) and in the <code>base</code> utility class.</li>
+<li>The prose is only available via the <code>prose</code> utility class</li>
+<li>The monotype is available via the <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, and <code>&lt;samp&gt;</code> HTML tags, and in the <code>mono</code> utility class.</li>
 </ul>
-<h3 id="html-and-body-tag-styling" tabindex="-1">HTML and Body Tag Styling</h3>
-<p>The base font size and line height (used throughout Baselayer, not only on default text) is set as variables in <code>root-vars.css</code>:</p>
-<pre><code>/* root-vars.css */
-:root {
-  --fshtml: 100%; /* sets 1 rem = 16px */
-  --lh: 1.5;
-}
-</code></pre>
-<p>These variables, along with a few more, are deployed on the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags:</p>
-<pre><code>/* reset.css */
-html {
-  font-size: var(--fshtml);
-  line-height: var(--lh);
-}
-</code></pre>
-<pre><code>/* base.css */
-body {
-  font-family: var(--base);
-  color: var(--ctext);
-  background-color: var(--body-bg-color);
-}
-</code></pre>
-<h3 id="more-on-setting-font-stacks" tabindex="-1">More on Setting Font Stacks</h3>
+<h3 id="setting-font-stacks" tabindex="-1">Setting font stacks</h3>
 <p>In choosing your own font stacks, you may wish to choose two fonts that have similar x-height, so that you can set them using the same font size and line-height. Some other factors to compare are hights for lowercase ascenders and descenders, letter width, and stroke thickness.</p>
 <p>A good place to start is by pairing serif and sans-serif (or slab serif) fonts of the same typeface. There are several to choose from on <a href="https://fonts.google.com">Google Fonts</a>. Some examples:</p>
 <ul>
@@ -190,7 +376,7 @@ body {
 <p>So, for example:</p>
 <ul>
 <li>If your chosen base typeface has an x-height much larger than your chosen prose, then you can set the prose font-size slightly larger, or the base slightly smaller.</li>
-<li>If your base has thicker strokes so that it “looks darker” then your prose, then you may set your base font-weight slightly lighter, to <code>300</code> (if this is available) while retaining your prose font-weight at the normal <code>400</code>.</li>
+<li>If your base has thicker strokes so that it “looks darker” than your prose, then you may want to set your base font-weight slightly lighter, to <code>300</code> (if this is available) while retaining your prose font-weight at the normal <code>400</code>.</li>
 </ul>
 <p>For inspiration:</p>
 <ul>
@@ -201,25 +387,41 @@ body {
 <li><a href="https://www.pairandcompare.net">Pair &amp; Compare</a></li>
 <li><a href="https://www.pagecloud.com/blog/best-google-fonts-pairings">Top 50 Google Font Pairings [Handpicked by Pro Designers] (Pagecloud)</a></li>
 </ul>
-<h2 id="typographic-block-elements" tabindex="-1">Typographic Block Elements</h2>
-<p>Built-in browser (user-agent) stylesheets generally have top and bottom margins set on paragraphs, headings, etc. while many popular CSS frameworks (e.g. Bootstrap) have the top margin set to zero.</p>
-<p>Baselayer, however, zeros the bottom margin of typographic block elements and sets the top margin as follows:</p>
+<h2 id="typographic-block-elements" tabindex="-1">Typographic block elements</h2>
+<p>In Baselayer 2:</p>
 <ul>
-<li><code>p</code> <code>table</code> and most others: top margin <code>--s2</code></li>
-<li>Headings <code>h2</code> to <code>h6</code> (both tags and matching utility classes): top margin <code>--s3</code></li>
-<li>List items (except the first-of-type):  <code>margin-top: var(--s2) / 2</code></li>
+<li>The bottom margin on most typographic blocks have zero top margin, and bottom margin set to the <em>line height in rems</em> using these two varibles:</li>
 </ul>
-<p>See <a href="/posts/2022/decoration/">decoration</a> for more information on these spacing vasiables.</p>
-<p>In some contexts (e.g. in card components) you may not want any built-in spacing for typographic block elements. You can remove margins by using the <code>m0</code> utility class. With <code>m0</code> added as a margin reset, you can start again adding margins that you may require (e.g. this works: <code>m0 mr1</code>).</p>
+<pre><code class="language-css">:root {
+  --lh: 1.5; /* Base lineheight (no unit) */
+  --mlh: calc(var(--lh) * 1rem); /* margin line height in rems */
+}
+</code></pre>
 <h3 id="headings" tabindex="-1">Headings</h3>
-<p>All headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> and matching utility classes <code>h1</code> to <code>h6</code> have their font sizes set in the root variables file. The typographic scale is 1.250 (major third), calculated using the <a href="https://type-scale.com">Type Scale</a> webapp.</p>
-<p>Example of heading sizes — using utility classes (so that they don’t show up in the table-of-contents generator), and with margins controlled so that you can compare the sizes better):</p>
-<div class="h1 mt2">Heading h1</div>
-<div class="h2 mt1">Heading h2</div>
-<div class="h3 mt1">Heading h3</div>
-<div class="h4 mt1">Heading h4</div>
-<div class="h5 mt1">Heading h5</div>
-<div class="h6 mt1">Heading h6</div>
+<p>All headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> and matching utility classes <code>h1</code> to <code>h6</code> have:</p>
+<ul>
+<li>Font sizes set in the root variables file. The typographic scale is 1.250 (major third), calculated using the <a href="https://type-scale.com">Type Scale</a> webapp.</li>
+<li>Line heights set using the formula <code>1em + 0.5rem</code>. Meanwhile the bottom margin is the same as described above.</li>
+</ul>
+<pre><code class="language-css">:root {
+  --hlh: calc(1em + 0.5rem); /* headings line-height */
+}
+</code></pre>
+<ul>
+<li>Headings <code>&lt;h2&gt;</code> to <code>&lt;h6&gt;</code> and matching utility classes <code>h2</code> to <code>h6</code> also have top margins equal to their respective line heights (so H2 has a bigger top margin than H3, and so on)</li>
+</ul>
+<p>Tips:</p>
+<ol>
+<li>In some contexts (e.g. in card components) you may not want any built-in spacing for typographic block elements. Then, you can remove margins by using the <code>m0</code> utility class. With <code>m0</code> added as a <em>margin reset</em>, you can start again adding margins that you may require (e.g. this works: <code>m0 mr1</code>).</li>
+<li>You can also remove top margin “remotely” e.g. you can target the first item inside its wrapper using <code>.wrapper:first-child { margin-top: 0; }</code>, or the first sibling after the <code>&lt;header&gt;</code> or <code>&lt;h1&gt;</code> e.g. as I have done in these docs: <code>.contentgrid header + * { margin-top: 0; }</code>. This takes care of any chapters that start their content with an H2 as the first item under the title (header) block.</li>
+</ol>
+<p>Example of heading sizes — using utility classes (so that they don’t show up in the table-of-contents generator):</p>
+<p class="h1">Heading h1</p>
+<p class="h2">Heading h2</p>
+<p class="h3">Heading h3</p>
+<p class="h4">Heading h4</p>
+<p class="h5">Heading h5</p>
+<p class="h6">Heading h6</p>
 <p>The headings font weight is set using <code>--hfw: var(--normal)</code> — which you can override.</p>
 <pre><code>:root {
   /* Heading font sizes */
@@ -230,29 +432,20 @@ body {
   --h5: 1em;
   --h6: .8em;
 
-  --hf: inherit;
-  --hfw: var(--normal);
-
-  /* Heading line heights*/
-  --h1lh: 1.2;
-  --h2lh: 1.25;
-  --h3lh: 1.3;
-  --h4lh: 1.4;
-  --h5lh: 1.5;
-  --h6lh: 1.625;
+  --hf: inherit; /* headings font */
+  --hfw: var(--normal); /* headings font-weight */
+  --hlh: calc(1em + 0.5rem); /* headings line-height */
 }
 </code></pre>
-<p>Headings also have their font-family set using <code>--hf: inherit</code> This has been done using the variable <code>--hf: inherit</code> so that you can override that. Headings don’t need to have the same typeface as paragraphs.</p>
-<p>Line heights are calcaulated manually as follows: <code>{font-size} * (1 + (1/{font-size} * 10))</code> (rounded). This formula gives smaller line heights for bigger text sizes.</p>
-<p>(Prior to v.1.1.1, all Baselayer line heights were set using <code>calc(1em + .5rem)</code> until I noticed that this causes heading line heights to be tighter within <code>longread</code> blocks. So, the manual formula above was introduced so that rem` isn’t involded in setting heading line heights.)</p>
-<h3 id="block-quotes" tabindex="-1">Block Quotes</h3>
+<p>Headings also have their font-family set using <code>--hf: inherit</code> This has been done so that you can override it. Headings don’t need to have the same typeface as paragraphs.</p>
+<h3 id="block-quotes" tabindex="-1">Block quotes</h3>
 <p>Baselayer styles <code>&lt;blockquote&gt;</code> tags with some inline (x-axis) padding, to give the effect of indentation. This inline padding is set using the responsive spacing variable <code>--s3</code> so that it becomes wider for wider viewports.</p>
 <p>Otherwise, blockquotes have the same as paragraph styling.</p>
 <blockquote>
 <p>Lorem ipsum dolor sit amet, adipiscing honestatis ius ut, nisl consulatu pro in. Imperdiet evertitur no usu, his te suavitate salutatus. Nullam ridens deterruisset an duo. Cum harum insolens ei, cum probo placerat praesent et.</p>
 </blockquote>
 <h3 id="lists" tabindex="-1">Lists</h3>
-<p>In Baselayer ordered <code>&lt;ol&gt;</code> and unordered <code>&lt;ul&gt;</code> have a little left padding. By default list items have no margin, but Baselayer separates them to make them more obious by setting a small top margin <em>between</em> list items (smaller than the top margin between paragraphs).</p>
+<p>In Baselayer ordered <code>&lt;ol&gt;</code> and unordered <code>&lt;ul&gt;</code> have a little left padding. By default list items have no margin, but Baselayer separates them to make them more obvious by setting a small top margin <em>between</em> list items (smaller than the top margin between paragraphs).</p>
 <ol>
 <li>Ordered item one</li>
 <li>Ordered item two
@@ -295,7 +488,7 @@ body {
   &lt;li&gt;Unordered item&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
-<p>For definition lists, the title is bold and the data-item is indented (with the same left padding as for the  lists above). And the top margin between the title and its respective data is reduced the same way as between list items above.</p>
+<p>For definition lists, the title is bold and the data-item is indented (with the same left padding as for the lists above).</p>
 <dl>
   <dt>Definition list title</dt>
   <dd>Definition list data</dd>
@@ -309,10 +502,10 @@ body {
   &lt;dd&gt;Definition list data&lt;/dd&gt;
 &lt;/dl&gt;
 </code></pre>
-<h2 id="the-link-tag" tabindex="-1">The Link Tag</h2>
+<h2 id="the-link-tag" tabindex="-1">The link tag</h2>
 <p>The default underline for links has been moved downwards slightly to improve legibility. The link decoration (underscore) thickness has been set at 1px, so that it doesn’t become thicker when used on larger text (e.g. in headings where link underscores can be too bulky).</p>
 <p>Link color is set by <code>--clink</code>, which is the Baselayer theme middle blue (see <a href="/baselayer/colors/">colors</a>). The hover state is a shade darker.</p>
-<h2 id="text-alignment" tabindex="-1">Text Alignment</h2>
+<h2 id="text-alignment" tabindex="-1">Text alignment</h2>
 <ul>
 <li><code>left</code></li>
 <li><code>center</code></li>
@@ -321,12 +514,12 @@ body {
 <p>These simple alignment classes handle text alignment and <em>nested</em> text alignment, because they include a <code>*</code> descendent selector that puts the same alignment on any elements inside. This means that they can be used to align the cells of a whole table, if required.</p>
 <p>The same class-names <code>left</code> and <code>right</code> are also used in <a href="/baselayer/layout/#positions">layout positions</a>. (However, while the text-alignment <code>center</code> can also be used in layouts, it is better to use <a href="/baselayer/layout/#flex">flexbox</a> centering and middling: <code>flexcenter</code> and <code>flexmiddle</code>).</p>
 <h2 id="tables" tabindex="-1">Tables</h2>
-<p>Baselayer tables simply style <code>&lt;table&gt;</code> <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> tags directly.</p>
+<p>Baselayer tables simply style any table’s HTML tags directly. (There are no <code>.table</code> classes.)</p>
 <ul>
-<li>Paddings are set by <code>--pcell</code></li>
-<li>Table headers <code>&lt;th&gt;</code> are bold.</li>
-<li>Since v.1.1.0, table cells <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> have a border set by var(--b1) – the same detail as <code>&lt;hr&gt;</code> and <a href="/baselayer/decoration/#borders">border</a> utility classes.</li>
-<li>Since v.1.1.0, all cell content is left-aligned. You can change that on the whole <code>&lt;table&gt;</code> or on a per-cell basis using the text alignment classes.</li>
+<li>Table headers <code>&lt;thead&gt;</code> and footers <code>tfoot</code> are bold.</li>
+<li>Borders of table cells <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> are set by <code>var(--b1)</code> – the same detail as <code>&lt;hr&gt;</code> and <a href="/baselayer/decoration/#borders">border</a> utility classes.</li>
+<li>Paddings table cells <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> are set by <code>--pcell</code> (see decoration <a href="/baselayer/decoration/#spacing-extras">spacing extras</a>)</li>
+<li>All cell content is left-aligned. You can change that on the whole <code>&lt;table&gt;</code> or on a per-cell basis using <a href="#text-alignment">text alignment</a> classes.</li>
 </ul>
 <table>
   <caption>This is a Table Caption</caption>
@@ -359,6 +552,13 @@ body {
       <td>Table content 3.4</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td>Table Footer 1</td>
+      <td>Table Footer 2</td>
+      <td>Table Footer 3</td>
+    </tr>
+  </tfoot>
 </table>
 <pre><code>&lt;table&gt;
   &lt;caption&gt;This is a Table Caption&lt;/caption&gt;
@@ -381,17 +581,24 @@ body {
       &lt;td&gt;Table content 3.2&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Table Footer 1&lt;/td&gt;
+      &lt;td&gt;Table Footer 2&lt;/td&gt;
+      &lt;td&gt;Table Footer 3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
 &lt;/table&gt;
 </code></pre>
-<h3 id="wide-tables" tabindex="-1">Wide Tables</h3>
+<h3 id="making-wide-tables-responsive" tabindex="-1">Making wide tables responsive</h3>
 <p>If you have a lot of content in your table, it will probably break your page layout on small viewports (e.g. phones). So, you can wrap your table in a DIV with the <code>overflowx</code> class to make it horizontally scrollable.</p>
-<pre><code>&lt;div class=&quot;overflow-x&quot;&gt;
+<pre><code>&lt;div class=&quot;overflowx&quot;&gt;
   &lt;table&gt;
     ...
   &lt;/table&gt;
 &lt;/div&gt;
 </code></pre>
-<h3 id="controlling-table-styling" tabindex="-1">Controlling Table Styling</h3>
+<h3 id="controlling-table-styling" tabindex="-1">Controlling table styling</h3>
 <p><em>What if this classless table styling is incompatible with something else in your design system?</em> You can go into Baselayer’s <code>typography.css</code>, find its table styling and <em>prefix</em> it all with a class of your choice. In an example of how to do that below, first, the HTML tag <code>table</code> style simply has a dot <code>.</code> prefix added. Then the class <code>.table</code> has been inserted before the Baselayer default table styling:</p>
 <pre><code>.table {
   width: 100%;
@@ -405,30 +612,39 @@ body {
   vertical-align: top;
   text-align: center;
 }
-thead, tr:not(:last-of-type) {
-  border-bottom: var(--b1);
-}
-.table th {
+.table thead,
+.table tfoot {
   font-weight: bold;
 }
 </code></pre>
-<h2 id="the-long-read-utility-class" tabindex="-1">The <em>Long Read</em> Utility Class</h2>
+<h2 id="the-longlead-utility-class" tabindex="-1">The <code>longlead</code> utility class</h2>
 <p>Intended for long-read essays, articles and blog posts, the <code>longread</code> utility class (to be used as a <em>wrapper</em> class) enlarges text (including headings) responsive to wider viewports (e.g. tablets, laptops, and up) using the following CSS clamp, which is set in <code>root-variables.css</code>:</p>
 <pre><code>:root {
-  --fslongread: clamp(1rem, 0.4375rem + 1.1719vw, 1.375rem);
+  --fslongread: clamp(1rem, 0.25rem + 1.5625vw, 1.25rem);
+  --lhlongread: calc(var(--fs) * 1.5);
 }
 </code></pre>
-<p>The base font size is expanded to 137.5% over the middle range — from viewport widths 768px to 1280px (i.e. same as the <code>sm</code> to <code>lg</code> default breakpoints). Starting from 1rem (16px), this expands the base sext size to 22px.</p>
-<h3 id="long-read-example-toggle" tabindex="-1"><em>Long Read</em> Example Toggle</h3>
-<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>--base</code> and <code>--prose</code> in this main content column. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
-<p><button id="fs-toggle" class="bgblue bg600 h:bg700"> size</button></p>
-<h2 id="code-blocks" tabindex="-1">Code Blocks</h2>
-<p><code>&lt;code&gt;</code> tags have monospaced text over a blue background (set by <code>--bgcode</code>) with a little padding to improve readability.</p>
+<p>The base font size is expanded to 125% over the middle range — from viewport widths 768px to 1024px (i.e. same as the <code>sm</code> to <code>md</code> default breakpoints). Starting from 1rem (16px), this expands the base sext size to 20px.</p>
+<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between <code>--base</code> and <code>--prose</code> in this main content column.</p>
+<p class="flex flexcenter">
+  <button class="flex flexcolumn gap1 bgblue bg600 h:bg700" onclick="toggleFS()">
+    <div class="label-normal w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Normal font-size</div>
+    </div>
+    <div class="label-longread w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Long read font-size</div>
+    </div>
+  </button>
+</p>
+<h2 id="code-blocks" tabindex="-1">Code blocks</h2>
+<p><code>&lt;code&gt;</code> tags have monospaced text over a pale blue background (set by <code>--cbgcode</code>) with a little padding to improve readability.</p>
 <p>If the <code>&lt;code&gt;</code> tag is wrapped in a <code>&lt;pre&gt;</code> tag, then it becomes a block level element with more padding, a max-width of 100%, and y-axis overflow scrolling.</p>
-<h2 id="other-typographic-utility-classes" tabindex="-1">Other Typographic Utility classes</h2>
+<h2 id="other-typographic-utility-classes" tabindex="-1">Other typographic utility classes</h2>
 <p>Besides those already introduced, Baselayer also has utility classes for:</p>
 <ul>
-<li><code>big</code> — increase font size by 1.5em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading — instead, use it on a <em>wrapper</em> around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
+<li><code>big</code> — increase font size by 1.5em. Use it directly on a <code>&lt;p&gt;</code> to enlarge the font (e.g. for a lead paragraph). But don’t use <code>big</code>  directly on a heading, because that will overrive the heading size — but you can use it on a <em>wrapper</em> around a heading that you wish to enlarge (e.g. for a title or hero component).</li>
 <li><code>small</code> (or use the <code>&lt;small&gt;</code> HTML tag) — decrease font-size to 0.75em.</li>
 <li><code>right</code>, <code>center</code>, and <code>left</code> — text alignment</li>
 <li><code>lighter</code>, <code>normal</code>, <code>semibold</code>, <code>bold</code>, <code>heavy</code> — font weights</li>
@@ -440,42 +656,67 @@ thead, tr:not(:last-of-type) {
 <li>Example <code>noline h:line</code>: <a class="noline h:line" href="http://example.com">example</a></li>
 </ul>
 </li>
-<li><code>nowrap</code> — prevents text wrapping</li>
+<li><code>nowrap</code> — prevents text wrapping (spaces behave as non-breaking)</li>
+<li><code>hyphenate</code> — enables word-break hyphenation of long words at the ends of lines, using <code>overflow-wrap: break-word; hyphens: auto;</code></li>
 <li><code>unlist</code> — sets <code>list-style-type: none</code> on <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, or <code>&lt;li&gt;</code>. You can use this when you want to use a list in a navigation menu. And you can combine it with <code>p0</code> to remove the list inset padding.</li>
 </ul>
-<p><strong>Note:</strong> links can also be styled as though they are buttons using the <code>btn</code> utility class. See <a href="/baselayer/buttons">buttons</a>.</p>
+<p><strong>Note:</strong> links can also be styled as though they are buttons using the <code>btn</code> utility class. See <a href="/baselayer/buttons/">buttons</a>.</p>
 <h2 id="simple-menus" tabindex="-1">Simple Menus</h2>
 <p>If you wrap links in a <code>&lt;nav&gt;</code> tag, as you should do when creating a menu, then the links have their underscores removed. (So, there is no need to use <code>noline</code> inside a <code>&lt;nav&gt;</code> tag.)</p>
 <p>Simple can created in this way, whether or not you involve an <code>&lt;ul&gt;</code> unordered list. Example:</p>
-<nav class="mt3 mb2">
-  <a class="pcell bggray bg100 h:bg200" href="#/">Home</a>
-  <a class="pcell bggray bg100 h:bg200" href="#/">About</a>
-  <a class="pcell bggray bg100 h:bg200" href="#/">Contact</a>
+<nav class="mt2 mb4">
+  <a class="pcell" href="#/">Home</a>
+  <a class="pcell" href="#/">About</a>
+  <a class="pcell" href="#/">Contact</a>
 </nav>
 <pre><code>&lt;nav&gt;
-  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;Home&lt;/a&gt;
-  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;About&lt;/a&gt;
-  &lt;a class=&quot;pcell bggray bg100 h:bg200&quot; href=&quot;#/&quot;&gt;Contact&lt;/a&gt;
+  &lt;a class=&quot;pcell&quot; href=&quot;#/&quot;&gt;Home&lt;/a&gt;
+  &lt;a class=&quot;pcell&quot; href=&quot;#/&quot;&gt;About&lt;/a&gt;
+  &lt;a class=&quot;pcell&quot; href=&quot;#/&quot;&gt;Contact&lt;/a&gt;
 &lt;/nav&gt;
 </code></pre>
-<p>For more information on <code>pcell</code> see decoration <a href="/baselayer/decoration/#spacing-extras">spacing extras</a>. And for how Baselayer colors work, see <a href="/baselayer/colors">colors</a>.</p>
+<p>For more information on <code>pcell</code> see decoration <a href="/baselayer/decoration/#spacing-extras">spacing extras</a>. And for how Baselayer colors work, see <a href="/baselayer/colors/">colors</a>.</p>
 
       
-          <footer class="mb4">
-              <hr>
-              <nav>
-                <ul class="unlist p0 sm:grid2cols">
-                  
-                  <li class="my1">&larr; <a href="/baselayer/"> Introduction</a></li>
-                  
-                  
-                  <li class="sm:col2 my1 right"><a href="/baselayer/layout">Layout</a> &rarr;</li>
-                    
-                </ul>
-              </nav>
-          </footer>
-        </div>
-      </main>
+          <nav class="mt3 mb2 b1 pill pcell popout">
+            <ul class="m0 unlist p0 flex">
+              
+              <li class="grow my1">&larr; <a href="/baselayer/"> Introduction</a></li>
+              
+              
+              <li class="grow my1 right"><a href="/baselayer/layout/">Layout</a> &rarr;</li>
+                
+            </ul>
+          </nav>
+
+          <footer>
+            <div class="mb2 pcell center">
+              <a href="/baselayer/" class="h3 m0 py2 normal flex flexcolumn flexcenter gap1 noline">
+                <svg class="mxauto" height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+                  <g transform="translate(-294.592 -94.592)">
+                    <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+                    <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+                    <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+                    <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    </g>
+                  </svg>
+                <span class="nowrap">Baselayer CSS</span>
+              </a>
+              <span>Version: 2.0.0</span>
+            </div>
+
+            <p class="pcell flex flexcenter flexwrap gap3 center">
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer">GitHub Repository</a>
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer/blob/main/LICENSE">MIT license</a>
+              <span>Developer: <a class="noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></span>
+            </p>
+            <p class="pcell center">
+              This documentation is built using <a href="https://www.11ty.dev">Eleventy</a>.
+            </p>
+        </footer>
+      </div>
+    </main>
       
     </div>
   </div>

@@ -1,0 +1,317 @@
+* {
+  /* lightness (decrements: 10%) */
+  --l100: 96%;
+  --l200: 86%;
+  --l300: 76%;
+  --l400: 66%;
+  --l500: 56%;
+  --l600: 46%;
+  --l700: 36%;
+  --l800: 26%;
+  --l900: 16%;
+
+  /* hue and saturation */
+  --hsgray:   0, 0%; /* text, default buttons */
+  --hsblue:   220, 100%; /* info, links, focus ring on inputs and buttons */
+  --hsgreen:  135, 40%; /* success */
+  --hsamber:  30, 100%; /* warning */
+  --hsred:    0, 80%; /* danger */
+
+  /* builders */
+  --tcolor:  hsl(var(--ths), var(--tl));
+  --bcolor:  hsl(var(--bhs), var(--bl));
+  --bgcolor: hsl(var(--bghs), var(--bgl));
+}
+
+/*
+Baselayer hsl() theme colors
+*/
+:root{
+  --ctext:    hsl(var(--hsgray), var(--l900));
+  --clink:    hsl(var(--hsblue), var(--l500)); /* link */
+  --clinkh:   hsl(var(--hsblue), var(--l700)); /* link hover */
+  --cfocus:   hsl(var(--hsblue), var(--l200)); /* input & button (not link) focus ring */
+  --cbginput: hsl(var(--hsgray), var(--l100)); /* input background */
+  --cbgbtn:   hsl(var(--hsgray), var(--l600)); /* button base */
+  --cbgbtnh:  hsl(var(--hsgray), var(--l700)); /* button hover */
+  --cbgcode:  hsl(var(--hsblue), var(--l100)); /* <code> background */
+  --cborder:  hsl(var(--hsgray), var(--l200)); /* Finelines (table borders and HR) */
+}
+
+/*
+Baselayer dark hsl() theme colors
+*/
+
+/* @media (prefers-color-scheme: dark) { * {...} } */
+.theme-dark * {
+  /* lightness (decrements: 8%) */
+  --l100: 76%;
+  --l200: 68%;
+  --l300: 60%;
+  --l400: 52%;
+  --l500: 44%;
+  --l600: 36%;
+  --l700: 28%;
+  --l800: 20%;
+  --l900: 12%;
+}
+.theme-dark {
+  --cbgbody:  hsl(var(--hsgray), var(--l900));
+  --ctext:    hsl(var(--hsgray), var(--l100));
+  --clink:    hsl(var(--hsblue), var(--l300));
+  --clinkh:   hsl(var(--hsblue), var(--l400));
+  --cbginput: hsl(var(--hsgray), var(--l800));
+  --ccode:    white;
+  --cbgcode:  hsl(var(--hsblue), var(--l700));
+  --cborder:  hsl(var(--hsgray), var(--l600));
+}
+
+.tgray, .h\:tgray:hover {
+  --ths: var(--hsgray);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.bgray, .h\:bgray:hover {
+  --bhs: var(--hsgray);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.bggray, .h\:bggray:hover {
+  --bghs: var(--hsgray);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+
+.tblue, .h\:tblue:hover {
+  --ths: var(--hsblue);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.bblue, .h\:bblue:hover {
+  --bhs: var(--hsblue);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.bgblue, .h\:bgblue:hover {
+  --bghs: var(--hsblue);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+
+.tgreen, .h\:tgreen:hover {
+  --ths: var(--hsgreen);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.bgreen, .h\:bgreen:hover {
+  --bhs: var(--hsgreen);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.bggreen, .h\:bggreen:hover {
+  --bghs: var(--hsgreen);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+
+.tamber, .h\:tamber:hover {
+  --ths: var(--hsamber);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.bamber, .h\:bamber:hover {
+  --bhs: var(--hsamber);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.bgamber, .h\:bgamber:hover {
+  --bghs: var(--hsamber);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+
+.tred, .h\:tred:hover {
+  --ths: var(--hsred);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.bred, .h\:bred:hover {
+  --bhs: var(--hsred);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.bgred, .h\:bgred:hover {
+  --bghs: var(--hsred);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+
+/* text shades */
+
+.t100,
+.h\:t100:hover {
+  --tl: var(--l100);
+  color: var(--tcolor);
+}
+
+.t200,
+.h\:t200:hover {
+  --tl: var(--l200);
+  color: var(--tcolor);
+}
+
+.t300,
+.h\:t300:hover {
+  --tl: var(--l300);
+  color: var(--tcolor);
+}
+
+.t400,
+.h\:t400:hover {
+  --tl: var(--l400);
+  color: var(--tcolor);
+}
+
+.t500,
+.h\:t500:hover {
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+
+.t600,
+.h\:t600:hover {
+  --tl: var(--l600);
+  color: var(--tcolor);
+}
+
+.t700,
+.h\:t700:hover {
+  --tl: var(--l700);
+  color: var(--tcolor);
+}
+
+.t800,
+.h\:t800:hover {
+  --tl: var(--l800);
+  color: var(--tcolor);
+}
+
+.t900,
+.h\:t900:hover {
+  --tl: var(--l900);
+  color: var(--tcolor);
+}
+
+/* Border shades */
+
+.b100,
+.h\:b100:hover {
+  --bl: var(--l100);
+  border-color: var(--bcolor);
+}
+
+.b200,
+.h\:b200:hover {
+  --bl: var(--l200);
+  border-color: var(--bcolor);
+}
+
+.b300,
+.h\:b300:hover {
+  --bl: var(--l300);
+  border-color: var(--bcolor);
+}
+
+.b400,
+.h\:b400:hover {
+  --bl: var(--l400);
+  border-color: var(--bcolor);
+}
+
+.b500,
+.h\:b500:hover {
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+
+.b600,
+.h\:b600:hover {
+  --bl: var(--l600);
+  border-color: var(--bcolor);
+}
+
+.b700,
+.h\:b700:hover {
+  --bl: var(--l700);
+  border-color: var(--bcolor);
+}
+
+.b800,
+.h\:b800:hover {
+  --bl: var(--l800);
+  border-color: var(--bcolor);
+}
+
+.b900,
+.h\:b900:hover {
+  --bl: var(--l900);
+  border-color: var(--bcolor);
+}
+
+/* Background shades*/
+
+.bg100,
+.h\:bg100:hover {
+  --bgl: var(--l100);
+  background: var(--bgcolor);
+}
+.bg200,
+.h\:bg200:hover {
+  --bgl: var(--l200);
+  background: var(--bgcolor);
+}
+.bg300,
+.h\:bg300:hover {
+  --bgl: var(--l300);
+  background: var(--bgcolor);
+}
+.bg400,
+.h\:bg400:hover {
+  --bgl: var(--l400);
+  background: var(--bgcolor);
+}
+.bg500,
+.h\:bg500:hover {
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+.bg600,
+.h\:bg600:hover {
+  --bgl: var(--l600);
+  background: var(--bgcolor);
+}
+.bg700,
+.h\:bg700:hover {
+  --bgl: var(--l700);
+  background: var(--bgcolor);
+}
+.bg800,
+.h\:bg800:hover {
+  --bgl: var(--l800);
+  background: var(--bgcolor);
+}
+.bg900,
+.h\:bg900:hover { 
+  --bgl: var(--l900);
+  background: var(--bgcolor);
+}

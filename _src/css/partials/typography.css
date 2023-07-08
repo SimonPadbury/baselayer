@@ -7,15 +7,37 @@ table,
 fieldset,
 figcaption,
 blockquote {
-  margin-block: var(--s2) 0;
-  line-height: var(--lh);
+  margin-block: 0 var(--mlh);;
 }
 caption {
   margin-block: var(--s1);
 }
 
-blockquote > p:first-child {
-  margin-top: 0;
+h1, .h1 {
+  font-size: var(--h1);
+  font-weight: var(--hfw);
+  line-height: var(--hlh);
+  margin-block: 0 var(--mlh);;
+}
+
+h2, .h2 {
+  font-size: var(--h2);
+}
+
+h3, .h3 {
+  font-size: var(--h3);
+}
+
+h4, .h4 {
+  font-size: var(--h4);
+}
+
+h5, .h5 {
+  font-size: var(--h5);
+}
+
+h6, .h6 {
+  font-size: var(--h6);
 }
 
 h2, .h2,
@@ -23,37 +45,20 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: var(--s3);
-  font-family: var(--hf);
+  margin-block: var(--hlh) var(--mlh);;
   font-weight: var(--hfw);
-  line-height: var(--lh);
+  line-height: var(--hlh);
 }
 
-h1, .h1 { 
-  font-family: var(--hf);
-  font-weight: var(--hfw);
-  font-size: var(--h1);
-  line-height: var(--h1lh);
-}
-h2, .h2 {
-  font-size: var(--h2);
-  line-height: var(--h2lh);
-}
-h3, .h3 {
-  font-size: var(--h3);
-  line-height: var(--h3lh);
-}
-h4, .h4 {
-  font-size: var(--h4);
-  line-height: var(--h4lh);
-}
-h5, .h5 {
-  font-size: var(--h5);
-  line-height: var(--h5lh);
-}
-h6, .h6 {
-  font-size: var(--h6);
-  line-height: var(--h6lh);
+.contentgrid > h2, .contentgrid > .h2,
+.contentgrid > h3, .contentgrid > .h3,
+.contentgrid > h4, .contentgrid > .h4,
+.contentgrid > h5, .contentgrid > .h5,
+.contentgrid > h6, .contentgrid > .h6 {
+  /* This because CSS grid prevents margin-collapse on grid items */
+  margin-block: 
+    calc(var(--hlh) - var(--mlh))
+    var(--mlh);;
 }
 
 a {
@@ -66,20 +71,42 @@ a {
   transition: all 0.15s ease;
 }
 a:hover {
-  color: var(--hlink);
+  color: var(--clinkh);
 }
 
-dt:not(:first-of-type) {
-  margin-top: var(--s2);
-}
-
-dd, li + li, li ol, li ul {
-  margin-top: calc(var(--s2) / 2);
-}
-
-ol, ul, dd {
+ol, ul {
   padding-left: 1.5em;
 }
+
+/* Firefox doesn't yet have HAS pseudo selector
+ol:not(:has(ol, ul)),
+ul:not(:has(ol, ul)) { margin-block: var(--ls) 0; } */
+ol ol,
+ol ul,
+ul ul,
+ul ol {
+  margin-block: var(--ls) 0;
+}
+
+li+li,
+li ol,
+li ul {
+  margin-top: var(--ls);
+}
+
+dl {
+  margin: 0 0 var(--mlh);;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 var(--ls);
+  padding-left: 1.5em;
+}
+
 ol > li > ol {
   list-style-type: lower-alpha;
 }
@@ -99,7 +126,7 @@ td {
   text-align: left;
   border: var(--b1);
 }
-th, dt {
+thead, tfoot, dt {
   font-weight: var(--bold);
 }
 
@@ -112,6 +139,7 @@ hr {
 }
 
 blockquote {
+  margin-inline: 0;
   padding-inline: var(--s3);
 }
 
@@ -122,32 +150,37 @@ code, kbd, samp {
 code {
   display: inline-block;
   padding-inline: .25em;
-  background-color: var(--bgcode);
-  color: black;
+  color: var(--ccode);
+  background: var(--cbgcode);
 }
 
 pre {
-  overflow-x: auto; /* To prevent <pre> from breaking grid layouts on small viewports */
+  overflow-x: auto;
 }
 pre code {
   display: block;
   padding: 1em;
-  background-color: var(--bgcode);
+  background: var(--cbgcode);
   overflow-x: auto; /* so that the background color extends into the hidden overflow area */
 }
 
 sub, sup {
-  font-size: .85em;
+  font-size: 85%;
   line-height: 0;
 }
 
 .unlist { list-style-type: none; }
 nav a, .noline { text-decoration: none; }
-.h\:line:hover { text-decoration: underline ;}
+.h\:line:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: var(--dtlink);
+  text-underline-offset: var(--dolink);
+}
 .nowrap { white-space: nowrap; }
 
-.big { font-size: 1.5em; }
-small, .small { font-size: .75em; }
+.big { font-size: 150%; }
+small, .small { font-size: 75%; }
 
 .lighter { font-weight: var(--lighter); }
 .normal { font-weight: var(--normal); }
@@ -156,15 +189,15 @@ small, .small { font-size: .75em; }
 .heavy { font-weight: var(--heavy); }
 .italic { font-style: italic; }
 
-/* can also be used on <table> because of the `*` selectors */
-.right, .right * { text-align: right; }
-.center, .center * { text-align: center; }
-.left, .left * { text-align: left; }
+.right, .right { text-align: right; }
+.center, .center { text-align: center; }
+.left, .left { text-align: left; }
 
 .uppercase { text-transform: uppercase; }
 
-.longread { 
+.longread {
   font-size: var(--fslongread);
+  line-height: var(--lhlongread);
 }
 
 .base { font-family: var(--base); }

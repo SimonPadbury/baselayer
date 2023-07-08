@@ -8,42 +8,70 @@
   <title>{{ title + ' · ' if title }}{{ metadata.title }}</title>
 
   <link rel="stylesheet" href="{{ '/css/min/baselayer.min.css' | url }}{{ '?v=' + metadata.version }}">
-
-  <script src="{{ '/js/switcher.js' | url }}"></script>
+  <link rel="stylesheet" href="{{ '/css/partials/colors-oklch.css' | url }}" id="colors-oklch">
+  <link rel="stylesheet" href="{{ '/css/partials/colors-hsl.css' | url }}" id="colors-hsl">
 
   <style>
-    .theme-dark #theme-toggle::before { content: 'Light '; }
-    .theme-light #theme-toggle::before { content: 'Dark '; }
-    .main-longread #fs-toggle::before { content: 'Normal font '; }
-    .main-normal #fs-toggle::before { content: 'Long read '; }
-    .main-prose #font-toggle::before { content: 'Base '; }
-    .main-base #font-toggle::before { content: 'Prose '; }
+    html {
+      scroll-behavior: smooth;
+    }
+    .check-box {
+      width: 1rem;
+      height: 1rem;
+    }
+    .font-base .label-base .check-box::before { content: '✓'; }
+    .font-prose .label-prose .check-box::before { content: '✓'; }
+    .font-normal .label-normal .check-box::before { content: '✓'; }
+    .font-longread .label-longread .check-box::before { content: '✓'; }
+    .colors-oklch .label-oklch .check-box::before { content: '✓'; }
+    .colors-hsl .label-hsl .check-box::before { content: '✓'; }
+    .theme-light .label-light .check-box::before { content: '✓'; }
+    .theme-dark .label-dark .check-box::before { content: '✓'; }
 
-    .main-longread .contentgrid { font-size: var(--fslongread); }
-    .main-prose .contentgrid { font-family: var(--prose); }
+    @media (min-width: 1024px) {
+      #site-title { 
+        max-width: 145px;
+        margin-inline: auto;
+        padding-top: var(--s2);
+        justify-content: center;
+      }
+    }
+    .font-longread .contentgrid { 
+      font-size: var(--fslongread);
+    }
 
-    .main-longread .btn-icon {
+    .font-prose #main-content>.contentgrid { font-family: var(--prose); }
+
+    .font-longread .btn-icon {
       width: calc(var(--si) + 2px);
       height: calc(var(--si) + 2px);
     }
-    .theme-dark #main-content { 
-      color: hsl(var(--hsgray), var(--l100));
-      background: hsl(var(--hsgray), var(--l900));
+    h2, h3, h4 {
+      scroll-margin-top: var(--s2);
     }
-    .theme-dark #main-content a:not(.btn) {
-      color: hsl(var(--hsblue), var(--l300));
+    .contentgrid header + h2 {
+      margin-top: 0;
     }
-    .theme-dark #main-content a:not(.btn):hover {
-      color: hsl(var(--hsblue), var(--l400));
+
+    pre code {
+      max-height: 80vh;
+      overflow-y: auto
     }
-    .theme-dark code {
-      color: white;
-      background: hsl(var(--hsblue), var(--l700));
-    }
-    .theme-dark hr, .theme-dark th, .theme-dark td {
-      border-color: hsl(var(--hsgray), var(--l600));
+
+    .resize-x {
+      margin-inline: -5px;
+      padding: 5px;
+      resize: horizontal;
+      overflow-x: auto;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='silver' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   </style>
+
+  <script>
+  {% include "includes/switcher.js" %}
+  {% include "includes/menu.js" %}
+  </script>
+
 </head>
 <body class="{% if bodyClass %}{{ bodyClass }}{% endif %}">
 
@@ -51,39 +79,64 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh md:flex">
+  <div class="h100dvh flex md:drop">
     {% include "includes/site-nav.njk" %}
 
       <main id="main-content" class="grow flex">
+
         <div id="toc" class="lg:hiddenbelow" style="order: 2;">
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
-            <p class="m0 pt4">Contents:</p>
+            <p class="h4 pt4 semibold">Contents</p>
             {{ content | toc | safe }}
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 center">
-            <h1 class="bold">{{ mainHeading }}</h1>
+          <header class="my2 py4 big center">
+            <h1 class="m0 lighter">{{ mainHeading }}</h1>
           </header>
       
           {{ content | safe }}
       
-          <footer class="mb4">
-              <hr>
-              <nav>
-                <ul class="unlist p0 sm:grid2cols">
-                  {% if prevPage %}
-                  <li class="my1">&larr; <a href="{{ prevPage | url }}"> {{ prevLink if prevLink else "Previous page" }}</a></li>
-                  {% endif %}
-                  {% if nextPage %}
-                  <li class="sm:col2 my1 right"><a href="{{ nextPage | url }}">{{ nextLink if nextLink else "Next page" }}</a> &rarr;</li>
-                  {% endif %}  
-                </ul>
-              </nav>
-          </footer>
-        </div>
-      </main>
+          <nav class="mt3 mb2 b1 pill pcell popout">
+            <ul class="m0 unlist p0 flex">
+              {% if prevPage %}
+              <li class="grow my1">&larr; <a href="{{ prevPage | url }}"> {{ prevLink if prevLink else "Previous page" }}</a></li>
+              {% endif %}
+              {% if nextPage %}
+              <li class="grow my1 right"><a href="{{ nextPage | url }}">{{ nextLink if nextLink else "Next page" }}</a> &rarr;</li>
+              {% endif %}  
+            </ul>
+          </nav>
+
+          <footer>
+            <div class="mb2 pcell center">
+              <a href="{{ '/' | url }}" class="h3 m0 py2 normal flex flexcolumn flexcenter gap1 noline">
+                <svg class="mxauto" height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+                  <g transform="translate(-294.592 -94.592)">
+                    <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+                    <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+                    <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+                    <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    </g>
+                  </svg>
+                <span class="nowrap">{{ metadata.title }}</span>
+              </a>
+              <span>Version: {{ metadata.version }}</span>
+            </div>
+
+            <p class="pcell flex flexcenter flexwrap gap3 center">
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer">GitHub Repository</a>
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer/blob/main/LICENSE">MIT license</a>
+              <span>Developer: <a class="noline h:line" href="{{ metadata.developer.url }}">{{ metadata.developer.name }}</a></span>
+            </p>
+            <p class="pcell center">
+              This documentation is built using <a href="https://www.11ty.dev">Eleventy</a>.
+            </p>
+        </footer>
+      </div>
+    </main>
       
     </div>
   </div>

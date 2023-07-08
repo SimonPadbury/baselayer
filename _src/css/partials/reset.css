@@ -6,8 +6,6 @@
 
 
 html {
-  font-size: var(--fshtml);
-  line-height: var(--lh);
   box-sizing: border-box;
 }
 
@@ -15,17 +13,12 @@ html {
   box-sizing: inherit;
 }
 
-* {
-  margin: 0;
-}
-
 body {
+  margin: 0;
+  font-size: var(--fs);
+  line-height: var(--lh);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-/* }
-p, li, dd, td { */
-  overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 img, picture, video, canvas, svg {
@@ -40,6 +33,7 @@ iframe {
 summary {
   cursor: pointer;
 }
+
 /*
 Baselayer has no built-in CSS animations. If you add any,
 then you should help your users who for some reason may

@@ -1,27 +1,37 @@
 # Baselayer
 
-v.1.1.5
+v.2.0.0
 
-Baselayer is a splendiferous yet miniscule CSS library.
+Baselayer is a super tiny, super powerful CSS library.
+
+Three options:
+
+* Core (with a few HEX colors) `baselayer.css` = 12kb
+* Core + OKLCH utilities `baselayer-oklch.css` = 17kb
+* Core + HSL utilities `baselayer-hsl.css` = 16kb
 
 ```
 git clone https://github.com/SimonPadbury/baselayer.git
 ```
 
-Designed as a good place to start, Baselayer may be all you need — for small static websites and blogs. Or you may use it as a _baselayer_ to quick-start your mega project.
+Designed as a good place to start, Baselayer may be all you need — for small web projects. Or you may use it as a _baselayer_ to quick-start your mega project.
 
 Ready to use as-is, Baselayer gives you all this and more:
 
 * A modern CSS reset
-* Basic accessibility features
+* Foundational accessibility features
 * Responsive typography
-* Simple responsive layouts using positioning, dimensions, flexbox, and grid
-* A lightweight system of utility classes for controlling spacing, borders, and colors
 * Styled form elements and buttons
-* Control of many of these things using CSS variables (custom properties)
+* Simple responsive layouts using positioning, dimensions, flexbox, and grid
+* A lightweight system of utility classes for controlling spacing, borders (and colors)
+* Three color options for you to choose from:
+    * `baselayer.css` — has only a few `#` (hex) colors (Baselayer 2.x only)
+    * `baselayer-oklch.css` — Baselayer 2.x plus a toolkit of utility classes for backgrounds, text, and borders using `oklch()` 
+    * `baselayer-hsl.css` — Baselayer 2.x plus a toolkit of utility classes for backgrounds, text, and borders using `hsl()` 
+* Control of many of these things using CSS variables (a.k.a. custom properties)
 
-Believe it or not, all this is packed into a tiny CSS file, **15kb**.
+Baselayer uses several modern web technologies such as CSS Grid, CSS variables (and OKLCH color model), so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.
 
-Baselayer uses some modern web technologies such as CSS Grid and CSS variables, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.
+**Documentation:** [https://simonpadbury.github.io/baselayer/](https://simonpadbury.github.io/baselayer/)
 
-Docs: [https://simonpadbury.github.io/baselayer/](https://simonpadbury.github.io/baselayer/)
+**Changelog:** [https://github.com/baselayer/blob/main/CHANGELOG.md](https://github.com/baselayer/blob/main/CHANGELOG.md)

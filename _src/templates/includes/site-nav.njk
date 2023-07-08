@@ -1,65 +1,84 @@
 <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100vh overflowy">
-    <div class="pt3 flex flexcolumn center">
-      <a href="{{ '/' | url }}" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
-        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">{{ metadata.title }} </span>
+  <div class="sticky top hmax100dvh overflowy">
+    <div class="pcell center">
+      <a id="site-title" href="{{ '/' | url }}" class="h3 m0 py1 normal flex flexcenter flexmiddle flexwrap gap1 tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+          <g transform="translate(-294.592 -94.592)">
+            <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+            <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+            <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+            <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            </g>
+            </svg>
+        <span class="nowrap">{{ metadata.title }}</span>
       </a>
+      <span class="tgray t400 md:hiddenbelow">Version: {{ metadata.version }}</span>
     </div>
 
-    <nav class="pb pcell center twhite md:hidden">
-      <details>
-        <summary class="bold">Documentation</summary>
-        <div class="pt2">
-          <a class="block my2 tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/typography' | url }}">Typography</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/layout' | url }}">Layout</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/decoration' | url }}">Decoration</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/colors' | url }}">Colors</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/forms' | url }}">Forms</a>
-          <a class="block my2 tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a>
+    <nav id="site-nav" role="menu">
+      <button type="button" id="site-nav-toggle" aria-expanded="false" aria-label="Menu" aria-controls="site-nav-menu" class="absolute top right m2 md:hidden">
+        Menu
+      </button>
+
+      <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
+        <div class="my2 pcell flex flexcolumn gap2">
+          <a class="block tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a>
+          <a class="block tgray t100 h:t200" href="{{ '/typography/' | url }}">Typography</a>
+          <a class="block tgray t100 h:t200" href="{{ '/layout/' | url }}">Layout</a>
+          <a class="block tgray t100 h:t200" href="{{ '/decoration/' | url }}">Decoration</a>
+          <a class="block tgray t100 h:t200" href="{{ '/colors/' | url }}">Colors</a>
+          <a class="block tgray t100 h:t200" href="{{ '/forms/' | url }}">Forms</a>
+          <a class="block tgray t100 h:t200" href="{{ '/buttons/' | url }}">Buttons</a>
         </div>
 
-        <p class="pcell bggray bg900">
-          <a class="block tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-          <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-        </p>
-    
-        <p class="italic tgray t400">
-          Version: {{ metadata.version }}<br/>
-          Filesize: {{ metadata.filesize }}<br/>
-          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="{{ metadata.developer.url }}">{{ metadata.developer.name }}</a></p>
-        </p>
-      </details>
+        <div class="mb2 pcell">
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFont()">
+            <div class="label-base w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Base font</div>
+            </div>
+            <div class="label-prose w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Prose font</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFS()">
+            <div class="label-normal w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Normal font-size</div>
+            </div>
+            <div class="label-longread w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Long read font-size</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleColors()">
+            <div class="label-oklch w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">OKLCH colors</div>
+            </div>
+            <div class="label-hsl w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">HSL colors</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleTheme()">
+            <div class="label-light w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Light theme</div>
+            </div>
+            <div class="label-dark w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Dark theme</div>
+            </div>
+          </button>
+        </div>
+
+      </div>
     </nav>
-
-    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
-      <ul class="unlist m0 p0">
-        <li><a class="block tgray t100 h:t200" href="{{ '/' | url }}">Introduction</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/typography' | url }}">Typography</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/layout' | url }}">Layout</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/decoration' | url }}">Decoration</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/colors' | url }}">Colors</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/forms' | url }}">Forms</a></li>
-        <li><a class="block tgray t100 h:t200" href="{{ '/buttons' | url }}">Buttons</a></li>
-      </ul>
-    </nav>
-
-    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
-    </div>
-
-    <p class="m2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-    </p>
-
-    <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: {{ metadata.version }}<br/>
-      Filesize: {{ metadata.filesize }}<br/>
-      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="{{ metadata.developer.url }}">{{ metadata.developer.name }}</a></p>
-    </p>
   </div>
 </div>

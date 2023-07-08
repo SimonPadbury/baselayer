@@ -7,43 +7,221 @@
 
   <title>Colors · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.5">
-
-  <script src="/baselayer/js/switcher.js"></script>
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=2.0.0">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-oklch.css" id="colors-oklch">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-hsl.css" id="colors-hsl">
 
   <style>
-    .theme-dark #theme-toggle::before { content: 'Light '; }
-    .theme-light #theme-toggle::before { content: 'Dark '; }
-    .main-longread #fs-toggle::before { content: 'Normal font '; }
-    .main-normal #fs-toggle::before { content: 'Long read '; }
-    .main-prose #font-toggle::before { content: 'Base '; }
-    .main-base #font-toggle::before { content: 'Prose '; }
+    html {
+      scroll-behavior: smooth;
+    }
+    .check-box {
+      width: 1rem;
+      height: 1rem;
+    }
+    .font-base .label-base .check-box::before { content: '✓'; }
+    .font-prose .label-prose .check-box::before { content: '✓'; }
+    .font-normal .label-normal .check-box::before { content: '✓'; }
+    .font-longread .label-longread .check-box::before { content: '✓'; }
+    .colors-oklch .label-oklch .check-box::before { content: '✓'; }
+    .colors-hsl .label-hsl .check-box::before { content: '✓'; }
+    .theme-light .label-light .check-box::before { content: '✓'; }
+    .theme-dark .label-dark .check-box::before { content: '✓'; }
 
-    .main-longread .contentgrid { font-size: var(--fslongread); }
-    .main-prose .contentgrid { font-family: var(--prose); }
+    @media (min-width: 1024px) {
+      #site-title { 
+        max-width: 145px;
+        margin-inline: auto;
+        padding-top: var(--s2);
+        justify-content: center;
+      }
+    }
+    .font-longread .contentgrid { 
+      font-size: var(--fslongread);
+    }
 
-    .main-longread .btn-icon {
+    .font-prose #main-content>.contentgrid { font-family: var(--prose); }
+
+    .font-longread .btn-icon {
       width: calc(var(--si) + 2px);
       height: calc(var(--si) + 2px);
     }
-    .theme-dark #main-content { 
-      color: hsl(var(--hsgray), var(--l100));
-      background: hsl(var(--hsgray), var(--l900));
+    h2, h3, h4 {
+      scroll-margin-top: var(--s2);
     }
-    .theme-dark #main-content a:not(.btn) {
-      color: hsl(var(--hsblue), var(--l300));
+    .contentgrid header + h2 {
+      margin-top: 0;
     }
-    .theme-dark #main-content a:not(.btn):hover {
-      color: hsl(var(--hsblue), var(--l400));
+
+    pre code {
+      max-height: 80vh;
+      overflow-y: auto
     }
-    .theme-dark code {
-      color: white;
-      background: hsl(var(--hsblue), var(--l700));
-    }
-    .theme-dark hr, .theme-dark th, .theme-dark td {
-      border-color: hsl(var(--hsgray), var(--l600));
+
+    .resize-x {
+      margin-inline: -5px;
+      padding: 5px;
+      resize: horizontal;
+      overflow-x: auto;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='silver' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   </style>
+
+  <script>
+  const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+const htmlClassList = document.querySelector('html').classList;
+
+function fontProse() {
+  sessionStorage.setItem('baselayerFont', 'prose');
+  htmlClassList.remove('font-base');
+  htmlClassList.add('font-prose');
+}
+
+function fontBase() {
+  sessionStorage.setItem('baselayerFont', 'base');
+  htmlClassList.remove('font-prose');
+  htmlClassList.add('font-base');
+}
+
+function fsLongRead() {
+  sessionStorage.setItem('baselayerFS', 'longread');
+  htmlClassList.remove('font-normal');
+  htmlClassList.add('font-longread');
+}
+
+function fsNormal() {
+  sessionStorage.setItem('baselayerFS', 'normal');
+  htmlClassList.remove('font-longread');
+  htmlClassList.add('font-normal');
+}
+
+function colorsOKLCH() {
+  sessionStorage.setItem('baselayerColors', 'oklch');
+  htmlClassList.remove('colors-hsl');
+  htmlClassList.add('colors-oklch');
+}
+
+function colorsHSL() {
+  sessionStorage.setItem('baselayerColors', 'hsl');
+  htmlClassList.remove('colors-oklch');
+  htmlClassList.add('colors-hsl');
+}
+
+function themeDark() {
+  sessionStorage.setItem("baselayerTheme", "dark");
+  htmlClassList.remove('theme-light');
+  htmlClassList.add('theme-dark');
+}
+
+function themeLight() {
+  sessionStorage.setItem("baselayerTheme", "light");
+  htmlClassList.remove('theme-dark');
+  htmlClassList.add('theme-light');
+}
+
+// Toggles
+
+function toggleFont() {
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontBase();
+  } else {
+    fontProse();
+  }
+};
+
+function toggleFS() {
+  if ( sessionStorage.baselayerFS === 'normal' ) {
+    fsLongRead();
+  } else {
+    fsNormal();
+  }
+};
+
+function toggleColors() {
+  if ( sessionStorage.baselayerColors === 'oklch' ) {
+    colorsHSL();
+    document.getElementById('colors-hsl').disabled = false;
+    document.getElementById('colors-oklch').disabled = true;
+  
+  } else {
+    colorsOKLCH();
+    document.getElementById('colors-hsl').disabled = true;
+    document.getElementById('colors-oklch').disabled = false;
+  }
+};
+
+function toggleTheme() {
+  if ( sessionStorage.baselayerTheme === 'dark' ) {
+    themeLight();
+  } else {
+    themeDark();
+  }
+};
+
+// init
+
+function baselayerInit() {
+  if (sessionStorage.baselayerTheme === 'dark' || (!('baselayerTheme' in sessionStorage) && matchMediaDark.matches)) {
+    themeDark();
+  } else {
+    // default
+    themeLight();
+  }
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontProse();
+  } else {
+    // default
+    fontBase();
+  }
+  if ( sessionStorage.baselayerFS === 'longread' ) {
+    fsLongRead();
+  } else {
+    // default
+    fsNormal();
+  }
+  if ( sessionStorage.baselayerColors === 'hsl' ) {
+    document.getElementById('colors-oklch').disabled = true;
+    colorsHSL();
+  } else {
+    // default
+    document.getElementById('colors-hsl').disabled = true;
+    colorsOKLCH();
+  }
+};
+
+baselayerInit();
+    /**
+  * Site Navigation Toggle (Phones)
+  */
+
+window.addEventListener("DOMContentLoaded", () => {
+  let navButton = document.querySelector('#site-nav-toggle');
+  let menu = document.querySelector('#site-nav-menu');
+  let windowTest = function() {
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      navButton.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+    } else {
+      navButton.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+    }
+  }
+
+  windowTest();
+
+  window.addEventListener('resize', function () {
+    windowTest();
+  });
+
+  navButton.addEventListener('click', function() {
+    let expanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !expanded);
+    menu.hidden = !menu.hidden;
+  });
+});
+
+  </script>
+
 </head>
 <body class="">
 
@@ -51,363 +229,524 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh md:flex">
+  <div class="h100dvh flex md:drop">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100vh overflowy">
-    <div class="pt3 flex flexcolumn center">
-      <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
-        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">Baselayer CSS </span>
+  <div class="sticky top hmax100dvh overflowy">
+    <div class="pcell center">
+      <a id="site-title" href="/baselayer/" class="h3 m0 py1 normal flex flexcenter flexmiddle flexwrap gap1 tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+          <g transform="translate(-294.592 -94.592)">
+            <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+            <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+            <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+            <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            </g>
+            </svg>
+        <span class="nowrap">Baselayer CSS</span>
       </a>
+      <span class="tgray t400 md:hiddenbelow">Version: 2.0.0</span>
     </div>
 
-    <nav class="pb pcell center twhite md:hidden">
-      <details>
-        <summary class="bold">Documentation</summary>
-        <div class="pt2">
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav id="site-nav" role="menu">
+      <button type="button" id="site-nav-toggle" aria-expanded="false" aria-label="Menu" aria-controls="site-nav-menu" class="absolute top right m2 md:hidden">
+        Menu
+      </button>
+
+      <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
+        <div class="my2 pcell flex flexcolumn gap2">
+          <a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/typography/">Typography</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/layout/">Layout</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/decoration/">Decoration</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/colors/">Colors</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/forms/">Forms</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/buttons/">Buttons</a>
         </div>
 
-        <p class="pcell bggray bg900">
-          <a class="block tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-          <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-        </p>
-    
-        <p class="italic tgray t400">
-          Version: 1.1.5<br/>
-          Filesize: 15 kb<br/>
-          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-        </p>
-      </details>
+        <div class="mb2 pcell">
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFont()">
+            <div class="label-base w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Base font</div>
+            </div>
+            <div class="label-prose w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Prose font</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFS()">
+            <div class="label-normal w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Normal font-size</div>
+            </div>
+            <div class="label-longread w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Long read font-size</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleColors()">
+            <div class="label-oklch w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">OKLCH colors</div>
+            </div>
+            <div class="label-hsl w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">HSL colors</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleTheme()">
+            <div class="label-light w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Light theme</div>
+            </div>
+            <div class="label-dark w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Dark theme</div>
+            </div>
+          </button>
+        </div>
+
+      </div>
     </nav>
-
-    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
-      <ul class="unlist m0 p0">
-        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
-      </ul>
-    </nav>
-
-    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
-    </div>
-
-    <p class="m2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-    </p>
-
-    <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.5<br/>
-      Filesize: 15 kb<br/>
-      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-    </p>
   </div>
 </div>
 
       <main id="main-content" class="grow flex">
+
         <div id="toc" class="lg:hiddenbelow" style="order: 2;">
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
-            <p class="m0 pt4">Contents:</p>
+            <p class="h4 pt4 semibold">Contents</p>
             <nav class="toc" >
-        <ul><li><a href="#color-shades">Color Shades</a></li><li><a href="#adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D">Adding More Colors the “Baselayer Way”</a></li><li><a href="#other-color-utilities-included">Other Color Utilities Included</a></li><li><a href="#colors-and-accessibility">Colors and Accessibility</a></li><li><a href="#creating-a-dark-theme">Creating a Dark Theme</a></li></ul>
+        <ul><li><a href="#rationale-for-baselayer%E2%80%99s-color-systems">Rationale for Baselayer’s color systems</a></li><li><a href="#baselayer-2-core-colors">Baselayer 2 core colors</a></li><li><a href="#color-utility-classes">Color utility classes</a><ul><li><a href="#color-lightness-(shades)">Color lightness (shades)</a></li></ul></li><li><a href="#adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D">Adding more colors the “Baselayer way”</a></li><li><a href="#other-baselayer-color-utilities">Other Baselayer color utilities</a><ul><li><a href="#black-and-white">Black and white</a></li><li><a href="#reversi-%2F-reversi-opposite">Reversi / Reversi opposite</a></li><li><a href="#transparent-background">Transparent background</a></li></ul></li><li><a href="#colors-and-accessibility">Colors and accessibility</a></li><li><a href="#baselayer%E2%80%99s-dark-theme">Baselayer’s dark theme</a><ul><li><a href="#dark%2Flight-theme-toggle">Dark/light theme toggle</a></li></ul></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 center">
-            <h1 class="bold">Colors</h1>
+          <header class="my2 py4 big center">
+            <h1 class="m0 lighter">Colors</h1>
           </header>
       
-          <p>Baselayer currently uses <code>hsl()</code> for setting colors (except for named colors <code>black</code> and <code>white</code>). <code>hsl()</code> (from the CSS3 Color Module) can do all that <code>#</code> (hex) and <code>rgb()</code> (CSS2) can do, but with two advantages: <code>hsl()</code> is human readable, and it’s easy to set up a series of color shades by adjusting the lightness channel — which in Baselayer is done by CSS variables <code>--l100</code> through <code>--l900</code>.</p>
-<p>In the <a href="https://www.w3.org/TR/css-color-4/">CSS4 Color Module</a> (a recommendation released by the W3C in July 2022), there are some more color declarations systems, such as <code>lab()</code>, <code>oklab()</code>, <code>lch()</code> and <code>oklch()</code>. However, at the time of creating Baselayer 1.x in October 2022, only the Safari browser has partially implemented these color systems (it is not yet possible in Safari (Oct 2022) to use CSS variables within these color declarations). In future I hope to swap out the Baselayer <code>hsl()</code> system for one of the CSS4 systems.</p>
-<p>More on LCH and OKLCH:</p>
+          <p>Since late May/early June 2023, all “evergreen” browsers (Chrome, Edge, Firefox, Safari) have capability for the new <a href="https://caniuse.com/?search=oklch">OKLCH color model</a>. And in each of these browsers, the hue/ chroma/ lightness color channels can be separately controlled by CSS variables.</p>
+<p>From Baselayer v.2.0.0, the color utilities have been provided in separate streams. You only need to choose one of these stylesheets:</p>
+<div class="mt2 mb3 center">
+  <div class="grid3cols gap2 sm:drop">
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core</strong></p>
+        <p>Has only a few required base theme <code>#</code> colors (set in the root CSS variables)</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Baselayer core</a>
+      12 kb
+    </div>
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core<br> + OKLCH utilities</strong></p>
+        <p>Required base theme colors are reset as OKLCH root CSS variables</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer-oklch.min.css">Baselayer + OKLCH</a>
+      17 kb
+    </div>
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core<br> + HSL utilities</strong></p>
+        <p>Required base theme colors are reset as HSL root CSS variables</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer-hsl.min.css">Baselayer + HSL</a>
+      16 kb
+    </div>
+  </div>
+</div>
+<p>These download options can be found in the <a href="https://github.com/SimonPadbury/baselayer-2/tree/main/_src/css/min">source output folder</a>.</p>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  <p>If a browser does not support <code class="tblack bgblue bg200">oklch()</code> then <code class="tblack bgblue bg200">baselayer-oklch.css</code> will fall back to these Baselayer <code class="tblack bgblue bg200">#</code> colors — and all the color utilities will be ignored.</p>
+  <p class="m0">If you much support older, pre-OKLCH browsers, then you must use either <code class="tblack bgblue bg200">baselayer-hsl.css</code> or <code class="tblack bgblue bg200">baselayer.css</code> and add your own HEX <code class="tblack bgblue bg200">#</code> colors.</p>
+</div>
+<p>At the time of writing these docs (July 2023), the HSL color model has wider support, having been implemented in <a href="https://caniuse.com/?search=hsl">some browsers since 2010</a>. The Baselayer HSL utilities will continue to be available as an alternative (not a fallback) in Baselayer v.2.x.</p>
+<h2 id="rationale-for-baselayer%E2%80%99s-color-systems" tabindex="-1">Rationale for Baselayer’s color systems</h2>
+<p>I wanted to develop a color system that was based on CSS variables for generating a series of shades for each color, so that the stylesheet didn’t need to be loaded with all the shade permutations of each color — most of which you would probably never use in a project. This meant finding a color model with a <em>lightness channel</em> that could be controlled by a CSS variables, which I could then apply to numerous hues.</p>
+<p>For this purpose, the HSL model almost gave me what I needed. Therefore Baselayer 1 used the HSL color model from <a href="https://www.w3.org/TR/css-color-3/">CSS Color Module Level 3</a> because <code>hsl()</code> had a lightness channel that I could control. However, I found that when building the various HSL color lightness series, it was not possible to get the various colors to look <em>perceptually uniform</em> while using the scale lightnesses for each (i.e. the Baselayer <a href="#color-shades">color shade classes</a> <code>*100</code> through <code>*900</code>), whatever combination of hue and saturation I tried. Choosing HSL hue+saturation combinations for different colors that worked tolerably well against the same set of lightness levels meant that the mid-range colors would look less vibrant / “washed out”.</p>
+<p>If the muted look is what you’re going for, or you need to support pre-OKLCH browsers, then stick with Baselayer 2’s HSL system in <code>baselayer-hsl.css</code>. But if you want your colors to “pop” go with Baselayer 2’s OKLCH system in <code>baselayer-oklch.css</code> (from <a href="https://www.w3.org/TR/css-color-4/">CSS Color Module Level 4</a>). OKLCH looks really great in shades. 😎</p>
+<div class="mt2 mb3 expand">
+<img src="/baselayer/img/colors-oklch-hsl-comparison.png" alt="">
+</div>
+<p>So, the colors in Baselayer’s HSL and OKLCH systems are <em>not the same colors</em> — the OKLCH colors are more vibrant. To see the difference, play with the colors toggle while looking at the <a href="#color-lightness-(shades)">color shade utilities</a> demo below.</p>
+<p>More on HSL and OKLCH:</p>
 <ul>
+<li><a href="https://hslfinder.com">HSL color finder</a> by Colin Swinney</li>
 <li><a href="https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/">LCH colors in CSS: what, why, and how?</a> by Lea Verou</li>
+<li><a href="https://keithjgrant.com/posts/2023/04/its-time-to-learn-oklch-color/">It’s Time to Learn oklch Color</a> by Keith J. Grant</li>
+<li><a href="https://oklch.com">oklch.com</a> color picker and converter by <em>Evil Martians</em></li>
 <li><a href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl">OKLCH in CSS: why we moved from RGB and HSL</a> by Andrey Sitnik and Travis Turner (<em>Evil Martians</em>)</li>
+<li><a href="https://atmos.style/playground">LCH and OKLCH color tool</a> by Atmos.style</li>
+<li><a href="https://developer.chrome.com/articles/high-definition-css-color-guide/">High Definition CSS Color Guide (Google)</a></li>
 </ul>
-<p><em>Evil Martians</em> (currently) use a color polyfill script, so that they can code in OKLCH in 2022 but it ands up as RGB (so all browsers can understand he color). Baselayer can’t use that script, since it splits the HSL into two variables (one for hue-saturation, the othr for lightness) in geneating its color shades <code>*l100</code> to <code>*l900</code>.</p>
-<p>As of v.1.0 Baselayer has several utility classes for setting the <code>hsl()</code> color of border, text, and background of HTML elements. <code>hsl()</code> swatches are <code>gray</code> <code>blue</code> <code>green</code> <code>amber</code> and <code>red</code> These are used to control a set of utility classes for controlling text color, background color, and border color.</p>
-<p>These five colors have been carefully chosen so that in the Baselayer system, each of the the <code>*l100</code> variants are not too close to white and the <code>*l900</code> variants are not too close to black.</p>
-<p>Also present are <code>black</code> and <code>white</code> but these are set as <em>named</em> colors. There’s also <code>bgtransparent</code> — for setting a transparent background e.g. for outline buttons.</p>
-<p>The <code>hsl()</code> colors with variables can be adjusted in the root-variables file to correspond to the common user interface (UI) colors (see below), if that’s what you need.</p>
-<p>Color utility classes are prefixed acording to where the color will be applied:</p>
+<h2 id="baselayer-2-core-colors" tabindex="-1">Baselayer 2 core colors</h2>
+<p>Each version of Baselayer 2 contains the <code>baselayer.css</code> core (v.2.x), which also contains a few of its own base theme colors — e.g. colors for text, fineline details (table borders, horizontal rule), form elements and buttons. In <code>baselayer.css</code> these are set in the <code>:root{}</code> CSS variables mostly as three letter <code>#</code> codes:</p>
+<pre><code class="language-css">/* 
+Base theme colors
+*/
+:root {
+  --cbgbody:  white; 
+  --ctext:    #222;
+  --clink:    #06f;  /* link text */
+  --clinkh:   #02b;  /* link text hover */
+  --cfocus:   #4cf;  /* input &amp; button (not link) focus ring */
+  --cbginput: #eee;  /* input background */
+  --cbtn:     white; /* button text */
+  --cbtnh:    white; /* button text on hover */
+  --cbgbtn:   #777;  /* button background */
+  --cbgbtnh:  #666;  /* button background on hover */
+  --ccode:    black; /* &lt;code&gt; text */
+  --cbgcode:  #eef;  /* &lt;code&gt; background */
+  --cborder:  #ddd;  /* Finelines (table borders and HR) */
+}
+</code></pre>
+<p>Except for those set by the color names <code>white</code> or <code>black</code> above, these theme colors are overridden as OKLCH colors in <code>baselayer-oklch.css</code> or as HSL colors in <code>baselayer-hsl.css</code>. Therefore, in either of these Baselayer+color utility packages, you only need to be concerned about setting colors in your chosen color models.</p>
+<p>The Baselayer core <code>baselayer.css</code> does not contain any color utility classes — it only has a few required set colors e.g. for text, table borders, forms and buttons, and these are set by CSS variables. Meanwhile, in <code>baselayer-oklch.css</code> and <code>baselayer-hsl.css</code>, both sets of color utilities use the same CSS class names. So if you switch, you won’t need to modify your HTML.</p>
+<h2 id="color-utility-classes" tabindex="-1">Color utility classes</h2>
+<p>Since both <code>baselayer-oklch.css</code> and <code>baselayer-hsl.css</code> use <em>the same CSS classes</em>, we can describe once how they both work in the HTML.</p>
+<p>Baselayer color utility classes are prefixed acording to where the color will be applied:</p>
 <ul>
 <li><code>b*</code> — border color / <code>h:b*</code> — border color hover</li>
 <li><code>t*</code> — text color / <code>h:t*</code> — text color hover</li>
 <li><code>bg*</code> — background color / <code>h:bg*</code> — background color hover</li>
 </ul>
-<p>I have named the colors according to their common names, instead of opting to name them according to the UI “success”, “warning”, “danger” etc. so that you can <em>also</em> make color utilities or components with colors dedicated to your purposes, meanwhile allowing you to adjust these built-in colors and also add your own.</p>
-<p>Examples:</p>
-<div class="mt2 sm:grid3cols gap2">
-  <div class="b3 bgreen p2">bgreen</div>
-  <div class="b3 p2 tgreen">tgreen</div>
-  <div class="b3 p2 twhite bggreen">bggreen</div>
+<p>Example border, text and background utilities:</p>
+<div class="mt2 mb3 flex gap2">
+  <div class="grow b3 bgreen p2">bgreen</div>
+  <div class="grow b3 p2 tgreen">tgreen</div>
+  <div class="grow b3 p2 twhite bggreen">bggreen</div>
 </div>
 <pre><code>&lt;div class=&quot;b3 bgreen p2&quot;&gt;...&lt;/div&gt;
 &lt;div class=&quot;b3 p2 tgreen&quot;&gt;...&lt;/div&gt;
 &lt;div class=&quot;b3 p2 twhite bggreen&quot;&gt;...&lt;/div&gt;
 </code></pre>
-<div class="mt2 flex flexmiddle">
-  <div class="p2 bggray"></div>
-  <div class="ml1"><code>bggray</code></div>
+<p>Each of these colors is set at the <code>500</code> shade level in the Baselayer color scale, by default.</p>
+<p>The colors are as follows (demo uses background colors at the default <code>bg500</code> lightness):</p>
+<div class="mt2 mb3 center">
+<div class="grid4cols gap2">
+<div>
+<div class="ratio16x9 bgblue"></div>
+<code>bgblue</code>
 </div>
-<div class="flex flexmiddle">
-  <div class="p2 bgblue"></div>
-  <div class="ml1"><code>bgblue</code></div>
+<div>
+<div class="ratio16x9 bggreen"></div>
+<code>bggreen</code>
 </div>
-<div class="flex flexmiddle">
-  <div class="p2 bggreen"></div>
-  <div class="ml1"><code>bggreen</code></div>
+<div>
+<div class="ratio16x9 bgamber"></div>
+<code>bgamber</code>
 </div>
-<div class="flex flexmiddle">
-  <div class="p2 bgamber"></div>
-  <div class="ml1"><code>bgamber</code></div>
+<div>
+<div class="ratio16x9 bgred"></div>
+<code>bgred</code>
 </div>
-<div class="flex flexmiddle">
-  <div class="p2 bgred"></div>
-  <div class="ml1"><code>bgred</code></div>
+<div>
+<div class="ratio16x9 bggray"></div>
+<code>bggray</code>
 </div>
-<p>Each of these colors is set at the <code>500</code> shade level in the Baselayer color scale, by default. This is how it works (example):</p>
-<pre><code>/* root-vars.css */
-
-:root {
-  --green-hs: 135, 35%; /* hue and saturation */
+<div>
+<div class="ratio16x9 bgblack"></div>
+<code>bgblack</code>
+</div>
+<div>
+<div class="ratio16x9 bgwhite"></div>
+<code>bgwhite</code>
+</div>
+<div>
+<div class="ratio16x9 bgreversi"></div>
+<code>bgreversi</code>
+</div>
+</div>
+</div>
+<p>You can use Baselayer colors for user interface (UI) components: blue for “information”, green for  “success”, amber for “warning”, red for “danger”. Alternatively, you can dedicate particular hues to those purposes, and then swap out the Baselayer default hues for hues that fit your project requirement (e.g. corporate style guidelines).</p>
+<p>There’s also utilities for For black, white, reversi, and transparent — see <a href="http://localhost:8080/baselayer/colors/#other-baselayer-color-utilities">other Baselayer color utilities</a>.</p>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  In Baselayer 2, utility colors are declared in using the <code class="tblack bgblue bg200">*</code> selector.
+</div>
+<p>This is how it works (simplified examples):</p>
+<div class="expand grid2cols gap2 xs:drop">
+<div>
+<p class="mb1 center"><strong>EITHER</strong> use Baselayer 2’s OKLCH colors:<br><code>colors-oklch.css</code></p>
+<pre><code class="language-css">* {
+  --l500:  64%;  /* lightness */
+  --c30:   0.30; /* chroma */
+  --green: 165;  /* hue */
+  /* builder */
+  --bgcolor: oklch(var(--bgl) var(--bgc) var(--bgh));
 }
-
-/* colors.css */
-
 .bggreen {
-  --hs: var(--green-hs);
-  background: hsl(var(--hs), var(--l500));
+  --bghs:     var(--hsgreen);
+  --bgl:      var(--l500);
+  background: var(--bgcolor);
 }
-
-&lt;!-- HTML --&gt;
-
-&lt;div class=&quot;bggreen&quot;&gt;
+</code></pre>
+</div>
+<div>
+<p class="mb1 center"><strong>OR</strong> use Baselayer 2’s HSL colors:<br><code>colors-hsl.css</code></p>
+<pre><code class="language-css">* {
+  --hsgreen: 135, 40%; /* hue and saturation */
+  --l500:    55%;      /* lightness */
+  /* builder */
+  --bgcolor: hsl(var(--bghs), var(--bgl));
+}
+.bggreen {
+  --bghs:     var(--hsgreen);
+  background: var(--bgcolor);
+}
+</code></pre>
+</div>
+</div>
+<p class="mb1 center"><strong>The SAME HTML</strong> is used for either color system:</p>
+<pre><code class="language-html">&lt;div class=&quot;bggreen&quot;&gt;
   ...
 &lt;/div&gt;
 </code></pre>
-<h2 id="color-shades" tabindex="-1">Color Shades</h2>
-<p>HSL lightness is controlled separately by supplemental classes for each, and there are hover states for each.</p>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  <code class="tblack bgblue bg200">oklch()</code> requires no commas (it breaks if you add commas), whereas <code class="tblack bgblue bg200">hsl()</code> requires commas (it breaks if you leave out commas).
+</div>
+<h3 id="color-lightness-(shades)" tabindex="-1">Color lightness (shades)</h3>
+<p>both OKLCH and HSL lightness channels are controlled separately by supplemental classes for each shade, and there are hover states for each shade.</p>
+<p>Demo of color shades using background colors:</p>
+<p class="flex flexcenter">
+  <button class="pcell flex flexcolumn gap1 bgblue h:bg600" onclick="toggleColors()">
+    <div class="label-oklch w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">OKLCH colors</div>
+    </div>
+    <div class="label-hsl w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">HSL colors</div>
+    </div>
+  </button>
+</p>
+<div class="mb2 expand flex flexwrap gap1">
+  <div class="grow wxxs" style="min-width: 128px">
+    <div class="p1 center"><code>bggray</code></div>
+    <div class="p1 tblack bggray bg100">100</div>
+    <div class="p1 tblack bggray bg200">200</div>
+    <div class="p1 tblack bggray bg300">300</div>
+    <div class="p1 tblack bggray bg400">400</div>
+    <div class="p1 twhite bggray bg500">500</div>
+    <div class="p1 twhite bggray bg600">600</div>
+    <div class="p1 twhite bggray bg700">700</div>
+    <div class="p1 twhite bggray bg800">800</div>
+    <div class="p1 twhite bggray bg900">900</div>
+  </div>
+  <div class="grow wxxs" style="min-width: 128px">
+    <div class="p1 center"><code>bgblue</code></div>
+    <div class="p1 tblack bgblue bg100">100</div>
+    <div class="p1 tblack bgblue bg200">200</div>
+    <div class="p1 tblack bgblue bg300">300</div>
+    <div class="p1 tblack bgblue bg400">400</div>
+    <div class="p1 twhite bgblue bg500">500</div>
+    <div class="p1 twhite bgblue bg600">600</div>
+    <div class="p1 twhite bgblue bg700">700</div>
+    <div class="p1 twhite bgblue bg800">800</div>
+    <div class="p1 twhite bgblue bg900">900</div>
+  </div>
+  <div class="grow wxxs" style="min-width: 128px">
+    <div class="p1 center"><code>bggreen</code></div>
+    <div class="p1 tblack bggreen bg100">100</div>
+    <div class="p1 tblack bggreen bg200">200</div>
+    <div class="p1 tblack bggreen bg300">300</div>
+    <div class="p1 tblack bggreen bg400">400</div>
+    <div class="p1 twhite bggreen bg500">500</div>
+    <div class="p1 twhite bggreen bg600">600</div>
+    <div class="p1 twhite bggreen bg700">700</div>
+    <div class="p1 twhite bggreen bg800">800</div>
+    <div class="p1 twhite bggreen bg900">900</div>
+  </div>
+  <div class="grow wxxs" style="min-width: 128px">
+    <div class="p1 center"><code>bgabmer</code></div>
+    <div class="p1 tblack bgamber bg100">100</div>
+    <div class="p1 tblack bgamber bg200">200</div>
+    <div class="p1 tblack bgamber bg300">300</div>
+    <div class="p1 tblack bgamber bg400">400</div>
+    <div class="p1 twhite bgamber bg500">500</div>
+    <div class="p1 twhite bgamber bg600">600</div>
+    <div class="p1 twhite bgamber bg700">700</div>
+    <div class="p1 twhite bgamber bg800">800</div>
+    <div class="p1 twhite bgamber bg900">900</div>
+  </div>
+  <div class="grow wxxs" style="min-width: 128px">
+    <div class="p1 center"><code>bgred</code></div>
+    <div class="p1 tblack bgred bg100">100</div>
+    <div class="p1 tblack bgred bg200">200</div>
+    <div class="p1 tblack bgred bg300">300</div>
+    <div class="p1 tblack bgred bg400">400</div>
+    <div class="p1 twhite bgred bg500">500</div>
+    <div class="p1 twhite bgred bg600">600</div>
+    <div class="p1 twhite bgred bg700">700</div>
+    <div class="p1 twhite bgred bg800">800</div>
+    <div class="p1 twhite bgred bg900">900</div>
+  </div>
+</div>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  The shades <code>100</code> thorugh <code>900</code> if used alone, <em>do not provide color</em>. But if you use them to supplement one of the other colors above, then the color class will provide the color, and the shade class will set the lightness level.
+</div>
 <ul>
-<li>Border shades:
+<li>Border lightness:
 <ul>
 <li><code>b100</code> through <code>b900</code></li>
 <li>Hover state: <code>h:b100</code> through <code>h:b900</code></li>
 </ul>
 </li>
-<li>Text shades:
+<li>Text lightness:
 <ul>
 <li><code>t100</code> through <code>t900</code></li>
 <li>Hover state: <code>h:t100</code> through <code>h:t900</code></li>
 </ul>
 </li>
-<li>Background shades:
+<li>Background lightness:
 <ul>
 <li><code>bg100</code> through <code>bg900</code></li>
 <li>Hover state: <code>h:bg100</code> through <code>h:bg900</code></li>
 </ul>
 </li>
 </ul>
+<p>Of course, there are no shades of <code>*black</code> and <code>*white</code> — use <code>*gray</code> and shades for a grayscale.</p>
 <p>Example usage:</p>
-<div class="popout mt2 bl3 bamber p2 tbase tblack bgamber bg200">
-  &#9888; Alert panel.
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  Alert panel.
 </div>
-<pre><code>&lt;div class=&quot;popout bl3 bamber p2 tbase tblack bgamber bg200&quot;&gt;
-  &amp;#9888; Alert panel.
+<pre><code>&lt;div aria-label=&quot;Note&quot; class=&quot;popout mb2 bl3 bamber b300 p2 tblack bgamber bg100&quot;&gt;
+  Alert panel.
 &lt;/div&gt;
 </code></pre>
-<p>The shades <code>100</code> thorugh <code>900</code> if used alone, <em>do not provide color</em>. But if you use them to supplement one of the other colors above, then their <code>-hs</code> will provide the color, and the shase will shade that color.</p>
-<p>Demo of color shades using background colors:</p>
-<div class="overflow-x">
-<table style="table-layout: fixed;">
-<thead>
-<tr>
-<th></th>
-<th><code>bggray</code></th>
-<th><code>bgblue</code></th>
-<th><code>bggreen</code></th>
-<th><code>bgamber</code></th>
-<th><code>bgred</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bgwhite</code></td>
-<td colspan="5" class="py3 bgwhite"></td>
-</tr>
-<tr>
-<td><code>bg100</code></td>
-<td class="py3 bggray bg100"></td>
-<td class="py3 bgblue bg100"></td>
-<td class="py3 bggreen bg100"></td>
-<td class="py3 bgamber bg100"></td>
-<td class="py3 bgred bg100"></td>
-</tr>
-<tr>
-<td><code>bg200</code></td>
-<td class="py3 bggray bg200"></td>
-<td class="py3 bgblue bg200"></td>
-<td class="py3 bggreen bg200"></td>
-<td class="py3 bgamber bg200"></td>
-<td class="py3 bgred bg200"></td>
-</tr>
-<tr>
-<td><code>bg300</code></td>
-<td class="py3 bggray bg300"></td>
-<td class="py3 bgblue bg300"></td>
-<td class="py3 bggreen bg300"></td>
-<td class="py3 bgamber bg300"></td>
-<td class="py3 bgred bg300"></td>
-</tr>
-<tr>
-<td><code>bg400</code></td>
-<td class="py3 bggray bg400"></td>
-<td class="py3 bgblue bg400"></td>
-<td class="py3 bggreen bg400"></td>
-<td class="py3 bgamber bg400"></td>
-<td class="py3 bgred bg400"></td>
-</tr>
-<tr>
-<td><code>bg500</code></td>
-<td class="py3 bggray bg500"></td>
-<td class="py3 bgblue bg500"></td>
-<td class="py3 bggreen bg500"></td>
-<td class="py3 bgamber bg500"></td>
-<td class="py3 bgred bg500"></td>
-</tr>
-<tr>
-<td><code>bg600</code></td>
-<td class="py3 bggray bg600"></td>
-<td class="py3 bgblue bg600"></td>
-<td class="py3 bggreen bg600"></td>
-<td class="py3 bgamber bg600"></td>
-<td class="py3 bgred bg600"></td>
-</tr>
-<tr>
-<td><code>bg700</code></td>
-<td class="py3 bggray bg700"></td>
-<td class="py3 bgblue bg700"></td>
-<td class="py3 bggreen bg700"></td>
-<td class="py3 bgamber bg700"></td>
-<td class="py3 bgred bg700"></td>
-</tr>
-<tr>
-<td><code>bg800</code></td>
-<td class="py3 bggray bg800"></td>
-<td class="py3 bgblue bg800"></td>
-<td class="py3 bggreen bg800"></td>
-<td class="py3 bgamber bg800"></td>
-<td class="py3 bgred bg800"></td>
-</tr>
-<tr>
-<td><code>bg900</code></td>
-<td class="py3 bggray bg900"></td>
-<td class="py3 bgblue bg900"></td>
-<td class="py3 bggreen bg900"></td>
-<td class="py3 bgamber bg900"></td>
-<td class="py3 bgred bg900"></td>
-</tr>
-<tr>
-<td><code>bgblack</code></td>
-<td colspan="5" class="py3 bgblack"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Note:</strong> of course, there are no shades of black and white — use <code>*gray</code> and shades for a grayscale.</p>
-<h2 id="adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D" tabindex="-1">Adding More Colors the “Baselayer Way”</h2>
-<p>To add more colors the, you would need to convert them to <code>hsl()</code> format and declate the hue(s) and saturation(s) in <code>root-vars.css</code>.</p>
-<pre><code>:root {
-                  /* hue and saturation */
-  --purple-hs:    280, 100%;
-  --teal-hs:      195, 55%;
-}
-</code></pre>
-<p>Then, in the <code>colors.css</code> you can create the set of utility classes for text color, border color, and background color (with hover states).</p>
-<pre><code>/*
- * .b* is for border color
- * .t* is for text color
- * .bg* is for background color
- */
-
-.bpurple, .h\:bpurple:hover {
-  --bhs: var(--purple-hs);
-  border-color: hsl(var(--bhs), var(--l500));
+<h2 id="adding-more-colors-the-%E2%80%9Cbaselayer-way%E2%80%9D" tabindex="-1">Adding more colors the “Baselayer way”</h2>
+<p>To add more colors the, you would need to convert them to <code>oklch()</code> format or <code>hsl()</code> format, declare the variables in the <code>*</code> universal selector, and set up the default (lightness 500) color utilities. The color shade utilities will take care of everything else.</p>
+<div class="expand grid2cols gap2 xs:drop">
+<div>
+<p class="mb1 center"><strong>EITHER</strong> OKLCH:
+<pre><code>* {
+  /* hue */
+  --purple: 280;
+  --teal:   195;
 }
 .tpurple, .h\:tpurple:hover {
-  --ths: var(--purple-hs);
-  color: hsl(var(--ths), var(--l500));
+  --tl: var(--l500);
+  --tc: var(--c30);
+  --th: var(--purple);
+  color: var(--tcolor); 
+}
+.bpurple, .h\:bpurple:hover {
+  --bl: var(--l500);
+  --bc: var(--c30);
+  --bh: var(--purple);
+  border-color: var(--bcolor); 
 }
 .bgpurple, .h\:bgpurple:hover {
-  --bghs: var(--purple-hs);
-  background: hsl(var(--bghs), var(--l500));
+  --bgl: var(--l500);
+  --bgc: var(--c30);
+  --bgh: var(--purple);
+  background: var(--bgcolor); 
 }
-
 /* ...etc. */
 </code></pre>
-<h2 id="other-color-utilities-included" tabindex="-1">Other Color Utilities Included</h2>
+</div>
+<div>
+<p class="mb1 center"><strong>OR</strong> HSL:
+<pre><code>* {
+  /* hue and saturation */
+  --hspurple: 280, 100%;
+  --hsteal:   180, 50%;
+}
+.tpurple, .h\:tpurple:hover {
+  --ths: var(--hspurple);
+  --tl: var(--l500);
+  color: var(--tcolor);
+}
+.bpurple, .h\:bpurple:hover {
+  --bhs: var(--hspurple);
+  --bl: var(--l500);
+  border-color: var(--bcolor);
+}
+.bgpurple, .h\:bgpurple:hover {
+  --bghs: var(--hspurple);
+  --bgl: var(--l500);
+  background: var(--bgcolor);
+}
+/* ...etc. */
+</code></pre>
+</div>
+</div>
+<p>Utility classes for colors: <code>b*</code> = border; <code>t*</code> = text; <code>bg*</code> = background.</p>
+<h2 id="other-baselayer-color-utilities" tabindex="-1">Other Baselayer color utilities</h2>
+<p>Other color utilities included in Baselayer cover black, white, and transparent, as follows:</p>
+<h3 id="black-and-white" tabindex="-1">Black and white</h3>
 <ul>
-<li>White (named color <code>white</code>):
+<li>White — named color <code>white</code>:
 <ul>
 <li><code>bwhite</code> / <code>twhite</code> / <code>bgwhite</code>,</li>
 <li><code>h:bwhite</code>, <code>h:twhite</code>, <code>h:bgwhite</code>,</li>
 </ul>
 </li>
-<li>Black (named color <code>black</code>):
+<li>Black — named color <code>black</code>:
 <ul>
 <li><code>bblack</code> / <code>tblack</code> / <code>bgblack</code>,</li>
 <li><code>h:bblack</code> / <code>h:tblack</code> / <code>h:bgblack</code>,</li>
 </ul>
 </li>
+</ul>
+<h3 id="reversi-%2F-reversi-opposite" tabindex="-1">Reversi / Reversi opposite</h3>
+<p>Baselayer 2’s <a href="https://en.wikipedia.org/wiki/Reversi">reversi</a> color utilities can be used for flipping from black to white (and the opposite way) depending on whether the user is viewing your site in its light theme or dark theme. E.g. use <code>*reversi</code> and <code>*revopp</code> utilities for a <a href="#dark%2Flight-theme-toggle">dark/light theme toggle</a> button or for <a href="https://brutalist-web.design">brutalist</a> web designs.</p>
+<ul>
+<li>Reversi — <code>black</code> on light theme; <code>white</code> on dark theme:
+<ul>
+<li><code>treversi</code> / <code>.breversi</code> / <code>.bgreversi</code></li>
+</ul>
+</li>
+<li>Reversi opposite — <code>white</code> on light theme; <code>black</code> on dark theme:
+<ul>
+<li><code>trevopp</code> / <code>.revopp</code> / <code>.bgrevopp</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="transparent-background" tabindex="-1">Transparent background</h3>
+<p>E.g. for outline buttons.</p>
+<ul>
 <li>Transparent:
 <ul>
 <li><code>bgtransparent</code></li>
 </ul>
 </li>
 </ul>
-<p>However, any colors near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for <a href="#colors-and-accessibility">accessibility</a>. You will do better going for a lighter background amber with black text.</p>
+<p>There are no hover states of <code>bgtransparent</code>.</p>
+<h2 id="colors-and-accessibility" tabindex="-1">Colors and accessibility</h2>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  In any color model, color combinations must chosen with care so that there is sufficient contrast between text and background colors for purposes of assessibility.
+</div>
+<p>In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at <strong>WCAG level AA</strong> for accessibility compliance.</p>
+<p>For WCAG level AA compliance, most user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
+<p>However, any colors near yellow, such as Baselayer amber, as well as orange and yellow-green (not included) are notoriously difficult for accessibility. You may do better using a lighter background amber and pairing it with black text.</p>
 <form>
   <p>
     <button type="button" name="button">Button</button>
-    <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
-    <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
-    <button class="b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" type="button" name="button">Button</button>
+    <button class="bgblue bg600 h:bg700" type="button" name="button">Button</button>
+    <button class="tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
+    <button class="b1 bgreen bgtransparent bg600 tgreen t600 h:b700 h:twhite h:bggreen h:bg700" type="button" name="button">Button</button>
   </p>
 </form>
+<p>When colorizing buttons, remember to set their <code>h:</code> hover state shades too.</p>
 <pre><code>/* Default button */
 &lt;button type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 
 /* Blue button */
-&lt;button class=&quot;bblue b600 h:b700 bgblue bg600 h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;button class=&quot;bgblue bg600 h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 
 /* Amber button */
-&lt;button class=&quot;bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;button class=&quot;tblack h:tblack bgamber bg300 h:bg400&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 
-/* Green outline (a.k.a. ghost) button*/
-&lt;button class=&quot;bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
+/* Green outline (a.k.a. ghost) button */
+&lt;button class=&quot;b1 bgreen bgtransparent bg600 tgreen t600 h:b700 h:twhite h:bggreen h:bg700&quot; type=&quot;button&quot; name=&quot;button&quot;&gt;Button&lt;/button&gt;
 </code></pre>
-<p><strong>Note:</strong> the <em>named</em> colors (<code>black</code>, <code>white</code>, and <code>transparent</code>) take precedence over HSL coded colors in Baselayer because they are declared subsequent to the coded colors in <code>colors.css</code>. This is the reason why, in the example green outline (ghost) button above, it can have both <code>bgtransparent</code> and <code>bggreen</code> classes but the transparent wins out. Whereas the hover state shade <code>h:bg700</code> <em>overrides</em> the <code>bgtransparent</code> on hover, and that’s when the <code>var(--green-hs)</code> in the <code>bggreen</code> class is applied — this is the property that colorizes the hover shade.</p>
-<h2 id="colors-and-accessibility" tabindex="-1">Colors and Accessibility</h2>
-<p><em>All color systems, if color combinations are chosen with care, can be used sufficient contrast between text and background colors for purposes of assessibility.</em></p>
-<p>In your text and background color combinations, be careful to ensure that the text is readable — there needs to be an adequate contrast. Generally, you will want to aim at <strong>WCAG level AA</strong> for accessibility compliance.</p>
-<p>For WCAG level AA compliance, most user interface colors need to be <em>darker than the middle shade</em> (i.e. use <code>*600</code> up) if the text color is white, or <em>lighter than the middle shade</em> (i.e. use <code>*400</code> down) if the text color is black.</p>
-<p>Background reading on HSL color and accessibility:</p>
+<p>Background reading on colors and accessibility (not much is available about OKLCH at this time, mid-2023):</p>
 <ul>
 <li>Useful blog posts from <a href="https://www.a11yproject.com">The Accessibility (A11Y) Project</a>:
 <ul>
@@ -423,28 +762,145 @@
 <li><a href="https://contrast-ratio.com">https://contrast-ratio.com</a> has an HSLA contrast checker (HSL plus opacity)</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance">Web Accessibility: Understanding Colors and Luminance (Mozilla Developer Network Docs)</a></li>
 </ul>
-<h2 id="creating-a-dark-theme" tabindex="-1">Creating a Dark Theme</h2>
-<p><strong>There is no built-in dark theme in Baselayer.</strong> But it is easy to set up by using the color CSS variables.</p>
-<p>At minimum, you will need to make dark versions of the colors for background, text, and line details (for tables, horizontal rules, etc.)</p>
-<p>The Baselayer docs make use of JavaScript and some extra CSS to enable a demo toggle, so that you can switch between (default) light mode and (example) dark mode in this main content area. If you are not looking at these docs on a phone or narrow screen, you’ve probably noticed it already in the sidebar. But here's another button that does the same:</p>
-<p><button id="theme-toggle" class="bgblue bg600 h:bg700"> theme</button></p>
+<h2 id="baselayer%E2%80%99s-dark-theme" tabindex="-1">Baselayer’s dark theme</h2>
+<p>Baselayer 2 has some simple dark themes built in, controlled by a <a href="#dark%2Flight-theme-toggle">JavaScript toggle</a> in this documentation.</p>
+<p>Each Baselayer 2 variant has a dark theme, that sets dark theme colors for the HTML tags. These are set using <code>#</code> in <code>baselayer.css</code>, <code>oklch()</code> in <code>baselayer-oklch.css</code> and <code>hsl()</code> in <code>baselayer-hsl.css</code>.</p>
+<p>Example from <code>baselayer.css</code>:</p>
+<pre><code class="language-css">.theme-dark {
+  --cbgbody:    #222;
+  --ctext:      #ddd;
+  --clink:      #39f;
+  --clinkh:     #07f;
+  --cbginput:   #444;
+  --ccode:      white;
+  --cbgcode:    #228;
+  --cborder:    #ddd;
+}
+</code></pre>
+<p>(There’s also the flipped colors for  <a href="#reversi-%2F-reversi-opposite">reversi / reversi-opposite</a>.)</p>
+<p>Both <code>baselayer-oklch.css</code> and <code>baselayer-hsl.css</code> have <a href="#color-lightness-(shades)">color utility lightness</a> classes — and both these sets of shades are necessarily darkened a little for the dark theme. E.g. see the following graph:</p>
+<p class="mb1 bold center">Baselayer 2’s OKLCH shades (lightness) are darkened for the dark theme<p>
+<div class="mb3 w100% wxs mxauto">
+<svg viewBox="0 0 121 119" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5"><path d="M200 100v200" style="fill:none;stroke:currentColor;stroke-width:.38px" transform="matrix(1 0 0 .5 -180.003 -48.459)"/><path d="m210 85.185 80-503.704" style="fill:none;stroke:currentColor;stroke-width:.42px" transform="matrix(-1 0 0 .135 319.997 61.041)"/><path d="m210-329.63 80 444.445" style="fill:none;stroke:currentColor;stroke-width:.42px;stroke-dasharray:3,3,0,0" transform="matrix(1 0 0 .135 -180.003 61.041)"/><path d="M200 100v200" style="fill:none;stroke:currentColor;stroke-width:.38px" transform="matrix(0 -1 .5 0 -30.003 301.541)"/><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -59.51 354.107)">100</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -54.51 345.447)">200</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -49.51 336.786)">300</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -44.51 328.126)">400</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -39.51 319.466)">500</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -34.51 310.806)">600</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -29.509 302.145)">700</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -24.509 293.485)">800</text><text x="194.001" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-60 -19.509 284.824)">900</text><text x="194.843" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -309.959)">100%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -299.959)">90%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -289.959)">80%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -279.959)">70%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -269.959)">60%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -259.959)">50%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -249.959)">40%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -239.959)">30%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -229.959)">20%</text><text x="197.161" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -219.959)">10%</text><text x="199.478" y="312.992" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-190.003 -209.959)">0%</text><text x="194" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-147.187 -300.459)">Light theme shades</text><text x="204.541" y="314.288" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-147.187 -300.459)">(default)</text><text x="194" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-122.133 -226.452)">Dark theme shades</text><text x="212.275" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="translate(-163.867 -192.459)">Lightness code number</text><text x="219.454" y="309.985" style="font-family:'ArialMT','Arial',sans-serif;font-size:4.167px;fill:currentColor" transform="rotate(-90 -10.731 296.272)">Lightness value</text><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -198.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -188.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -178.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -168.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -158.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -148.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -138.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -128.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -118.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -108.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(.66667 0 0 1 -113.336 -98.459)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -170.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -160.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -150.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -140.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -130.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -120.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -110.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -100.003 234.874)"/><path d="M200 200h-3" style="fill:none;stroke:currentColor;stroke-width:.35px" transform="matrix(0 -.66667 1 0 -90.003 234.874)"/><path d="m60.152 26.55-2.155.991 1.13-2.086 1.025 1.095Z" style="fill:currentColor"/><path d="M64.997 16.541c-.008 3.629-3.661 7.759-5.686 9.769" style="fill:none;stroke:currentColor;stroke-width:.5px"/><path d="m94.746 68.532 2.154-.991-1.129 2.086-1.025-1.095Z" style="fill:currentColor"/><path d="M89.9 78.541c.009-3.629 3.662-7.759 5.687-9.769" style="fill:none;stroke:currentColor;stroke-width:.5px"/></svg></div>
+<p>The Baselayer 2 HSL darth theme shades are similarly darkened.</p>
+<h3 id="dark%2Flight-theme-toggle" tabindex="-1">Dark/light theme toggle</h3>
+<p>Baselayer’s dark/light theme switcher JavaScript uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">sessionStorage</a> in the user’s browser to remember their theme preference as they visit multiple pages in this website in any one “visit session”.</p>
+<p>This script is embedded in the <code>&lt;head&gt;</code> of the webpage and it is read early so that it is implimented <em>before</em> the <code>&lt;body&gt;</code> is painted in the browser window.</p>
+<p>The theme switcher in the Baselayer 2 docs is built into its <code>switcher.js</code> sidebar demo toggling system. If you want to use the same dark/light mode toggler, here it is isolated below (no JS framework required):</p>
+<pre><code class="language-js">const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+const htmlClassList = document.querySelector('html').classList;
+
+function themeDark() {
+  sessionStorage.setItem(&quot;baselayerTheme&quot;, &quot;dark&quot;);
+  htmlClassList.remove('theme-light');
+  htmlClassList.add('theme-dark');
+}
+
+function themeLight() {
+  sessionStorage.setItem(&quot;baselayerTheme&quot;, &quot;light&quot;);
+  htmlClassList.remove('theme-dark');
+  htmlClassList.add('theme-light');
+}
+
+function toggleTheme() {
+  if ( sessionStorage.baselayerTheme === 'dark' ) {
+    themeLight();
+  } else {
+    themeDark();
+  }
+};
+
+function baselayerInit() {
+  if (sessionStorage.baselayerTheme === 'dark' || (!('baselayerTheme' in sessionStorage) &amp;&amp; matchMediaDark.matches)) {
+    themeDark();
+  } else {
+    themeLight();
+  }
+};
+
+baselayerInit();
+</code></pre>
+<p>You will also need a toggle button, like the one in the sidebar. The checks (ticks) are added in by CSS pseudo-selectors.</p>
+<p class="flex flexcenter">
+  <button class="pcell flex flexcolumn gap1 bgblue h:bg600" onclick="toggleTheme()">
+    <div class="label-light w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Light theme</div>
+    </div>
+    <div class="label-dark w100% flex flexmiddle gap1">
+      <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+      <div class="grow left">Dark theme</div>
+    </div>
+  </button>
+</p>
+<p>Another, simpler example theme toggle button, with glyphs from <a href="https://www.amp-what.com">&amp;what;</a></p>
+<style>
+  .theme-dark .theme-toggle span::before { content: '☀️ '; }
+  .theme-light .theme-toggle span::before { content: '🌙 '; }
+</style>
+<p class="flex flexcenter">
+  <button class="theme-toggle trevopp bgreversi" onclick="toggleTheme()">
+    <span>theme</span>
+  </button>
+</p>
+<pre><code>&lt;style&gt;
+  .theme-dark .theme-toggle span::before { content: '☀️ '; }
+  .theme-light .theme-toggle span::before { content: '🌙 '; }
+&lt;/style&gt;
+
+&lt;button class=&quot;theme-toggle trevopp bgreversi&quot; onclick=&quot;toggleTheme()&quot;&gt;
+  &lt;span&gt;theme&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+<p>The simple example above uses <code>bgreversi</code> to put a “night time” black background behind the moon and a “day time” white backgorund behind the sun, and <code>trevopp</code> (reversi opposite) to flip the text color the opposite way.</p>
+<p>If you don’t want to give your visitors the option to toggle, then you can also change the CSS to make the dark theme simply respond to the <code>prefers-color-scheme: dark</code> instead.</p>
+<pre><code class="language-css">@media (prefers-color-scheme: dark) {
+  /*
+  Your dark theme styles
+  */
+}
+</code></pre>
 
       
-          <footer class="mb4">
-              <hr>
-              <nav>
-                <ul class="unlist p0 sm:grid2cols">
-                  
-                  <li class="my1">&larr; <a href="/baselayer/decoration"> Decoration</a></li>
-                  
-                  
-                  <li class="sm:col2 my1 right"><a href="/baselayer/forms">Forms</a> &rarr;</li>
-                    
-                </ul>
-              </nav>
-          </footer>
-        </div>
-      </main>
+          <nav class="mt3 mb2 b1 pill pcell popout">
+            <ul class="m0 unlist p0 flex">
+              
+              <li class="grow my1">&larr; <a href="/baselayer/decoration/"> Decoration</a></li>
+              
+              
+              <li class="grow my1 right"><a href="/baselayer/forms/">Forms</a> &rarr;</li>
+                
+            </ul>
+          </nav>
+
+          <footer>
+            <div class="mb2 pcell center">
+              <a href="/baselayer/" class="h3 m0 py2 normal flex flexcolumn flexcenter gap1 noline">
+                <svg class="mxauto" height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+                  <g transform="translate(-294.592 -94.592)">
+                    <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+                    <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+                    <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+                    <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    </g>
+                  </svg>
+                <span class="nowrap">Baselayer CSS</span>
+              </a>
+              <span>Version: 2.0.0</span>
+            </div>
+
+            <p class="pcell flex flexcenter flexwrap gap3 center">
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer">GitHub Repository</a>
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer/blob/main/LICENSE">MIT license</a>
+              <span>Developer: <a class="noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></span>
+            </p>
+            <p class="pcell center">
+              This documentation is built using <a href="https://www.11ty.dev">Eleventy</a>.
+            </p>
+        </footer>
+      </div>
+    </main>
       
     </div>
   </div>

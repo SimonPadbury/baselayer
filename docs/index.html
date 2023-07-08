@@ -7,43 +7,221 @@
 
   <title>Baselayer · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.5">
-
-  <script src="/baselayer/js/switcher.js"></script>
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=2.0.0">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-oklch.css" id="colors-oklch">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-hsl.css" id="colors-hsl">
 
   <style>
-    .theme-dark #theme-toggle::before { content: 'Light '; }
-    .theme-light #theme-toggle::before { content: 'Dark '; }
-    .main-longread #fs-toggle::before { content: 'Normal font '; }
-    .main-normal #fs-toggle::before { content: 'Long read '; }
-    .main-prose #font-toggle::before { content: 'Base '; }
-    .main-base #font-toggle::before { content: 'Prose '; }
+    html {
+      scroll-behavior: smooth;
+    }
+    .check-box {
+      width: 1rem;
+      height: 1rem;
+    }
+    .font-base .label-base .check-box::before { content: '✓'; }
+    .font-prose .label-prose .check-box::before { content: '✓'; }
+    .font-normal .label-normal .check-box::before { content: '✓'; }
+    .font-longread .label-longread .check-box::before { content: '✓'; }
+    .colors-oklch .label-oklch .check-box::before { content: '✓'; }
+    .colors-hsl .label-hsl .check-box::before { content: '✓'; }
+    .theme-light .label-light .check-box::before { content: '✓'; }
+    .theme-dark .label-dark .check-box::before { content: '✓'; }
 
-    .main-longread .contentgrid { font-size: var(--fslongread); }
-    .main-prose .contentgrid { font-family: var(--prose); }
+    @media (min-width: 1024px) {
+      #site-title { 
+        max-width: 145px;
+        margin-inline: auto;
+        padding-top: var(--s2);
+        justify-content: center;
+      }
+    }
+    .font-longread .contentgrid { 
+      font-size: var(--fslongread);
+    }
 
-    .main-longread .btn-icon {
+    .font-prose #main-content>.contentgrid { font-family: var(--prose); }
+
+    .font-longread .btn-icon {
       width: calc(var(--si) + 2px);
       height: calc(var(--si) + 2px);
     }
-    .theme-dark #main-content { 
-      color: hsl(var(--hsgray), var(--l100));
-      background: hsl(var(--hsgray), var(--l900));
+    h2, h3, h4 {
+      scroll-margin-top: var(--s2);
     }
-    .theme-dark #main-content a:not(.btn) {
-      color: hsl(var(--hsblue), var(--l300));
+    .contentgrid header + h2 {
+      margin-top: 0;
     }
-    .theme-dark #main-content a:not(.btn):hover {
-      color: hsl(var(--hsblue), var(--l400));
+
+    pre code {
+      max-height: 80vh;
+      overflow-y: auto
     }
-    .theme-dark code {
-      color: white;
-      background: hsl(var(--hsblue), var(--l700));
-    }
-    .theme-dark hr, .theme-dark th, .theme-dark td {
-      border-color: hsl(var(--hsgray), var(--l600));
+
+    .resize-x {
+      margin-inline: -5px;
+      padding: 5px;
+      resize: horizontal;
+      overflow-x: auto;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='silver' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   </style>
+
+  <script>
+  const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+const htmlClassList = document.querySelector('html').classList;
+
+function fontProse() {
+  sessionStorage.setItem('baselayerFont', 'prose');
+  htmlClassList.remove('font-base');
+  htmlClassList.add('font-prose');
+}
+
+function fontBase() {
+  sessionStorage.setItem('baselayerFont', 'base');
+  htmlClassList.remove('font-prose');
+  htmlClassList.add('font-base');
+}
+
+function fsLongRead() {
+  sessionStorage.setItem('baselayerFS', 'longread');
+  htmlClassList.remove('font-normal');
+  htmlClassList.add('font-longread');
+}
+
+function fsNormal() {
+  sessionStorage.setItem('baselayerFS', 'normal');
+  htmlClassList.remove('font-longread');
+  htmlClassList.add('font-normal');
+}
+
+function colorsOKLCH() {
+  sessionStorage.setItem('baselayerColors', 'oklch');
+  htmlClassList.remove('colors-hsl');
+  htmlClassList.add('colors-oklch');
+}
+
+function colorsHSL() {
+  sessionStorage.setItem('baselayerColors', 'hsl');
+  htmlClassList.remove('colors-oklch');
+  htmlClassList.add('colors-hsl');
+}
+
+function themeDark() {
+  sessionStorage.setItem("baselayerTheme", "dark");
+  htmlClassList.remove('theme-light');
+  htmlClassList.add('theme-dark');
+}
+
+function themeLight() {
+  sessionStorage.setItem("baselayerTheme", "light");
+  htmlClassList.remove('theme-dark');
+  htmlClassList.add('theme-light');
+}
+
+// Toggles
+
+function toggleFont() {
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontBase();
+  } else {
+    fontProse();
+  }
+};
+
+function toggleFS() {
+  if ( sessionStorage.baselayerFS === 'normal' ) {
+    fsLongRead();
+  } else {
+    fsNormal();
+  }
+};
+
+function toggleColors() {
+  if ( sessionStorage.baselayerColors === 'oklch' ) {
+    colorsHSL();
+    document.getElementById('colors-hsl').disabled = false;
+    document.getElementById('colors-oklch').disabled = true;
+  
+  } else {
+    colorsOKLCH();
+    document.getElementById('colors-hsl').disabled = true;
+    document.getElementById('colors-oklch').disabled = false;
+  }
+};
+
+function toggleTheme() {
+  if ( sessionStorage.baselayerTheme === 'dark' ) {
+    themeLight();
+  } else {
+    themeDark();
+  }
+};
+
+// init
+
+function baselayerInit() {
+  if (sessionStorage.baselayerTheme === 'dark' || (!('baselayerTheme' in sessionStorage) && matchMediaDark.matches)) {
+    themeDark();
+  } else {
+    // default
+    themeLight();
+  }
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontProse();
+  } else {
+    // default
+    fontBase();
+  }
+  if ( sessionStorage.baselayerFS === 'longread' ) {
+    fsLongRead();
+  } else {
+    // default
+    fsNormal();
+  }
+  if ( sessionStorage.baselayerColors === 'hsl' ) {
+    document.getElementById('colors-oklch').disabled = true;
+    colorsHSL();
+  } else {
+    // default
+    document.getElementById('colors-hsl').disabled = true;
+    colorsOKLCH();
+  }
+};
+
+baselayerInit();
+    /**
+  * Site Navigation Toggle (Phones)
+  */
+
+window.addEventListener("DOMContentLoaded", () => {
+  let navButton = document.querySelector('#site-nav-toggle');
+  let menu = document.querySelector('#site-nav-menu');
+  let windowTest = function() {
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      navButton.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+    } else {
+      navButton.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+    }
+  }
+
+  windowTest();
+
+  window.addEventListener('resize', function () {
+    windowTest();
+  });
+
+  navButton.addEventListener('click', function() {
+    let expanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !expanded);
+    menu.hidden = !menu.hidden;
+  });
+});
+
+  </script>
+
 </head>
 <body class="">
 
@@ -51,86 +229,106 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh md:flex">
+  <div class="h100dvh flex md:drop">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100vh overflowy">
-    <div class="pt3 flex flexcolumn center">
-      <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
-        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">Baselayer CSS </span>
+  <div class="sticky top hmax100dvh overflowy">
+    <div class="pcell center">
+      <a id="site-title" href="/baselayer/" class="h3 m0 py1 normal flex flexcenter flexmiddle flexwrap gap1 tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+          <g transform="translate(-294.592 -94.592)">
+            <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+            <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+            <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+            <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            </g>
+            </svg>
+        <span class="nowrap">Baselayer CSS</span>
       </a>
+      <span class="tgray t400 md:hiddenbelow">Version: 2.0.0</span>
     </div>
 
-    <nav class="pb pcell center twhite md:hidden">
-      <details>
-        <summary class="bold">Documentation</summary>
-        <div class="pt2">
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav id="site-nav" role="menu">
+      <button type="button" id="site-nav-toggle" aria-expanded="false" aria-label="Menu" aria-controls="site-nav-menu" class="absolute top right m2 md:hidden">
+        Menu
+      </button>
+
+      <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
+        <div class="my2 pcell flex flexcolumn gap2">
+          <a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/typography/">Typography</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/layout/">Layout</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/decoration/">Decoration</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/colors/">Colors</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/forms/">Forms</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/buttons/">Buttons</a>
         </div>
 
-        <p class="pcell bggray bg900">
-          <a class="block tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-          <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-        </p>
-    
-        <p class="italic tgray t400">
-          Version: 1.1.5<br/>
-          Filesize: 15 kb<br/>
-          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-        </p>
-      </details>
+        <div class="mb2 pcell">
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFont()">
+            <div class="label-base w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Base font</div>
+            </div>
+            <div class="label-prose w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Prose font</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFS()">
+            <div class="label-normal w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Normal font-size</div>
+            </div>
+            <div class="label-longread w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Long read font-size</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleColors()">
+            <div class="label-oklch w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">OKLCH colors</div>
+            </div>
+            <div class="label-hsl w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">HSL colors</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleTheme()">
+            <div class="label-light w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Light theme</div>
+            </div>
+            <div class="label-dark w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Dark theme</div>
+            </div>
+          </button>
+        </div>
+
+      </div>
     </nav>
-
-    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
-      <ul class="unlist m0 p0">
-        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
-      </ul>
-    </nav>
-
-    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
-    </div>
-
-    <p class="m2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-    </p>
-
-    <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.5<br/>
-      Filesize: 15 kb<br/>
-      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-    </p>
   </div>
 </div>
 
       <main id="main-content" class="grow flex">
+
         <div id="toc" class="lg:hiddenbelow" style="order: 2;">
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
-            <p class="m0 pt4">Contents:</p>
+            <p class="h4 pt4 semibold">Contents</p>
             <nav class="toc" >
-        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#built-using-postcss">Built using PostCSS</a></li><li><a href="#modern-css-reset">Modern CSS Reset</a></li><li><a href="#basic-accessibility-features">Basic Accessibility Features</a><ul><li><a href="#(1.)-focus-rings">(1.) Focus Rings</a></li><li><a href="#(2.)-the-visually-hidden-class">(2.) The Visually-Hidden Class</a></li></ul></li></ul>
+        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#baselayer-comes-in-three-flavours">Baselayer comes in three flavours</a></li><li><a href="#built-using-postcss">Built using PostCSS</a></li><li><a href="#modern-css-reset">Modern CSS reset</a></li><li><a href="#basic-accessibility-features">Basic accessibility features</a><ul><li><a href="#(1.)-focus-rings">(1.) Focus rings</a></li><li><a href="#(2.)-the-visually-hidden-class">(2.) The visually-hidden class</a></li></ul></li><li><a href="#adding-your-own-styles">Adding your own styles</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 center">
-            <h1 class="bold">Baselayer Is a Splendiferous Yet Miniscule CSS Library</h1>
+          <header class="my2 py4 big center">
+            <h1 class="m0 lighter">Baselayer is a super tiny, super powerful CSS library</h1>
           </header>
       
           <h2 id="introduction" tabindex="-1">Introduction</h2>
@@ -138,32 +336,70 @@
 <p>Ready to use as-is, Baselayer gives you all this and more:</p>
 <ul>
 <li>A modern CSS reset</li>
-<li>Basic accessibility features</li>
+<li>Foundational accessibility features</li>
 <li>Responsive typography</li>
-<li>Simple responsive layouts using positioning, dimensions, flexbox, and grid</li>
-<li>A lightweight system of utility classes for controlling spacing, borders, and colors</li>
 <li>Styled form elements and buttons</li>
-<li>Control of many of these things using CSS variables (custom properties)</li>
+<li>Simple responsive layouts using positioning, dimensions, flexbox, and grid</li>
+<li>A lightweight system of utility classes for controlling spacing, borders (and colors)</li>
+<li><a href="http://localhost:8080/baselayer/#baselayer-comes-in-three-flavours">Three color options</a> for you to choose from</li>
+<li>Control of many of these things using CSS variables (a.k.a. custom properties)</li>
 </ul>
-<p>Believe it or not, all this is packed into a tiny CSS file, <strong>15 kb</strong>.</p>
-<p>Baselayer uses some modern web technologies such as <a href="https://caniuse.com/?search=grid">CSS Grid</a> and <a href="https://caniuse.com/?search=variables">CSS variables</a>, so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.</p>
+<p>Baselayer uses some modern web technologies such as <a href="https://caniuse.com/css-grid">CSS Grid</a>, <a href="https://caniuse.com/css-variables">CSS variables</a>, <a href="https://caniuse.com/css-container-queries">container queries</a>, and the <a href="https://caniuse.com/mdn-css_types_color_oklch">OKLCH color model</a>, therefore it supports only up-to-date (2023 forward) evergreen web browsers — Safari, Firefox, Chrome, Edge, etc. Sorry, it does not support Internet Explorer.</p>
+<h2 id="baselayer-comes-in-three-flavours" tabindex="-1">Baselayer comes in three flavours</h2>
+<p>From Baselayer v.2.0.0, the color utilities have been provided in separate streams. You only need to choose one of these stylesheets:</p>
+<div class="mt2 mb3 center">
+  <div class="grid3cols gap2 sm:drop">
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core</strong></p>
+        <p>Has only a few required base theme <code>#</code> colors (set in the root CSS variables)</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Baselayer core</a>
+      12 kb
+    </div>
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core<br> + OKLCH utilities</strong></p>
+        <p>Required base theme colors are reset as OKLCH root CSS variables</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer-oklch.min.css">Baselayer + OKLCH</a>
+      17 kb
+    </div>
+    <div class="b1 r3 p2 flex flexcolumn">
+      <div class="grow center">
+        <p class="h4 m0 mb2"><strong>Baselayer 2 core<br> + HSL utilities</strong></p>
+        <p>Required base theme colors are reset as HSL root CSS variables</p>
+      </div>
+      <a class="mb1 btn pill bgblue h:bg600" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer-hsl.min.css">Baselayer + HSL</a>
+      16 kb
+    </div>
+  </div>
+</div>
+<p>These three download options can be found in the <a href="https://github.com/SimonPadbury/baselayer/tree/main/_src/css/min">source output folder</a>.</p>
+<p>For more information on the OKLCH and HSL color systems in Baselayer, see <a href="/baselayer/colors/">colors</a>.</p>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  <strong>Baselayer includes no JavaScript or icon fonts.</strong> You can pair Baselayer with whatever JS framework you prefer to work with, or do your own thing. For icon fonts, for small projects I may sometimes use a character (glyph) from <a  class="tblue t600 h:t700"href="https://www.amp-what.com/">&amp;what;</a>. When I want something more, I copy a SVG icon for <a class="tblue t600 h:t700" href="https://phosphoricons.com/">Phosphor icons</a> (other icon sets are available).
+</div>
 <h2 id="built-using-postcss" tabindex="-1">Built using PostCSS</h2>
-<p>Baselayer is built using <a href="https://postcss.org">PostCSS</a> and a few plugins. Preprocessors such as Sass are not required.</p>
-<p>The PostCSS plugins used by Baselayer are:</p>
+<p>Baselayer is built using <a href="https://postcss.org">PostCSS</a> and a few plugins. The PostCSS plugins used by Baselayer are:</p>
 <ul>
 <li><a href="https://github.com/postcss/postcss-import">postcss-import</a> — so that Baselayer could be built from separate CSS files, linked together in an <code>index.css</code> using the <code>@import</code> rule, and then inlined</li>
-<li><a href="https://npm.devtool.tech/postcss-custom-media">postcss-custom-media</a> — to enable CSS variables to be used in media queries (used only in the <code>flex</code> and <code>grid</code> layout classes)</li>
 <li><a href="https://cssnano.co">cssnano</a> — to remove comments and minify the output <code>baselayer.css</code></li>
 </ul>
-<p><strong>Note:</strong> neither <a href="https://preset-env.cssdb.org">postcss-preset-env</a> nor <a href="https://github.com/postcss/autoprefixer">autoprefixer</a> have been used in Baselayer.</p>
-<h2 id="modern-css-reset" tabindex="-1">Modern CSS Reset</h2>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Neither <a href="https://preset-env.cssdb.org">postcss-preset-env</a> nor <a href="https://github.com/postcss/autoprefixer">autoprefixer</a> have been used in Baselayer.</li>
+<li><a href="https://npm.devtool.tech/postcss-custom-media">postcss-custom-media</a> has not been used (was used in Baselayer 1 but it has been dropped for v.2), because Baselayer 2 also supports <em>container queries</em> that aren’t handled by <code>postcss-custom-media</code>. When this or another module comes along that does support container queries, let me know.</li>
+<li>Preprocessors such as Sass are not required.</li>
+</ul>
+<h2 id="modern-css-reset" tabindex="-1">Modern CSS reset</h2>
 <p>The Baselayer reset is a “best of both” combination of <a href="https://www.joshwcomeau.com/css/custom-css-reset/">Josh W Comeau’s custom CSS reset</a> and the <a href="https://piccalil.li/blog/a-modern-css-reset/">Andy Bell’s modern CSS reset (Picalilli)</a>.</p>
-<p>Then, Baselayer takes care of the basics by setting some minimalist, easy-to-read typography, and styles for buttons and forms.</p>
-<h2 id="basic-accessibility-features" tabindex="-1">Basic Accessibility Features</h2>
+<p>Baselayer takes care of classless HTML from here by setting some minimalist, easy-to-read typography, and styles for buttons and forms.</p>
+<h2 id="basic-accessibility-features" tabindex="-1">Basic accessibility features</h2>
 <p>Baselayer has two basic accessibility features built-in.</p>
-<h3 id="(1.)-focus-rings" tabindex="-1">(1.) Focus Rings</h3>
+<h3 id="(1.)-focus-rings" tabindex="-1">(1.) Focus rings</h3>
 <p><strong>(a.) Form focus ring:</strong></p>
-<p>For form inputs and buttons on <code>:focus</code>, there’s a 4px light blue ring (see <a href="/colors">colors</a>). Example:</p>
+<p>For form inputs and buttons on <code>:focus</code>, there’s a 4px light blue ring (see <a href="/baselayer/colors/">colors</a>). Example:</p>
 <form>
   <fieldset class="flex">
     <legend>Example e-newsletter subscribe</legend>
@@ -171,28 +407,30 @@
     <input type="submit" name="submit" value="Subscribe">
   </fieldset>
 </form>
-<p>The zero outline resets the browser defaults, while the box shadow provides the same style accross browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius.</p>
+<p>The zero outline resets the browser defaults, while the box shadow provides the same style across browsers. Box-shadow has been used so that the focus ring curves around the corners of inputs and buttons following their border-radius (if you add one).</p>
 <p><strong>(b.) Button focus ring:</strong></p>
 <p>Buttons (<code>&lt;button&gt;</code>, <code>&lt;input type=&quot;button&quot;&gt;</code>, etc.) get the same focus ring as for other form inputs, but only for <code>:focus-visible</code>.</p>
 <p><strong>(c.) Link focus ring:</strong></p>
 <p>For links, collapsible <code>&lt;details&gt;</code>, pseudo-buttons (i.e. links styled with the <code>btn</code> class), and anything else that is not a form input or button, the focus ring is a 2px dotted black outline supported by a 2px solid white box shadow. This white will appear <em>between</em> the outline dots, looking like a dotted white line. Keyboard-tab through these links and buttons to see the accessibility rings:</p>
-<div class="mt2 b1 b600 sm:grid3cols">
-  <div class="p3 flex flexcolumn flexcenter flexmiddle">
-  <p><a href="/#">Link</a></p>
-  <p><button type="button">Button</button></p>
-  </div>
-  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
-  <p><a class="tblue bblue h:b300 t200 h:t300" href="/#">Link</a></p>
-  <p><button class="b1 bwhite h:bwhite" type="button">Button</button></p>
-  </div>
-  <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
-  <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
-  <p><button type="button">Button</button></p>
+<div class="my2 b1">
+  <div class="grid3cols">
+    <div class="p3 flex flexcolumn flexcenter flexmiddle">
+    <p><a  class="tblue t600 h:t700"href="/#">Link</a></p>
+    <p><button type="button" class="pill">Button</button></p>
+    </div>
+    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
+    <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
+    <p><button class="pill b1 bwhite h:bwhite" type="button">Button</button></p>
+    </div>
+    <div class="p3 flex flexcolumn flexcenter flexmiddle bgblack">
+    <p><a class="tblue t200 h:t300" href="/#">Link</a></p>
+    <p><button type="button" class="pill">Button</button></p>
+    </div>
   </div>
 </div>
-<h3 id="(2.)-the-visually-hidden-class" tabindex="-1">(2.) The Visually-Hidden Class</h3>
+<h3 id="(2.)-the-visually-hidden-class" tabindex="-1">(2.) The <code>visually-hidden</code> class</h3>
 <p>The <code>visuallyhidden</code> is used for “skip links”, such as the visually-hidden link above the top navigation bar on this website.</p>
-<pre><code>&lt;a 
+<pre><code>&lt;a  class=&quot;tblue t600 h:t700&quot;
   href=&quot;#main-content&quot;
   tabindex=&quot;1&quot;
   class=&quot;inlineblock m1 visuallyhidden&quot;
@@ -204,21 +442,59 @@
   ...
 &lt;/main&gt;
 </code></pre>
-
+<h2 id="adding-your-own-styles" tabindex="-1">Adding your own styles</h2>
+<p>The design philosophy behind the Baselayer project is:</p>
+<ul>
+<li>Make a stylesheet that does most things most people want</li>
+<li>With much less CSS that is mostly never used (e.g. rarely used grid column classes or color shade classes)</li>
+<li>Using modern CSS technologies such CSS variables, CSS functions, CSS grid, container queries, and a modern color system, that enable a lot of code reuse (reducing duplication)</li>
+<li>All without a preprocessor (no Sass, Less, Stylus etc.)</li>
+<li>Aim at being a “good place to start” — a <em>baselayer</em> for a web design project, closer to being a more powerful replacement for <a href="https://necolas.github.io/normalize.css/">Normalize</a> than an entire design system like the much bigger CSS frameworks out there (we could name more than several).</li>
+</ul>
+<p>The Baselayer core stylesheet, <code>baselayer.css</code> (filesize: 12 kb) includes dozens of CSS variables (custom properties), most of which are in the <code>:root {}</code> that you can utilize in your own CSS rules. For example, you can change and/or reuse the variables for fonts, sizes, layout widths, decoration (margins, paddings, borders, rounded corners), and colors.</p>
+<p>Baselayer’s color systems — choose either  <code>baselayer-oklch.css</code> (17 kb) or <code>baselayer-hcl.css</code> (16 kb) — each contain the Baselayer core.</p>
+<p>Whichever version you choose, Baselayer is tiny so don’t expect it to do <em>all</em> that you want, unless you are only working on a simple project. But it will probably do <em>most</em> of what you want. This documentation gives you a thorough tour of the HTML styling and CSS classes available in Baselayer.</p>
+<div aria-label="Note" class="popout mb2 bl3 bblue b300 p2 tblack bgblue bg100">
+  <strong>Baslayer’s CSS has been made deliberately compact by making most class names abbreviations and no hyphens or underscores.</strong> You can take advantage of that fact when you add your own CSS classes. E.g. if you use hyphens or underscores in your class names, it will be easier for you to remember what’s your own, and it will help you identify “what’s not Baselayer” in collaborative projects, or when looking back at your own code.
+</div>
       
-          <footer class="mb4">
-              <hr>
-              <nav>
-                <ul class="unlist p0 sm:grid2cols">
-                  
-                  
-                  <li class="sm:col2 my1 right"><a href="/baselayer/typography">Typography</a> &rarr;</li>
-                    
-                </ul>
-              </nav>
-          </footer>
-        </div>
-      </main>
+          <nav class="mt3 mb2 b1 pill pcell popout">
+            <ul class="m0 unlist p0 flex">
+              
+              
+              <li class="grow my1 right"><a href="/baselayer/typography/">Typography</a> &rarr;</li>
+                
+            </ul>
+          </nav>
+
+          <footer>
+            <div class="mb2 pcell center">
+              <a href="/baselayer/" class="h3 m0 py2 normal flex flexcolumn flexcenter gap1 noline">
+                <svg class="mxauto" height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+                  <g transform="translate(-294.592 -94.592)">
+                    <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+                    <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+                    <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+                    <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    </g>
+                  </svg>
+                <span class="nowrap">Baselayer CSS</span>
+              </a>
+              <span>Version: 2.0.0</span>
+            </div>
+
+            <p class="pcell flex flexcenter flexwrap gap3 center">
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer">GitHub Repository</a>
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer/blob/main/LICENSE">MIT license</a>
+              <span>Developer: <a class="noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></span>
+            </p>
+            <p class="pcell center">
+              This documentation is built using <a href="https://www.11ty.dev">Eleventy</a>.
+            </p>
+        </footer>
+      </div>
+    </main>
       
     </div>
   </div>

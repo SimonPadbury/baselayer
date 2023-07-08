@@ -1,34 +1,24 @@
 {
-  "name": "baselayer",
-  "version": "1.1.5",
-  "description": "CSS starter",
+  "name": "baselayer-2",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postcss": "postcss _src/css/index.css -o _src/css/min/baselayer.min.css -w",
+    "postcss": "postcss _src/css/baselsyer.css -o _src/css/min/baselayer.min.css -w",
     "start": "npx @11ty/eleventy --serve --quiet",
-    "dev": "npx @11ty/eleventy --serve --quiet & postcss _src/css/index.css -o _src/css/min/baselayer.min.css -w"
+    "dev": "npx @11ty/eleventy --serve --quiet & postcss _src/css/baselayer.css -o _src/css/min/baselayer.min.css -w & postcss _src/css/baselayer-hsl.css -o _src/css/min/baselayer-hsl.min.css -w & postcss _src/css/baselayer-oklch.css -o _src/css/min/baselayer-oklch.min.css -w"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SimonPadbury/baselayer.git"
-  },
-  "keywords": [],
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SimonPadbury/baselayer/issues"
-  },
-  "homepage": "https://github.com/SimonPadbury/baselayer#readme",
+  "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
-    "cssnano": "^5.1.13",
+    "@11ty/eleventy": "^2.0.1",
+    "cssnano": "^6.0.1",
     "eleventy-plugin-toc": "^1.1.5",
     "markdown-it": "^13.0.1",
-    "markdown-it-anchor": "^8.6.5",
-    "postcss": "^8.4.17",
-    "postcss-cli": "^10.0.0",
-    "postcss-custom-media": "^8.0.2",
-    "postcss-import": "^15.0.0"
+    "markdown-it-anchor": "^8.6.7",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0"
   }
 }

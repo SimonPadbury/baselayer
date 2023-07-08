@@ -1,0 +1,13 @@
+/*!
+Baselayer CSS core v.2.0.0
+https://github.com/SimonPadbury/baselayer
+*/
+
+@import "/partials/root-vars.css";
+@import "/partials/reset.css";
+@import "/partials/base.css";
+@import "/partials/forms.css";
+@import "/partials/typography.css";
+@import "/partials/layout.css";
+@import "/partials/decoration.css";
+@import "/partials/colors-base.css";

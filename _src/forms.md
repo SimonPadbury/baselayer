@@ -2,8 +2,8 @@
 title: Forms
 mainHeading: Forms
 layout: base.njk
-prevPage: "/colors"
-nextPage: "/buttons"
+prevPage: "/colors/"
+nextPage: "/buttons/"
 prevLink: "Colors"
 nextLink: "Buttons"
 ---
@@ -12,10 +12,10 @@ Baselayer form elements have simple background and focus styling (no default bor
 
 **Notes:**
 
-1. Since v.1.0.7, widths have not been set on form elements. You can control widths them by one of two ways:
-    * By involving the form elements as immediate children of [flexbox](/baselayer/layout/#flex) or [grid](/baselayer/layout/#grid) layout wrappers, or 
-    * By adding the `w100%` utility class to the form element itself.
-2. Since v.1.1.1, form inputs, textareas and buttons (including the `btn` class) have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
+1. In Baselayer, form elements do not have set width. You can control widths them by one of two ways (same as for [buttons]({{ '/buttons/' | url }})):
+    * By adding the `w100%` utility class to the form element, or
+    * By involving the form elements as immediate children of [flex layout]({{ '/layout/' | url }}#flex-layouts) or [grid layout]({{ '/layout/' | url }}#grid-layouts) wrappers.
+2. Form inputs, textareas, buttons, and the `btn` class, have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
 3. The font-family of form elements, buttons, and `btn` is controlled by `var(--base)` (default is sans-serif).
 
 ## Textual Form Input Fields
@@ -178,7 +178,7 @@ Groups of form elements can be wrapped in `<fieldset>` tags. Add a `<legend>` to
 </form>
 ```
 
-**Note:** In the example above (demo and code), the Baselayer `flex` has been used to align these form elements side-by-side, and `grow` has been used to expand the email input field. A `<legend>` is also included — but since its text incorporates with a wrapping border line, it will not be controlled by the flexbox rule.
+**Note:** In the example above, the Baselayer `flex` class has been used to align these form elements side-by-side, and then `grow` has been used to expand the email input field. A `<legend>` is also included — but since its text incorporates with the `<fieldset>` wrapping border line, it will not be controlled by the flexbox rule.
 
 ## Form Buttons
 

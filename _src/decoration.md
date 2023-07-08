@@ -2,13 +2,13 @@
 title: Decoration
 mainHeading: Decoration
 layout: base.njk
-prevPage: "/layout"
-nextPage: "/colors"
+prevPage: "/layout/"
+nextPage: "/colors/"
 prevLink: "Layout"
 nextLink: "Colors"
 ---
 
-## Spacing (Margins and Paddings)
+## Spacing (margins and paddings)
 
 [Box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) margin and padding spacing have both 4 levels based on 4 CSS variables. The smallest simply adds 0.5rem spacing, whereas levels 2-4 are responsive to viewport width using `clamp()` functions to ramp up to 150% their base size. These variables are set in the root-variables file.
 
@@ -17,7 +17,7 @@ nextLink: "Colors"
   --s1: .5rem;
   --s2: clamp(1rem, 2.2222vw, 1.5rem);
   --s3: clamp(2rem, 4.4444vw, 3rem);
-  --s4: clamp(3rem, 6.6667vw, 4.5rem);
+  --s4: clamp(3rem, 6.6666vw, 4.5rem);
 }
 ```
 
@@ -43,7 +43,7 @@ Spacing example with paddings:
 
 <div class="mt2 b1 p1">p1</div>
 
-### Spacing Extras
+### Spacing extras
 
 In addition, there are the following specials:
 
@@ -53,17 +53,17 @@ In addition, there are the following specials:
 
 These zero spacing utilities are declared before the spacers above in `decoration.css` so that you can use them to _reset_ and then use spacers to set spacing the way you want it.
 
-_What if you want to remove e.g. only the top margin of a heading (or other typographic block element)?_ Use `m0` to remove all margins, then use any of the above additive margin classes to put back the ones you want to keep.
+_What if you want to remove e.g. only the top margin of a heading (or other typographic block element)?_ Use `m0` to reset all margins, then use any of the above additive margin classes to put back the ones you want to keep.
 
 ## Borders
 
 Baselayer provides three thicknesses of border (plus a zero border override):
 
-<div class="mt2 b1 p1">b1 (1px)</div>
+<div class="mb2 b1 p1">b1 (1px)</div>
 
-<div class="mt2 b2 p1">b2 (4px)</div>
+<div class="mb2 b2 p1">b2 (4px)</div>
 
-<div class="mt2 b3 p1">b3 (8px)</div>
+<div class="mb2 b3 p1">b3 (8px)</div>
 
 Borders can be set as follows:
 
@@ -73,23 +73,25 @@ Borders can be set as follows:
 * Bottom: `bb*`
 * Left: `bl*`
 
-### Border Extra
+### Border extra
 
 * `b0` — for removing (resetting) all borders
 
-## Rounded Corners
+## Rounded corners
 
 * `r2` — 4px border radius
 * `r3` — 8px border radius
 * `r4` — 16px border radius
 
-<div class="mt2 sm:grid3cols gap2">
+<div class="mb2 grid3cols gap2">
   <div class="b1 r2 p1">r2</div>
   <div class="b1 r3 p1">r3</div>
   <div class="b1 r4 p1">r4</div>
 </div>
 
-Since Baselayer v.1.0.6, border and border-radius variables pair as follows:
+**Note:** Since Baselayer v.2.x, the border-radius classes have `overflow: hidden` built in, so that they can “clip” the corners of images.
+
+Border and border-radius variables pair as follows:
 
 <table class="center">
   <thead>
@@ -127,13 +129,13 @@ Since Baselayer v.1.0.6, border and border-radius variables pair as follows:
 
 * `pill` — 99em border radius (more than sufficient to put x-axis semi-circular ends on even mid-sized blocks)
 
-<div class="mt2 b1 pill p3">pill</div>
+<div class="mt2 mb3 b1 pill p3">pill</div>
 
 If `pill` is used on a square, then the result will be a circle.
 
-<div class="mt2 b1 pill flex flexcenter flexmiddle center" style="width: 280px; height: 280px;">280px²<br>square pill</div>
+<div class="m2 mb3 b1 pill flex flexcenter flexmiddle center" style="width: 280px; height: 280px;">280px²<br>square pill</div>
 
-## The Image Cover Class
+## The image `cover` class
 
 There’s the Baselayer `cover` class can be used to make an image expand or contract to fully cover a container block rectangle. It is designed for use on an `<img src="">` tag.
 

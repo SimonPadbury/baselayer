@@ -15,7 +15,7 @@ input,
 textarea,
 select {
   outline: 0 none;
-  min-height: var(--si);
+  min-height: var(--sinput);
   /* -webkit-appearance: none; */
   border: 0;
   border-radius: unset;
@@ -23,7 +23,7 @@ select {
   font-family: var(--base);
   font-size: inherit;
   text-align: start;
-  background-color: var(--ci);
+  background: var(--cbginput);
 }
 
 input:focus,
@@ -32,32 +32,32 @@ textarea:focus {
   position: relative;
   z-index: 1;
   outline: 0;
-  box-shadow: var(--focus);
+  box-shadow: 0 0 0 4px var(--cfocus);
 }
 
 select:not([multiple]) {
-  height: var(--si);
+  height: var(--sinput);
 }
 
 [type="color"] {
-  width: var(--si);
-  height: var(--si);
+  width: var(--sinput);
+  height: var(--sinput);
   padding: .25em;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
   display: inline;
-  width: 1.3em;
-  height: 1em;
+  height: 0.85em;
   min-height: unset;
+  width: 1em;
 }
 
 input::file-selector-button {
   border: 0;
   font-size: 1em;
   color: white;
-  background: var(--cbtn);
+  background: var(--cbgbtn);
 }
 
 :disabled:hover {
@@ -71,20 +71,19 @@ button,
 .btn {
   position: relative;
   -webkit-appearance: none;
-  height: var(--si);
+  min-height: var(--sinput);
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   border: 0;
-  padding: var(--pcell);
+  padding: var(--s1) 1em;
   font-family: var(--base);
   font-size: inherit;
   font-weight: var(--fwbtn);
   text-decoration: none;
-  /* white-space: nowrap; */
-  color: white;
-  background: var(--cbtn);
+  color: var(--cbtn);
+  background: var(--cbgbtn);
   transition: all 0.15s ease;
 }
 
@@ -98,8 +97,8 @@ button:active,
 [type="reset"]:active,
 .btn:hover,
 .btn:active {
-  background: var(--hbtn);
-  color: white;
+  color: var(--cbtnh);
+  background: var(--cbgbtnh);
   cursor: pointer;
 }
 
@@ -109,14 +108,14 @@ button:focus-visible,
 [type="reset"]:focus-visible {
   z-index: 1;
   outline: 0;
-  box-shadow: var(--focus);
+  box-shadow: 0 0 0 4px var(--cfocus);
 }
 /* Note: The .btn class doesn’t get this input focus ring. As normal, it will 
 get the link focus ring insead when you do <a class="btn" href="">...</a>. */
 
 .icon {
-  width: var(--si);
-  height: var(--si);
+  width: var(--sinput);
+  height: var(--sinput);
   padding: 0;
   line-height: inherit;
 }

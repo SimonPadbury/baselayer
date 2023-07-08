@@ -1,0 +1,87 @@
+/*
+`t*` = text color
+`b*` = border color
+`bg*` = background color
+`.h\:` = hover (mouseover) state
+*/
+
+/*
+Baselayer theme colors
+*/
+:root {
+  --cbgbody:    white; 
+  --ctext:      #333;
+  --clink:      #06f; /* link text */
+  --clinkh:     #02b; /* link text hover */
+  --cfocus:     #4cf; /* input & button (not link) focus ring */
+  --cbginput:   #eee; /* input background */
+  --cbtn:       white; /* button text */
+  --cbtnh:      white; /* button text on hover */
+  --cbgbtn:     #777; /* button background */
+  --cbgbtnh:    #666; /* button background on hover */
+  --ccode:      black; /* <code> text */
+  --cbgcode:    #eef; /* <code> background */
+  --cborder:    #ddd; /* Finelines (table borders and HR) */
+}
+
+/*
+Baselayer dark theme colors
+*/
+/* @media (prefers-color-scheme: dark) { ... } */
+.theme-dark {
+  --cbgbody:    #222;
+  --ctext:      #ddd;
+  --clink:      #39f;
+  --clinkh:     #07f;
+  --cbginput:   #444;
+  --ccode:      white;
+  --cbgcode:    #228;
+  --cborder:    #ddd;
+
+  .treversi { color: white; }
+  .breversi { border-color: white; }
+  .bgreversi { background: white; }
+  .trevopp { color: black; }
+  .revopp { border-color: black; }
+  .bgrevopp { background: black; }
+}
+
+.trevopp,
+.twhite,
+.h\:twhite:hover {
+  color: white;
+}
+
+.revopp,
+.bwhite,
+.h\:bwhite:hover {
+  border-color: white;
+}
+
+.bgrevopp,
+.bgwhite,
+.h\:bgwhite:hover {
+  background: white;
+}
+
+.treversi,
+.tblack,
+.h\:tblack:hover {
+  color: black;
+}
+
+.breversi,
+.bblack,
+.h\:bblack:hover {
+  border-color: black;
+}
+
+.bgreversi,
+.bgblack,
+.h\:bgblack:hover {
+  background: black;
+}
+
+.bgtransparent {
+  background: transparent;
+}

@@ -7,43 +7,221 @@
 
   <title>Layout · Baselayer CSS</title>
 
-  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=1.1.5">
-
-  <script src="/baselayer/js/switcher.js"></script>
+  <link rel="stylesheet" href="/baselayer/css/min/baselayer.min.css?v=2.0.0">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-oklch.css" id="colors-oklch">
+  <link rel="stylesheet" href="/baselayer/css/partials/colors-hsl.css" id="colors-hsl">
 
   <style>
-    .theme-dark #theme-toggle::before { content: 'Light '; }
-    .theme-light #theme-toggle::before { content: 'Dark '; }
-    .main-longread #fs-toggle::before { content: 'Normal font '; }
-    .main-normal #fs-toggle::before { content: 'Long read '; }
-    .main-prose #font-toggle::before { content: 'Base '; }
-    .main-base #font-toggle::before { content: 'Prose '; }
+    html {
+      scroll-behavior: smooth;
+    }
+    .check-box {
+      width: 1rem;
+      height: 1rem;
+    }
+    .font-base .label-base .check-box::before { content: '✓'; }
+    .font-prose .label-prose .check-box::before { content: '✓'; }
+    .font-normal .label-normal .check-box::before { content: '✓'; }
+    .font-longread .label-longread .check-box::before { content: '✓'; }
+    .colors-oklch .label-oklch .check-box::before { content: '✓'; }
+    .colors-hsl .label-hsl .check-box::before { content: '✓'; }
+    .theme-light .label-light .check-box::before { content: '✓'; }
+    .theme-dark .label-dark .check-box::before { content: '✓'; }
 
-    .main-longread .contentgrid { font-size: var(--fslongread); }
-    .main-prose .contentgrid { font-family: var(--prose); }
+    @media (min-width: 1024px) {
+      #site-title { 
+        max-width: 145px;
+        margin-inline: auto;
+        padding-top: var(--s2);
+        justify-content: center;
+      }
+    }
+    .font-longread .contentgrid { 
+      font-size: var(--fslongread);
+    }
 
-    .main-longread .btn-icon {
+    .font-prose #main-content>.contentgrid { font-family: var(--prose); }
+
+    .font-longread .btn-icon {
       width: calc(var(--si) + 2px);
       height: calc(var(--si) + 2px);
     }
-    .theme-dark #main-content { 
-      color: hsl(var(--hsgray), var(--l100));
-      background: hsl(var(--hsgray), var(--l900));
+    h2, h3, h4 {
+      scroll-margin-top: var(--s2);
     }
-    .theme-dark #main-content a:not(.btn) {
-      color: hsl(var(--hsblue), var(--l300));
+    .contentgrid header + h2 {
+      margin-top: 0;
     }
-    .theme-dark #main-content a:not(.btn):hover {
-      color: hsl(var(--hsblue), var(--l400));
+
+    pre code {
+      max-height: 80vh;
+      overflow-y: auto
     }
-    .theme-dark code {
-      color: white;
-      background: hsl(var(--hsblue), var(--l700));
-    }
-    .theme-dark hr, .theme-dark th, .theme-dark td {
-      border-color: hsl(var(--hsgray), var(--l600));
+
+    .resize-x {
+      margin-inline: -5px;
+      padding: 5px;
+      resize: horizontal;
+      overflow-x: auto;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='silver' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
   </style>
+
+  <script>
+  const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+const htmlClassList = document.querySelector('html').classList;
+
+function fontProse() {
+  sessionStorage.setItem('baselayerFont', 'prose');
+  htmlClassList.remove('font-base');
+  htmlClassList.add('font-prose');
+}
+
+function fontBase() {
+  sessionStorage.setItem('baselayerFont', 'base');
+  htmlClassList.remove('font-prose');
+  htmlClassList.add('font-base');
+}
+
+function fsLongRead() {
+  sessionStorage.setItem('baselayerFS', 'longread');
+  htmlClassList.remove('font-normal');
+  htmlClassList.add('font-longread');
+}
+
+function fsNormal() {
+  sessionStorage.setItem('baselayerFS', 'normal');
+  htmlClassList.remove('font-longread');
+  htmlClassList.add('font-normal');
+}
+
+function colorsOKLCH() {
+  sessionStorage.setItem('baselayerColors', 'oklch');
+  htmlClassList.remove('colors-hsl');
+  htmlClassList.add('colors-oklch');
+}
+
+function colorsHSL() {
+  sessionStorage.setItem('baselayerColors', 'hsl');
+  htmlClassList.remove('colors-oklch');
+  htmlClassList.add('colors-hsl');
+}
+
+function themeDark() {
+  sessionStorage.setItem("baselayerTheme", "dark");
+  htmlClassList.remove('theme-light');
+  htmlClassList.add('theme-dark');
+}
+
+function themeLight() {
+  sessionStorage.setItem("baselayerTheme", "light");
+  htmlClassList.remove('theme-dark');
+  htmlClassList.add('theme-light');
+}
+
+// Toggles
+
+function toggleFont() {
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontBase();
+  } else {
+    fontProse();
+  }
+};
+
+function toggleFS() {
+  if ( sessionStorage.baselayerFS === 'normal' ) {
+    fsLongRead();
+  } else {
+    fsNormal();
+  }
+};
+
+function toggleColors() {
+  if ( sessionStorage.baselayerColors === 'oklch' ) {
+    colorsHSL();
+    document.getElementById('colors-hsl').disabled = false;
+    document.getElementById('colors-oklch').disabled = true;
+  
+  } else {
+    colorsOKLCH();
+    document.getElementById('colors-hsl').disabled = true;
+    document.getElementById('colors-oklch').disabled = false;
+  }
+};
+
+function toggleTheme() {
+  if ( sessionStorage.baselayerTheme === 'dark' ) {
+    themeLight();
+  } else {
+    themeDark();
+  }
+};
+
+// init
+
+function baselayerInit() {
+  if (sessionStorage.baselayerTheme === 'dark' || (!('baselayerTheme' in sessionStorage) && matchMediaDark.matches)) {
+    themeDark();
+  } else {
+    // default
+    themeLight();
+  }
+  if ( sessionStorage.baselayerFont === 'prose' ) {
+    fontProse();
+  } else {
+    // default
+    fontBase();
+  }
+  if ( sessionStorage.baselayerFS === 'longread' ) {
+    fsLongRead();
+  } else {
+    // default
+    fsNormal();
+  }
+  if ( sessionStorage.baselayerColors === 'hsl' ) {
+    document.getElementById('colors-oklch').disabled = true;
+    colorsHSL();
+  } else {
+    // default
+    document.getElementById('colors-hsl').disabled = true;
+    colorsOKLCH();
+  }
+};
+
+baselayerInit();
+    /**
+  * Site Navigation Toggle (Phones)
+  */
+
+window.addEventListener("DOMContentLoaded", () => {
+  let navButton = document.querySelector('#site-nav-toggle');
+  let menu = document.querySelector('#site-nav-menu');
+  let windowTest = function() {
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      navButton.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+    } else {
+      navButton.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+    }
+  }
+
+  windowTest();
+
+  window.addEventListener('resize', function () {
+    windowTest();
+  });
+
+  navButton.addEventListener('click', function() {
+    let expanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !expanded);
+    menu.hidden = !menu.hidden;
+  });
+});
+
+  </script>
+
 </head>
 <body class="">
 
@@ -51,149 +229,180 @@
 
   <a href="#main-content" tabindex="1" class="inlineblock m1 visuallyhidden">Skip to main content</a>
 
-  <div class="h100vh md:flex">
+  <div class="h100dvh flex md:drop">
     <div id="site-nav" class="bggray bg800">
-  <div class="sticky top hmax100vh overflowy">
-    <div class="pt3 flex flexcolumn center">
-      <a href="/baselayer/" class="h4 m0 normal flex flexcolumn flexmiddle tgray t100 h:t200 noline">
-        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5"><g transform="translate(-294.592 -94.592)"><circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/><path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/><path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/><circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/><path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/></g></svg>
-        <span class="p1 nowrap">Baselayer CSS </span>
+  <div class="sticky top hmax100dvh overflowy">
+    <div class="pcell center">
+      <a id="site-title" href="/baselayer/" class="h3 m0 py1 normal flex flexcenter flexmiddle flexwrap gap1 tgray t100 h:t200 noline">
+        <svg height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+          <g transform="translate(-294.592 -94.592)">
+            <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+            <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+            <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+            <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+            </g>
+            </svg>
+        <span class="nowrap">Baselayer CSS</span>
       </a>
+      <span class="tgray t400 md:hiddenbelow">Version: 2.0.0</span>
     </div>
 
-    <nav class="pb pcell center twhite md:hidden">
-      <details>
-        <summary class="bold">Documentation</summary>
-        <div class="pt2">
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/">Introduction</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/typography">Typography</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/layout">Layout</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/decoration">Decoration</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/colors">Colors</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/forms">Forms</a>
-          <a class="block my2 tgray t100 h:t200" href="/baselayer/buttons">Buttons</a>
+    <nav id="site-nav" role="menu">
+      <button type="button" id="site-nav-toggle" aria-expanded="false" aria-label="Menu" aria-controls="site-nav-menu" class="absolute top right m2 md:hidden">
+        Menu
+      </button>
+
+      <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
+        <div class="my2 pcell flex flexcolumn gap2">
+          <a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/typography/">Typography</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/layout/">Layout</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/decoration/">Decoration</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/colors/">Colors</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/forms/">Forms</a>
+          <a class="block tgray t100 h:t200" href="/baselayer/buttons/">Buttons</a>
         </div>
 
-        <p class="pcell bggray bg900">
-          <a class="block tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-          <a class="block mt2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-        </p>
-    
-        <p class="italic tgray t400">
-          Version: 1.1.5<br/>
-          Filesize: 15 kb<br/>
-          Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-        </p>
-      </details>
+        <div class="mb2 pcell">
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFont()">
+            <div class="label-base w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Base font</div>
+            </div>
+            <div class="label-prose w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Prose font</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleFS()">
+            <div class="label-normal w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Normal font-size</div>
+            </div>
+            <div class="label-longread w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Long read font-size</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleColors()">
+            <div class="label-oklch w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">OKLCH colors</div>
+            </div>
+            <div class="label-hsl w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">HSL colors</div>
+            </div>
+          </button>
+
+          <button class="w100% mb1 p1 flex flexcolumn gap1" onclick="toggleTheme()">
+            <div class="label-light w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Light theme</div>
+            </div>
+            <div class="label-dark w100% flex flexmiddle gap1">
+              <div class="check-box flex flexcenter flexmiddle tblack bgwhite"></div>
+              <div class="grow left">Dark theme</div>
+            </div>
+          </button>
+        </div>
+
+      </div>
     </nav>
-
-    <nav class="wxxs mt3 mb2 px2 md:hiddenbelow">
-      <ul class="unlist m0 p0">
-        <li><a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/typography">Typography</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/layout">Layout</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/decoration">Decoration</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/colors">Colors</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/forms">Forms</a></li>
-        <li><a class="block tgray t100 h:t200" href="/baselayer/buttons">Buttons</a></li>
-      </ul>
-    </nav>
-
-    <div class="wxxs p2 md:hiddenbelow" style="width: var(--wxxs);">
-      <button id="font-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;typeface</button>
-      <button id="fs-toggle" class="w100% mb1 b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;size</button>
-      <button id="theme-toggle" class="w100% b1 bgray b100 h:b100 tgray t100 bgtransparent h:bgblack nowrap">&nbsp;theme</button>
-    </div>
-
-    <p class="m2 md:hiddenbelow">
-      <a class="block my2 tgray t100 h:t200 noline" href="https://raw.githubusercontent.com/SimonPadbury/baselayer/main/_src/css/min/baselayer.min.css">Dowload CSS</a>
-      <a class="block my2 tgray t100 h:t200 noline" href="https://github.com/SimonPadbury/baselayer">GitHub Repo</a>
-    </p>
-
-    <p class="m2 italic tgray t400 md:hiddenbelow">
-      Version: 1.1.5<br/>
-      Filesize: 15 kb<br/>
-      Dev: <a class="tgray t200 h:twhite nowrap noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></p>
-    </p>
   </div>
 </div>
 
       <main id="main-content" class="grow flex">
+
         <div id="toc" class="lg:hiddenbelow" style="order: 2;">
           <div class="sticky top hmax100vh p2 overflowy" style="width: var(--wxxs);">
-            <p class="m0 pt4">Contents:</p>
+            <p class="h4 pt4 semibold">Contents</p>
             <nav class="toc" >
-        <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex">Flex</a><ul><li><a href="#flex-classes">Flex classes</a></li><li><a href="#flex-modifier-classes">Flex modifier classes</a></li><li><a href="#flex-item-class">Flex-item class</a></li></ul></li><li><a href="#grid">Grid</a><ul><li><a href="#grid-classes">Grid classes</a></li><li><a href="#grid-item-classes">Grid-item classes</a></li></ul></li><li><a href="#content-grid">Content Grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
+        <ul><li><a href="#blocks">Blocks</a></li><li><a href="#containers">Containers</a></li><li><a href="#dimensions">Dimensions</a></li><li><a href="#positions">Positions</a></li><li><a href="#flex-layouts">Flex layouts</a><ul><li><a href="#flex-modifiers">Flex modifiers</a></li><li><a href="#flex-item-grow">Flex-item grow</a></li></ul></li><li><a href="#grid-layouts">Grid layouts</a><ul><li><a href="#controlling-the-number-of-columns">Controlling the number of columns</a></li><li><a href="#grid-gaps">Grid gaps</a></li><li><a href="#grid-item-control">Grid item control</a></li></ul></li><li><a href="#%E2%80%9Cdropping%E2%80%9D-a-flex-or-grid-layout">“Dropping” a flex or grid layout</a><ul><li><a href="#media-query-widths">Media query widths</a></li><li><a href="#container-query-widths">Container query widths</a></li></ul></li><li><a href="#content-grid">Content grid</a><ul><li><a href="#popout-panels">Popout Panels</a></li><li><a href="#expanded-panels">Expanded Panels</a></li><li><a href="#full-bleed-panels">Full Bleed Panels</a></li></ul></li><li><a href="#aspect-ratios">Aspect ratios</a></li><li><a href="#overflows">Overflows</a></li><li><a href="#invisibility">Invisibility</a></li></ul>
       </nav>
           </div>
         </div>
   
         <div class="contentgrid">
-          <header class="my2 py4 center">
-            <h1 class="bold">Layout</h1>
+          <header class="my2 py4 big center">
+            <h1 class="m0 lighter">Layout</h1>
           </header>
       
           <h2 id="blocks" tabindex="-1">Blocks</h2>
 <ul>
 <li><code>block</code> — make an inline element behave as a block element</li>
 <li><code>inlineblock</code> — to enable block-like settings on an inline element (width, height, margins, paddings)</li>
-<li><code>inlineflex</code>, <code>flex</code> — <a href="#flex">see flex below</a></li>
-<li><code>grid</code> — <a href="#grid">see grid below</a></li>
+<li><code>inlineflex</code>, <code>flex</code> — <a href="#flex-layouts">see flex below</a></li>
+<li><code>grid</code> — <a href="#grid-layouts">see grid below</a></li>
 </ul>
 <h2 id="containers" tabindex="-1">Containers</h2>
 <p>The centered layout container <code>container</code> with is set as follows:</p>
-<pre><code>/* root-vars.css */
-
+<pre><code class="language-css">/*
+ * root-vars.css
+ */
 :root {
-  --wlg: 1440px;
-  --container: min(94vw, var(--wlg));
+  --wxxl: 1600px;
+
+  --s2: clamp(1rem, 2.2222vw, 1.5rem);
 }
 
-/* layout.css */
-
+/*
+ * layout.css
+ */
 .container {
-  width: var(--container);
+  --wmax: var(--wxxl);
+  width: min(100% - (var(--s2) * 2), var(--wmax));
   margin-inline: auto;
 }
 </code></pre>
-<p>For narrower containers, use the max-width classes as modifiers: <code>container wmd</code> or <code>container wsm</code>.</p>
-<p>See also how to set up a <a href="#content-grid">content grid</a> using <code>content</code> below.</p>
+<p>For viewport widths below <code>--wmax</code> side spacing is provided by <code>--s2</code>. This adds a negative space (whitespace) right and left of the container, to prevent text being difficult to read when up against the sides of phone and tablet screens.</p>
+<p>If you require a narrower container, use the max-width classes as modifiers: e.g <code>container wlg</code> or <code>container wmd</code>.</p>
 <h2 id="dimensions" tabindex="-1">Dimensions</h2>
-<p>Widths:</p>
+<p>Width:</p>
 <ul>
 <li><code>w100%</code> — width: 100%</li>
-<li><code>wxxl</code> — max-width 1600px, from <code>--wxxl</code></li>
-<li><code>wxl</code> — max-width 1440px, from <code>--wxl</code></li>
-<li><code>wlg</code> — max-width 1280px, from <code>--wlg</code></li>
-<li><code>wmd</code> — max-width 1024px, from <code>--wmd</code></li>
-<li><code>wsm</code> — max-width 768px, from <code>--wsm</code></li>
-<li><code>wxs</code> — max-width 512px, from <code>--wxs</code></li>
-<li><code>wxxs</code> — max-width 256px, from <code>--wxxs</code></li>
+</ul>
+<p>Max-width (256px increments):</p>
+<ul>
+<li><code>wxxl</code> — max-width 1600px, same as <code>--wxxl</code></li>
+<li><code>wxl</code> — max-width 1440px, same as <code>--wxl</code></li>
+<li><code>wlg</code> — max-width 1280px, same as <code>--wlg</code></li>
+<li><code>wmd</code> — max-width 1024px, same as <code>--wmd</code></li>
+<li><code>wsm</code> — max-width 768px, same as <code>--wsm</code></li>
+<li><code>wxs</code> — max-width 512px, same as <code>--wxs</code></li>
+<li><code>wxxs</code> — max-width 256px, same as <code>--wxxs</code></li>
 <li><code>wmax100vw</code> — max-width 100vw</li>
 </ul>
-<p>Heights:</p>
+<p>Height:</p>
 <ul>
 <li><code>h100%</code> — height 100%, e.g. for making cards equal to the height of their wrapper</li>
-<li><code>h100vh</code> — min-height 100vh, e.g. for making “full cover” panels</li>
-<li><code>hmax100vh</code> — max-height 100vh, e.g. for tall sidebars (used with <code>overflowy</code>)</li>
+<li><code>h100vh</code> — height 100% <em>or</em> 100vh, e.g. for making “full cover” panels</li>
+<li><code>hmax100dvh</code> — max-height 100dvh, e.g. for tall sidebars (use it with <code>overflowy</code>)</li>
+</ul>
+<p><code>dvh</code> = <a href="https://css-tricks.com/the-large-small-and-dynamic-viewports/">dynamic viewport height</a>.</p>
+<p>Two dimensions:</p>
+<ul>
+<li><code>box</code> — expands an inner element using <code>inset: 0</code> to fill the size of its wrapper (you must put <code>relative</code> on a <code>box</code> wrapper). Useful for setting up a panel (e.g. hero or card) background image with text overlay.</li>
 </ul>
 <h2 id="positions" tabindex="-1">Positions</h2>
 <ul>
 <li><code>relative</code></li>
 <li><code>absolute</code></li>
 <li><code>sticky</code></li>
-<li><code>box</code> — stretches an inner element using <code>inset: 0</code> to cover the size of its wrapper (you must put a use it with <code>absolute</code>, and put <code>relative</code> on the wrapper). Useful for setting up a hero image with text overlay.</li>
 <li><code>top</code> — <code>top: 0</code></li>
-<li><code>right</code> — <code>right: 0</code> (also text-align right)</li>
+<li><code>right</code> — <code>right: 0</code> (same class name is used for <code>text-align: right</code>)</li>
 <li><code>bottom</code> — <code>bottom: 0</code></li>
-<li><code>left</code> — <code>left: 0</code> (also text-align left)</li>
+<li><code>left</code> — <code>left: 0</code> (same class name is used for <code>text-align: left</code>)</li>
 <li><code>z1</code> — <code>z-index: 1</code></li>
 <li><code>z2</code> — <code>z-index: 2</code></li>
 <li><code>z3</code> — <code>z-index: 3</code></li>
 </ul>
-<p>For centering and middling, use <a href="#flex">flexbox</a>.</p>
+<p>For centering and middling, use <a href="#flex-layouts">flex</a>.</p>
 <p>Example:</p>
-<div class="relative mt2 b1 ratio16x9">
+<div class="relative mb2 b1 ratio16x9">
   <div class="absolute top w100% center"><code>top</code></div>
   <div class="absolute right h100% flex flexmiddle"><code>right</code></div>
   <div class="absolute bottom w100% center"><code>bottom</code></div>
@@ -208,19 +417,18 @@
   &lt;div class=&quot;absolute box flex flexcenter flexmiddle center&quot;&gt;&lt;code&gt;centered&lt;br&gt;and middled&lt;/code&gt;&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<h2 id="flex" tabindex="-1">Flex</h2>
+<h2 id="flex-layouts" tabindex="-1">Flex layouts</h2>
 <p>Flexbox utilities for simple layout, menubars, pagination lists, cards, etc.</p>
-<h3 id="flex-classes" tabindex="-1">Flex classes</h3>
 <ul>
-<li><code>inlineflex</code> — inline flexbox with wrapping at all viewport widths</li>
-<li><code>flex</code> — block flexbox with wrapping at all viewport widths</li>
-<li><code>sm:flex</code> — block flexbox with wrapping at 768px up</li>
-<li><code>md:flex</code> — block flexbox with wrapping at 1024px up</li>
+<li><code>inlineflex</code> — inline flexbox at all viewport widths</li>
+<li><code>flex</code> — flexbox at all viewport widths</li>
 </ul>
-<p><strong>Note:</strong> The following classes below will not take effect below the <code>*:flex</code> breakpoints.</p>
-<h3 id="flex-modifier-classes" tabindex="-1">Flex modifier classes</h3>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  Baselayer 1’s <code>sm:flex</code> and <code>md:flex</code> have been removed (obsoleted) in Baselayer 2. Use <a  class="tblue t600 h:t700"href="#“dropping”-a-flex-or-grid-layout">flexbox dropping</a> instead.
+</div>
+<h3 id="flex-modifiers" tabindex="-1">Flex modifiers</h3>
 <ul>
-<li><code>gap*</code> — adds a horizontal and and vetical gap (same as for grid layouts; see below):
+<li><code>gap*</code> — adds a horizontal and and vertical gap (same as for <a href="#grid-layouts">grid</a> layouts — and uses the same spacing CSS variables as <a href="/baselayer/decoration/#spacing-(margins-and-paddings)">margins and paddings</a>):
 <ul>
 <li><code>gap1</code> — <code>--s1</code></li>
 <li><code>gap2</code> — <code>--s2</code></li>
@@ -230,27 +438,62 @@
 </li>
 <li>X-axis: <code>flexstart</code> / <code>flexcenter</code> / <code>flexend</code></li>
 <li>Y-axis: <code>flextop</code> / <code>flexmiddle</code> / <code>flexbottom</code></li>
+<li><code>flexwrap</code> — gives you <code>flex-wrap: wrap</code></li>
 <li><code>flexcolumn</code> — gives you <code>flex-direction: column</code></li>
 <li><code>flexspace</code> — gives you <code>justify-content: space-between</code></li>
 </ul>
-<p><strong>Note:</strong> the gaps have the same spacing CSS variables as <a href="/baselayer/decoration/#spacing-(margins-and-paddings)">margins and paddings</a></p>
-<h3 id="flex-item-class" tabindex="-1">Flex-item class</h3>
+<p>The following <code>flex</code> example uses <code>xs:drop</code> to <a href="#%E2%80%9Cdropping%E2%80%9D-a-flex-or-grid-layout">drop a flexbox</a> to become a <em>flex column</em> below the <code>xs</code> breakpoint (512px):</p>
+<nav class="mt2 mb3 flex gap1 flexend xs:drop">
+<a class="btn flex" href="#/">Home</a>
+<a class="btn flex" href="#/">Products</a>
+<a class="btn flex" href="#/">About</a>
+<a class="btn flex" href="#/">Blog</a>
+<a class="btn flex" href="#/">Contact</a>
+</nav>
+<pre><code class="language-html">&lt;nav class=&quot;flex gap1 flexend xs:drop&quot;&gt;
+  &lt;a class=&quot;btn flex&quot; href=&quot;&quot;&gt;Home&lt;/a&gt;
+  &lt;a class=&quot;btn flex&quot; href=&quot;&quot;&gt;Products&lt;/a&gt;
+  &lt;a class=&quot;btn flex&quot; href=&quot;&quot;&gt;About&lt;/a&gt;
+  &lt;a class=&quot;btn flex&quot; href=&quot;&quot;&gt;Blog&lt;/a&gt;
+  &lt;a class=&quot;btn flex&quot; href=&quot;&quot;&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>The “link pseudo buttons” have small gaps between them, whether in horizontal arrangement or in their vertical (phones) arrangement (<code>gap1</code> always works because they are still wrapped in a flexbox, whether arranged as a row or a column).</p>
+<h3 id="flex-item-grow" tabindex="-1">Flex-item grow</h3>
 <ul>
 <li><code>grow</code> — gives you <code>flex-grow: 1</code></li>
 </ul>
-<h2 id="grid" tabindex="-1">Grid</h2>
-<p>Using <em>CSS Grid</em>.</p>
-<p>Baselayer grids are take effect at the <code>sm</code> or <code>md</code> breakpoint widths. The grids can be combined, for three layouts:</p>
+<div class="mb2 flex">
+<div class="b1 p1 tblack bggray bg100">no grow</div>
+<div class="b1 p1 grow bggray bg100"><code class="tblack bgblue bg200">grow</code></div>
+</div>
+<pre><code class="language-html">&lt;div class=&quot;flex&quot;&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div class=&quot;grow&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="grid-layouts" tabindex="-1">Grid layouts</h2>
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  The grid system has been reinvented in Baselayer 2 — this is a breaking change over Baselayer 1. The grid is now more versatile, yet simpler and lighter.
+</div>
+<h3 id="controlling-the-number-of-columns" tabindex="-1">Controlling the number of columns</h3>
+<p>To set up a Baselayer 2 <em>grid wrapper</em>, all you need to do is choose one of these wrapper classes:</p>
 <ul>
-<li><em>There is no columnar grid below</em> <code>sm</code> <em>for small phones</em> — however if you are using any one of the grid wrapper classes below, then <code>display:grid</code> is still happening. This ensures that the grid <code>gap</code> works at all viewport widths. So, there will always be a grid gap between <em>rows</em> even if the viewport width is too narrow to have any columns.</li>
-<li>large phones (landscape orientation), and tablets up (<code>sm</code> at 768px up)</li>
-<li>large “pro” tablets (landscape orientation), laptops, and up (<code>md</code> at 1024px up)</li>
+<li><code>grid2cols</code></li>
+<li><code>grid3cols</code></li>
+<li><code>grid4cols</code></li>
 </ul>
-<h3 id="grid-classes" tabindex="-1">Grid classes</h3>
+<p>These supply <code>display:grid</code>, and set up either 2, 3, or 4 columns of equal width. <em>This covers most use cases for the traditional 12 column grid system.</em></p>
+<pre><code class="language-html">&lt;div class=&quot;grid3cols&quot;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>At this point, <em>grid items</em> will automatically span one grid cell, and if you have more grid items than set columns, the excess will wrap onto new row(s). This is all you need for setting up equal width columns such as galleries.</p>
+<h3 id="grid-gaps" tabindex="-1">Grid gaps</h3>
 <ul>
-<li><code>sm:grid2cols</code>, <code>sm:grid3cols</code>, or <code>sm:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 768px up.</li>
-<li><code>md:grid2cols</code>, <code>md:grid3cols</code>, or <code>md:grid4cols</code> — sets up a grid with 2, 3, or 4 equal-width columns from 1024px up.</li>
-<li><code>gap*</code> — adds a horizontal and and vetical gap (same as for flexbox layouts; see above):
+<li><code>gap*</code> — adds a horizontal and and vertical gap (same as for <a href="#flex-layouts">flex</a> layouts; see above):
 <ul>
 <li><code>gap1</code> — <code>--s1</code></li>
 <li><code>gap2</code> — <code>--s2</code></li>
@@ -258,127 +501,213 @@
 <li><code>gap4</code> — <code>--s4</code></li>
 </ul>
 </li>
-<li><code>dense</code> — adds <code>grid-auto-flow: dense</code>, telling the browser to reorder and pack items as dense as possible filling empty cells.</li>
 </ul>
-<p><strong>Note:</strong> the gaps have the same spacing CSS variables as <a href="/baselayer/decoration/#spacing-(margins-and-paddings)">margins and paddings</a></p>
-<p>So, Baselayer can handle simple grid layouts (covering most use-cases of the traditional 12-column grid), providing you with layouts for tablets-up (<code>sm:</code>) and small laptops-up, etc. (<code>md:</code>). Note: there is no grid layout provided for phones (smaller than <code>sm:</code>).</p>
-<p>Simply using the grid wrapper classes above will enable you to set up galleries e.g. of images or cards, where you want grid items to span one grid cell each. Grid items will have equal width and height.</p>
-<h3 id="grid-item-classes" tabindex="-1">Grid-item classes</h3>
-<p>For positioning grid-items in columns and making them span more than one column.</p>
-<p>For <code>sm</code> — 768px up:</p>
+<h3 id="grid-item-control" tabindex="-1">Grid item control</h3>
+<p>For any of the 2, 3, or 4 column grids, the following <em>column control</em> classes can be used on grid items. Use these to handle column spanning and reordering.</p>
 <ul>
-<li><code>sm:col1</code> / <code>sm:col2</code> / <code>sm:col3</code> / <code>sm:col4</code> — cell placement</li>
-<li><code>sm:cols1-2</code> / <code>sm:cols1-3</code> / <code>sm:cols1-4</code> — spanning from column 1</li>
-<li><code>sm:cols2-3</code> / <code>sm:cols2-4</code> — spanning from column 2</li>
-<li><code>sm:cols3-4</code> — spanning from column 3</li>
+<li><code>col1</code> / <code>col2</code> / <code>col3</code> / <code>col4</code> — cell placement</li>
+<li><code>cols1-2</code> / <code>cols1-3</code> / <code>cols1-4</code> — spanning from column 1</li>
+<li><code>cols2-3</code> / <code>cols2-4</code> — spanning from column 2</li>
+<li><code>cols3-4</code> — spanning from column 3</li>
 </ul>
-<p>For <code>md</code> — 1024px up:</p>
-<ul>
-<li><code>md:col1</code> / <code>md:col2</code> / <code>md:col3</code> / <code>md:col4</code> — cell placement</li>
-<li><code>md:cols1-2</code> / <code>md:cols1-3</code> / <code>md:cols1-4</code> — spanning from column 1</li>
-<li><code>md:cols2-3</code> / <code>md:cols2-4</code> — spanning from column 2</li>
-<li><code>md:cols3-4</code> — spanning from column 3</li>
-</ul>
-<p>Examples:</p>
-<p><code>sm:grid4cols</code>:</p>
-<div class="mt2 sm:grid4cols">
-  <div class="p1 bgred twhite">Item 1</div>
-  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
-  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
-  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
-  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+<div class="mt2 mb3 grid2cols gap1 tblack">
+  <div class="pcell bggray bg100">1</div>
+  <div class="pcell bggray bg100">2</div>
+  <div class="cols1-2 pcell bggray bg100">cols1-2</div>
 </div>
-<pre><code>&lt;div class=&quot;mt2 sm:grid4cols&quot;&gt;
-  &lt;div&gt;Item 1&lt;/div&gt;
-  &lt;div class=&quot;sm:cols1-2&quot;&gt;Item 2&lt;/div&gt;
-  &lt;div class=&quot;sm:cols2-4&quot;&gt;Item 3&lt;/div&gt;
-  &lt;div class=&quot;sm:col4&quot;&gt;Item 4&lt;/div&gt;
-  &lt;div class=&quot;sm:col3&quot;&gt;Item 5&lt;/div&gt;
+<pre><code class="language-html">&lt;div class=&quot;grid2cols gap1&quot;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div class=&quot;cols1-2&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>If your layout leaves gaps but you want them filled by reordering the items, then add the <code>dense</code> class to the grid wrapper.</p>
-<p><code>sm:grid4cols dense</code> (same as above, plus <code>dense</code>):</p>
-<div class="mt2 sm:grid4cols dense">
-  <div class="p1 bgred twhite">Item 1</div>
-  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
-  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
-  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
-  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+<div class="mt2 mb3 grid3cols gap2 tblack">
+  <div class="pcell bggray bg100">1</div>
+  <div class="cols2-3 pcell bggray bg100">cols2-3</div>
 </div>
-<p>Here’s that example again, but with a gap: <code>sm:grid4cols dense gap2</code></p>
-<div class="mt2 sm:grid4cols dense gap2">
-  <div class="p1 bgred twhite">Item 1</div>
-  <div class="sm:cols1-2 p1 bgblack twhite">Item 2 <code>sm:cols1-2</code></div>
-  <div class="sm:cols2-4 p1 bgblue twhite">Item 3 <code>sm:cols2-4</code></div>
-  <div class="sm:col4 p1 bggreen twhite">Item 4</div>
-  <div class="sm:col3 p1 bgamber tblack">Item 5</div>
+<pre><code class="language-html">&lt;div class=&quot;grid3cols gap2&quot;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div class=&quot;cols2-3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>If you use these column control classes to <em>reorder</em> your grid items, there’s also the <code>dense</code> class that handles sense packing: the CSS grid will attempt to fit later grid items into earlier empty cells, if there's sufficient space available.</p>
+<div class="mt2 mb3 grid4cols gap1 dense tblack">
+  <div class="pcell bggray bg100">Item 1</div>
+  <div class="cols1-2 pcell bggray bg100">Item 2 <code class="tblack bgblue bg200">cols1-2</code></div>
+  <div class="cols2-4 pcell bggray bg100">Item 3 <code class="tblack bgblue bg200">cols2-4</code></div>
+  <div class="col4 pcell bggray bg100">Item 4 <code class="tblack bgblue bg200">col4</code></div>
+  <div class="col3 pcell bggray bg100">Item 5 <code class="tblack bgblue bg200">col3</code></div>
 </div>
-<h2 id="content-grid" tabindex="-1">Content Grid</h2>
-<p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>--wsm</code></p>
+<pre><code class="language-html">&lt;div class=&quot;grid4cols gap1 dense&quot;&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div class=&quot;cols1-2&quot;&gt;Item 2&lt;/div&gt;
+  &lt;div class=&quot;cols2-4&quot;&gt;Item 3&lt;/div&gt;
+  &lt;div class=&quot;col4&quot;&gt;Item 4&lt;/div&gt;
+  &lt;div class=&quot;col3&quot;&gt;Item 5&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Note:</strong> when grid item reordering, be careful not to cause an accessibility problem by confusing the tabbing order.</p>
+<p>The grid columns take up equal fractions of the available space (on the horizontal axis), accounting for gaps.</p>
+<h2 id="%E2%80%9Cdropping%E2%80%9D-a-flex-or-grid-layout" tabindex="-1">“Dropping” a flex or grid layout</h2>
+<p>Flexbox or grid layouts on narrower viewports — and in narrower space, if so constrained, you need to use a Baselayer 2 <code>drop</code> class to reset your layout as a <em>flexbox column</em>. Or you can make your own similar class at a different <code>@media</code> query or <code>@container</code> query breakpoint.</p>
+<p>There are eight special <code>drop</code> classes that affect the <a href="#flex-layouts">flex</a> and <a href="#grid-layouts-system">grid</a> systems below the <code>xs</code>, <code>sm</code>, <code>md</code>, or <code>lg</code> breakpoint widths (four for media queries and four for container queries): making them into flexbox columns:</p>
+<h3 id="media-query-widths" tabindex="-1">Media query widths</h3>
+<p>For <code>@media</code> viewport width breakpoint control:</p>
+<ul>
+<li><code>xs:drop</code> — resets to a flexbox column below 512px</li>
+<li><code>sm:drop</code> — ... below 768px</li>
+<li><code>md:drop</code> — ... below 1024px</li>
+<li><code>lg:drop</code> — ... below 1280px</li>
+</ul>
+<h3 id="container-query-widths" tabindex="-1">Container query widths</h3>
+<p>For <code>@container</code> width breakpoint control:</p>
+<ul>
+<li><code>cqxs:drop</code> — resets to a flexbox column below 512px</li>
+<li><code>cqsm:drop</code> — ... below 768px</li>
+<li><code>cqmd:drop</code> — ... below 1024px</li>
+<li><code>cqlg:drop</code> — ... below 1280px</li>
+</ul>
+<p><strong>Note:</strong> the container query <code>drop</code> classes create a <code>container-type</code> context on the parent element of the wrapper of a <code>cq*:drop</code> class` — whatever the parent is, by the following style:</p>
+<pre><code class="language-css">:has(&gt; [class*=cq]) {
+  container-type: inline-size;
+}
+</code></pre>
+<p>Therefore, you may need to add another wrapping element around your <code>@container</code> grid or <code>@container</code> flex, or the outer layout may be distorted by the <code>container-type</code> context rule.</p>
+<p>Example <code>@media</code> grid using <code>xs:drop</code> (<code>xs</code> = 512px):</p>
+<div class="mt2 mb3">
+  <div class="grid4cols gap1 xs:drop">
+    <div class="bggray bg100">
+      &nbsp;
+    </div>
+    <div class="bggray bg200">
+      &nbsp;
+    </div>
+    <div class="bggray bg100">
+      &nbsp;
+    </div>
+    <div class="bggray bg200">
+      &nbsp;
+    </div>
+    <div class="col1 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="cols2-4 bggray bg200">
+      &nbsp;
+    </div>
+    <div class="cols1-2 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="cols3-4 bggray bg200">
+      &nbsp;
+    </div>
+    <div class="cols1-3 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="col4 bggray bg200">
+      &nbsp;
+    </div>
+  </div>
+</div>
+<p>Example <code>@container</code> grid drop using <code>cqxs:drop</code> (<code>xs</code> = 512px):</p>
+<div class="mt2 mb3 resize-x">
+  <div class="grid4cols gap1 cqxs:drop">
+    <div class="bggray bg100">
+      &nbsp;
+    </div>
+    <div class="bggray bg200">
+      &nbsp;
+    </div>
+    <div class="bggray bg100">
+      &nbsp;
+    </div>
+    <div class="bggray bg200">
+      &nbsp;
+    </div>
+    <div class="col1 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="cols2-4 bggray bg200">
+      &nbsp;
+    </div>
+    <div class="cols1-2 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="cols3-4 bggray bg200">
+      &nbsp;
+    </div>
+    <div class="cols1-3 bggray bg100">
+      &nbsp;
+    </div>
+    <div class="col4 bggray bg200">
+      &nbsp;
+    </div>
+  </div>
+</div>
+<p>I have provided a resizable wrapper (see the dashed border box) to help you understand how the <code>@container</code> grid drop works: use the resize handle in the bottom right corner to make the box narrower.</p>
+<p>Example <code>@container</code> flex drop:</p>
+<div class="mt2 mb3 resize-x">
+<div class="b1 r3 flex cqxs:drop overflow">
+<img class="ratio4x3 cover" src="https://picsum.photos/200/300">
+<div class="grow p2 flex flexcolumn flexcenter">
+<div class="h3 m0 mb1 p0">Title of this media object</div>
+<p class="m0">Some accompanying text that explains what this thing is about. It could be anything, because the photo is randomly supplied by <a href="https://picsum.photos">Lorem Picsum</a>.</p>
+</div>
+</div>
+</div>
+<p>There’s also an example <code>@media</code> flex drop in <a href="#flex-modifiers">flex modifiers</a> above.</p>
+<h2 id="content-grid" tabindex="-1">Content grid</h2>
+<p><code>contentgrid</code> uses CSS Grid to set up a 7 column layout where the main content is placed in the middle (column 4) and has max <code>--wsm</code>.</p>
+<p><code>contentgrid</code> expects your content typographic blocks (headings, paragraphs, etc.), and the panel blocks below, to be its immediate children.</p>
 <ul>
 <li>Use the <code>popout</code> utility class to make an element span the middle 3 columns (3 to 5). Columns 3 and 5 have width <code>--s2</code></li>
-<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>. There are also:
-<ul>
-<li><code>expand-right</code> expands only to the right (columns 4 to 6)</li>
-<li><code>expand-left</code> expands only to the left (columns 2 to 4)</li>
-</ul>
-</li>
+<li>Use the <code>expand</code> utility class to make an element span the middle 5 columns (2 to 6). A panel spanning columns 2 to 6 has max-width <code>var(--wmd)</code>.</li>
 <li>Use the <code>fullbleed</code> utility class to make an element span all 7 columns</li>
 </ul>
 <p><strong>Note:</strong> Columns 1 and 7 have a minimum width of <code>--s2</code> Therefore both <code>popout</code>, <code>expand</code> and the middle content column always have negative space (a.k.a. white space) right and left – they will never reach the full width of the <code>contentgrid</code> wrapper. Therefore, on smaller viewports <code>popout</code> and <code>expand</code> will adopt the same width as the middle content column.</p>
 <h3 id="popout-panels" tabindex="-1">Popout Panels</h3>
 <p>Example information panel using <code>popout</code>:</p>
-<div class="popout mt2 bt3 bblue b300 r2 p2 tblack bggray bg100">
-  &star; Information panel
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  Alert panel
 </div>
-<pre><code>&lt;div class=&quot;popout mt2 bt3 bblue b300 r2 p2 bggray bg100&quot;&gt;
-  &amp;star; Information panel
+<pre><code>&lt;div aria-label=&quot;Note&quot; class=&quot;popout mb2 bl3 bamber b300 p2 tblack bgamber bg100&quot;&gt;
+  Alert panel
 &lt;/div&gt;
 </code></pre>
 <h3 id="expanded-panels" tabindex="-1">Expanded Panels</h3>
 <p>Example poster component using <code>expand</code>:</p>
-<div class="expand mt2">
+<div class="expand mb2">
   <div class="ratio16x9 flex flexcenter flexmiddle relative bgblack">
     <img class="absolute box cover opacity50%" src="https://picsum.photos/id/1015/700/700">
-    <div class="relative wsm ratio16x9 p3">
-      <p class="h1 m0 twhite"><strong>This is a lot of example text that may or may not distort the aspect ratio (16&times;9) of this poster/hero component.</strong></p>
-      <p class="h1 twhite"><strong>See what it does on a small viewport width.</strong></p>
+    <div class="relative wsm p3">
+      <p class="h1 twhite"><strong>This is a lot of example text that may or may not distort the aspect ratio (16×9) of this hero component.</strong></p>
+      <p class="h1 m0 twhite"><strong>See what it does on a small viewport width.</strong></p>
     </div>
   </div>
 </div>
 <p>Image from <a href="https://picsum.photos/">Lorem Pixum</a>.</p>
-<pre><code>&lt;div class=&quot;expand mt2&quot;&gt;
+<pre><code class="language-html">&lt;div class=&quot;expand mb2&quot;&gt;
   &lt;div class=&quot;ratio16x9 flex flexcenter flexmiddle relative bgblack&quot;&gt;
     &lt;img class=&quot;absolute box cover opacity50%&quot; src=&quot;https://picsum.photos/id/1015/700/700&quot;&gt;
-    &lt;div class=&quot;relative wsm ratio16x9 p3&quot;&gt;
-      &lt;p class=&quot;h1 m0 twhite&quot;&gt;&lt;strong&gt;This is with a lot of example text that may or may not distort the aspect ratio (16&amp;times;9) of this poster/hero component.&lt;/strong&gt;&lt;/p&gt;
+    &lt;div class=&quot;relative wsm p3&quot;&gt;
+      &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;This is with a lot of example text that may or may not distort the aspect ratio (16&amp;times;9) of this hero component.&lt;/strong&gt;&lt;/p&gt;
       &lt;p class=&quot;h1 twhite&quot;&gt;&lt;strong&gt;See what it does on a small viewport width.&lt;/strong&gt;&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>Asymmetrical expand examples:</p>
-<p><code>expand-right</code>:</p>
-<div class="mt2 pcell expand-right tblack bggray bg200">
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
-</div>
-<p><code>expand-left</code>:</p>
-<div class="mt2 pcell expand-left tblack bggray bg200">
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blanditiis maiores praesentium maxime accusantium, repellendus ad corrupti eum officiis, adipisci obcaecati earum officia? Dignissimos quo perspiciatis corrupti mollitia!
-</div>
 <h3 id="full-bleed-panels" tabindex="-1">Full Bleed Panels</h3>
 <p>If your layout has no sidebars, side spacing (margin or padding) or other object that constrains the width of your <code>contentgrid</code> column, then <code>fullbleed</code> will expand to the full width of the viewport.</p>
 <p>Example colored stripe using <code>fullbleed</code>:</p>
-<div class="fullbleed mt2 p2 bgred twhite">
+<div class="fullbleed mb2 p2 bgred twhite">
  <code>fullbleed</code> — expands to the full width of the <code>article</code> wrapper.
 </div>
-<pre><code>&lt;div class=&quot;fullbleed mt2 p2 bgred twhite&quot;&gt;
+<pre><code>&lt;div class=&quot;fullbleed mb2 p2 bgred twhite&quot;&gt;
  Full bleed panel content...
 &lt;/div&gt;
 </code></pre>
 <h2 id="aspect-ratios" tabindex="-1">Aspect ratios</h2>
 <p>Common aspect ratio constraints for images, video, and hero blocks.</p>
-<div class="mt2 sm:grid4cols gap2">
+<div class="expand mb2 grid4cols gap2 xs:drop">
   <div>
     <div class="ratio1x1 b1 p1"><code>ratio1x1</code></div>
   </div>
@@ -401,6 +730,8 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blandi
 <h2 id="invisibility" tabindex="-1">Invisibility</h2>
 <p>There may be situation where you require some element(s) to be displayed on smaller or larger viewports, but hidden otherwise. Baselayer has:</p>
 <ul>
+<li><code>xs:hidden</code> — hides elements on viewports with width 512px and up</li>
+<li><code>xs:hiddenbelow</code> — hides elements on viewports with width below 512px</li>
 <li><code>sm:hidden</code> — hides elements on viewports with width 768px and up</li>
 <li><code>sm:hiddenbelow</code> — hides elements on viewports with width below 768px</li>
 <li><code>md:hidden</code> — hides elements on viewports with width 1024px and up</li>
@@ -410,21 +741,45 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at, quos blandi
 </ul>
 
       
-          <footer class="mb4">
-              <hr>
-              <nav>
-                <ul class="unlist p0 sm:grid2cols">
-                  
-                  <li class="my1">&larr; <a href="/baselayer/typography"> Typography</a></li>
-                  
-                  
-                  <li class="sm:col2 my1 right"><a href="/baselayer/decoration">Decoration</a> &rarr;</li>
-                    
-                </ul>
-              </nav>
-          </footer>
-        </div>
-      </main>
+          <nav class="mt3 mb2 b1 pill pcell popout">
+            <ul class="m0 unlist p0 flex">
+              
+              <li class="grow my1">&larr; <a href="/baselayer/typography/"> Typography</a></li>
+              
+              
+              <li class="grow my1 right"><a href="/baselayer/decoration/">Decoration</a> &rarr;</li>
+                
+            </ul>
+          </nav>
+
+          <footer>
+            <div class="mb2 pcell center">
+              <a href="/baselayer/" class="h3 m0 py2 normal flex flexcolumn flexcenter gap1 noline">
+                <svg class="mxauto" height="48" width="48" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5">
+                  <g transform="translate(-294.592 -94.592)">
+                    <circle cx="350" cy="150" r="50" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    <path d="M294.167 180H320v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(10 -10)"/>
+                    <path d="M405.833 180H380v-65.833" style="fill:none;stroke:currentColor;stroke-width:4px" transform="translate(-10 -10)"/>
+                    <circle cx="350" cy="150" r="30" style="fill:none;stroke:currentColor;stroke-width:6px" transform="matrix(.66667 0 0 .66667 116.667 50)"/>
+                    <path d="M310 180h80" style="fill:none;stroke:currentColor;stroke-width:4px"/>
+                    </g>
+                  </svg>
+                <span class="nowrap">Baselayer CSS</span>
+              </a>
+              <span>Version: 2.0.0</span>
+            </div>
+
+            <p class="pcell flex flexcenter flexwrap gap3 center">
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer">GitHub Repository</a>
+              <a class="noline h:line" href="https://github.com/SimonPadbury/baselayer/blob/main/LICENSE">MIT license</a>
+              <span>Developer: <a class="noline h:line" href="https://github.com/SimonPadbury">Simon Padbury</a></span>
+            </p>
+            <p class="pcell center">
+              This documentation is built using <a href="https://www.11ty.dev">Eleventy</a>.
+            </p>
+        </footer>
+      </div>
+    </main>
       
     </div>
   </div>

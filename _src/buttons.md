@@ -2,7 +2,7 @@
 title: Buttons
 mainHeading: Buttons
 layout: base.njk
-prevPage: "/forms"
+prevPage: "/forms/"
 prevLink: "Forms"
 ---
 
@@ -34,13 +34,17 @@ Baselayer form elements have simple background, hover/active and focus styling (
 
 **Notes:**
 
-1. Since v.1.1.1, form inputs, textareas and buttons (including the `btn` class) have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
+1. Form inputs, textareas, buttons, and the `btn` class, have `font-size: inherit`. This means their font sizes can be modified by any font-size class in Baselayer.
 2. The font-family of form elements, buttons, `btn` is controlled by `var(--base)` (default is sans-serif).
 3. The `btn` class doesn’t include the input focus ring (that is set only on form inputs, textareas, and the `<button>` tag). But if the `btn` utility class is used on an `<a href="">` link tag, then will get the link focus ring insead (this is only visible when keyboard-tabbing or using assistive tech).
 
 ## Full-width buttons
 
-In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, if you want a button to stretch full-width, you can add `class="w100%"` or you can override the inline-flex by adding `class="flex"` (do not add `class="block"` becaue that will override the flexbox).
+In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, if you want a button to stretch full-width, you can add `class="w100%"` or you can override the inline-flex by adding `class="flex"`.
+
+<div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
+  Do not add <code>class="block"</code> on a button (or <code>.btn</code>) because that will override the inline flexbox.
+</div>
 
 <button class="w100%" type="button" name="button">Button</button>
 
@@ -50,11 +54,11 @@ In Baselayer, buttons are pre-styled with `display: inline-flex` and centering a
 </button>
 ```
 
-Also, adding the `flexspace` class to the button will also stretch the button _if you have more than one item_ insise the button, such as the descriptive text plus an icon.
+Also, since buttons already have `display: inlne-flex`, this means that adding the `flexspace` class to the button will also stretch the button _if you have more than one item_ inside the button, such as the descriptive text _plus_ an icon.
 
 For example, here’s a full-width button with a down-caret icon and spacing controlled by flexbox:
 
-<button class="mt2 flexspace" type="button" name="button">
+<button class="mb2 flexspace" type="button" name="button">
   Button
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline></svg>
 </button>
@@ -74,9 +78,9 @@ Another way to control the width of a button is _from outside of it_ — by wrap
 
 Border, background, and text color utilities can be used.
 
-<form class="mt2">
-    <label for="example-input-text">Text</label>
-    <div class="flex 2">
+<form class="mb2">
+    <label for="example-input-text">Label</label>
+    <div class="flex gap1">
       <input class="b2 bred" type="text" id="example-input-text" placeholder="Enter some text here">
       <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
     </div>
@@ -88,14 +92,14 @@ Border, background, and text color utilities can be used.
 <input class="b2 bgreen" type="text" id="example-input-text" placeholder="Enter some text here">
 ```
 
-When colorizing buttons, remember to set their hover state shades too.
+When colorizing buttons, remember to set their `h:` hover state shades too.
 
 <form>
   <p>
     <button type="button" name="button">Button</button>
     <button class="bblue b600 h:b700 bgblue bg600 h:bg700" type="button" name="button">Button</button>
     <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
-    <a class="btn b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" href="#/">Link “button”</a>
+    <a class="btn b1 bgreen bgtransparent bg600 tgreen t600 h:b700 h:twhite h:bggreen h:bg700" href="#/">Link “button”</a>
   </p>
 </form>
 
@@ -110,47 +114,34 @@ When colorizing buttons, remember to set their hover state shades too.
 <button class="bamber b300 h:b400 tblack h:tblack bgamber bg300 h:bg400" type="button" name="button">Button</button>
 
 /* Green outline (a.k.a. ghost) link “button” */
-<a class="b1 bgreen bg600 tgreen t600 bgtransparent h:b700 h:twhite bggreen h:bg700" href="#/">Link “button”</a>
+<a class="btn b1 bgreen bgtransparent bg600 tgreen t600 h:b700 h:twhite h:bggreen h:bg700" href="#/">Link “button”</a>
 ```
-
-**Note:** the _named_ colors (including `transparent`) take precedence over HSL coded colors in Baselayer because they are declared _after_ the coded colors — in `colors.css`. This is the reason why, in the green outline (ghost) button, it can have both `bgtransparent` and `bggreen` classes but the transparent wins out. Whereas the hover state shade `h:bg700` _overrides_ the `bgtransparent` on hover, and that’s when the `var(--green-hs)` in the `bggreen` class is applied — this property colorizes the hover shade.
 
 ## Buttons with Icons
 
 In Baselayer, buttons are pre-styled with `display: inline-flex` and centering and middling flexbox alignment. So, all you need to do is add an icon and it will all line up.
 
-<form>
-  <p>
-    <button type="button" name="button" class="inline-flex">
-      Search&nbsp;
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
-    </button>
-  </p>
-</form>
+<p>
+  <button type="button" name="button" class="gap1">
+    Search
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
+  </button>
+</p>
 
-Baselayer CSS buttons works well with SVG icons, e.g. [Phosphor icons](https://phosphoricons.com/). Set the width and height of the icon to be e.g. 16px, 20px, or 24px. Set the fill colors to be `currentColor` so that it can be controlled by the CSS.
-
-If you are combining text with an icon, you may sometimes need to add a non-breaking space `&nbsp;` (or some inline padding on a `<span>`) within your button.
-
-If your icon is larger then the text height, you can add `flex flex-middle` to the button to control the vertical alignment.
-
-<form>
-  <p class="flex flex-middle">
-    <button type="button" name="button" class="flex flex-middle">
-      Search&nbsp;
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
-    </button>
-  </p>
-</form>
-
-```
-<button type="button" name="button" class="flex flex-middle">
-  Search&nbsp;
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
+```html
+<button type="button" name="button" class="gap1">
+  Search
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor">
+    <!-- SVG icon -->
+  </svg>
 </button>
 ```
 
-For icon-only buttons, add `icon` and have only a single character or icon in the button.
+Baselayer CSS buttons works well with SVG icons, e.g. [Phosphor icons](https://phosphoricons.com/). Set the width and height of the icon to be e.g. 16px, 20px, or 24px. Set the fill colors to be `currentColor` so that it can be controlled by the CSS.
+
+If you are combining text with an icon, you may sometimes need to add some space using `gap1` within your button (see [flex layouts]({{ '/layout/' | url }}#flex-layouts)). That’s the easiest way. Alternatively, you could put `&nbsp;` between your button text and icon.
+
+For icon-only buttons, add the CSS class  `icon` and have only a single character or icon in the button — this will make the button to be a square.
 
 <form>
   <p class="flex flex-middle">
@@ -181,15 +172,35 @@ The `pill` class on a square icon button will make it circular.
 <button class="icon pill" type="button" name="button">I</button>
 ```
 
-## Stretch Buttons
+## Button Sizes
 
-Increase the x-axis padding (using the responsive `px2` or `px3`) to make a button more impressive:
+The typographic size modifier classes `small` and `big` also work on buttons.
 
 <form>
-  <p class="flex flex-middle">
-    <button type="button" name="button">Button</button>&nbsp;
-    <button class="px2" type="button" name="button">Button</button>&nbsp;
-    <button class="px3" type="button" name="button">Button</button>&nbsp;
+  <p class="flex flexmiddle gap1">
+    <button type="button" name="button" class="small">Button</button>
+    <button type="button" name="button">Button</button>
+    <button type="button" name="button" class="big">Button</button>
+  </p>
+</form>
+
+```
+<button type="button" name="button" class="small">Button</button>
+<button type="button" name="button">Button</button>
+<button type="button" name="button" class="big">Button</button>
+```
+
+**Note:** in Baselayer 2, button x-axis padding is `1em` so that it responds to the text size of the button.
+
+## Stretch Buttons
+
+You can increase the x-axis padding (using the responsive `px2` or `px3`) to make a button more impressive:
+
+<form>
+  <p class="flex flexmiddle gap1">
+    <button type="button" name="button">Button</button>
+    <button class="px2" type="button" name="button">Button</button>
+    <button class="px3" type="button" name="button">Button</button>
   </p>
 </form>
 
@@ -200,42 +211,3 @@ Increase the x-axis padding (using the responsive `px2` or `px3`) to make a butt
 
 <button class="px3" type="button" name="button">Button</button>
 ```
-
-## Button Sizes
-
-In Baselayer there are no button _modifier_ or utility classes for controlling button text size directly. But any 
-
-<form class="flex flexcolumn">
-  <p>Wrapped by <code>small</code> (0.75em):</p>
-  <div class="small mt1">
-    <button type="button" name="button">Button</button>
-  </div>
-  <p>Default button size:</p>
-  <div class="mt1">
-    <button type="button" name="button">Button</button>
-  </div>
-  <p>wrapped by <code>big</code> (1.5em):</p>
-  <div class="mt1 big">
-    <button type="button" name="button">Button</button>
-  </div>
-  <p>Wrapped by <code>h3</code> and with <code>px3</code> on the button itself to give it more x-axis padding:</p>
-  <div class="h3 mt1">
-    <button class="px3" type="button" name="button">Button</button>
-  </div>
-</form>
-
-```
-<form class="flex flexcolumn">
-  <div class="small">
-    <button type="button" name="button">Button</button>
-  </div>
-  <div class="big">
-    <button type="button" name="button">Button</button>
-  </div>
-  <div class="h3 m0">
-    <button class="px3" type="button" name="button">Button</button>
-  </div>
-</form>
-```
-
-The same technique can be done on other form elements, e.g. to make large forms on landing pages, or small forms to fit inside table cells.
