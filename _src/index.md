@@ -62,7 +62,7 @@ These three download options can be found in the [source output folder](https://
 For more information on the OKLCH and HSL color systems in Baselayer, see [colors]({{ '/colors/' | url }}).
 
 <div aria-label="Note" class="popout mb2 bl3 bamber b300 p2 tblack bgamber bg100">
-  <strong>Baselayer includes no JavaScript or icon fonts.</strong> You can pair Baselayer with whatever JS framework you prefer to work with, or do your own thing. For icon fonts, for small projects I may sometimes use a character (glyph) from <a  class="tblue t600 h:t700"href="https://www.amp-what.com/">&amp;what;</a>. When I want something more, I copy a SVG icon for <a class="tblue t600 h:t700" href="https://phosphoricons.com/">Phosphor icons</a> (other icon sets are available).
+  <strong>Except for the JS dark theme toggler, Baselayer includes no JavaScript or icon fonts.</strong> You can pair Baselayer with whatever JS framework you prefer to work with, or do your own thing. For icon fonts, for small projects I may sometimes use a character (glyph) from <a  class="tblue t600 h:t700"href="https://www.amp-what.com/">&amp;what;</a>. When I want something more, I copy a SVG icon for <a class="tblue t600 h:t700" href="https://phosphoricons.com/">Phosphor icons</a> (other icon sets are available).
 </div>
 
 ## Built using PostCSS
