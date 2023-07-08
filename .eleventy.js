@@ -4,9 +4,9 @@ const pluginTOC = require('eleventy-plugin-toc');
 
 module.exports = function(eleventyConfig) {
 
-  eleventyConfig.setServerOptions({
-    showAllHosts: true
-  })
+  // eleventyConfig.setServerOptions({
+  //   showAllHosts: true
+  // })
 
   // Markdown
 

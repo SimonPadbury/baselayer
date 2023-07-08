@@ -19,6 +19,7 @@ Ready to use as-is, Baselayer gives you all this and more:
 * Simple responsive layouts using positioning, dimensions, flexbox, and grid
 * A lightweight system of utility classes for controlling spacing, borders (and colors)
 * [Three color options](http://localhost:8080/baselayer/#baselayer-comes-in-three-flavours) for you to choose from
+* Built-in dark theme(s) -- controllable by a JS toggle.
 * Control of many of these things using CSS variables (a.k.a. custom properties)
 
 Baselayer uses some modern web technologies such as [CSS Grid](https://caniuse.com/css-grid), [CSS variables](https://caniuse.com/css-variables), [container queries](https://caniuse.com/css-container-queries), and the [OKLCH color model](https://caniuse.com/mdn-css_types_color_oklch), therefore it supports only up-to-date (2023 forward) evergreen web browsers — Safari, Firefox, Chrome, Edge, etc. Sorry, it does not support Internet Explorer.
