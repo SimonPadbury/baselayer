@@ -27,7 +27,8 @@ Ready to use as-is, Baselayer gives you all this and more:
 * Three color options for you to choose from:
     * `baselayer.css` — has only a few `#` (hex) colors (Baselayer 2.x only)
     * `baselayer-oklch.css` — Baselayer 2.x plus a toolkit of utility classes for backgrounds, text, and borders using `oklch()` 
-    * `baselayer-hsl.css` — Baselayer 2.x plus a toolkit of utility classes for backgrounds, text, and borders using `hsl()` 
+    * `baselayer-hsl.css` — Baselayer 2.x plus a toolkit of utility classes for backgrounds, text, and borders using `hsl()`
+* Simple dark theme(s) built-in, controlled by a vanilla JS toggle
 * Control of many of these things using CSS variables (a.k.a. custom properties)
 
 Baselayer uses several modern web technologies such as CSS Grid, CSS variables (and OKLCH color model), so it supports only modern web browsers (Safari, Firefox, Chrome, Edge, etc.). Sorry, it does not support Internet Explorer.
