@@ -115,7 +115,7 @@ For links, collapsible `<details>`, pseudo-buttons (i.e. links styled with the `
 <div class="my2 b1">
   <div class="grid3cols">
     <div class="p3 flex flexcolumn flexcenter flexmiddle">
-    <p><a  class="tblue t600 h:t700"href="/#">Link</a></p>
+    <p><a href="/#">Link</a></p>
     <p><button type="button" class="pill">Button</button></p>
     </div>
     <div class="p3 flex flexcolumn flexcenter flexmiddle bgblue bg700">
