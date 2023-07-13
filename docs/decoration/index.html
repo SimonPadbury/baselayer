@@ -15,6 +15,9 @@
     html {
       scroll-behavior: smooth;
     }
+    [aria-current=page] {
+      border: 1px solid var(--cborder);
+    }
     .check-box {
       width: 1rem;
       height: 1rem;
@@ -254,14 +257,14 @@ window.addEventListener("DOMContentLoaded", () => {
       </button>
 
       <div id="site-nav-menu" class="mxauto center twhite" style="width: var(--wxxs);">
-        <div class="my2 pcell flex flexcolumn gap2">
-          <a class="block tgray t100 h:t200" href="/baselayer/">Introduction</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/typography/">Typography</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/layout/">Layout</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/decoration/">Decoration</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/colors/">Colors</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/forms/">Forms</a>
-          <a class="block tgray t100 h:t200" href="/baselayer/buttons/">Buttons</a>
+        <div class="my2 pcell flex flexcolumn gap1">
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/">Introduction</a>
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/typography/">Typography</a>
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/layout/">Layout</a>
+          <a class="block p1 tgray t100 h:t200"  aria-current="page" href="/baselayer/decoration/">Decoration</a>
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/colors/">Colors</a>
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/forms/">Forms</a>
+          <a class="block p1 tgray t100 h:t200"  href="/baselayer/buttons/">Buttons</a>
         </div>
 
         <div class="mb2 pcell">
