@@ -1,3 +1,7 @@
+[Baselayer 3](https://github.com/SimonPadbury/baselayer-3) has superceded Baselayer 2.
+
+* * * 
+
 # Baselayer
 
 v.2.0.0
